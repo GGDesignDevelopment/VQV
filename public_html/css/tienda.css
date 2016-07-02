@@ -1,0 +1,230 @@
+* {
+	box-sizing: border-box;
+	font-family: 'roboto_slabregular';
+	padding: 0;
+	margin: 0;
+	outline: none;
+}
+.contenedor {
+	display: flex;
+	flex-flow: column wrap;
+	width: 94%;
+	margin: 0 3%;
+}
+.contenedor header {
+	display: flex;
+	flex-flow: row nowrap;
+	justify-content: space-between;
+	align-items: baseline;
+	margin-bottom: 2%;
+	margin-top: 2%;
+}
+.contenedro header div.titulo {
+	display: flex;
+	flex-flow: column wrap;
+}
+.contenedor header div.titulo h1 {
+	font-size: 2.5em;
+	font-family: 'governorregular';
+	color: #97be49;
+}
+.contenedor header div.titulo h2 {
+	font-size: 1em;
+	font-family: 'governorregular';
+	color: #222;
+	margin: 2%;
+}
+.contenedor header nav {
+	display: flex;
+	flex-flow: row nowrap;
+	justify-content: flex-end;
+	align-items: center;
+	width: 50%;
+}
+.contenedor header nav a {
+	font-family: 'ElegantIcons';
+	font-size: 1.7em;
+	color: #97be49;
+	margin-left: 2%; 
+}
+.contenedor header nav a:hover {
+	color: #222;
+}
+.contenedor header nav a.boton {
+	font-family: 'governorregular';
+	color: white;
+	font-size: 1em;
+	background: #97be49;
+	padding: 13px 32px;
+	text-align: center;
+	margin-left: 4%;
+}
+.contenedor header nav a.boton:hover {
+	padding: 11px 30px;
+	border: 2px solid #97be49;
+	color: #97be49;
+	background: none;
+}
+.contenedor header nav a.boton span {
+	font-family: 'ElegantIcons';
+}
+/*----------------------------------------------------------------------------------*/
+.contenedor .contenido {
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: space-between;
+}
+.contenedor .contenido .menu {
+	width: 18%;
+	height: 100%;
+	display: flex;
+	flex-flow: column nowrap;
+}
+.contenedor .contenido .menu h2 {
+	font-family: 'governorregular';
+	font-size: 1.5em;
+	color: #97be49;
+}
+.contenedor .contenido .menu nav {
+	display: flex;
+	flex-flow: column nowrap;
+	width: 90%;
+	margin: 10% 0 0 10%;
+}
+.contenedor .contenido .menu nav button {
+	display: flex;
+	flex-flow: row nowrap;
+	justify-content: space-between;
+	align-items: center;
+	width: 100%;
+	padding: 3px;
+	margin-top: 3%;
+	border: 0;
+	border-bottom: 1px dotted #97be49;
+	color: #97be49;
+	background: none;
+	font-family: 'roboto_slabregular';
+	font-size: 1em;
+}
+.contenedor .contenido .menu nav button span:before {
+	content: "\5b";
+	font-family: 'ElegantIcons';
+}
+.contenedor .contenido .menu nav button.checked span:before {
+	content: "\5c";
+}
+/*-------------------------------------------------------------------------------------*/
+.contenedor .contenido .productos {
+	width: 82%;
+	height: 100%;
+	margin-top: 2%;
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: space-around;
+	align-items: flex-start;
+}
+.contenedor .contenido .productos div.column {
+	width: 28%;
+	height: auto;
+	display: flex;
+	flex-flow: column nowrap;
+	justify-content: space-between;
+}
+.contenedor .contenido .productos div.column div {
+	display: flex;
+	flex-flow: column;
+	justify-content: space-between;
+	margin-bottom: 5%;
+}
+.contenedor .contenido .productos div.column img {
+	width: 100%;
+	height: auto;
+	overflow: hidden;
+}
+.contenedor .contenido .productos div.column span {
+	width: 100%;
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: space-between;
+	align-items: center;
+	border-bottom: 1px dotted #97be49;
+	padding: 2% 0%;
+}
+.contenedor .contenido .productos div.column span.fondo, .contenedor .contenido .productos div.column span.fondo h2, .contenedor .contenido .productos div.column span.fondo a {
+	border: none;
+	background: #97be49;
+	color: white;
+}
+.contenedor .contenido .productos div.column span h2 {
+	font-family: 'roboto_slablight';
+	color: #97be49;
+	margin-left: 2%;
+}
+.contenedor .contenido .productos div.column span a {
+	font-family: 'ElegantIcons';
+	color: #97be49;
+	margin-right: 2%;
+}
+form.oculto {
+	display: none;
+}
+.contenedor .contenido .productos div.column form {
+	background: #97be49;
+	color: white;
+
+}
+.contenedor .contenido .productos div.column form div {
+	width: 100%;
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: space-between;
+	margin-top: 1%;
+}
+.contenedor .contenido .productos div.column form div label {
+	margin:0;
+	font-family: 'roboto_slablight';
+	font-size: .9em;
+	margin-left: 1%;
+}
+.contenedor .contenido .productos div.column form div input {
+	margin: 0;
+	border: 0;
+	background: none;
+	border-bottom: 1px dotted white;
+	color: white;
+	margin-right: 1%;
+	text-align: right;
+}
+.contenedor .contenido .productos div.column form p {
+	margin: 1% 2% 2% 1%;
+	font-size: .9em;
+	font-family: 'roboto_slablight';
+}
+.contenedor .contenido .productos div.column form input[type=submit] {
+	width: 100%;
+	margin: 0;
+	border: 0;
+	background: #A1CB4E;
+	padding: 3% 0;
+	color: white;
+}
+.contenedor .contenido .productos div.column form input[type=submit]:hover {
+	background: #83A43F;
+}
+::-webkit-input-placeholder{
+	color: white;
+	font-size: .9em;
+}
+::-moz-placeholder{
+	color: white;
+	font-size: .9em;
+}
+:-ms-input-placeholder{
+	color: white;
+	font-size: .9em;
+}
+:-moz-placeholder {
+	color: white;
+	font-size: .9em;
+}
+

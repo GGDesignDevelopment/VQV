@@ -1,0 +1,110 @@
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	font-family: 'roboto_slabregular';
+	-webkit-appearance: none;
+}
+input {
+    border-radius: 0;
+    -webkit-appearance: none;
+}
+.container {
+	display: flex;
+	flex-flow: column wrap;
+	align-items: center;
+	justify-content: center;
+	align-content: center;
+	background: #fff;
+	width: 100%;
+	height: 100%;
+}
+.container img {
+	width: 200px;
+	height: auto;
+	padding: 20px;
+	box-sizing: content-box;
+
+}
+.container h1 {
+	font-family: 'governorregular';
+	font-size: 4em;
+	color: #97be49;
+	padding: 20px;
+	text-align: center;
+}
+.container h2 {
+	font-size: 2.5em;
+	color: black;
+	padding: 0 20px 20px 20px;
+}
+.container h3 {
+	font-size: 2em;
+	color: black;
+	padding: 0 20px 20px 20px;
+}
+.container form {
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: center;
+	width: 40%;
+}
+.container form label {
+	font-size: 1.2em;
+	padding: 20px 20px 0 0;
+	color: #97be49;
+}
+.container form input.field {
+	width: 60%;
+	padding: 20px 30px;
+	border: 2px solid #97be49;
+}
+.container form input.button {
+	width: 40%;
+	padding: 20px 30px;
+	background: #97be49;
+	color: white;
+	border: 0;
+}
+.container nav {
+	display: flex;
+	flex-flow: row wrap;
+}
+.container nav a {
+	font-family: 'ElegantIcons';
+	color: #97be49;
+	text-decoration: none;
+	padding: 10px;
+	font-size: 2em;
+}
+
+@media (max-width: 800px) {
+
+	.container img {
+		width: 150px;
+		height: auto;
+		padding-bottom: 0;
+	}	
+	.container h1 {
+		font-size: 2.5em;
+		line-height: 1em;
+		padding-bottom: 10px;
+	}
+	.container h2 {
+		font-size: 1.5em;
+		text-align: right;
+		padding-bottom: 10px;
+	}
+	.container h3 {
+		font-size: 1.2em;
+		padding-bottom: 10px;
+	}
+	.container form {
+		width: 60%;
+	}
+}
+@media (max-width: 450px) {
+	.container form {
+		width: 90%;
+	}
+}

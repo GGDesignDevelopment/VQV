@@ -1,0 +1,775 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+.container {
+	display: flex;
+	flex-flow: column wrap;
+
+}
+
+section {
+	height: 100vh;
+	display: flex;
+}
+
+#main {
+	background: url(../img/bg.jpg) no-repeat center center fixed; 
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	flex-flow: column nowrap;
+	align-items: center;
+}
+#main header {
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: space-between;
+	align-items: center;
+	width: 100%;
+}
+#main header .logo {
+}
+#main header .logo a img {
+	width: 180px;
+	height: auto;
+	margin: 1% 0 0 6%;
+	box-sizing: content-box;
+	transform: rotate(-30deg);
+	transition: transform .8s ease-in-out;
+}
+#main header .logo a img:hover {
+	transform: rotate(-25deg);
+}
+#main header .pull  {
+	display: none;
+}
+
+#main header nav {
+	width: 55%;
+	align-self: flex-start;
+	display: flex;
+	flex-flow: row nowrap;
+	justify-content: space-around;
+
+}
+#main header nav a {
+	padding: 8px 15px;
+	background: #94bc3d;
+	font-family: 'roboto_slabthin';
+	color: #fff;
+	margin-top: .5%;
+}
+.pull {
+	display: none;
+}
+#main header nav a:hover {
+	background: white;
+	color: #94bc3d;
+}
+#main h1 {
+	font-size: 3.5em;
+	font-family: 'governorregular';
+	letter-spacing: 0.2em;
+	color: #94bc3d;
+	margin-top: 10%;
+}
+#main h2 {
+	display: inline;
+	color: #000;
+	background: rgba(255,255,255,.3);
+	padding: 10px;
+	border-bottom: 5px solid rgba(255,255,255,.5);
+	width: 80%;
+	font-size: 1.3em;
+	text-align: center;
+	margin-top: 1.5%;
+}
+#main .botones {
+	margin-top: 1.5%;
+	display: flex;
+	flex-flow: row wrap;
+	width: 32%;
+	justify-content: space-between;
+}
+#main .botones a {
+	font-family: 'governorregular';
+	background: #97be49;
+	padding: 18px 0;
+	text-align: center;
+	color: white;
+	width: 45%;
+	font-size: 1em;
+}
+#main .botones a:hover {
+	background: rgba(255,255,255,.4);
+	border: 2px solid #97be49;
+	color: #97be49;
+	padding: 16px 0;
+}
+#main .social {
+	display: flex;
+	flex-flow: row nowrap;
+	justify-content: space-between;
+	margin-top: 1.5%;
+}
+#main .social a {
+	font-family: 'ElegantIcons';
+	font-size: 2em;
+	color: white;
+	margin: 0 10px;
+}
+#main .social a:hover {
+	color: #97be49;
+}
+
+/*------------------------------------------------------------*/
+
+#alimentacion {
+	display: flex;
+	flex-flow: column nowrap;
+	align-items: center;
+	background: #94bc3d;
+}
+#alimentacion h2 {
+	font-family: 'governorregular';
+	font-size: 2.5em;
+	color: white;
+	margin-top: 2%;
+}
+#alimentacion h3  {
+	font-size: 1.1em;
+	width: 60%;
+	text-align: center;
+	font-family: 'roboto_slabthin';
+	color: #fff;
+	letter-spacing: .1em;
+	margin: 0.8% 0 2% 0;
+}
+#alimentacion .carrousel {
+	display: flex;
+	flex-flow: row wrap;
+	width: 100%;
+	background: white;
+	justify-content: space-around;
+	padding: 3% 0;
+}
+#alimentacion .carrousel img {
+	width: 27%;
+	height: 27%;;
+}
+#alimentacion nav {
+	width: 100%;
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: flex-end;
+	align-content: center;
+}
+#alimentacion nav a {
+	padding: 7px 10px;
+	background: #fff;
+	font-family: 'roboto_slabregular';
+	color: #94bc3d;
+	margin-right: 15px;
+	margin-top: 1.5%;
+
+}
+#alimentacion nav a:hover {
+	background: #94bc3d;
+	padding: 6px 9px;
+	border: 1px solid white;
+	color: white;
+}
+
+/*--------------------------------------------------------------------*/
+
+#reciclaje {
+	display: flex;
+	flex-flow: column nowrap;
+}
+#reciclaje .head  {
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: space-between;
+}
+#reciclaje .head div {
+	width: 50%;
+	margin-top: 1.5%;
+}
+#reciclaje .head div h2 {
+	font-family: 'governorregular';
+	font-size: 2em;
+	color: #97be49;
+	margin-left: 2%;
+}
+#reciclaje .head div h3 {
+	font-size: .9em;
+	letter-spacing: .06em;
+	margin-left: 3%;
+	margin-top: 1%;
+}
+#reciclaje .head nav {
+	width: 40%;
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: flex-end;
+	margin-top: 1.5%;
+}
+#reciclaje .head nav a {
+	padding: 7px 20px;
+	background: #94bc3d;
+	font-family: 'roboto_slabregular';
+	color: #fff;
+	margin-bottom: 2%;
+	margin-right: 2%;
+}
+#reciclaje .head nav a:hover {
+	background: white;
+	color: #94bc3d;
+	padding: 6px 19px;
+	border: 1px solid #94bc3d;
+}
+#reciclaje .bottom {
+	display: flex;
+	flex-flow: row nowrap;
+	justify-content: space-around;
+}
+#reciclaje .bottom .quote {
+	width: 22%;
+	margin-left: 1%;
+}
+#reciclaje .bottom .quote span {
+	font-size: 5em;
+	color: #94bc3d;
+	font-family: 'ElegantIcons';
+}
+#reciclaje .bottom .quote p {
+	margin: -10% 8% 0 8%;
+	letter-spacing: .4em;
+	line-height: 1.4em;
+	text-align: right;
+}
+#reciclaje .bottom #hexGrid {
+	width: 78%;
+	margin: -2% 2% 2% 2%;
+}
+/*-----------------------------------------------------------*/
+#footer {
+	display: flex;
+	flex-flow: column nowrap;
+}
+#footer .about {
+	display: flex;
+	flex-flow: column nowrap;
+	align-items: center;
+	justify-content: space-around;
+	background: rgba(148, 188, 61, 0.8);
+	height: 50%;
+}
+#footer .about h2 {
+	font-size: 3.5em;
+	color: #487000;
+	font-family: 'governorregular';
+	margin-top: 1%;
+}
+#footer .about h3 {
+	font-size: 1.5em;
+	color: #61890a;
+	font-family: 'governorregular';
+}
+#footer .about p {
+	width: 85%;
+	letter-spacing: .2em;
+	line-height: 1.5em;
+	text-align: center;
+	font-size: 1.2em;
+}
+#footer .about a {
+	font-family: 'governorregular';
+	background: #fff;
+	padding: 17px 25px;
+	color: #94bc3d;
+	font-size: 1.2em;
+	margin-bottom: 1%;
+}
+#footer .about a:hover {
+	background: transparent;
+	padding: 15px 23px;
+	border: 2px solid white;
+	color: white;
+}
+#footer .contacto {
+	display: flex;
+	flex-flow: row nowrap;
+	justify-content: space-between;
+	height: 50%;
+}
+#footer .contacto .menu {
+	display: flex;
+	flex-flow: column nowrap;
+	align-items: center;
+	justify-content: space-between;
+	width: 25%;
+	margin: 4% 0;
+}
+#footer .contacto .menu a {
+	width: 60%;
+	padding: 15px;
+	text-align: right;
+	background: #94bc3d;
+	font-family: 'governorregular';
+	color: #fff;
+}
+#footer .contacto .menu a:hover {
+	padding: 13px;
+	border: 2px solid #94bc3d;
+	color: #94bc3d;
+	background: white;
+}
+#footer .contacto .info {
+	display: flex;
+	flex-flow: column nowrap;
+	align-items: center;
+	width: 25%;
+	margin: 4% 40px;
+}
+#footer .contacto .info p {
+	letter-spacing: .1em;
+	line-height: 2em;
+	border-right: 2px solid #94bc3d;
+	border-left:  2px solid #94bc3d;
+	text-align: center;
+	padding: 0 15px;
+	margin: 20px 0;
+}
+#footer .contacto .info .social {
+	display: flex;
+	flex-flow: row nowrap;
+	justify-content: space-around;
+	width: 40%;
+}
+#footer .contacto .info .social a {
+	font-family: 'ElegantIcons';
+	font-size: 2em;
+	color: rgba(148, 188, 61, 0.8);
+}
+#footer .contacto .info .social a:hover {
+	color: #94bc3d;
+}
+#footer .contacto form {
+	position: relative;
+	z-index: 10;
+	display: flex;
+	flex-flow: row wrap;
+	width: 45%;
+	margin: 4% 0;
+	
+}
+#footer .contacto form label {
+	z-index: 11;
+	font-family: 'governorregular';
+	font-size: 2em;
+	color: #94bc3d;
+	width: 100%;
+}
+#footer .contacto form input:focus {
+	outline: 0;
+}
+#footer .contacto form input {
+	z-index: 11;
+	width: 40%;
+	border: 0;
+	border-bottom: 2px dotted #94bc3d;
+	margin: 2%;
+}
+#footer .contacto form #button {
+	z-index: 11;
+	background: #94bc3d;
+	font-family: 'governorregular';
+	color: white;
+}
+#footer .contacto form #button:hover {
+	background: white;
+	border: 2px solid #94bc3d;
+	color: #94bc3d;
+}
+#footer .contacto form #button:active {
+	outline: none;
+	background: rgba(148, 188, 61, 0.7);
+	border: 0;
+	color: white;
+
+}
+#footer .contacto form #overlay {
+	display: none;
+	position: absolute;
+	flex-flow: column nowrap;
+	justify-content: center;
+	align-content: center;
+	align-items: center;
+	z-index: 20;
+	width: 90%;
+	height: 100%;
+	background: white;
+}
+#footer .contacto form #overlay h2 {
+	margin-bottom: 2%;
+}
+#footer .contacto form #overlay label {
+	color: black;
+	margin-bottom: 2%;
+	font-family: 'roboto_slabregular';
+	font-size: 1em;
+}
+#footer .contacto form #overlay label input[type=checkbox] {
+	width: 10%;
+}
+#footer .contacto form #overlay input[type=submit] {
+	background: #94bc3d;
+	padding: 2% 6%;
+	margin: 0;
+	font-family: 'governorregular';
+	color: white;
+	width: auto;
+}
+/*------------------------------------------------*/
+footer {
+	background: #94bc3d;
+	color: white;
+	width: 100%;
+	padding: 5px;
+	font-family: Helvetica, sans-serif;
+	font-weight: 100;
+}
+/*----------------------------------------------*/
+@media only screen 
+	and (max-width: 1050px)
+	and (min-width: 801px) {
+
+	#main header nav {
+		flex-flow: row wrap;
+		justify-content: flex-end;
+	}
+	#main header nav a {
+	 	margin: 1.5% 1.5% 0 0;
+	}
+	#main header nav a.pull {
+		display: none;
+	}
+	#main h1 {
+		font-size: 2.5em;
+		margin-top: 13%
+	}
+	#main h2 {
+		font-size: 1.1em;
+		padding: 8px;
+		margin-top: 2%;
+	}
+	#main .botones {
+		width: 50%;
+		margin-top: 2%;
+	}
+	/*--------------------------------------*/
+	#alimentacion h2 {
+		font-size: 2em;
+	}
+	#alimentacion .carrousel {
+		padding: 5% 0;
+	}
+	#alimentacion .carrousel img {
+		width: 40%;
+		height: 40%;
+		margin: 0 2%;
+	}
+	#alimentacion .carrousel img.last {
+		display: none;
+	}
+	/*--------------------------------------*/
+	#reciclaje .bottom .quote p {
+		font-size: .9em;
+		letter-spacing: .3em;
+	}
+	#reciclaje .bottom #hexGrid {
+		margin-top: 0;
+	}
+	#reciclaje .bottom #hexGrid li:nth-child(n+12) {
+		display: none;
+	}
+	/*------------------------------------*/
+	#footer .contacto .menu {
+	margin: 7% 0;
+	}
+	#footer .contacto .menu a {
+		width: 70%;
+		font-size: .9em;
+	}
+	#footer .contacto .info {
+		margin: 7% 0;
+	}
+	#footer .contacto form {
+		margin: 7% 0;
+	}
+	#footer .contacto form label {
+		font-size: 1.5em;
+	}
+}
+@media only screen 
+	and (max-width: 800px) {
+
+	#main header img {
+		display: none;
+	}
+	#main header {
+		flex-flow: column nowrap;
+		height: 35%;
+		justify-content: flex-start;
+	}
+	#main header nav {
+		width: 100%;
+		flex-flow: row wrap;
+	 	display: none;
+	 	height: auto;
+	}
+	#main header nav a {
+		width: 50%;
+		margin: 0;
+		background: #aacc60;
+		border-bottom: 1px solid #b1d06d;
+		border-right: 1px solid #b1d06d;
+	}
+	#main header nav a:last-child {
+		width: 100%;
+	}
+	#main header .pull {
+		display: flex;
+		flex-flow: row nowrap;
+		justify-content: space-between;
+		align-content: center;
+		align-items: center;
+		width: 100%;
+		padding: 4%;
+		background: #94bc3d;
+	}
+	#main header .pull h2 {
+		font-family: 'governorregular';
+		background: none;
+		font-size: 1em;
+		font-weight: 0;
+		border: 0;
+		padding: 0;
+		margin: 0;
+		color: white;
+	}
+	#main header .pull a {
+		width: auto;
+		display: inline;
+		font-family: 'ElegantIcons';
+		font-size: 1.2em;
+		padding: 0;
+		margin: 0;
+		color: white;
+	}
+	#main h1 {
+		display: none;
+	}
+	#main h2 {
+		width: 100%;
+		text-align: justify;
+		margin: 0;
+		border: 0;
+		font-size: 1em;
+	}
+	#main .botones {
+		width: 50%;
+		flex-flow: column nowrap;
+	}
+	#main .botones a {
+		width: 100%;
+		margin-top: 5%;
+	}
+	/*------------------------------*/
+	#alimentacion {
+		background: none;
+		border-bottom: 15px solid #94bc3d;
+	}
+	#alimentacion .pull {
+		display: flex;
+		flex-flow: row nowrap;
+		justify-content: space-around;
+		align-content: center;
+		align-items: center;
+		width: 100%;
+		padding: 2% 4%;
+		margin:0;
+		background: #94bc3d;
+	}
+	#alimentacion .pull a {
+		width: auto;
+		display: inline;
+		font-family: 'ElegantIcons';
+		font-size: 1.2em;
+		padding: 0;
+		margin: 0;
+		color: white;
+		order: 1;
+	}
+	#alimentacion .pull h2 {
+		font-family: 'governorregular';
+		font-size: 1em;
+		color: white;
+		text-align: left;
+	}
+	#alimentacion h2 {
+		width: 100%;
+		text-align: center;
+		font-size: 1.2em;
+		line-height: 1.2em;
+		width: 100%;
+		padding: 2%;
+		margin: 0;
+		order: 1;
+		color: #94bc3d;
+		margin-top: 1%;
+	}
+	#alimentacion h3 {
+		order: 3;
+		width: 85%;
+		font-size: .9em;
+		background: #94bc3d;
+		margin: 0;
+		padding: 2%;
+		text-align: left;
+	}
+	#alimentacion .carrousel {
+		order: 2;
+		padding: 0;
+		margin-top: 1%;
+	}
+	#alimentacion .carrousel img {
+		width: 85%;
+	}
+	#alimentacion .carrousel img:nth-child(n+2) {
+		display: none;
+	}
+	#alimentacion nav {
+		display: none;
+	}
+	/*----------------------------------------*/
+	#reciclaje .head {
+		margin-bottom: 5%;
+	}
+	#reciclaje .head .pull {
+		width: 10%;
+		display: block;
+		padding: 0;
+		margin-top: 3%;
+		padding-right: 5%;
+		order: 1;
+	}
+	#reciclaje .head .pull a {
+		display: inline;
+		font-family: 'ElegantIcons';
+		font-size: 1.2em;
+		padding: 0;
+		margin: 0;
+		color: #94bc3d;
+	}
+	#reciclaje .head div {
+		width: 90%;
+		padding: 0;
+		margin: 0;
+		margin-top: 3%;
+		padding-left: 3%;
+		order: 0;
+	}
+	#reciclaje .head div h2 {
+		margin: 0;
+		padding: 0;
+		font-size: 1.4em;
+	}
+	#reciclaje .head div h3 {
+		display: none;
+	}
+	#reciclaje .head nav {
+		width: 100%;
+		order: 3;
+		flex-flow: row wrap;
+		display: none;
+	}
+	#reciclaje .head nav a{
+		width: 50%;
+		margin: 0;
+
+		border-bottom: 1px solid #b1d06d;
+		border-right: 1px solid #b1d06d;
+	}
+	#reciclaje .head nav a:last-child {
+		display: none;
+	}
+	#reciclaje .bottom {
+		margin: 0;
+	}
+	#reciclaje .bottom .quote {
+		width: 35%;
+	}
+	#reciclaje .bottom .quote span {
+		font-size: 2em;
+	}
+	#reciclaje .bottom .quote p {
+		font-size: .9em;
+		line-height: 1.2em;
+		letter-spacing: .2em;
+	}
+	#reciclaje .bottom #hexGrid {
+		width: 65%;
+		margin: 5%;
+		padding: 0;
+	}
+	#reciclaje .bottom #hexGrid li:nth-child(n+7) {
+		display: none;
+	}
+	/*------------------------------------------*/
+	#footer .about h2 {
+		font-size: 2em;
+	}
+	#footer .about h3 {
+		font-size: 1.5em;
+		text-align: center;
+	}
+	#footer .about p {
+		font-size: 1em;
+		line-height: 1.1em;
+		letter-spacing: .1;
+	}
+	#footer .contacto {
+		flex-flow: column nowrap;
+	}
+	#footer .contacto .menu {
+		display: none;
+	}
+	#footer .contacto .info {
+		width: 100%;
+		margin: 4% 0;
+		flex-flow: row nowrap;
+		justify-content: space-between;
+	}
+	#footer .contacto .info p {
+		line-height: 1.3em;
+		border-left: 0;
+		margin: 0;
+	}
+	#footer .contacto .info .social {
+		margin: 0 10%;
+	}
+	#footer .contacto form {
+		width: 100%;
+		height: 50%;
+	}
+	#footer .contacto form label {
+		font-size: 1.4em;
+		text-align: center;
+	}
+}
