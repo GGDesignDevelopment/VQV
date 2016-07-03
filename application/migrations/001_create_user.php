@@ -36,7 +36,8 @@ class Migration_Create_User extends CI_Migration {
         $this->dbforge->create_table('User');
 
         $data['email'] = 'soporte@admin.com';
-        $data['password'] = 'e9709bbb28f3e359ebd5440d14a6e0608b0001aaa54ba9dd09768602c3b5c0f2f5e2527f54fe227ad763e15d26cd8dc6b9b7f590cca257d9a1a1159210d693d1';
+        //Password: admin
+        $data['password'] = 'e7fef7481e6989ba7c26f428cc4fac4bf148ae8832907c1ecea6c5f65ef6a956b3d45f753c3f170cda3eb936f2a6bf6d55b47dba9e23b2d5f292d4ccb20547da';
         $data['type'] = 'A';
         $data['name'] = 'Admin';
         
