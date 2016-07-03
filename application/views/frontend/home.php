@@ -2,13 +2,13 @@
     <section id="main">
         <header>
             <div class="logo">
-                <a href="index.html"><img src="img/logo2.png"></a>
+                <a href="<?php echo site_url()?>"><img src="img/logo2.png"></a>
             </div>
             <nav data-posicion="main">
                 <a href="#alimentacion">alimentacion</a>
                 <a href="#reciclaje">reciclaje</a>
                 <a href="#footer">quienes somos</a>
-                <a href="#">tienda on line</a>
+                <a href="<?php echo site_url('Tienda')?>" target="blank">tienda on line</a>
                 <a href="#footer">contacto</a>
             </nav>	
             <div class="pull">
@@ -21,7 +21,7 @@
         <h2><?php echo $home->txtWelcome; ?></h2>
 
         <div class="botones">
-            <a href="#">Tienda Virtual</a>
+            <a href="<?php echo site_url('Tienda')?>" target="blank">Tienda Virtual</a>
             <a href="#footer">Conocenos</a>
         </div>
 
@@ -49,7 +49,7 @@
             <a href="#main">inicio</a>
             <a href="#reciclaje">reciclaje</a>
             <a href="#footer">quienes Somos</a>
-            <a href="#">tienda on line</a>
+            <a href="<?php echo site_url('Tienda')?>" target="blank">tienda on line</a>
             <a href="#footer">contacto</a>
         </nav>
         <div class="pull">
@@ -68,7 +68,7 @@
                 <a href="#main">inicio</a>
                 <a href="#alimentacion">alimentacion</a>
                 <a href="#footer">quienes Somos</a>
-                <a href="#">tienda on line</a>
+                <a href="<?php echo site_url('Tienda')?>" target="blank">tienda on line</a>
                 <a href="#footer">contacto</a>
             </nav>
             <div class="pull">	
@@ -106,7 +106,7 @@
                 <a href="#main">Inicio</a>
                 <a href="#alimentacion">Alimentacion</a>
                 <a href="#reciclaje">Reciclaje</a>
-                <a href="tienda.html" target="blank">Tienda on line</a>
+                <a href="<?php echo site_url('Tienda')?>" target="blank">Tienda on line</a>
                 <a class="pull" href="#">&#x61;</a>
             </div>
             <div class="info">

@@ -27,7 +27,7 @@ div.scrollingHotSpotLeftVisible
 	background-repeat: no-repeat;
 	opacity: 0; /* Standard CSS3 opacity setting */
 	-moz-opacity: 0; /* Opacity for really old versions of Mozilla Firefox (0.9 or older) */
-	filter: alpha(opacity = ); /* Opacity for Internet Explorer. */
+	filter: alpha(opacity = 0); /* Opacity for Internet Explorer. */
 	zoom: 1; /* Trigger "hasLayout" in Internet Explorer 6 or older versions */
 }
 
