@@ -8,20 +8,6 @@ class Reciclaje extends Admin_Controller {
 
     function index() {
         $this->data['reciclajes'] = $this->reciclaje_m->get();
-
-//        $this->data['scripts'][] = '<script>
-//            function showResults(filtro) {
-//                var xmlhttp = new XMLHttpRequest();
-//                xmlhttp.onreadystatechange = function() {
-//                    if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-//                        document.getElementById("results").innerHTML = xmlhttp.responseText;
-//                    }
-//                };
-//                xmlhttp.open("GET", "reciclaje/buscar?titulo=" + filtro, true);
-//                xmlhttp.send();
-//            }
-//            </script>';
-
         $this->data['subview'] = 'admin/reciclaje/index';
         $this->load->view('admin/_layout_main', $this->data);
     }
@@ -55,7 +41,7 @@ class Reciclaje extends Admin_Controller {
             //Levanta campos del form
             $data = $this->reciclaje_m->array_from_post(array('titulo', 'subtitulo', 'texto'));
 
-            if (!empty($_FILES['file'])) {
+            if (!empty($_FILES['file']) && $_FILES['file']['name'] <> '') {
                 if ($this->data['reciclaje']->imagen <> '') {
                     unlink($this->imageDir . $this->data['reciclaje']->imagen);
                     $data['imagen'] = '';
@@ -77,6 +63,11 @@ class Reciclaje extends Admin_Controller {
     }
 
     function delete($id) {
+        //deslink imagen
+        $rec = $this->reciclaje_m->get($id);
+        if ($rec->imagen <> '') {
+            unlink($this->imageDir . $rec->imagen);
+        }
         $this->reciclaje_m->delete($id);
         redirect('admin/reciclaje');
     }
@@ -113,4 +104,5 @@ class Reciclaje extends Admin_Controller {
             echo '</tr>';
         endif;
     }
+
 }

@@ -33,7 +33,10 @@
             <label class="control-label col-md-2">Precio</label>
             <div class="col-md-10"><?php echo form_input('prodprecio', $producto->prodprecio, 'class="form-control"'); ?></div>		
         </div>
-
+        <div class="form-group">
+            <label class="control-label col-md-2">Imagen</label>
+            <div class="col-md-10"><input id="file" type="file" name="file" class="file" data-preview-file-type="any" data-upload-url="#"></div>		
+        </div>        
         <div class="form-group pull-right">
             <div class="col-sm-offset-2 col-sm-10">
                 <?php echo form_submit('submit', 'Confirmar', 'class="btn btn-primary"'); ?>

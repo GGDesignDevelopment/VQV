@@ -34,8 +34,8 @@
             <div class="col-md-10"><?php echo form_textarea('txtAbout', $home->txtAbout, 'class="form-control"'); ?></div>
         </div>	    
         <div class="form-group">
-            <label class="control-label col-md-1">Alimentacion</label>
-            <div class="col-md-11"><input id="files" type="file" name="files[]" class="file" multiple data-preview-file-type="any" data-upload-url="#"></div>
+            <label class="control-label col-md-2">Alimentacion</label>
+            <div class="col-md-10"><input id="files" type="file" name="files[]" class="file" multiple data-preview-file-type="any" data-upload-url="#"></div>
         </div>    
         <div class="form-group pull-right">
             <div class="col-sm-offset-2 col-sm-10">

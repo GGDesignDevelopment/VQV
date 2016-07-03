@@ -23,7 +23,6 @@ class Producto extends Admin_Controller {
                 xmlhttp.send();
             }
             </script>';
-
         $this->data['subview'] = 'admin/producto/index';
         $this->load->view('admin/_layout_main', $this->data);
     }
@@ -33,6 +32,22 @@ class Producto extends Admin_Controller {
             $this->data['producto'] = $this->producto_m->get($id);
             count($this->data['producto']) || $this->data['errores'][] = 'Producto no encontrada';
             // $this->data['categorias'] =$this->catprod_m->get_categorias($id);
+            if ($this->data['producto']->prodimagen <> '') {
+                $script = '<script type="text/javascript">$("#file").fileinput({
+                                            uploadAsinc: false,
+                                            showUpload: false,
+                                            showRemove: false,
+                                            overwriteInitial: false,
+                                            overwrite:false,
+                                            initialPreview: [';
+
+                $script .= "'<img src=" . '"' . site_url($this->imageDir . $this->data['producto']->prodimagen) . '" class="file-preview-image">' . "',";
+                $script .= '], initialPreviewConfig: [';
+                $script .= '{height:"120px", url:"' . site_url('admin/producto/delete_imagen') . '/' . $this->data['producto']->prodid . '"},';
+                $script .= ']})</script>;';
+
+                $this->data['scripts'][] = $script;
+            }
         } else {
             $this->data['producto'] = $this->producto_m->new_producto();
         }
@@ -42,7 +57,21 @@ class Producto extends Admin_Controller {
         $rules = $this->producto_m->rules;
         $this->form_validation->set_rules($rules);
         if ($this->form_validation->run() == TRUE) {
-            $data = $this->producto_m->array_from_post(array('prodnombre', 'proddes', 'catid','prodpresentacion','produnidad', 'prodprecio'));
+            $data = $this->producto_m->array_from_post(array('prodnombre', 'proddes', 'catid', 'prodpresentacion', 'produnidad', 'prodprecio'));
+
+            if (!empty($_FILES['file']) && $_FILES['file']['name'] <> '') {
+                if ($this->data['producto']->prodimagen <> '') {
+                    unlink($this->imageDir . $this->data['producto']->prodimagen);
+                    $data['prodimagen'] = '';
+                }
+                $ext = explode('.', basename($_FILES['file']['name']));
+                $name = md5(uniqid()) . "." . array_pop($ext);
+                $target = $this->imageDir . $name;
+                if (move_uploaded_file($_FILES['file']['tmp_name'], $target)) {
+                    $data['prodimagen'] = $name;
+                }
+            }
+
             $newId = $this->producto_m->save($data, $id);
             redirect('admin/producto');
         }
@@ -51,8 +80,22 @@ class Producto extends Admin_Controller {
     }
 
     function delete($id) {
+        $prod = $this->producto_m->get($id);
+        if ($prod->prodimagen <> '') {
+            unlink($this->imageDir . $prod->prodimagen);
+         }
         $this->producto_m->delete($id);
         redirect('admin/producto');
+    }
+
+    function delete_imagen($id) {
+        $prod = $this->producto_m->get($id);
+        if ($prod->prodimagen <> '') {
+            unlink($this->imageDir . $prod->prodimagen);
+            $data['prodimagen'] = '';
+            $newId = $this->producto_m->save($data, $id);
+            echo 0;
+        }
     }
 
     function buscar() {
@@ -73,7 +116,7 @@ class Producto extends Admin_Controller {
                 echo '<td>' . $producto->proddes . '</td>';
                 echo '<td>' . $producto->familia . '</td>';
                 echo '<td>' . $producto->prodpresentacion . '</td>';
-                echo '<td>' . get_unidades($producto->produnidad) . '</td>';                
+                echo '<td>' . get_unidades($producto->produnidad) . '</td>';
                 echo '<td>' . $producto->prodprecio . '</td>';
                 echo '<td>' . btn_edit('admin/producto/edit/' . $producto->prodid) . '</td>';
                 echo '<td>' . btn_delete('admin/producto/delete/' . $producto->prodid) . '</td>';
