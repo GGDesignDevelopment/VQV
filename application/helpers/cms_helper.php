@@ -16,3 +16,15 @@ function get_unidades($u = null) {
         return $unidades;
     }
 }
+
+function getCopy($objeto) {
+    if ($objeto == NULL) {
+        return null;
+    } else {
+        $new = new stdClass();
+        foreach ($objeto as $clave => $valor) {
+            $new->$clave = $valor;
+        }
+        return $new;
+    }
+}

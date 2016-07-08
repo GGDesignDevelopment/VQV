@@ -3,8 +3,8 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Migration_Create_Producto extends CI_Migration {
-    public function up()
-    {
+
+    public function up() {
         $this->dbforge->add_field(array(
             'prodid' => array(
                 'type' => 'INT',
@@ -24,14 +24,30 @@ class Migration_Create_Producto extends CI_Migration {
                 'type' => 'DECIMAL',
                 'constraint' => '12,2',
             ),
+            'catid' => array(
+                'type' => 'INT',
+                'constraint' => 8,
+            ),
+            'prodimagen' => array(
+                'type' => 'VARCHAR',
+                'constraint' => '250',
+            ),
+            'produnidad' => array(
+                'type' => 'VARCHAR',
+                'constraint' => '1',
+            ),
+            'prodpresentacion' => array(
+                'type' => 'INT',
+                'constraint' => 5,
+            ),
         ));
 
         $this->dbforge->add_key('prodid', TRUE);
         $this->dbforge->create_table('producto');
     }
 
-    public function down()
-    {
+    public function down() {
         $this->dbforge->drop_table('producto');
     }
+
 }

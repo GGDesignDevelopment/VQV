@@ -18,6 +18,14 @@ class Migration_Create_Contacto extends CI_Migration {
                 'type' => 'VARCHAR',
                 'constraint' => '50',
             ),
+            'periodicidad' => array(
+                'type' => 'VARCHAR',
+                'constraint' => 1,
+            ),
+            'activo' => array(
+                'type' => 'INT',
+                'constraint' => 1,
+            ),
         ));
 
         $this->dbforge->add_key('email', TRUE);
