@@ -19,6 +19,7 @@
             <li><?php echo anchor('admin/categoria','Familias');?></li>
             <li><?php echo anchor('admin/producto','Productos');?></li>
             <li><?php echo anchor('admin/reciclaje','Técnicas Reciclaje');?></li>
+            <li><?php echo anchor('admin/question','Preguntas Frecuentes');?></li>
            </ul>
           <ul class="nav navbar-nav navbar-right">
             <li><?php echo mailto($this->session->userdata('email'),'<i class="glyphicon glyphicon-user"></i> ' . $this->session->userdata('name')); ?></li>

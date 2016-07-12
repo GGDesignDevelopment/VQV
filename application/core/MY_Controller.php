@@ -13,7 +13,7 @@ class MY_Controller extends CI_Controller {
         $this->load->model('alimentacion_m');
         $this->load->model('reciclaje_m');
         $this->load->model('contacto_m');
-        
+        $this->load->model('question_m');
         $this->data['errors'] = array();
         $this->data['site_name'] = config_item('site_name');
         $this->data['scripts'] = array();
