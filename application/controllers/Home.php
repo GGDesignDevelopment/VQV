@@ -17,7 +17,7 @@ class Home extends Frontend_Controller {
         $this->data['scripts'][] = '<script type="text/javascript" src="' . site_url('js/prefix.js') . '"></script>';
         $this->data['scripts'][] = '<script src="https://code.jquery.com/jquery-2.2.4.min.js"   integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="   crossorigin="anonymous"></script>';
         $this->data['scripts'][] = '<script type="text/javascript" src="' . site_url('js/funcionalidadIndex.js') . '"></script>';
-        
+
         $this->data['alimentacion'] = $this->alimentacion_m->get();
         $this->data['reciclaje'] = $this->reciclaje_m->get();
         $this->data['subview'] = 'frontend/home';
@@ -50,11 +50,15 @@ class Home extends Frontend_Controller {
         $email = $this->input->post('email');
         $option = $this->input->post('option');
         if ($option == 'N') {
-            $data['activo'] = 1;            
+            $data['activo'] = 1;
         } else {
-            $data['periodicidad'] = $option;            
+            $data['periodicidad'] = $option;
         }
         $this->contacto_m->save($data, $email);
     }
 
+    function getQuestions() {
+        $questions = $this->question_m->get();
+        echo json_encode($questions);
+    }
 }
