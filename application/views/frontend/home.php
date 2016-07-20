@@ -6,7 +6,7 @@
             </div>
             <nav>
                 <a href="#alimentacion">alimentacion</a>
-                <a href="#reciclaje">reciclaje</a>
+                <!-- <a href="#reciclaje">reciclaje</a> -->
                 <a href="#footer">quienes somos</a>
                 <a href="<?php echo site_url('Tienda')?>" target="blank">tienda on line</a>
                 <a href="#footer">contacto</a>
@@ -50,7 +50,7 @@
         <footer>
             <nav>
                 <a href="#main">inicio</a>
-                <a href="#reciclaje">reciclaje</a>
+                <!-- <a href="#reciclaje">reciclaje</a> -->
                 <a href="#footer">quienes Somos</a>
                 <a href="<?php echo site_url('Tienda')?>" target="blank">tienda on line</a>
                 <a href="#footer">contacto</a>
@@ -59,7 +59,7 @@
 
     </section>
 
-    <section id="reciclaje">
+<!--     <section id="reciclaje">
 
         <header>
             <div>
@@ -77,7 +77,7 @@
 
         <div class="bottom">
             <div class="quote">
-                <p id="textoTecnica"><span>&#x7b;</span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam non turpis venenatis, congue ante ac, semper mauris. Nam egestas purus eros, ut tempor erat interdum ac. Sed sem sem, tincidunt id lobortis tincidunt, sodales sit amet odio. Nulla consectetur mattis nulla, vehicula dignissim elit feugiat non. Donec convallis dolor id faucibus porttitor.</p>
+                <p id="textoTecnica"><span>&#x7b;</span></p>
             </div>
             <ul id="hexGrid">
                 <?php foreach ($reciclaje as $recitem) : ?>
@@ -91,20 +91,20 @@
                 <?php endforeach; ?>
             </ul>
         </div>
-    </section>
+    </section> -->
 
     <section id="footer">
         <div class="about">
             <h2>Te contamos</h2>
             <h3><?php echo $home->subAbout; ?></h3>
             <p><?php echo $home->txtAbout; ?></p>
-            <a href="#">Preguntas Frecuentes</a>
+            <a href="<?php echo site_url('home/faq'); ?>" target='blank'>Preguntas Frecuentes</a>
         </div>
         <div class="contacto">
             <div class="menu">
                 <a href="#main">Inicio</a>
                 <a href="#alimentacion">Alimentacion</a>
-                <a href="#reciclaje">Reciclaje</a>
+                <!-- <a href="#reciclaje">Reciclaje</a> -->
                 <a href="<?php echo site_url('Tienda')?>" target="blank">Tienda on line</a>
             </div>
             <div class="info">

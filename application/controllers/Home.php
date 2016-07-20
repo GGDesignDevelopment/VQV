@@ -63,4 +63,13 @@ class Home extends Frontend_Controller {
         $questions = $this->question_m->get();
         echo json_encode($questions);
     }
+
+    function faq() {
+        $this->data['title'] = 'VQV - Preguntas Frecuentes';
+        $this->data['styles'][] = '<link rel="stylesheet" type="text/css" href="' . site_url('css/fonts.css') . '">';
+        $this->data['styles'][] = '<link rel="stylesheet" type="text/css" href="' . site_url('css/faq.css') . '">';
+        $this->data['questions'] = $this->question_m->get();
+          $this->data['subview'] = 'frontend/faq';
+        $this->load->view('frontend/_layout_main', $this->data);
+    }
 }

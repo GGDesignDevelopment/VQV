@@ -10,6 +10,14 @@ class Tienda extends Frontend_Controller {
 
     function index() {
         $this->data['title'] = 'VQV - Tienda on Line';
+        $this->data['styles'][] = '<link rel="stylesheet" type="text/css" href="' . site_url('css/wip.css') . '">';
+        $this->data['styles'][] = '<link rel="stylesheet" type="text/css" href="' . site_url('css/fonts.css') . '">';
+        $this->data['subview'] = 'frontend/wip';        
+        $this->load->view('frontend/_layout_main', $this->data);
+    }
+
+    function index2() {
+        $this->data['title'] = 'VQV - Tienda on Line';
         $this->data['styles'][] = '<link rel="stylesheet" type="text/css" href="' . site_url('css/reset.css') . '">';
         $this->data['styles'][] = '<link rel="stylesheet" type="text/css" href="' . site_url('css/fonts.css') . '">';
         $this->data['styles'][] = '<link rel="stylesheet" type="text/css" href="' . site_url('css/icons.css') . '">';
