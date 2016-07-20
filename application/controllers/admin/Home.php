@@ -19,7 +19,6 @@ class Home extends Admin_Controller {
 
         foreach ($images as $image) {
             $script .= "'<img src=" . '"' . site_url($this->imageDir . $image->imagen) . '" class="file-preview-image">' . "',";
-            // $maxSecuencial = ($image->secuencial > $maxSecuencial) ? $image->secuencial : $maxSecuencial;
         }
         $script .= '], initialPreviewConfig: [';
 
@@ -32,7 +31,7 @@ class Home extends Admin_Controller {
         $this->form_validation->set_rules($rules);
         if ($this->form_validation->run() == TRUE) {
             $data = $this->home_m->array_from_post(array('linkFacebook', 'linkInstagram', 'txtWelcome', 'subAlimentacion', 'subReciclaje', 'subAbout', 'txtAbout'));
-            $this->home_m->save($data, 1);
+            $this->home_m->save($data,['id'=>1]);
 
             if (!empty($_FILES['files'])) {
                 $files = $_FILES['files'];
@@ -77,7 +76,7 @@ class Home extends Admin_Controller {
     }
 
     function delete_alimentacion($id, $imagen) {
-        $this->alimentacion_m->delete($id);
+        $this->alimentacion_m->delete(['id'=>$id]);
         unlink($this->imageDir . $imagen);
         echo 0;
     }

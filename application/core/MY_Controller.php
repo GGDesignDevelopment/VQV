@@ -19,6 +19,6 @@ class MY_Controller extends CI_Controller {
         $this->data['scripts'] = array();
         $this->data['styles'] = array();
         $this->data['title'] = '';
-        $this->data['home']  = $this->home_m->get(1); 
+        $this->data['home']  = $this->home_m->get(['id'=>1], TRUE); 
     }
 }

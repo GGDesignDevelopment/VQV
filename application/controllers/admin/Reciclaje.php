@@ -8,13 +8,13 @@ class Reciclaje extends Admin_Controller {
 
     function index() {
         $this->data['reciclajes'] = $this->reciclaje_m->get();
-        $this->data['subview'] = 'admin/reciclaje/index';
+        $this->data['subview'] = 'admin/reciclaje/index';   
         $this->load->view('admin/_layout_main', $this->data);
     }
 
     function edit($id = NULL) {
         if ($id) {
-            $this->data['reciclaje'] = $this->reciclaje_m->get($id);
+            $this->data['reciclaje'] = $this->reciclaje_m->get(['id'=>$id],TRUE);
             count($this->data['reciclaje']) || $this->data['errores'][] = 'Reciclaje no encontrada';
             if ($this->data['reciclaje']->imagen <> '') {
                 $script = '<script type="text/javascript">$("#file").fileinput({
@@ -30,10 +30,12 @@ class Reciclaje extends Admin_Controller {
                 $script .= '{height:"120px", url:"' . site_url('admin/reciclaje/delete_imagen') . '/' . $this->data['reciclaje']->id . '"},';
                 $script .= ']})</script>;';
 
-                $this->data['scripts'][] = $script;
-            }
+                $this->data['scripts'][] = $script;               
+            } 
+            $where = ['id'=>$id];
         } else {
             $this->data['reciclaje'] = $this->reciclaje_m->new_reciclaje();
+            $where = NULL;                 
         }
         $rules = $this->reciclaje_m->rules;
         $this->form_validation->set_rules($rules);
@@ -54,7 +56,7 @@ class Reciclaje extends Admin_Controller {
                 }
             }
             // Guardo datos en BD
-            $newId = $this->reciclaje_m->save($data, $id);
+            $this->reciclaje_m->save($data, $where);
             // Redirijo al grid de paginas
             redirect('admin/reciclaje');
         }
@@ -64,20 +66,20 @@ class Reciclaje extends Admin_Controller {
 
     function delete($id) {
         //deslink imagen
-        $rec = $this->reciclaje_m->get($id);
+        $rec = $this->reciclaje_m->get(['id'=>$id], TRUE);
         if ($rec->imagen <> '') {
             unlink($this->imageDir . $rec->imagen);
         }
-        $this->reciclaje_m->delete($id);
+        $this->reciclaje_m->delete(['id'=>$id]);
         redirect('admin/reciclaje');
     }
 
     function delete_imagen($id) {
-        $rec = $this->reciclaje_m->get($id);
+        $rec = $this->reciclaje_m->get(['id'=>$id],TRUE);
         if ($rec->imagen <> '') {
             unlink($this->imageDir . $rec->imagen);
             $data['imagen'] = '';
-            $newId = $this->reciclaje_m->save($data, $id);
+            $this->reciclaje_m->save($data, ['id'=>$id]);
             echo 0;
         }
     }

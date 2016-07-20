@@ -8,38 +8,25 @@ class Categoria extends Admin_Controller {
 
     function index() {
         $this->data['categorias'] = $this->categoria_m->get();
-        $this->data['scripts'][] = '<script>
-            function showResults(filtro) {
-                var xmlhttp = new XMLHttpRequest();
-                xmlhttp.onreadystatechange = function() {
-                    if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-                        document.getElementById("results").innerHTML = xmlhttp.responseText;
-                    }
-                };
-                xmlhttp.open("GET", "categoria/buscar?catdescripcion=" + filtro, true);
-                xmlhttp.send();
-            }
-            </script>';
-
+        $this->data['scripts'][] = '<script type="text/javascript" src="' . site_url('js/admin/categoria.js') . '"></script>';
         $this->data['subview'] = 'admin/categoria/index';
         $this->load->view('admin/_layout_main', $this->data);
     }
 
     function edit($id = NULL) {
         if ($id) {
-            $this->data['categoria'] = $this->categoria_m->get($id);
+            $this->data['categoria'] = $this->categoria_m->get(['catid' => $id], TRUE);
             count($this->data['categoria']) || $this->data['errores'][] = 'Categoria no encontrada';
+            $where = ['catid' => $id];
         } else {
             $this->data['categoria'] = $this->categoria_m->new_categoria();
+            $where = null;            
         }
         $rules = $this->categoria_m->rules;
         $this->form_validation->set_rules($rules);
         if ($this->form_validation->run() == TRUE) {
-            //Levanta campos del form
             $data = $this->categoria_m->array_from_post(array('catdescripcion'));
-            // Guardo datos en BD
-            $newId = $this->categoria_m->save($data, $id);
-            // Redirijo al grid de paginas
+            $this->categoria_m->save($data, $where);            
             redirect('admin/categoria');
         }
         $this->data['subview'] = 'admin/categoria/edit';
@@ -47,17 +34,14 @@ class Categoria extends Admin_Controller {
     }
 
     function delete($id) {
-        $this->categoria_m->delete($id);
+        $this->categoria_m->delete(['catid'=>$id]);
         redirect('admin/categoria');
     }
 
-    function buscar() {
-        //sacr el filtro del request
-
+    function search() {
         $catdes = $this->input->get('catdescripcion');
-        // pedir todos los producto con el filtro
-        $this->db->where('catdescripcion like', '%' . $catdes . '%');
-        $categorias = $this->categoria_m->get();
+        $where = ['catdescripcion like' => '%' . $catdes . '%'];
+        $categorias = $this->categoria_m->get($where, FALSE);
 
         if (count($categorias)): foreach ($categorias as $categoria):
                 echo '<tr>';

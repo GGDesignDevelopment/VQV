@@ -7,36 +7,20 @@ class User extends Admin_Controller {
     }
 
     function index() {
-        $this->db->where('Type', 'A');
-
-        $this->data['users'] = $this->user_m->get();
-        $this->data['scripts'][] = '<script>
-            function showResults() {
-                var nombre = document.getElementById("filtroNombre").value;
-                var email = document.getElementById("filtroEmail").value;
-                var tipo = document.getElementById("filtroTipo").value;
-                var telefono = document.getElementById("filtroTelefono").value;
-                var xmlhttp = new XMLHttpRequest();
-                xmlhttp.onreadystatechange = function() {
-                    if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-                        document.getElementById("results").innerHTML = xmlhttp.responseText;
-                    }
-                };
-                xmlhttp.open("GET", "user/buscar?nombre=" + nombre + "&email=" + email + "&tipo=" + tipo + "&telefono=" + telefono, true);
-                xmlhttp.send();
-            }
-            </script>';
-
+        $this->data['users'] = $this->user_m->get(array('Type'=>'A'),FALSE);
+        $this->data['scripts'][] = '<script type="text/javascript" src="' . site_url('js/admin/user.js') . '"></script>';
         $this->data['subview'] = 'admin/user/index';
         $this->load->view('admin/_layout_main', $this->data);
     }
 
     function edit($email = NULL) {
         if ($email) {
-            $this->data['user'] = $this->user_m->get($email);
+            $this->data['user'] = $this->user_m->get(array('email'=>$email),TRUE);
             count($this->data['user']) || $this->data['errores'][] = 'Usuario no encontrado';
+            $where = array('email'=>$email);
         } else {
             $this->data['user'] = $this->user_m->new_user();
+            $where = NULL;
         }
         $rules = $this->user_m->rules_admin;
         $email || $rules['password']['rules'] .= '|required';
@@ -48,7 +32,7 @@ class User extends Admin_Controller {
             } else {
                 $data['password'] = $this->user_m->hash($data['password']);
             }
-            $this->user_m->save($data, $email);
+            $this->user_m->save($data, $where);
             redirect('admin/user');
         }
 
@@ -58,8 +42,8 @@ class User extends Admin_Controller {
         $this->load->view('admin/_layout_main', $this->data);
     }
 
-    function delete($id) {
-        $this->user_m->delete($id);
+    function delete($email) {
+        $this->user_m->delete(array('email'=>$email));
         redirect('admin/user');
     }
 
@@ -86,30 +70,21 @@ class User extends Admin_Controller {
         redirect('admin/user/login');
     }
 
-    function buscar() {
-
-        //sacr el filtro del request
-        $nombre = $this->input->get('nombre');
+    function search() {
+        $name = $this->input->get('name');
         $email = $this->input->get('email');
-        $tipo = $this->input->get('tipo');
-        $telefono = $this->input->get('telefono');
-        // pedir todos los producto con el filtro
-        $this->db->where('name like', '%' . $nombre . '%');
-        $this->db->where('email like', '%' . $email . '%');
-        $this->db->where('type like', '%' . $tipo . '%');
-        $this->db->where('phone like', '%' . $telefono . '%');
-        $users = $this->user_m->get();
+        $type = $this->input->get('type');
+        $phone = $this->input->get('phone');
+
+        $where = ['name like'=>'%' . $name . '%','email like'=>'%' . $email . '%','type like'=>'%' . $type . '%','phone like'=>'%' . $phone . '%'];       
+        $users = $this->user_m->get($where,FALSE);
 
         if (count($users)): foreach ($users as $user):
                 echo '<tr>';
                 echo '<td>' . $user->name . '</td>';
                 echo '<td>' . anchor('admin/user/edit/' . $user->email, $user->email) . '</td>';
                 echo '<td>';
-                if ($user->type == 'A') {
-                    echo 'Admin';
-                } else {
-                    echo 'Comun';
-                }
+                echo ($user->type == 'A') ? 'Admin' : 'Comun' ;
                 echo '</td>';
                 echo '<td>' . $user->phone . '</td>';
                 echo '<td>' . $user->address . '</td>';
@@ -119,7 +94,7 @@ class User extends Admin_Controller {
             endforeach;
         else:
             echo '<tr>';
-            echo '<td colspan=6>No se encontraron usuarios para estos filtros</td>';
+            echo '<td colspan=7>No se encontraron usuarios para estos filtros</td>';
             echo '</tr>';
         endif;
     }
