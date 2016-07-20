@@ -16,14 +16,14 @@ $(function () {
 });
 
 $(function () {
-    $('.responsive').click(function (event) {
-        event.preventDefault();
-        var posicion = $(this).attr('data-posicion');
-        $('nav[data-posicion="' + posicion + '"').slideToggle();
-        $('nav[data-posicion="' + posicion + '"').css('display', 'flex');
+    // $('.responsive').click(function (event) {
+    //     event.preventDefault();
+    //     var posicion = $(this).attr('data-posicion');
+    //     $('nav[data-posicion="' + posicion + '"').slideToggle();
+    //     $('nav[data-posicion="' + posicion + '"').css('display', 'flex');
 
-    });
-    ;
+    // });
+    
     $('#formContacto').submit(function () {
         $('#overlay').show();
         $.ajax({
@@ -52,5 +52,30 @@ $(function () {
     });
 });
 
-
-	
+$(function(){
+  $('.carousel').slick({
+    centerMode: true,
+    canterPadding: 10,
+    dots: true,
+    infinite: true,
+    slidesToShow: 3,
+    slidesToScroll: 3,
+    responsive: [
+    {
+      breakpoint: 1025,
+      settings: {
+        slidesToShow: 2,
+        slidesToScroll: 2,
+      }
+    },
+    {
+      breakpoint: 769,
+      settings: {
+        slidesToScroll: 1,
+        slidesToShow: 1,
+        dots: false
+      }
+    }
+    ]
+  });
+});

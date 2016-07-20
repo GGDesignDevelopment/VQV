@@ -16,7 +16,7 @@ section {
 }
 
 #main {
-	background: url(../img/bg.jpg) no-repeat center center fixed; 
+	background: url(../img/bg1.jpg) no-repeat center center fixed; 
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	-o-background-size: cover;
@@ -36,7 +36,7 @@ section {
 #main header .logo a img {
 	width: 180px;
 	height: auto;
-	margin: 1% 0 0 6%;
+	margin: 15px 0 0 15px;
 	box-sizing: content-box;
 	transform: rotate(-30deg);
 	transition: transform .8s ease-in-out;
@@ -61,7 +61,7 @@ section {
 	background: #94bc3d;
 	font-family: 'roboto_slabthin';
 	color: #fff;
-	margin-top: .5%;
+	margin-top: 15px;
 }
 .pull {
 	display: none;
@@ -75,25 +75,25 @@ section {
 	font-family: 'governorregular';
 	letter-spacing: 0.2em;
 	color: #94bc3d;
-	margin-top: 10%;
+	margin-top: 80px;
 }
 #main h2 {
+	font-family: 'roboto_slabthin';
 	display: inline;
-	color: #000;
-	background: rgba(255,255,255,.3);
+	color: white;
 	padding: 10px;
 	border-bottom: 5px solid rgba(255,255,255,.5);
 	width: 80%;
 	font-size: 1.3em;
 	text-align: center;
-	margin-top: 1.5%;
+	margin-top: 20px;
 }
 #main .botones {
-	margin-top: 1.5%;
 	display: flex;
 	flex-flow: row wrap;
 	width: 32%;
 	justify-content: space-between;
+	margin-top: 20px;
 }
 #main .botones a {
 	font-family: 'governorregular';
@@ -114,7 +114,7 @@ section {
 	display: flex;
 	flex-flow: row nowrap;
 	justify-content: space-between;
-	margin-top: 1.5%;
+	margin-top: 20px;
 }
 #main .social a {
 	font-family: 'ElegantIcons';
@@ -132,52 +132,72 @@ section {
 	display: flex;
 	flex-flow: column nowrap;
 	align-items: center;
-	background: #94bc3d;
 }
-#alimentacion h2 {
+#alimentacion header {
+	width: 100%;
+	height: 18vh;
+	background: #94bc3d;
+	display: flex;
+	flex-flow: column nowrap;
+	justify-content: space-around;
+	align-items: center;
+}
+#alimentacion header h2 {
 	font-family: 'governorregular';
 	font-size: 2.5em;
 	color: white;
-	margin-top: 2%;
+	margin-top: 10px;
 }
-#alimentacion h3  {
-	font-size: 1.1em;
+#alimentacion header h3  {
 	width: 60%;
+	font-size: 1.1em;
 	text-align: center;
 	font-family: 'roboto_slabthin';
 	color: #fff;
 	letter-spacing: .1em;
-	margin: 0.8% 0 2% 0;
+	margin-bottom: 10px;
 }
-#alimentacion .carrousel {
+#alimentacion .carrousel_container {
 	display: flex;
-	flex-flow: row wrap;
+	align-content: center;
+	justify-content: center;
 	width: 100%;
-	background: white;
-	justify-content: space-around;
-	padding: 3% 0;
+	height: 73vh;
+	margin: 0;
+	padding: 50px 0;
 }
-#alimentacion .carrousel img {
-	width: 27%;
-	height: 27%;;
+#alimentacion .carrousel_container .carousel {
+	width: 90%;
 }
-#alimentacion nav {
+.slick-slide img {
+	width: 350px;
+	height: auto;
+}
+#alimentacion footer {
+	width: 100%;
+	height: 9vh;
+	display: flex;
+	flex-flow: row nowrap;
+	justify-content: flex-end;
+	align-items: center;
+	background: #94bc3d;
+}
+#alimentacion footer nav {
 	width: 100%;
 	display: flex;
-	flex-flow: row wrap;
+	flex-flow: row nowrap;
 	justify-content: flex-end;
 	align-content: center;
 }
-#alimentacion nav a {
+#alimentacion footer nav a {
 	padding: 7px 10px;
 	background: #fff;
 	font-family: 'roboto_slabregular';
 	color: #94bc3d;
 	margin-right: 15px;
-	margin-top: 1.5%;
 
 }
-#alimentacion nav a:hover {
+#alimentacion footer nav a:hover {
 	background: #94bc3d;
 	padding: 6px 9px;
 	border: 1px solid white;
@@ -190,43 +210,43 @@ section {
 	display: flex;
 	flex-flow: column nowrap;
 }
-#reciclaje .head  {
+#reciclaje header  {
+	width: 100%;
+	height: 19vh;
 	display: flex;
-	flex-flow: row wrap;
+	flex-flow: row nowrap;
 	justify-content: space-between;
+	padding: 20px;
 }
-#reciclaje .head div {
+#reciclaje header div {
 	width: 50%;
-	margin-top: 1.5%;
 }
-#reciclaje .head div h2 {
+#reciclaje header div h2 {
 	font-family: 'governorregular';
 	font-size: 2em;
 	color: #97be49;
-	margin-left: 2%;
 }
-#reciclaje .head div h3 {
+#reciclaje header div h3 {
 	font-size: .9em;
 	letter-spacing: .06em;
-	margin-left: 3%;
-	margin-top: 1%;
+	margin-left: 10px;
+	margin-top: 10px;
 }
-#reciclaje .head nav {
+#reciclaje header nav {
 	width: 40%;
 	display: flex;
 	flex-flow: row wrap;
 	justify-content: flex-end;
-	margin-top: 1.5%;
 }
-#reciclaje .head nav a {
+#reciclaje header nav a {
 	padding: 7px 20px;
 	background: #94bc3d;
 	font-family: 'roboto_slabregular';
 	color: #fff;
 	margin-bottom: 2%;
-	margin-right: 2%;
+	margin-left: 2%;
 }
-#reciclaje .head nav a:hover {
+#reciclaje header nav a:hover {
 	background: white;
 	color: #94bc3d;
 	padding: 6px 19px;
@@ -236,25 +256,37 @@ section {
 	display: flex;
 	flex-flow: row nowrap;
 	justify-content: space-around;
+	width: 100%;
+	height: 81vh;
+	padding: 0 20px;
 }
 #reciclaje .bottom .quote {
-	width: 22%;
-	margin-left: 1%;
+	width: 19%;
+	display: flex;
+	flex-flow: row nowrap;
+	align-items: flex-start;
+	overflow: hidden;
 }
-#reciclaje .bottom .quote span {
-	font-size: 5em;
+#reciclaje .bottom .quote p span {
+	font-size: 3.5em;
 	color: #94bc3d;
+	margin-left: -30px;
 	font-family: 'ElegantIcons';
 }
 #reciclaje .bottom .quote p {
-	margin: -10% 8% 0 8%;
 	letter-spacing: .4em;
 	line-height: 1.4em;
 	text-align: right;
+	padding-left: 30px;
+
+	overflow-wrap: break-word;
+	word-wrap: break-word;
+	-ms-word-break: break-all;
+	word-break: break-word;
 }
 #reciclaje .bottom #hexGrid {
-	width: 78%;
-	margin: -2% 2% 2% 2%;
+	width: 81%;
+	padding-left: 140px;
 }
 /*-----------------------------------------------------------*/
 #footer {
@@ -281,11 +313,10 @@ section {
 	font-family: 'governorregular';
 }
 #footer .about p {
-	width: 85%;
+	width: 90%;
 	letter-spacing: .2em;
-	line-height: 1.5em;
 	text-align: center;
-	font-size: 1.2em;
+	color: white;
 }
 #footer .about a {
 	font-family: 'governorregular';
@@ -445,331 +476,126 @@ footer {
 	font-weight: 100;
 }
 /*----------------------------------------------*/
-@media only screen 
-	and (max-width: 1050px)
-	and (min-width: 801px) {
-
+@media screen and (max-width: 1024px) and (min-width: 768px) {
+	#main header .logo {
+		display: none;
+	}
 	#main header nav {
-		flex-flow: row wrap;
-		justify-content: flex-end;
-	}
-	#main header nav a {
-	 	margin: 1.5% 1.5% 0 0;
-	}
-	#main header nav a.pull {
-		display: none;
-	}
-	#main h1 {
-		font-size: 2.5em;
-		margin-top: 13%
-	}
-	#main h2 {
-		font-size: 1.1em;
-		padding: 8px;
-		margin-top: 2%;
-	}
-	#main .botones {
-		width: 50%;
-		margin-top: 2%;
-	}
-	/*--------------------------------------*/
-	#alimentacion h2 {
-		font-size: 2em;
-	}
-	#alimentacion .carrousel {
-		padding: 5% 0;
-	}
-	#alimentacion .carrousel img {
-		width: 40%;
-		height: 40%;
-		margin: 0 2%;
-	}
-	#alimentacion .carrousel img.last {
-		display: none;
-	}
-	/*--------------------------------------*/
-	#reciclaje .bottom .quote p {
-		font-size: .9em;
-		letter-spacing: .3em;
-	}
-	#reciclaje .bottom #hexGrid {
-		margin-top: 0;
-	}
-	#reciclaje .bottom #hexGrid li:nth-child(n+12) {
-		display: none;
-	}
-	/*------------------------------------*/
-	#footer .contacto .menu {
-	margin: 7% 0;
-	}
-	#footer .contacto .menu a {
-		width: 70%;
-		font-size: .9em;
-	}
-	#footer .contacto .info {
-		margin: 7% 0;
-	}
-	#footer .contacto form {
-		margin: 7% 0;
-	}
-	#footer .contacto form label {
-		font-size: 1.5em;
-	}
-}
-@media only screen 
-	and (max-width: 800px) {
-
-	#main header img {
 		display: none;
 	}
 	#main header {
-		flex-flow: column nowrap;
-		height: 35%;
-		justify-content: flex-start;
-	}
-	#main header nav {
+		position: fixed;
+		top: 0;
+		left: 0;
 		width: 100%;
-		flex-flow: row wrap;
-	 	display: none;
-	 	height: auto;
-	}
-	#main header nav a {
-		width: 50%;
-		margin: 0;
-		background: #aacc60;
-		border-bottom: 1px solid #b1d06d;
-		border-right: 1px solid #b1d06d;
-	}
-	#main header nav a:last-child {
-		width: 100%;
+		height: 8vh;
+		background: #97be49;
+		z-index: 99999999;
+		box-shadow: 0 3px 10px #333;
 	}
 	#main header .pull {
+		width: 100%;
 		display: flex;
 		flex-flow: row nowrap;
-		justify-content: space-between;
 		align-content: center;
-		align-items: center;
-		width: 100%;
-		padding: 4%;
-		background: #94bc3d;
+		justify-content: space-between;
 	}
 	#main header .pull h2 {
 		font-family: 'governorregular';
-		background: none;
-		font-size: 1em;
-		font-weight: 0;
-		border: 0;
-		padding: 0;
-		margin: 0;
 		color: white;
+		background: none;
+		border: 0;
+		margin: 0; 
+		padding: 0;
+		margin-left: 30px;
+		width: auto;
+		font-size: 1.5em;
+		line-height: 1.5em;
 	}
 	#main header .pull a {
-		width: auto;
-		display: inline;
 		font-family: 'ElegantIcons';
-		font-size: 1.2em;
-		padding: 0;
-		margin: 0;
 		color: white;
+		margin-right: 30px;
+		font-size: 1.5em;
 	}
 	#main h1 {
 		display: none;
 	}
 	#main h2 {
-		width: 100%;
-		text-align: justify;
-		margin: 0;
-		border: 0;
-		font-size: 1em;
+		margin-top: 300px;
+		font-size: 1.8em;
+		padding: 10px 0;
 	}
 	#main .botones {
-		width: 50%;
-		flex-flow: column nowrap;
+		width: 70%;
 	}
-	#main .botones a {
-		width: 100%;
-		margin-top: 5%;
+	#alimentacion header h2 {
+		font-size: 1.8em;
 	}
-	/*------------------------------*/
-	#alimentacion {
-		background: none;
-		border-bottom: 15px solid #94bc3d;
+	#alimentacion header h3 {
+		width: 80%;
 	}
-	#alimentacion .pull {
-		display: flex;
-		flex-flow: row nowrap;
-		justify-content: space-around;
-		align-content: center;
-		align-items: center;
-		width: 100%;
-		padding: 2% 4%;
-		margin:0;
-		background: #94bc3d;
+	.slick-slide img {
+		width: 600px;
+		height: auto;
 	}
-	#alimentacion .pull a {
-		width: auto;
-		display: inline;
-		font-family: 'ElegantIcons';
-		font-size: 1.2em;
-		padding: 0;
-		margin: 0;
-		color: white;
-		order: 1;
-	}
-	#alimentacion .pull h2 {
-		font-family: 'governorregular';
-		font-size: 1em;
-		color: white;
-		text-align: left;
-	}
-	#alimentacion h2 {
-		width: 100%;
-		text-align: center;
-		font-size: 1.2em;
-		line-height: 1.2em;
-		width: 100%;
-		padding: 2%;
-		margin: 0;
-		order: 1;
-		color: #94bc3d;
-		margin-top: 1%;
-	}
-	#alimentacion h3 {
-		order: 3;
-		width: 85%;
-		font-size: .9em;
-		background: #94bc3d;
-		margin: 0;
-		padding: 2%;
-		text-align: left;
-	}
-	#alimentacion .carrousel {
-		order: 2;
-		padding: 0;
-		margin-top: 1%;
-	}
-	#alimentacion .carrousel img {
-		width: 85%;
-	}
-	#alimentacion .carrousel img:nth-child(n+2) {
+	#alimentacion footer nav {
 		display: none;
 	}
-	#alimentacion nav {
+	#reciclaje header {
+		height: 12vh;
+	}
+	#reciclaje header nav {
 		display: none;
 	}
-	/*----------------------------------------*/
-	#reciclaje .head {
-		margin-bottom: 5%;
-	}
-	#reciclaje .head .pull {
-		width: 10%;
-		display: block;
-		padding: 0;
-		margin-top: 3%;
-		padding-right: 5%;
-		order: 1;
-	}
-	#reciclaje .head .pull a {
-		display: inline;
-		font-family: 'ElegantIcons';
-		font-size: 1.2em;
-		padding: 0;
-		margin: 0;
-		color: #94bc3d;
-	}
-	#reciclaje .head div {
-		width: 90%;
-		padding: 0;
-		margin: 0;
-		margin-top: 3%;
-		padding-left: 3%;
-		order: 0;
-	}
-	#reciclaje .head div h2 {
-		margin: 0;
-		padding: 0;
-		font-size: 1.4em;
-	}
-	#reciclaje .head div h3 {
-		display: none;
-	}
-	#reciclaje .head nav {
+	#reciclaje header div {
 		width: 100%;
-		order: 3;
-		flex-flow: row wrap;
-		display: none;
-	}
-	#reciclaje .head nav a{
-		width: 50%;
-		margin: 0;
-
-		border-bottom: 1px solid #b1d06d;
-		border-right: 1px solid #b1d06d;
-	}
-	#reciclaje .head nav a:last-child {
-		display: none;
 	}
 	#reciclaje .bottom {
-		margin: 0;
+		height: 88vh;
 	}
-	#reciclaje .bottom .quote {
-		width: 35%;
-	}
-	#reciclaje .bottom .quote span {
-		font-size: 2em;
+	#reciclaje .bootom .quote {
+		width: 25%;
 	}
 	#reciclaje .bottom .quote p {
-		font-size: .9em;
-		line-height: 1.2em;
-		letter-spacing: .2em;
+		padding-left: 15px;
 	}
 	#reciclaje .bottom #hexGrid {
-		width: 65%;
-		margin: 5%;
-		padding: 0;
+		padding-left: 70px;
+		width: 75%;
 	}
-	#reciclaje .bottom #hexGrid li:nth-child(n+7) {
-		display: none;
+	#footer .about {
+		height: 65vh;
 	}
-	/*------------------------------------------*/
 	#footer .about h2 {
-		font-size: 2em;
+		font-size: 3em;
 	}
 	#footer .about h3 {
-		font-size: 1.5em;
+		width: 90%;
 		text-align: center;
-	}
-	#footer .about p {
-		font-size: 1em;
-		line-height: 1.1em;
-		letter-spacing: .1;
+		line-height: 1.2em;
+		font-size: 1.2em;
 	}
 	#footer .contacto {
+		height: 35vh;
 		flex-flow: column nowrap;
 	}
 	#footer .contacto .menu {
 		display: none;
 	}
-	#footer .contacto .info {
-		width: 100%;
-		margin: 4% 0;
-		flex-flow: row nowrap;
-		justify-content: space-between;
+
+}
+@media screen and (max-width: 1024px) and (min-width: 768px) and (orientation: landscape) {
+	#main h2 {
+		margin-top: 200px;
+		font-size: 1.6em;
 	}
-	#footer .contacto .info p {
-		line-height: 1.3em;
-		border-left: 0;
-		margin: 0;
+	#main .botones {
+		width: 50%;
 	}
-	#footer .contacto .info .social {
-		margin: 0 10%;
+	.slick-slide img {
+		width: 380px;
+		height: auto;
 	}
-	#footer .contacto form {
-		width: 100%;
-		height: 50%;
-	}
-	#footer .contacto form label {
-		font-size: 1.4em;
-		text-align: center;
-	}
+
 }

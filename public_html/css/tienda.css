@@ -5,19 +5,21 @@
 	margin: 0;
 	outline: none;
 }
+body {
+	display: flex;
+	flex-flow: row nowrap;
+}
 .contenedor {
 	display: flex;
 	flex-flow: column wrap;
-	width: 94%;
-	margin: 0 3%;
+	width: 100%;
+	padding: 25px;
 }
 .contenedor header {
 	display: flex;
 	flex-flow: row nowrap;
 	justify-content: space-between;
 	align-items: baseline;
-	margin-bottom: 2%;
-	margin-top: 2%;
 }
 .contenedro header div.titulo {
 	display: flex;
@@ -70,61 +72,35 @@
 }
 /*----------------------------------------------------------------------------------*/
 .contenedor .contenido {
+	width: 100%;
+	display: flex;
+	flex-flow: column nowrap;
+}
+.contenedor .contenido #filtro {
+	width: 100%;
 	display: flex;
 	flex-flow: row wrap;
-	justify-content: space-between;
+	margin-top: 5px;
+	margin-bottom: 30px;
 }
-.contenedor .contenido .menu {
-	width: 18%;
-	height: 100%;
-	display: flex;
-	flex-flow: column nowrap;
-}
-.contenedor .contenido .menu h2 {
-	font-family: 'governorregular';
-	font-size: 1.5em;
-	color: #97be49;
-}
-.contenedor .contenido .menu nav {
-	display: flex;
-	flex-flow: column nowrap;
-	width: 90%;
-	margin: 10% 0 0 10%;
-}
-.contenedor .contenido .menu nav button {
-	display: flex;
-	flex-flow: row nowrap;
-	justify-content: space-between;
-	align-items: center;
-	width: 100%;
-	padding: 3px;
-	margin-top: 3%;
-	border: 0;
-	border-bottom: 1px dotted #97be49;
-	color: #97be49;
-	background: none;
-	font-family: 'roboto_slabregular';
-	font-size: 1em;
-}
-.contenedor .contenido .menu nav button span:before {
-	content: "\5b";
-	font-family: 'ElegantIcons';
-}
-.contenedor .contenido .menu nav button.checked span:before {
-	content: "\5c";
+.contenedor .contenido #filtro  a {
+	font-family: 'roboto_slablight';
+	background: #97be49;
+	color: #fff;
+	padding: 7px 22px;
+	margin-right: 12px;
 }
 /*-------------------------------------------------------------------------------------*/
 .contenedor .contenido .productos {
-	width: 82%;
+	width: 100%;
 	height: 100%;
-	margin-top: 2%;
 	display: flex;
 	flex-flow: row wrap;
-	justify-content: space-around;
+	justify-content: space-between;
 	align-items: flex-start;
 }
 .contenedor .contenido .productos div.column {
-	width: 28%;
+	width: 30%;
 	height: auto;
 	display: flex;
 	flex-flow: column nowrap;
@@ -159,6 +135,7 @@
 	font-family: 'roboto_slablight';
 	color: #97be49;
 	margin-left: 2%;
+	font-size: 1.2em;
 }
 .contenedor .contenido .productos div.column span a {
 	font-family: 'ElegantIcons';
@@ -211,20 +188,85 @@ form.oculto {
 .contenedor .contenido .productos div.column form input[type=submit]:hover {
 	background: #83A43F;
 }
-::-webkit-input-placeholder{
-	color: white;
-	font-size: .9em;
-}
-::-moz-placeholder{
-	color: white;
-	font-size: .9em;
-}
-:-ms-input-placeholder{
-	color: white;
-	font-size: .9em;
-}
-:-moz-placeholder {
-	color: white;
-	font-size: .9em;
-}
 
+#carrito {
+	width: 20%;
+	display: none;
+	flex-flow: column nowrap;
+	justify-content: flex-start;
+	align-items: center;
+	padding-left: 10px;
+	background: url(../img/white_paperboard.png) repeat center center fixed; 
+	box-shadow: 1px 0 7px #aaa inset;
+	text-shadow: 1px 1px 0px #fff;
+	color: #97be49;
+}
+#carrito a {
+	font-family: 'governorregular';
+	font-size: 4em;
+	height: auto;
+	margin: 20px 0;
+	text-shadow: 1px 1px 4px #fff;	
+	color: #97be49;
+}
+#carrito a.boton {
+	width: 100%;
+	display: block;
+	font-size: 1em;
+	font-weight: 100;
+	color: #97be49;
+	padding: 16px 0;
+	background: none;
+	border: 2px solid #97be49;
+	align-self: flex-end;
+	margin-top: 30px;
+	text-shadow: 0 0 0 #fff;
+	text-align: center;
+}
+#carrito form h2 {
+	font-family: 'governorregular';
+	font-size: 1.3em;
+	margin-bottom: 10px;
+}
+#carrito form .direccion {
+	font-family: 'roboto_slablight';
+	font-size: 1.2em;
+	padding-bottom: 10px;
+	margin-bottom: 20px;
+}
+#carrito form fieldset {
+	display: flex;
+	width: 100%;
+	flex-flow: column nowrap;
+	border: 1px solid #bbb;
+	box-shadow: 1px 1px 0 #fff;
+	padding: 5px 10px 10px 10px;
+	margin-top: 5px;
+}
+#carrito form fieldset div {
+	width: 100%;
+	height: auto;
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: space-between;
+	border-bottom: 1px dotted #97be49;
+	font-size: .8em;
+	margin-top: 3px;
+}
+#carrito form fieldset div input {
+	border: 0; 
+	padding: 0;
+	width: auto;
+	background: none;
+	color: #97be49;
+}
+#carrito form fieldset div input::-webkit-input-placeholder {
+	color: #97be49;
+}
+#carrito form fieldset a {
+	font-family: 'ElegantIcons';
+	color: #719033;
+	font-size: 1em;
+	margin: 0;
+	align-self: flex-end;
+}

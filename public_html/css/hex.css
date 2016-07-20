@@ -2,7 +2,7 @@
     overflow: hidden;
     font-family: 'roboto_slabthin', sans-serif;
     font-size: 13px;
-    padding: 50px;
+    padding: 0 70px;
     font-weight: 100;
 }
 #hexGrid:after {
