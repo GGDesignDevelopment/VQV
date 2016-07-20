@@ -8,30 +8,15 @@ class Producto extends Admin_Controller {
 
     function index() {
         $this->data['productos'] = $this->producto_m->get_con_familia();
-        $this->data['scripts'][] = '<script>
-            function showResults() {
-                var nombre = document.getElementById("filtroNombre").value;
-                var descripcion = document.getElementById("filtroDescripcion").value;
-                var catdes = document.getElementById("filtroFamilia").value;
-                var xmlhttp = new XMLHttpRequest();
-                xmlhttp.onreadystatechange = function() {
-                    if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-                        document.getElementById("results").innerHTML = xmlhttp.responseText;
-                    }
-                };
-                xmlhttp.open("GET", "producto/buscar?prodnombre=" + nombre + "&proddes=" + descripcion + "&catdes=" + catdes, true);
-                xmlhttp.send();
-            }
-            </script>';
+        $this->data['scripts'][] = '<script type="text/javascript" src="' . site_url('js/admin/producto.js') . '"></script>';
         $this->data['subview'] = 'admin/producto/index';
         $this->load->view('admin/_layout_main', $this->data);
     }
 
     function edit($id = NULL) {
         if ($id) {
-            $this->data['producto'] = $this->producto_m->get($id);
+            $this->data['producto'] = $this->producto_m->get(['prodid' => $id],TRUE);
             count($this->data['producto']) || $this->data['errores'][] = 'Producto no encontrada';
-            // $this->data['categorias'] =$this->catprod_m->get_categorias($id);
             if ($this->data['producto']->prodimagen <> '') {
                 $script = '<script type="text/javascript">$("#file").fileinput({
                                             uploadAsinc: false,
@@ -48,8 +33,10 @@ class Producto extends Admin_Controller {
 
                 $this->data['scripts'][] = $script;
             }
+            $where = ['prodid' => $id];
         } else {
             $this->data['producto'] = $this->producto_m->new_producto();
+            $where = null;
         }
 
         $this->data['categorias'] = $this->categoria_m->get_dropdown();
@@ -72,7 +59,7 @@ class Producto extends Admin_Controller {
                 }
             }
 
-            $newId = $this->producto_m->save($data, $id);
+            $this->producto_m->save($data, $where);
             redirect('admin/producto');
         }
         $this->data['subview'] = 'admin/producto/edit';
@@ -80,35 +67,36 @@ class Producto extends Admin_Controller {
     }
 
     function delete($id) {
-        $prod = $this->producto_m->get($id);
+        $prod = $this->producto_m->get(['prodid'=>$id],TRUE);
         if ($prod->prodimagen <> '') {
             unlink($this->imageDir . $prod->prodimagen);
-         }
-        $this->producto_m->delete($id);
+        }
+        $this->producto_m->delete(['prodid'=>$id]);
         redirect('admin/producto');
     }
 
     function delete_imagen($id) {
-        $prod = $this->producto_m->get($id);
+        $prod = $this->producto_m->get(['prodid'=>$id],TRUE);
         if ($prod->prodimagen <> '') {
             unlink($this->imageDir . $prod->prodimagen);
             $data['prodimagen'] = '';
-            $newId = $this->producto_m->save($data, $id);
+            $this->producto_m->save($data, ['prodid'=>$id]);
             echo 0;
         }
     }
 
-    function buscar() {
+    function search() {
         //sacr el filtro del request
-        $prodnombre = $this->input->get('prodnombre');
-        $proddes = $this->input->get('proddes');
+        $name = $this->input->get('name');
+        $description = $this->input->get('description');
         $catdes = $this->input->get('catdes');
         // pedir todos los producto con el filtro
-        $this->db->where('prodnombre like', '%' . $prodnombre . '%');
-        $this->db->where('proddes like', '%' . $proddes . '%');
-        $this->db->where('catdescripcion like', '%' . $catdes . '%');
-        $productos = $this->producto_m->get_con_familia();
 
+        $where = ['prodnombre like' => '%' . $name . '%', 'proddes like' => '%' . $description . '%'];
+        if ($catdes <> null) {
+            $where['catdescripcion like'] = '%' . $catdes . '%';
+        }
+        $productos = $this->producto_m->get_con_familia($where);
         if (count($productos)): foreach ($productos as $producto):
                 echo '<tr>';
                 echo '<td>' . $producto->prodid . '</td>';

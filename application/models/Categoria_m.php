@@ -15,6 +15,7 @@ class Categoria_M extends MY_Model {
 
     function __construct() {
         parent::__construct();
+        $this->load->model('producto_m');
     }
 
     function get_dropdown() {
@@ -30,18 +31,17 @@ class Categoria_M extends MY_Model {
         return $array;
     }
     
-    function delete($id) {
-        parent::delete($id);
-        $this->db->set(array('catid' => 0));
-        $this->db->where('catid', $id);
-        $this->db->update('producto');
+    function delete($where = null) {
+        parent::delete($where);
+        $data['catid'] = 0;
+        $this->producto_m->save($data, $where);
     }
 
     function new_categoria() {
         $categoria = new stdClass();
         $categoria->catid = 0;
         $categoria->catdescripcion = '';
-
+        
         return $categoria;
     }
 

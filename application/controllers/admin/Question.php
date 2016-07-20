@@ -8,29 +8,19 @@ class Question extends Admin_Controller {
 
     function index() {
         $this->data['questions'] = $this->question_m->get();
-        $this->data['scripts'][] = '<script>
-            function showResults(filtro) {
-                var xmlhttp = new XMLHttpRequest();
-                xmlhttp.onreadystatechange = function() {
-                    if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-                        document.getElementById("results").innerHTML = xmlhttp.responseText;
-                    }
-                };
-                xmlhttp.open("GET", "question/buscar?question=" + filtro, true);
-                xmlhttp.send();
-            }
-            </script>';
-
+        $this->data['scripts'][] = '<script type="text/javascript" src="' . site_url('js/admin/question.js') . '"></script>';        
         $this->data['subview'] = 'admin/question/index';
         $this->load->view('admin/_layout_main', $this->data);
     }
 
     function edit($id = NULL) {
         if ($id) {
-            $this->data['question'] = $this->question_m->get($id);
+            $this->data['question'] = $this->question_m->get(['id'=>$id],TRUE);
             count($this->data['question']) || $this->data['errores'][] = 'Question no encontrada';
+            $where = ['id'=>$id];
         } else {
             $this->data['question'] = $this->question_m->new_question();
+            $where = null;
         }
         $rules = $this->question_m->rules;
         $this->form_validation->set_rules($rules);
@@ -38,7 +28,7 @@ class Question extends Admin_Controller {
             //Levanta campos del form
             $data = $this->question_m->array_from_post(array('question', 'answer'));
             // Guardo datos en BD
-            $newId = $this->question_m->save($data, $id);
+            $newId = $this->question_m->save($data, $where);
             // Redirijo al grid de paginas
             redirect('admin/question');
         }
@@ -47,17 +37,17 @@ class Question extends Admin_Controller {
     }
 
     function delete($id) {
-        $this->question_m->delete($id);
+        $this->question_m->delete(['id'=>$id]);
         redirect('admin/question');
     }
 
-    function buscar() {
+    function search() {
         //sacr el filtro del request
 
         $question = $this->input->get('question');
         // pedir todos los producto con el filtro
         $this->db->where('question like', '%' . $question . '%');
-        $questions = $this->question_m->get();
+        $questions = $this->question_m->get(['question like'=>'%' . $question . '%'],FALSE);
 
         if (count($questions)): foreach ($questions as $question):
                 echo '<tr>';

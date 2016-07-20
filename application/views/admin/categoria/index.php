@@ -1,8 +1,4 @@
 <h2>Familias</h2>
-<!--<div class="form-group">
-    <label class="control-label col-md-2">Categoria</label>
-    <input class="col-md-10 form-control" type="text" onkeyup="showResults(this.value)">
-</div>-->
 <?php echo anchor('admin/categoria/edit', '<i class="glyphicon glyphicon-plus"></i> Agregar Familia'); ?>
 <table class="table table-striped">
     <thead>

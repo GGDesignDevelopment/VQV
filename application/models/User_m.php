@@ -46,7 +46,7 @@ class User_M extends MY_Model {
     }
 
     function login() {
-        $user = $this->get_by(array(
+        $user = $this->get(array(
             'email' => $this->input->post('email'),
             'password' => $this->hash($this->input->post('password')),
         ),TRUE);

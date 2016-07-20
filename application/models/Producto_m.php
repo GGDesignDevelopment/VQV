@@ -40,9 +40,9 @@ class Producto_M extends MY_Model {
         return $producto;
     }
 
-    function get_con_familia() {
+    function get_con_familia($where = NULL) {
         $this->db->select('producto.*,c.catdescripcion as familia');
         $this->db->join('categoria as c', 'producto.catid=c.catid', 'left');
-        return parent::get(null, false);
+        return parent::get($where, false);
     }
 }
