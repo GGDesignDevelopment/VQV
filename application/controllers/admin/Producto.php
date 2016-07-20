@@ -112,7 +112,7 @@ class Producto extends Admin_Controller {
             endforeach;
         else:
             echo '<tr>';
-            echo '<td colspan=7>No se encontraron productos para estos filtros</td>';
+            echo '<td colspan=9>No se encontraron productos para estos filtros</td>';
             echo '</tr>';
         endif;
     }

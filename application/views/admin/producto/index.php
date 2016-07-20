@@ -15,13 +15,20 @@
             <th>Familia</th>
             <th>Presentación</th>
             <th>unidad</th>            
-            <th>Precio</th>           
+            <th>Precio</th>
+            <th></th>
+            <th></th>
         </tr>
         <tr>
             <th></th>
             <th><input id="filtroNombre" class="form-control" type="text" onkeyup="showResults()"></th>
             <th><input id="filtroDescripcion" class="form-control" type="text" onkeyup="showResults()"></th>
             <th><input id="filtroFamilia" class="form-control" type="text" onkeyup="showResults()"></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
         </tr>
     </thead>
     <tbody id="results">
@@ -40,7 +47,7 @@
             <?php endforeach; ?>
         <?php else: ?>
             <tr>
-                <td colspan=7>No se encontraron productos</td>
+                <td colspan=9>No se encontraron productos</td>
             </tr>			
         <?php endif; ?>     
     </tbody>

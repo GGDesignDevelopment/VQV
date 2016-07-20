@@ -27,13 +27,13 @@ class Home extends Frontend_Controller {
 
     function texto_tecnica() {
         $id = $this->input->get('id');
-        $tecnica = $this->reciclaje_m->get($id);
+        $tecnica = $this->reciclaje_m->get(['id'=>$id],TRUE);
         echo $tecnica->texto;
     }
 
     function suscribir() {
         $data = $this->contacto_m->array_from_post(array('nombre', 'apellido', 'email'));
-        $contacto = $this->contacto_m->get($data['email']);
+        $contacto = $this->contacto_m->get(['email'=>$data['email']]);
         if (count($contacto)) {
             // ya existe
             $return = array('msg' => 'Usted ya esta suscripto', 'options' => '<option value="S">Semanalmente</option><option value="M">Mensualmente</option><option value="N">Dejar de seguir</option>');
@@ -54,7 +54,7 @@ class Home extends Frontend_Controller {
         } else {
             $data['periodicidad'] = $option;
         }
-        $this->contacto_m->save($data, $email);
+        $this->contacto_m->save($data, ['email'=>$email]);
     }
 
     function getQuestions() {

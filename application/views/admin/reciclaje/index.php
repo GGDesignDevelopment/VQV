@@ -8,13 +8,15 @@
     <thead>
         <tr>
             <th>Código</th>
-            <th>Título</th>	            
+            <th>Título</th>	
+            <th></th>	
+            <th></th>	            
         </tr>  
-        <tr>
+<!--        <tr>
             <th></th>
             <th></th>
-            <!--<th><input class="form-control" type="text" onkeyup="showResults(this.value)"></th>-->
-        </tr>
+            <th><input class="form-control" type="text" onkeyup="showResults(this.value)"></th>
+        </tr>-->
     </thead>
     <tbody id="results">
     <?php if (count($reciclajes)): foreach ($reciclajes as $reciclaje): ?>

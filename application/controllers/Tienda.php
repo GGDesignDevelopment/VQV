@@ -35,7 +35,7 @@ class Tienda extends Frontend_Controller {
         if ($catid == NULL || $catid == 0) {
             $products = $this->producto_m->get();            
         } else {
-            $products = $this->producto_m->get_by(array('catid' => $this->input->get('catid')), FALSE);
+            $products = $this->producto_m->get(['catid' => $catid], FALSE);
         }
         echo json_encode($products);
     }

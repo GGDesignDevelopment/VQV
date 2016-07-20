@@ -8,11 +8,15 @@
     <thead>
         <tr>
             <th>Código</th>
-            <th>Pregunta</th>	            
+            <th>Pregunta</th>	 
+            <th></th>
+            <th></th>
         </tr>  
         <tr>
             <th></th>
             <th><input class="form-control" type="text" onkeyup="showResults(this.value)"></th>
+            <th></th>
+            <th></th>
         </tr>
     </thead>
     <tbody id="results">

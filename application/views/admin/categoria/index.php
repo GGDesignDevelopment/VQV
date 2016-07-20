@@ -4,11 +4,15 @@
     <thead>
         <tr>
             <th>Código</th>
-            <th>Descripción</th>	            
+            <th>Descripción</th>
+            <th></th>
+            <th></th> 
         </tr>  
         <tr>
             <th></th>
             <th><input class="form-control" type="text" onkeyup="showResults(this.value)"></th>
+            <th></th>
+            <th></th>
         </tr>
     </thead>
     <tbody id="results">
