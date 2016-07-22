@@ -105,7 +105,7 @@ section {
 	font-size: 1em;
 }
 #main .botones a:hover {
-	background: rgba(255,255,255,.4);
+	background: none;
 	border: 2px solid #97be49;
 	color: #97be49;
 	padding: 16px 0;
@@ -492,7 +492,7 @@ footer {
 		height: 8vh;
 		background: #97be49;
 		z-index: 99999999;
-		box-shadow: 0 3px 10px #333;
+		box-shadow: 0 3px 10px rgba(0,0,0,0.5);
 	}
 	#main header .pull {
 		width: 100%;
@@ -599,4 +599,139 @@ footer {
 		height: auto;
 	}
 
+}
+@media screen and (max-width: 600px) {
+	#main header .logo {
+		display: none;
+	}
+	#main header nav {
+		display: none;
+	}
+	#main header {
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 8vh;
+		background: #97be49;
+		z-index: 99999999;
+		box-shadow: 0 3px 10px rgba(0,0,0,0.5);
+	}
+	#main header .pull {
+		width: 100%;
+		display: flex;
+		flex-flow: row nowrap;
+		align-content: center;
+		justify-content: space-between;
+	}
+	#main header .pull h2 {
+		font-family: 'governorregular';
+		color: white;
+		background: none;
+		border: 0;
+		margin: 0; 
+		padding: 0;
+		margin-left: 30px;
+		width: auto;
+		font-size: 1em;
+		line-height: 1em;
+	}
+	#main header .pull a {
+		font-family: 'ElegantIcons';
+		color: white;
+		margin-right: 30px;
+		font-size: 1em;
+	}
+	#main h1 {
+		display: none;
+	}
+	#main h2 {
+		margin-top: 200px;
+		font-size: 1em;
+		padding: 10px 0;
+	}
+	#main .botones {
+		width: 80%;
+		flex-flow: column nowrap;
+		align-items: center;
+	}
+	#main .botones a {
+		margin-bottom: 10px;
+		width: 50%;
+	}
+	#alimentacion header {
+		height: 15vh;
+	}
+	#alimentacion .carrousel_container {
+		height: 76vh;
+	}
+	#alimentacion header h2 {
+		font-size: 1em;
+	}
+	#alimentacion header h3 {
+		font-size: .8em;
+		width: 80%;
+	}
+	.slick-slide img {
+		width: 600px;
+		height: auto;
+	}
+	#alimentacion footer nav {
+		display: none;
+	}
+	#reciclaje header {
+		height: 12vh;
+	}
+	#reciclaje header nav {
+		display: none;
+	}
+	#reciclaje header div {
+		width: 100%;
+	}
+	#reciclaje .bottom {
+		height: 88vh;
+	}
+	#reciclaje .bootom .quote {
+		width: 25%;
+	}
+	#reciclaje .bottom .quote p {
+		padding-left: 15px;
+	}
+	#reciclaje .bottom #hexGrid {
+		padding-left: 70px;
+		width: 75%;
+	}
+	#footer .about {
+		height: 65vh;
+	}
+	#footer .about h2 {
+		font-size: 3em;
+	}
+	#footer .about h3 {
+		width: 90%;
+		text-align: center;
+		line-height: 1.2em;
+		font-size: 1.2em;
+	}
+	#footer .contacto {
+		height: 35vh;
+		flex-flow: column nowrap;
+	}
+	#footer .contacto .menu {
+		display: none;
+	}
+	#footer .contacto .info {
+		display: none;
+	}
+	#footer .contacto form {
+		width: 100%;
+		padding: 20px;
+	}
+	#footer .contacto form label {
+		font-size: 1.2em;
+		width: 100%;
+	}
+	#footer .contacto form input {
+
+	}
 }
