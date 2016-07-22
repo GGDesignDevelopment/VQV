@@ -33,7 +33,7 @@ class Migration_Create_User extends CI_Migration {
         ));
 
         $this->dbforge->add_key('email', TRUE);
-        $this->dbforge->create_table('User');
+        $this->dbforge->create_table('user');
 
         $data['email'] = 'soporte@admin.com';
         //Password: admin
@@ -42,11 +42,11 @@ class Migration_Create_User extends CI_Migration {
         $data['name'] = 'Admin';
         
         $this->db->set($data);
-        $this->db->insert('User');
+        $this->db->insert('user');
     }
 
     public function down() {
-        $this->dbforge->drop_table('User');
+        $this->dbforge->drop_table('user');
     }
 
 }

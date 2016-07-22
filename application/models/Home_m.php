@@ -1,6 +1,6 @@
 <?php
 class Home_M extends MY_Model {
-    protected $_table_name = 'Home';
+    protected $_table_name = 'home';
     protected $_order_by = '';
     public  $rules = array(
         'linkFacebook' => array(

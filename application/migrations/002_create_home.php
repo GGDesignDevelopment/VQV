@@ -42,7 +42,7 @@ class Migration_Create_Home extends CI_Migration {
         ));
 
         $this->dbforge->add_key('id', TRUE);
-        $this->dbforge->create_table('Home');
+        $this->dbforge->create_table('home');
 
         $data['id'] = 1;
         $data['linkFacebook'] = '#';
@@ -54,11 +54,11 @@ class Migration_Create_Home extends CI_Migration {
         $data['txtAbout'] = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus id ultrices justo. Aliquam luctus nulla ac arcu lobortis feugiat. Nulla pretium, tellus nec finibus dictum, sapien lorem sodales turpis, quis pellentesque ipsum dui eu eros.';
 
         $this->db->set($data);
-        $this->db->insert('Home');
+        $this->db->insert('home');
     }
 
     public function down() {
-        $this->dbforge->drop_table('Home');
+        $this->dbforge->drop_table('home');
     }
 
 }

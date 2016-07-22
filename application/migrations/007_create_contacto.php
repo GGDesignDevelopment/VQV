@@ -29,11 +29,11 @@ class Migration_Create_Contacto extends CI_Migration {
         ));
 
         $this->dbforge->add_key('email', TRUE);
-        $this->dbforge->create_table('Contacto');
+        $this->dbforge->create_table('contacto');
     }
 
     public function down() {
-        $this->dbforge->drop_table('Contacto');
+        $this->dbforge->drop_table('contacto');
     }
 
 }
