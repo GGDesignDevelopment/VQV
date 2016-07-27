@@ -8,7 +8,7 @@ class Tienda extends Frontend_Controller {
         $this->load->model('producto_m');
     }
 
-    function index() {
+    function index2() {
         $this->data['title'] = 'VQV - Tienda on Line';
         $this->data['styles'][] = '<link rel="stylesheet" type="text/css" href="' . site_url('css/wip.css') . '">';
         $this->data['styles'][] = '<link rel="stylesheet" type="text/css" href="' . site_url('css/fonts.css') . '">';
@@ -16,14 +16,14 @@ class Tienda extends Frontend_Controller {
         $this->load->view('frontend/_layout_main', $this->data);
     }
 
-    function index2() {
+    function index() {
         $this->data['title'] = 'VQV - Tienda on Line';
         $this->data['styles'][] = '<link rel="stylesheet" type="text/css" href="' . site_url('css/reset.css') . '">';
         $this->data['styles'][] = '<link rel="stylesheet" type="text/css" href="' . site_url('css/fonts.css') . '">';
         $this->data['styles'][] = '<link rel="stylesheet" type="text/css" href="' . site_url('css/icons.css') . '">';
         $this->data['styles'][] = '<link rel="stylesheet" type="text/css" href="' . site_url('css/tienda.css') . '">';
-        $this->data['scripts'][] = '<script type="text/javascript" src="' . site_url('js/prefix.js') . '"></script>';
         $this->data['scripts'][] = '<script src="https://code.jquery.com/jquery-2.2.4.min.js"   integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="   crossorigin="anonymous"></script>';
+        $this->data['scripts'][] = '<script type="text/javascript" src="' . site_url('js/mustache.js') . '"></script>';
         $this->data['scripts'][] = '<script type="text/javascript" src="' . site_url('js/tienda.js') . '"></script>'; 
         
         $this->data['categorias'] = $this->categoria_m->get();

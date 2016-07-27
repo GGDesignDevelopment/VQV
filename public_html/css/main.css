@@ -606,6 +606,14 @@ footer {
 	}
 	#main header nav {
 		display: none;
+		flex-flow: row wrap;
+		width: 100%;
+	}
+	#main header nav a {
+		display: block;
+		margin: 0;
+		width: 50%;
+		background: #aaa;
 	}
 	#main header {
 		position: fixed;
@@ -673,7 +681,7 @@ footer {
 		width: 80%;
 	}
 	.slick-slide img {
-		width: 600px;
+		width: 200px;
 		height: auto;
 	}
 	#alimentacion footer nav {

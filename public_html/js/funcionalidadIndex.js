@@ -1,3 +1,4 @@
+// Scripts de la
 $(function () {
     $('a[href*="#"]:not([href="#"])').click(function () {
         if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
@@ -23,6 +24,11 @@ $(function () {
     //     $('nav[data-posicion="' + posicion + '"').css('display', 'flex');
 
     // });
+    var $menu = $('#main header nav');
+    $('.pull').click(function(e){
+        e.preventDefault();
+        $menu.slideToggle();
+    })
     
     $('#formContacto').submit(function () {
         $('#overlay').show();
