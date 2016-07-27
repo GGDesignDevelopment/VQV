@@ -15,13 +15,16 @@ class Cart extends Frontend_Controller {
 
     function login() {
         if ($this->user_m->login() == TRUE) {
-            $return = array('OK' => 'OK');
+            $return = array('msg' => 'OK');
         } else {
-            $return = array('ERROR' => 'Usuario y/o Contraseña incorrectos');
+            $return = array('msg' => 'Usuario y/o Contraseña incorrectos');
         }
         echo json_encode($return);
     }
-
+    function islogged() {
+        $return = array('msg' => $this->user_m->loggedin());
+        echo json_encode($return);
+    }
     // Retorna el carrito del usuario logeado
     function get() {
         $cart = getCopy($this->cart_m->get(['email'=>$this->email], false));
