@@ -12,12 +12,27 @@ class Cart extends Frontend_Controller {
         $this->load->library('session');
         $this->email = $this->session->userdata('email');
     }
+    function register() {
+        $data = $this->user_m->array_from_post(array('email', 'name', 'password', 'phone', 'address'));       
+        $data['type'] = 'C';
+        
+        $user = $this->user_m->get(['email'=>$data['email']]);
+        if ($user) {
+            $return = array('msg' => false);            
+        } else {
+            $data['password'] = $this->user_m->hash($data['password']);
+            $this->user_m->save($data, NULL);
+
+            $return = array('msg' => true);
+        }
+        echo json_encode($return);
+    }
 
     function login() {
         if ($this->user_m->login() == TRUE) {
-            $return = array('msg' => 'OK');
+            $return = array('msg' => true);
         } else {
-            $return = array('msg' => 'Usuario y/o Contraseña incorrectos');
+            $return = array('msg' => false);
         }
         echo json_encode($return);
     }
@@ -25,9 +40,12 @@ class Cart extends Frontend_Controller {
         $return = array('msg' => $this->user_m->loggedin());
         echo json_encode($return);
     }
+    function logout() {
+        $this->user_m->logout();
+    }
     // Retorna el carrito del usuario logeado
     function get() {
-        $cart = getCopy($this->cart_m->get(['email'=>$this->email], false));
+        $cart = getCopy($this->cart_m->get(['cart.email'=>$this->email], true));
         if ($cart !== NULL) {
             $cart->items = $this->cartitem_m->getItems($this->email);
             echo json_encode($cart);

@@ -7,7 +7,7 @@
         <nav>
             <a href="#">&#xe0aa;</a>
             <a href="#">&#xe0b1;</a>
-            <a href="#" class="boton" id="carrito_show">Mi Carrito <span>&#xe015;</span></a>
+            <a href="#" class="boton" id="carrito_show"></a>
         </nav>
     </header>
     <div class="contenido">
@@ -28,65 +28,32 @@
     <!-- Revisar pa' dinamico  -->
 <div id="carrito">
         <a href="index.html">vqv</a>
-        <form method="POST" action="cart/login" name="iniciar">
+        <form id="ingresar" method="POST" action="cart/login" name="iniciar">
             <h2>Iniciar sesion</h2>
             <input type="email" name="email" placeholder="email" required>
             <input type="password" name="password" placeholder="contrase&ntilde;a"required>
             <input type="submit" value="Ingresar">
         </form>
         <span></span>
-        <form method="POST" action="cart/register" name="registrarse">
+        <form id="registrarse" method="POST" action="cart/register" name="registrarse">
             <h2>Registrarse</h2>
             <input type="email" name="email" placeholder="email" required>
-            <input type="password" name="password" placeholder="contrase&ntilde;a"required>
+            <input type="password" name="password" placeholder="contrase&ntilde;a" required>
+            <input type="password" name="password2" placeholder="confirmar contrase&ntilde;a" required>
             <input type="text" name="name" placeholder="Nombre y Apellido" required>
             <input type="text" name="phone" placeholder="Telefono">
             <input type="text" name="address" placeholder="Direccion">
             <input type="submit" value="Registrarse">
         </form>
-       <!--  <form method="POST" action="#">
-            <h2>Nombre usuario</h2>
-            <div class="direccion">Direccion</div>
-            <fieldset>
-                <legend><a href="#" class="x">&#xe019;</a></legend>
-                <p>Nombre del Producto.</p>
-                <div>
-                    <input type="text" name="cantidad" placeholder="300gr.">
-                    <span>$300</span>
-                </div>
-            </fieldset>
-            <fieldset>
-                <legend><a href="#" class="x">&#xe019;</a></legend>
-                <p>Nombre del Producto.</p>
-                <div>
-                    <input type="text" name="cantidad" placeholder="300gr.">
-                    <span>$300</span>
-                </div>
-            </fieldset>
-            <fieldset>
-                <legend><a href="#" class="x">&#xe019;</a></legend>
-                <p>Nombre del Producto.</p>
-                <div>
-                    <input type="text" name="cantidad" placeholder="300gr.">
-                    <span>$300</span>
-                </div>
-            </fieldset>
-            <fieldset>
-                <legend><a href="#" class="x">&#xe019;</a></legend>
-                <p>Nombre del Producto.</p>
-                <div>
-                    <input type="text" name="cantidad" placeholder="300gr.">
-                    <span>$300</span>
-                </div>
-            </fieldset>
-            <a class="boton" href="#">Confirmar compra</a>
-        </form> -->
+        <form id="carritoForm" method="POST" action="#" style="display:none">
+            
+        </form>
     </div>
     <template id="prodTemplate">
         <div class="prod">
             <img src="img/{{prodimagen}}" title="{{prodnombre}}">
             <a href="#" class="expandir" data-producto="{{prodid}}">{{prodnombre}}<span>&#x33;</span></a>
-            <form id="{{prodid}}" method="POST" action="" class="oculto">
+            <form id="{{prodid}}" method="POST" action="cart/additem" class="oculto">
                 <div>
                     <!-- {{#granel}}
                         <select name="envase">
@@ -105,4 +72,30 @@
             </form>
             
         </div>
+    </template>
+    <template id="carritoTemplate">
+        <h2>{{name}}</h2>
+        <form method="POST" action="cart/confirm">
+            <input type="text" name="name" value="address" placeholder="{{adress}}">
+            {{#items}}
+            <fieldset>
+                <legend><a href="cart/removeItem/{{prodid}}" class="remove">&#xe019;</a></legend>
+                <p>{{prodnombre}}</p>
+                <div>
+                    <input type="number" name="cantidad" placeholder="{{quantity}}">
+                    <span>${{amount}}</span>
+                </div>
+            </fieldset>
+            {{/items}}
+        </form>
+    </template>
+    <template id="carritoItem">
+        <fieldset>
+            <legend><a href="cart/removeItem/{{prodid}}" class="remove">&#xe019;</a></legend>
+            <p>{{prodnombre}}</p>
+            <div>
+                <input type="number" name="cantidad" placeholder="{{quantity}}">
+                <span>${{amount}}</span>
+            </div>
+        </fieldset>
     </template>

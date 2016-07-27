@@ -10,4 +10,9 @@ class Cart_M extends MY_Model {
     function __construct() {
         parent::__construct();
     }
+    function get($where = null, $single = FALSE) {
+        $this->db->select('name, cart.address');
+        $this->db->join('user', 'user.email=cart.email', 'left');
+        return parent::get($where, $single);
+    }
 }

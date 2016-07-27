@@ -1,9 +1,87 @@
 $(function () {
+    
+    // LOGIN
+    $('#ingresar').submit(function(e){
+        $.ajax({
+            type: 'POST',
+            url: $(this).attr('action'),
+            data: $(this).serialize(),
+            dataType: 'json',
+            success: function(json) {
+                carrito(json.msg);
+            }
+        });
+        return false;
+    });
+
+    // Dibujar carrito 
+    function dibujarCarrito() {
+        var carrTemplate = $('#carritoTemplate').html();
+        $.ajax({
+            type: 'GET',
+            url: 'cart/get',
+            dataType: 'json',
+            success: function(json){
+                $('#carritoForm').append(Mustache.render(carrTemplate, json))
+            }
+        })
+    }
+
+    // Mostrar Carrito 
+    function carrito(islog) {
+        if (islog == true) {
+            $('#ingresar').hide();
+            $('#registrarse').hide();
+            $('#carritoForm').show();
+            dibujarCarrito();
+        } else {
+            $('#ingresar').show();
+            $('#registrarse').show();
+            $('#carritoForm').hide();
+        }
+    }
+
+    // LogedIn
+    function isLogged() {
+        var $carrito = $('#carrito_show');
+        var islog = 'Mi Carrito <span>&#xe015;</span>';
+        var notlog = 'Iniciar / Registrarse';
+        $.ajax({
+            type: 'GET',
+            url: 'cart/islogged',
+            dataType: 'json',
+            success: function(json) {
+                if ( json.msg == true ) {
+                    $carrito.append(islog);
+                    carrito(true);
+                } else {
+                    $carrito.append(notlog);
+                    carrito(false);
+                }
+            }
+        })
+    };
+
+    isLogged();
+
+    // Register 
+    $('#registrarse').submit(function() {
+        $.ajax({
+            type: 'POST',
+            url: $(this).attr('action'),
+            data: $(this).serialize(),
+            dataType: 'json',
+            success: function(json) {
+                carrito(json.msg);
+            }
+        });
+        return false;
+    })
+
     // Funcion para expandir el item producto.
     $('.productos').delegate('.expandir', 'click', function(e) {
         e.preventDefault();
         var producto = $(this).attr('data-producto');
-        alert(producto);
         $('#'+producto).slideToggle();
         $(this).toggleClass("fondo");
     });
@@ -29,7 +107,6 @@ $(function () {
 
 
     // Funcion dibujado y filtro de productos en AJAX
-
     var producto = $('#prodTemplate').html();
 
     function dibujar(categoria) {
