@@ -59,7 +59,9 @@ class User_M extends MY_Model {
                     'loggedin' => TRUE,
             );
             $this->session->set_userdata($data);
+            return true;
         }
+        return false;
     }
     
     function logout() {
