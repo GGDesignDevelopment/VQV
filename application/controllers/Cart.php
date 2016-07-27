@@ -9,7 +9,7 @@ class Cart extends Frontend_Controller {
         $this->load->model('sale_m');
         $this->load->model('saleitem_m');
         $this->load->library('session');
-        $this->email = $this->session->userdata('email');
+        $this->email = 'andresageitos@gmail.com';//$this->session->userdata('email');
     }
 
     // Retorna el carrito del usuario logeado
@@ -22,51 +22,53 @@ class Cart extends Frontend_Controller {
     }
 
     // Agrega un item al carrito del usuario logeado, si el item ya existe actualiza la cantidad
-    function addItem($productid, $quantity) {
-//        $productid = $this->input->get('productid');
-//        $quantity = $this->input->get('quantity');
-        $item = $this->cartitem_m->get_by(array(
+    function addItem() {
+        $productid = $this->input->post('productid');
+        $quantity = $this->input->post('quantity');
+        $item = $this->cartitem_m->get(array(
             'email' => $this->email,
             'productid' => $productid,
                 ), TRUE);
 
         if ($item) {
-            $email = $this->email;
-            $this->db->where('productid', $productid);
+            $where = ['email'=>$this->email ,'productid'=> $productid];
             $data['quantity'] = $item->quantity + $quantity;
         } else {
-            $email = null;
+            $where = NULL;
             $data['email'] = $this->email;
             $data['productid'] = $productid;
             $data['quantity'] = $quantity;
         }
 
-        $this->cartitem_m->save($data, $email);
+        $this->cartitem_m->save($data, $where);
     }
 
     // se modifica el item del carrito del usuario logeado
-    function modifyItem($productid, $quantity) {
-        $this->db->where('productid', $productid);
+    function modifyItem() {
+        $productid = $this->input->post('productid');
+        $quantity = $this->input->post('quantity');
+        $where = ['email'=>$this->email ,'productid'=> $productid];
         $data['quantity'] = $quantity;
-        $this->cartitem_m->save($data, $this->email);
+        $this->cartitem_m->save($data, $where);
     }
 
     // Elimina un item del carrito del usuario logeado
-    function removeItem($productid) {
-        $this->db->where('productid', $productid);
-        $this->cartitem_m->delete($this->email);
+    function removeItem() {
+        $productid = $this->input->post('productid');
+        $where = ['email'=>$this->email ,'productid'=> $productid];
+        $this->cartitem_m->delete($where);
     }
 
     // Cancela el carrito del usuario logeado, esto elimina todos los items agregados
     // No elimina el cabezal este se guarda para futuros carritos.
     function cancel() {
-        $this->cartitem_m->delete($this->email);
+        $this->cartitem_m->delete(['email'=>$this->email]);
     }
 
     // Confirma el carrito del usuario logeado, esto genera la compra, con los items 
     // del carrito y los elimina del mismo
     function confirm() {
-        $cart = $this->cart_m->get($this->email, false);
+        $cart = $this->cart_m->get(['email'=>$this->email], false);
         $items = $this->cartitem_m->getItems($this->email);
         if (count($items)) {
             $data['email'] = $cart->email;

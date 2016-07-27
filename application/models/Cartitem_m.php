@@ -11,27 +11,21 @@ class Cartitem_M extends MY_Model {
         parent::__construct();
     }
 
-    function deleteItem($email, $productid) {
-        
-    }
+//    function deleteItem($email, $productid) {
+//        
+//    }
 
     function getItems($email) {
         $this->db->select('prodid, prodnombre, quantity, produnidad, (quantity * prodprecio / prodpresentacion) as amount, prodprecio');
         $this->db->join('producto', 'prodid=productid', 'left');
-        return parent::get_by(array('email' => $email));
+        return parent::get(array('email' => $email));
     }
     
-    public function delete($id) {
-        $filter = $this->_primary_filter;
-        $id = $filter($id);
-
-        if (!$id) {
-            return FALSE;
-        }
-
-        $this->db->where($this->_primary_key, $id);
-        $this->db->delete($this->_table_name);
-    }
+//    public function delete($where = NULl) {
+//
+////        $this->db->where($this->_primary_key, $id);
+////        $this->db->delete($this->_table_name);
+//    }
 //    function saveItem($data, $id = NULL, $productid= NULL) {
 //        
 //        $this->db->where('productid', $productid);
