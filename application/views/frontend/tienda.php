@@ -50,7 +50,7 @@
 	<script id="carritoTemplate" type="text/template">
 		<h2>{{name}}</h2>
 		<form method="POST" action="cart/confirm">
-			<input type="text" name="name" value="address" placeholder="{{adress}}">
+			<input type="text" name="name" value="{{address}}" placeholder="Direccion">
 			{{#items}}
 			<fieldset>
 				<legend><a href="cart/removeItem/{{prodid}}" class="remove">&#xe019;</a></legend>
@@ -61,10 +61,11 @@
 				</div>
 			</fieldset>
 			{{/items}}
+			<input type="submit" name="confirmar" value="Confirmar Compra">
 		</form>
 		<a href="#" id="logout">Cerrar sesion</a>
 	</script>
-	<script type="text/template">
+	<script id="carritoItem" type="text/template">
 		<fieldset>
 			<legend><a href="cart/removeItem/{{prodid}}" class="remove">&#xe019;</a></legend>
 			<p>{{prodnombre}}</p>
@@ -98,7 +99,4 @@
 						</form>
 						
 				</div>
-		</template>
-		<template id="carritoItem">
-				
 		</template>
