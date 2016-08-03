@@ -51,7 +51,10 @@ class Cart extends Frontend_Controller {
             echo json_encode($cart);
         }
     }
-
+    function updateAddress() {
+        $data['address'] = $this->input->post('address');
+        $this->user_m->save($data, ['email' => $this->email]);
+    }
     // Agrega un item al carrito del usuario logeado, si el item ya existe actualiza la cantidad
     function addItem() {
         $productid = $this->input->post('productid');
