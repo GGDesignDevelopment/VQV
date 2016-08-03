@@ -76,7 +76,7 @@
     <template id="carritoTemplate">
         <h2>{{name}}</h2>
         <form method="POST" action="cart/confirm">
-            <input type="text" name="name" value="address" placeholder="{{adress}}">
+            <input type="text" name="address" value="{{address}}" placeholder="Dirección">
             {{#items}}
             <fieldset>
                 <legend><a href="cart/removeItem/{{prodid}}" class="remove">&#xe019;</a></legend>
@@ -87,6 +87,7 @@
                 </div>
             </fieldset>
             {{/items}}
+            <input type="submit" value="Confirmar">            
         </form>
     </template>
     <template id="carritoItem">

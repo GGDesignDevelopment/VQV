@@ -22,7 +22,10 @@ class Cart extends Frontend_Controller {
         } else {
             $data['password'] = $this->user_m->hash($data['password']);
             $this->user_m->save($data, NULL);
-
+            unset($data);
+            $data = $this->cart_m->array_from_post(array('email', 'address'));       
+            $this->cart_m->save($data,NULL);
+            
             $return = array('msg' => true);
         }
         echo json_encode($return);
@@ -54,8 +57,8 @@ class Cart extends Frontend_Controller {
 
     // Agrega un item al carrito del usuario logeado, si el item ya existe actualiza la cantidad
     function addItem() {
-        $productid = $this->input->post('productid');
-        $quantity = $this->input->post('quantity');
+        $productid = $this->input->post('id');
+        $quantity = $this->input->post('cantidad');
         $item = $this->cartitem_m->get(array(
             'email' => $this->email,
             'productid' => $productid,
@@ -84,8 +87,8 @@ class Cart extends Frontend_Controller {
     }
 
     // Elimina un item del carrito del usuario logeado
-    function removeItem() {
-        $productid = $this->input->post('productid');
+    function removeItem($productid) {
+//         = $this->input->post('productid');
         $where = ['email' => $this->email, 'productid' => $productid];
         $this->cartitem_m->delete($where);
     }
@@ -99,10 +102,10 @@ class Cart extends Frontend_Controller {
     // Confirma el carrito del usuario logeado, esto genera la compra, con los items 
     // del carrito y los elimina del mismo
     function confirm() {
-        $cart = $this->cart_m->get(['email' => $this->email], false);
+        $cart = $this->cart_m->get(['cart.email'=>$this->email], true);
         $items = $this->cartitem_m->getItems($this->email);
         if (count($items)) {
-            $data['email'] = $cart->email;
+            $data['email'] = $this->email;
             $data['address'] = $cart->address;
             $data['createDate'] = date('y-m-d H:i:s');
 //        $data['shippingDate'] = '';
