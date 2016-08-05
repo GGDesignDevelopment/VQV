@@ -217,6 +217,15 @@ form.oculto {
 	text-shadow: 1px 1px 4px #fff;	
 	color: #97be49;
 }
+#carrito a#logout {
+	font-family: 'roboto_slablight';
+	font-size: .9em;
+	color: #97be49;
+	text-shadow: 0 0 0 #fff;
+	width: 100%;
+	text-decoration: underline;
+	text-align: right;
+}
 #carrito span {
 	width: 80%;
 	height: 1px;
