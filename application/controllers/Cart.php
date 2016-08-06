@@ -78,17 +78,17 @@ class Cart extends Frontend_Controller {
     }
 
     // se modifica el item del carrito del usuario logeado
-    function modifyItem() {
-        $productid = $this->input->post('productid');
-        $quantity = $this->input->post('quantity');
+    function modifyItem($productid,$quantity) {
+//        $productid = $this->input->post('productid');
+//        $quantity = $this->input->post('quantity');
         $where = ['email' => $this->email, 'productid' => $productid];
         $data['quantity'] = $quantity;
         $this->cartitem_m->save($data, $where);
     }
 
     // Elimina un item del carrito del usuario logeado
-    function removeItem() {
-        $productid = $this->input->post('productid');
+    function removeItem($productid) {
+//        $productid = $this->input->post('productid');
         $where = ['email' => $this->email, 'productid' => $productid];
         $this->cartitem_m->delete($where);
     }
