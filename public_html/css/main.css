@@ -289,6 +289,54 @@ section {
 	padding-left: 140px;
 }
 /*-----------------------------------------------------------*/
+#faq {
+	height: auto;
+	display: flex;
+	flex-flow: row nowrap;
+	justify-content: space-around;
+}
+#faq .column {
+	display: flex;
+	flex-flow: column nowrap;
+	width: 45%;
+	padding: 25px;
+}
+#faq h2 {
+	text-align: center;
+	font-family: 'governorregular';
+	font-size: 2em;
+	color: #97be49;
+	padding: 10px 0;
+}
+#faq span {
+	display: block;
+	margin: 15px 0;
+	width: 2px;
+	background-color: #c2d994;
+}
+#faq ol {
+	list-style-type: disc;
+	font-family: 'roboto_slabregular';
+	color: #719033;
+	font-size: .9em;
+	letter-spacing: .15em;
+}
+#faq ol ul {
+	padding-left: 20px;
+	list-style-type: disc;
+}
+#faq  dl {
+	list-style-type: decimal;
+	font-family: 'roboto_slabregular';
+	color: #719033;
+	font-size: .9em;
+	letter-spacing: .15em;
+}
+#faq dl dd {
+	margin: 6px 0 12px 24px;
+}
+
+/*-----------------------------------------------------------*/
 #footer {
 	display: flex;
 	flex-flow: column nowrap;
@@ -595,12 +643,32 @@ footer {
 		width: 50%;
 	}
 	.slick-slide img {
-		width: 380px;
+		width: 390px;
 		height: auto;
+	}
+	#footer .about {
+		height: auto;
+	}
+	#footer .contacto {
+		height: 35vh;
+		flex-flow: row nowrap;
 	}
 
 }
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 760px) {
+	section {
+		height: auto;
+	}
+	#main {
+		background: url(../img/bg1_cel.jpg) no-repeat center center fixed; 
+		-webkit-background-size: cover;
+		-moz-background-size: cover;
+		-o-background-size: cover;
+		background-size: cover;
+		flex-flow: column nowrap;
+		align-items: center;
+		padding-bottom: 20px;
+	}
 	#main header .logo {
 		display: none;
 	}
@@ -612,25 +680,31 @@ footer {
 	#main header nav a {
 		display: block;
 		margin: 0;
-		width: 50%;
-		background: #aaa;
+		text-align: center;
+		border-bottom: 1px solid #8eb541;
+		width: 100%;
+		background: #85a93c;
 	}
 	#main header {
 		position: fixed;
 		top: 0;
 		left: 0;
 		width: 100%;
-		height: 8vh;
-		background: #97be49;
+		height: 10vh;
 		z-index: 99999999;
-		box-shadow: 0 3px 10px rgba(0,0,0,0.5);
 	}
 	#main header .pull {
 		width: 100%;
+		height: 10vh;
 		display: flex;
 		flex-flow: row nowrap;
 		align-content: center;
+		align-items: center;
 		justify-content: space-between;
+		
+		
+		box-shadow: 0 5px 7px rgba(0,0,0,0.5);
+		background: #97be49;
 	}
 	#main header .pull h2 {
 		font-family: 'governorregular';
@@ -641,12 +715,13 @@ footer {
 		padding: 0;
 		margin-left: 30px;
 		width: auto;
-		font-size: 1em;
+		font-size: .9em;
 		line-height: 1em;
 	}
 	#main header .pull a {
 		font-family: 'ElegantIcons';
 		color: white;
+		margin: 0;
 		margin-right: 30px;
 		font-size: 1em;
 	}
@@ -654,8 +729,9 @@ footer {
 		display: none;
 	}
 	#main h2 {
-		margin-top: 200px;
-		font-size: 1em;
+		width: 90%;
+		margin-top: 140px;
+		font-size: .95em;
 		padding: 10px 0;
 	}
 	#main .botones {
@@ -665,26 +741,34 @@ footer {
 	}
 	#main .botones a {
 		margin-bottom: 10px;
-		width: 50%;
-	}
-	#alimentacion header {
-		height: 15vh;
-	}
-	#alimentacion .carrousel_container {
-		height: 76vh;
-	}
-	#alimentacion header h2 {
-		font-size: 1em;
-	}
-	#alimentacion header h3 {
-		font-size: .8em;
 		width: 80%;
 	}
-	.slick-slide img {
-		width: 200px;
+	#alimentacion {
 		height: auto;
 	}
-	#alimentacion footer nav {
+	#alimentacion header {
+		height: auto;
+		padding: 10px 0;
+	}
+	#alimentacion .carrousel_container {
+		height: auto;
+		
+	}
+	#alimentacion header h2 {
+		font-size: .9em;
+		line-height: 1.1em;
+		text-align: center;
+		margin-bottom: 8px;
+	}
+	#alimentacion header h3 {
+		font-size: .7em;
+		width: 90%;
+	}
+	.slick-slide img {
+		width: 210px;
+		height: auto;
+	}
+	#alimentacion footer, #alimentacion footer nav {
 		display: none;
 	}
 	#reciclaje header {
@@ -709,20 +793,66 @@ footer {
 		padding-left: 70px;
 		width: 75%;
 	}
+	#faq {
+		flex-flow: column nowrap;
+		justify-content: center;
+	}
+	#faq span {
+		display: none;
+	}
+	#faq .column {
+		width: 100%;
+		padding: 20px 10px;
+	}
+	#faq .column h2 {
+		font-size: 1.5em;
+		padding: 0;
+		padding-bottom: 10px;
+	}
+	#faq .column ol, #faq .column dl {
+		margin-left: 15px;
+	}
+	#faq .column ol li {
+		font-family: 'roboto_slabthin';
+	}
+	 #faq .column dl dt, #faq .column dl dd {
+	 	font-family: 'roboto_slabregular';
+	 }
+	#faq .column:first-child {
+		background: #97be49;
+	}
+	#faq .column:first-child h2 {
+		color: white;
+	}
+	#faq .column:first-child ol {
+		color: white;
+	}
 	#footer .about {
-		height: 65vh;
+		height: auto;
+		padding: 20px 0;
 	}
 	#footer .about h2 {
-		font-size: 3em;
+		font-size: 1.8em;
+		margin-bottom: 10px;
 	}
 	#footer .about h3 {
 		width: 90%;
 		text-align: center;
 		line-height: 1.2em;
 		font-size: 1.2em;
+		margin-bottom: 10px;
+	}
+	#footer .about p {
+		font-size: .9em;
+		letter-spacing: .16em;
+		margin-bottom: 10px;
+	}
+	#footer .about a {
+		font-size: 1.1em;
 	}
 	#footer .contacto {
-		height: 35vh;
+		height: auto;
+		padding: 20px 0;
 		flex-flow: column nowrap;
 	}
 	#footer .contacto .menu {
@@ -738,8 +868,13 @@ footer {
 	#footer .contacto form label {
 		font-size: 1.2em;
 		width: 100%;
+		margin-bottom: 20px;
 	}
 	#footer .contacto form input {
-
+		margin-bottom: 5px;
+		padding: 5px 5px;
+	}
+	#footer .contacto form #button {
+		font-size: .8em;
 	}
 }
