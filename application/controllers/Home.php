@@ -29,13 +29,13 @@ class Home extends Frontend_Controller {
 
     function texto_tecnica() {
         $id = $this->input->get('id');
-        $tecnica = $this->reciclaje_m->get(['id'=>$id],TRUE);
+        $tecnica = $this->reciclaje_m->get(['id' => $id], TRUE);
         echo $tecnica->texto;
     }
 
     function suscribir() {
         $data = $this->contacto_m->array_from_post(array('nombre', 'apellido', 'email'));
-        $contacto = $this->contacto_m->get(['email'=>$data['email']]);
+        $contacto = $this->contacto_m->get(['email' => $data['email']]);
         if (count($contacto)) {
             // ya existe
             $return = array('msg' => 'Usted ya esta suscripto', 'options' => '<option value="S">Semanalmente</option><option value="M">Mensualmente</option><option value="N">Dejar de seguir</option>');
@@ -43,6 +43,14 @@ class Home extends Frontend_Controller {
             $data['activo'] = 0;
             $data['periodicidad'] = 'S';
             $this->contacto_m->save($data, NULL);
+
+            $to = $data['email'];
+            $from = "info@vqv.com.uy";
+            $headers = "From: " . $from . "\r\n";
+            $subject = "Suscripción Exitosa";
+            $body = "Gracias por suscribirte a nuestra página: \r\n";
+
+            mail($to, $subject, $body, $headers, "-f " . $from);           
             $return = array('msg' => 'Gracias por suscribirse', 'options' => '<option value="S">Semanalmente</option><option value="M">Mensualmente</option>');
         }
         echo json_encode($return);
@@ -56,7 +64,7 @@ class Home extends Frontend_Controller {
         } else {
             $data['periodicidad'] = $option;
         }
-        $this->contacto_m->save($data, ['email'=>$email]);
+        $this->contacto_m->save($data, ['email' => $email]);
     }
 
     function getQuestions() {
@@ -69,7 +77,8 @@ class Home extends Frontend_Controller {
         $this->data['styles'][] = '<link rel="stylesheet" type="text/css" href="' . site_url('css/fonts.css') . '">';
         $this->data['styles'][] = '<link rel="stylesheet" type="text/css" href="' . site_url('css/faq.css') . '">';
         $this->data['questions'] = $this->question_m->get();
-          $this->data['subview'] = 'frontend/faq';
+        $this->data['subview'] = 'frontend/faq';
         $this->load->view('frontend/_layout_main', $this->data);
     }
+
 }
