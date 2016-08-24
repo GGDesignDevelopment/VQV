@@ -18,6 +18,7 @@ class Home extends Frontend_Controller {
         $this->data['scripts'][] = '<script type="text/javascript" src="' . site_url('js/prefix.js') . '"></script>';
         $this->data['scripts'][] = '<script src="https://code.jquery.com/jquery-2.2.4.min.js"   integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="   crossorigin="anonymous"></script>';
         $this->data['scripts'][] = '<script type="text/javascript" src="' . site_url('js/slick.min.js') . '"></script>';
+        $this->data['scripts'][] = '<script type="text/javascript" src="' . site_url('js/mustache.js') . '"></script>';
         $this->data['scripts'][] = '<script type="text/javascript" src="' . site_url('js/funcionalidadIndex.js') . '"></script>';
 
         $this->data['alimentacion'] = $this->alimentacion_m->get();
@@ -46,11 +47,17 @@ class Home extends Frontend_Controller {
 
             $to = $data['email'];
             $from = "info@vqv.com.uy";
-            $headers = "From: " . $from . "\r\n";
-            $subject = "Suscripción Exitosa";
-            $body = "Gracias por suscribirte a nuestra página: \r\n";
+            $headers = "De: " . $from . "\r\n";
+            $subject = "Suscripción exitosa";
+            $body = "<h1>Gracias por suscribirte a nuestro boletin informativo</h1>
+                     <p> Próximamente recibirás toda la información necesaria para empezar a disfrutar los beneficios de la comunidad VQV.</p>
+                     <h4>Atte. El equipo de VQV</h4>";
 
-            mail($to, $subject, $body, $headers, "-f " . $from);           
+            try {
+                mail($to, $subject, $body, $headers, "-f " . $from) ;    
+            } finally  {
+
+            }
             $return = array('msg' => 'Gracias por suscribirse', 'options' => '<option value="S">Semanalmente</option><option value="M">Mensualmente</option>');
         }
         echo json_encode($return);
