@@ -63,7 +63,14 @@ $(function () {
 	})
 
 	$link.on('click', function(){
-		$('#faq').slideToggle();
+		var $faq = $('#faq');
+		var estado = $faq.css('display');
+		if ( estado == 'none') {
+			$faq.slideToggle();
+			$faq.css('display', 'flex');
+		} else {
+			$faq.slideToggle();
+		}
 	})
 	
 	$(".hexIn").click(function () {
