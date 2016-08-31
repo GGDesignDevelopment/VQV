@@ -37,13 +37,15 @@ class Carga extends Admin_Controller {
             $x = 2;
             while ($x <= $lastrow) {
                 $producto = array();
-                $producto['prodnombre'] = $sheet['cells'][$x][1];
-                $producto['proddes'] = $sheet['cells'][$x][2];
+                $producto['prodnombre'] = utf8_encode($sheet['cells'][$x][1]);
+                $producto['proddes'] = utf8_encode($sheet['cells'][$x][2]);
                 $producto['catid'] = $IdCategoria;
-                $producto['produnidad'] = $sheet['cells'][$x][3];
+                $producto['produnidad'] = strtolower($sheet['cells'][$x][3]);
+                $producto['prodgranel'] = ($sheet['cells'][$x][3] == 'U' ? '' :'1' );
                 $producto['prodpresentacion'] = $sheet['cells'][$x][4];
                 $producto['prodprecio'] = $sheet['cells'][$x][5];
                 $IdProducto = $this->producto_m->save($producto, null);
+
                 $x++;
             }
         }
