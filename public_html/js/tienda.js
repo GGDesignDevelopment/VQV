@@ -327,21 +327,25 @@ var usuario = (function(){
 var productos = function() {
 
 	// Cache DOM
-	var $col1 = $('col1');
-	var $col2 = $('col2');
-	var $col3 = $('col3');
+	var $col1 = $('#col1');
+	var $col2 = $('#col2');
+	var $col3 = $('#col3');
 	var $carrito = usuario.carrito;
-	var $boton = $('#filtro a'); 
+	var $botonera = $('#filtro'); 
 	var $producto = $('.productos');
 	var prodTemplate = $('#prodTemplate').html();
 	var itemTemplate = $('#carritoItem').html();
 
 	// Bind Events 
-	$col1.on('submit', '.agregar', _addItem);
-	$col2.on('submit', '.agregar', _addItem);
-	$col3.on('submit', '.agregar', _addItem);
-	$boton.on('click', _render($(this).attr('[data-categoria]')));
+	$col1.on('submit', '.addItem', _addItem);
+	$col2.on('submit', '.addItem', _addItem);
+	$col3.on('submit', '.addItem', _addItem);
+	$botonera.on('click', '.filter', _render);
 	$producto.on('click', '.expandir', _expandirItem);
+	$carrito.on('change', '#dir', _modifyAddress);
+	$carrito.on('change', '.quantity', _modifyItem);
+	$carrito.on('click', '.remove', _deleteItem);
+
 
 
 	_render(0);
@@ -355,24 +359,24 @@ var productos = function() {
 	}
 
 	function _addItem(e) {
-		e.preventDefault();
 		$.ajax({
 			type: 'POST',
-			url: 'cart/additem',
+			url: 'cart/addItem',
 			data: $(this).serialize(),
 			dataType: 'json',
 			success: function(){
-				alert('success');
 				usuario.render();
 				_clearVal($(this).attr('id'));
-			}
+			},
 		});
+		e.preventDefault();
 	}
 
-	function _render(categoria) {
+	function _render() {
 		$col1.empty();
 		$col2.empty();
 		$col3.empty();
+		var categoria = $(this).attr('data-categoria');
 		$.ajax({
 			type: 'GET',
 			url: 'tienda/getProducts?catid='+categoria,
@@ -392,6 +396,40 @@ var productos = function() {
 		var id = $(this).attr('data-producto');
 		$('#'+id).slideToggle();
 		$(this).toggleClass("fondo");
+	}
+
+	function _modifyAddress() {
+		$.ajax({
+			type: 'POST',
+			url: 'cart/updateAddress',
+			data: $(this).serialize(),
+			dataType: 'json',
+			success: function(){
+				// Funcion tooltip
+			}
+		})
+	}
+
+	function _modifyItem() {
+		$.ajax({
+			type: 'GET',
+			url: 'cart/modifyitem/'+prodId+'/'+quantity,
+			success: function() {
+				alert('exito');
+			}
+		})
+	}
+
+	function _deleteItem() {
+		alert('click');
+		var id = $(this).attr('id');
+		$.ajax({
+			type: 'POST',
+			url: 'cart/removeItem/'+id,
+			success: function() {
+				usuario.render();
+			}
+		})
 	}
 
 }();

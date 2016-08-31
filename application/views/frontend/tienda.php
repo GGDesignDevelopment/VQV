@@ -51,13 +51,13 @@
 		<a href="index.html">vqv</a>
 		<h2>{{name}}</h2>
 		<form method="POST" action="cart/confirm">
-			<input type="text" name="address" value="{{address}}" placeholder="Direccion">
+			<input id="dir" type="text" name="address" value="{{address}}" placeholder="Direccion">
 			{{#items}}
 			<fieldset>
-				<legend><a href="cart/removeItem/{{prodid}}" class="remove">&#xe019;</a></legend>
+				<legend><a href="#" id="{{prodid}}" class="remove">&#xe019;</a></legend>
 				<p>{{prodnombre}}</p>
 				<div>
-						<input type="number" name="cantidad" placeholder="{{quantity}}">
+						<input type="number" class="quantity" name="cantidad" data-id="{{prodid}}" placeholder="{{quantity}}">
 						<span>${{amount}}</span>
 				</div>
 			</fieldset>
@@ -81,7 +81,7 @@
 	<div class="prod">
 		<img src="img/{{prodimagen}}" title="{{prodnombre}}">
 		<a href="#" class="expandir" data-producto="{{prodid}}">{{prodnombre}}<span>&#x33;</span></a>
-		<form id="{{prodid}}" method="POST" action="" class="oculto">
+		<form id="{{prodid}}" method="POST" class="oculto addItem">
 			<div>
 				{{#granel}}
 					<select name="envase">
@@ -96,7 +96,7 @@
 			</div>
 			<p>{{proddes}}</p>
 			<input type="hidden" name="productid" value="{{prodid}}" >
-			<input type="submit" class="agregar" name="prodid" value="Agregar al" data-icon="&#xe015;">
+			<input type="submit" value="Agregar al" data-icon="&#xe015;">
 		</form>
 	</div>
 </script>
