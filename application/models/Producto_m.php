@@ -37,6 +37,7 @@ class Producto_M extends MY_Model {
         $producto->produnidad = '';
         $producto->prodpresentacion = 0;
         $producto->prodprecio = 0;
+        $producto->prodgranel = '';
         return $producto;
     }
 

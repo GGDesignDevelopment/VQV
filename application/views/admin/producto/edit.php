@@ -34,6 +34,10 @@
             <div class="col-md-10"><?php echo form_input('prodprecio', $producto->prodprecio, 'class="form-control"'); ?></div>		
         </div>
         <div class="form-group">
+            <label class="control-label col-md-2">¿Granel?</label>
+            <div class="col-md-10"><?php echo form_checkbox('prodgranel', '1', ($producto->prodgranel == '1')); ?></div>		
+        </div>        
+        <div class="form-group">
             <label class="control-label col-md-2">Imagen</label>
             <div class="col-md-10"><input id="file" type="file" name="file" class="file" data-preview-file-type="any" data-upload-url="#"></div>		
         </div>        
