@@ -48,10 +48,13 @@ class Home extends Frontend_Controller {
             $to = $data['email'];
             $from = "info@vqv.com.uy";
             $headers = "De: " . $from . "\r\n";
+            $headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
             $subject = "Suscripción exitosa";
-            $body = "<h1>Gracias por suscribirte a nuestro boletin informativo</h1>
+            $body = "<html><body>";
+            $body .= "<h1>Gracias por suscribirte a nuestro boletin informativo</h1>
                      <p> Próximamente recibirás toda la información necesaria para empezar a disfrutar los beneficios de la comunidad VQV.</p>
                      <h4>Atte. El equipo de VQV</h4>";
+            $body .= "</body></html>";
 
             try {
                 mail($to, $subject, $body, $headers, "-f " . $from) ;    

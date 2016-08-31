@@ -21,9 +21,11 @@ $(function () {
 	var $menu = $('#main header nav');
 	var $click = $('.mobile');
 	$click.on('click', function(e){
-		e.preventDefault();
-		$menu.slideToggle();
-		$menu.css('display', 'flex');
+		if($(window).width() <= 768){
+			e.preventDefault();
+			$menu.slideToggle();
+			$menu.css('display', 'flex');
+		}
 	});
 	$('.pull').click(function(e){
 		e.preventDefault();
@@ -84,6 +86,8 @@ $(function () {
 		xmlhttp.send();
 	});
 });
+
+
 
 $(function(){
   $('.carousel').slick({

@@ -1,4 +1,18 @@
 <div class="container">
+	<!-- <section id="responsive">
+		<nav>
+			<a class="mobile" href="#alimentacion">alimentacion</a>
+			<!-- <a href="#reciclaje">reciclaje</a> -->
+			<a class="mobile faq" href="#faq">preguntas frecuentes</a>
+			<a class="mobile" href="#footer">quienes somos</a>
+			<a class="mobile" href="#" >tienda on line</a>
+			<a class="mobile" href="#footer">contacto</a>
+		</nav>	
+		<div>
+			<h2>Verde que te quiero verde</h2>
+			<a href="#">&#x61;</a>
+		</div>
+	</section> -->
 	<section id="main">
 		<header>
 			<div class="logo">
@@ -7,8 +21,9 @@
 			<nav>
 				<a class="mobile" href="#alimentacion">alimentacion</a>
 				<!-- <a href="#reciclaje">reciclaje</a> -->
+				<a class="mobile faq" href="#faq">preguntas frecuentes</a>
 				<a class="mobile" href="#footer">quienes somos</a>
-				<a class="mobile" href="<?php echo site_url('Tienda')?>" target="blank">tienda on line</a>
+				<a class="mobile" href="#" >tienda on line</a>
 				<a class="mobile" href="#footer">contacto</a>
 			</nav>	
 			<div class="pull">
@@ -21,13 +36,13 @@
 		<h2><?php echo $home->txtWelcome; ?></h2>
 
 		<div class="botones">
-			<a href="<?php echo site_url('Tienda')?>" target="blank">Tienda Virtual</a>
+			<a href="#">Tienda Virtual</a>
 			<a href="#footer">Conocenos</a>
 		</div>
 
 		<div class="social">
-			<a href="<?php echo $home->linkFacebook; ?>">&#xe0aa;</a>
-			<a href="<?php echo $home->linkInstagram; ?>">&#xe0b1;</a>
+			<a href="<?php echo $home->linkFacebook; ?>" target="blank">&#xe0aa;</a>
+			<a href="<?php echo $home->linkInstagram; ?>" target="blank">&#xe0b1;</a>
 		</div>
 
 	</section>
@@ -140,14 +155,13 @@
 			</div>
 			<div class="info">
 				<p>
-					Lorem Ipsum 2313<br/>
+					Teléfono: (+598) 2204 7844 <br/>
 					Montevideo, Uruguay<br/>
-					598 123 123 123<br/>
-					lipsum@vqv.com.uy
+					info@vqv.com.uy
 				</p>
 				<div class="social">
-					<a href="<?php echo $home->linkFacebook; ?>">&#xe0aa;</a>
-					<a href="<?php echo $home->linkInstagram; ?>">&#xe0b1;</a>
+					<a href="<?php echo $home->linkFacebook; ?>" target="blank">&#xe0aa;</a>
+					<a href="<?php echo $home->linkInstagram; ?>" target="blank">&#xe0b1;</a>
 				</div>
 			</div>
 			<form id="formContacto" method="post" action="home/suscribir">

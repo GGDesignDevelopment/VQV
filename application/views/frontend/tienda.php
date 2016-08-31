@@ -1,14 +1,14 @@
 <div class="contenedor">
 		<header>
-				<div class="titulo">
-						<h1>Tienda OnLine</h1>
-						<h2>Verde que te Quiero Verde</h2>
-				</div>
-				<nav>
-						<a href="#">&#xe0aa;</a>
-						<a href="#">&#xe0b1;</a>
-						<a href="#" class="boton" id="login"></a>
-				</nav>
+			<div class="titulo">
+				<h1>Tienda OnLine</h1>
+				<h2>Verde que te Quiero Verde</h2>
+			</div>
+			<nav>
+				<a href="#">&#xe0aa;</a>
+				<a href="#">&#xe0b1;</a>
+				<a href="#" class="boton" id="login"></a>
+			</nav>
 		</header>
 		<div class="contenido">
 				<nav id="filtro">
@@ -27,8 +27,9 @@
 </div>
 		<!-- Revisar pa' dinamico  -->
 <div id="carrito">
-	<a href="index.html">vqv</a>
 	<script id="loginForm" type="text/template">
+		<a href="index.html">vqv</a>
+		<a id="ocultar" href="#">Ocultar carrito.</a>
 		<form id="ingresar" method="POST" action="#" name="iniciar">
 			<h2>Iniciar sesion</h2>
 			<input type="email" name="email" placeholder="email" required>
@@ -46,9 +47,11 @@
 			<input type="text" name="address" placeholder="Direccion">
 			<input type="submit" value="Registrarse">
 		</form>
+		<a id="ocultar" href="#">Ocultar carrito.</a>
 	</script>
 	<script id="carritoTemplate" type="text/template">
 		<a href="index.html">vqv</a>
+		<a id="ocultar" href="#">Ocultar carrito.</a>
 		<h2>{{name}}</h2>
 		<form method="POST" action="cart/confirm">
 			<input id="dir" type="text" name="address" value="{{address}}" placeholder="Direccion">
@@ -98,5 +101,38 @@
 			<input type="hidden" name="productid" value="{{prodid}}" >
 			<input type="submit" value="Agregar al" data-icon="&#xe015;">
 		</form>
+	</div>
+</script>
+<script type="text/template" id="prodTemplateMovil">
+	<div class="prod">
+		<div id="leftCon">
+			<img src="img/{{prodimagen}}" title="{{prodnombre}}">
+		</div>
+		<div id="rightCon">
+			<form id="{{prodid}}" method="POST" class="addItem">
+				<h2>{{prodnombre}}</h2>
+				<div>
+					<input type="number" name="quantity" placeholder="Cantidad.">
+					<p>/ {{produnidad}}</p>
+				</div>
+				{{#granel}}
+					<select name="envase">
+						<option selected disabled>Tipo de envase</option>
+						<option value="1">Bolsa de papel</option>
+						<option value="2">Envase de vidrio nuevo</option>
+						<option value="3">Intercambio envase</option>
+					</select>
+				{{/granel}}
+				<input type="hidden" name="productid" value="{{prodid}}" >
+				<div class="button">
+					<input type="submit" value="Agregar al" data-icon="&#xe015;">
+					<span>&#xe015;</span>
+				</div>
+			</form>
+		</div>
+		<span>
+			<h3>Descripcion</h3>
+			<p>{{proddes}}</p>
+		</span>
 	</div>
 </script>

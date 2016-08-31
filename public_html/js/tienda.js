@@ -87,22 +87,22 @@
 		// });
 
 // Funcion para mostrar el carrito de compras
-var $boton_carrito = $('#login');
-var $contenedor = $('.contenedor');
-var $carrito = $('#carrito');
+// var $boton_carrito = $('#login');
+// var $contenedor = $('.contenedor');
+// var $carrito = $('#carrito');
 
 
-$boton_carrito.on('click', function() {
-		var estado = $carrito.css('display');
-		if ( estado == 'none') {
-				$contenedor.animate({width: '80%'}, function() {
-						$carrito.css('display', 'flex');
-				})
-		} else {
-				$carrito.css('display', 'none');
-				$contenedor.animate({width: '100%'});
-		}
-});
+// $boton_carrito.on('click', function() {
+// 		var estado = $carrito.css('display');
+// 		if ( estado == 'none') {
+// 				$contenedor.animate({width: '80%'}, function() {
+// 						$carrito.css('display', 'flex');
+// 				})
+// 		} else {
+// 				$carrito.css('display', 'none');
+// 				$contenedor.animate({width: '100%'});
+// 		}
+// });
 
 
 
@@ -222,18 +222,21 @@ var usuario = (function(){
 	// Cache DOM 
 	var $boton = $('#login');
 	var $carrito = $('#carrito');
+	var $contenedor = $('.contenedor');
 	// Contenido html boton principal
 	var islog = 'Mi Carrito <span>&#xe015;</span>';
 	var notlog = 'Iniciar / Registrarse';
 	// Templates MUSTACHE para render 
 	var loginValue = $carrito.find('#loginForm').html();
-	var carritoTemplate = $carrito.find('#carritoTemplate').html(); 
+	var carritoTemplate = $carrito.find('#carritoTemplate').html();
+
 
 	// Bind Events
 	$carrito.on('submit', '#ingresar', _login);
 	$carrito.on('submit', '#registrarse', _register);
 	$carrito.on('click', '#logout', _logout);
 	$carrito.on('submit', '#confirmar', _confirmar);
+	$boton.on('click', _showCart);
 
 
 	function render() {
@@ -317,6 +320,25 @@ var usuario = (function(){
 		})
 		e.preventDefault();
 	}
+	function _showCart() {
+		var estado = $carrito.css('display');
+		if($(window).width() <= 768) {
+			if (estado=='none') {
+				$contenedor.css('display', 'none');
+				$carrito.animate({width: '100%;'});
+				$carrito.css('display', 'flex');
+			}
+		} else {
+			if ( estado == 'none') {
+				$contenedor.animate({width: '80%'}, function() {
+					$carrito.css('display', 'flex');
+				})
+			} else {
+				$carrito.css('display', 'none');
+				$contenedor.animate({width: '100%'});
+			}
+		}
+	}
 
 	return {
 		render: render,
@@ -330,13 +352,16 @@ var productos = function() {
 	var $col1 = $('#col1');
 	var $col2 = $('#col2');
 	var $col3 = $('#col3');
+	var $productos = $('.productos');
 	var $carrito = usuario.carrito;
 	var $botonera = $('#filtro'); 
 	var $producto = $('.productos');
 	var prodTemplate = $('#prodTemplate').html();
+	var prodTemplateMovil = $('#prodTemplateMovil').html();
 	var itemTemplate = $('#carritoItem').html();
 
 	// Bind Events 
+	$productos.on('click', '.prod', _expandirItemMovil);
 	$col1.on('submit', '.addItem', _addItem);
 	$col2.on('submit', '.addItem', _addItem);
 	$col3.on('submit', '.addItem', _addItem);
@@ -384,7 +409,11 @@ var productos = function() {
 			success: function(json) {
 				var i = 1;
 				$.each(json, function(indice, obj) {
-					$('#col'+i).append(Mustache.render(prodTemplate, obj));
+					if($(window).width() <= 768) {
+						$('#col'+i).append(Mustache.render(prodTemplateMovil, obj));
+					} else {
+						$('#col'+i).append(Mustache.render(prodTemplate, obj));
+					}
 					i = (i == 3 ? 1 : i + 1);
 				});
 			}
@@ -396,6 +425,10 @@ var productos = function() {
 		var id = $(this).attr('data-producto');
 		$('#'+id).slideToggle();
 		$(this).toggleClass("fondo");
+	}
+
+	function _expandirItemMovil() {
+		var $span = $(this)
 	}
 
 	function _modifyAddress() {
