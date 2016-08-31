@@ -27,12 +27,12 @@ class Tienda extends Frontend_Controller {
         $this->data['scripts'][] = '<script type="text/javascript" src="' . site_url('js/tienda.js') . '"></script>'; 
         
         $this->data['categorias'] = $this->categoria_m->get();
-        $productos = $this->producto_m->get();
-        $i = 0;
-        foreach ($productos as $producto) {
-            $this->data['productos'][$i][] = $producto;
-            $i = ($i == 2 ? 0 : $i + 1);
-        }
+//        $productos = $this->producto_m->get();
+//        $i = 0;
+//        foreach ($productos as $producto) {
+//            $this->data['productos'][$i][] = $producto;
+//            $i = ($i == 2 ? 0 : $i + 1);
+//        }
         $this->data['subview'] = 'frontend/tienda';
         $this->data['dir'] = $this->imageDir;
         $this->load->view('frontend/_layout_main', $this->data);
