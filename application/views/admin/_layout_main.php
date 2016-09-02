@@ -21,6 +21,7 @@
             <li><?php echo anchor('admin/reciclaje','Técnicas Reciclaje');?></li>
             <li><?php echo anchor('admin/question','Preguntas Frecuentes');?></li>
             <li><?php echo anchor('admin/contacto','Contactos');?></li>
+            <li><?php echo anchor('admin/sale','Ventas');?></li>
            </ul>
           <ul class="nav navbar-nav navbar-right">
             <li><?php echo mailto($this->session->userdata('email'),'<i class="glyphicon glyphicon-user"></i> ' . $this->session->userdata('name')); ?></li>

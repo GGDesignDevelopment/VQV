@@ -9,12 +9,16 @@ function btn_delete($uri) {
 }
 
 function get_unidades($u = null) {
-    $unidades = array('g' => 'Gramo', 'k' => 'Kilo', 'l' => 'Litro', 'm' => 'Mililitro', 'u' => 'Unidad');
+    $unidades = array('g' => 'Gramo', 'k' => 'Kilo', 'l' => 'Litro', 'm' => 'Mililitro', 'u' => 'Unidad', 'c' => 'C. Cubicos');
     if ($u) {
         return $unidades[$u];
     } else {
         return $unidades;
     }
+}
+function get_status($s = null) {
+    $status = array('P'=>'Pendiente', 'C'=>'Coodinado', 'E'=>'Entregado');
+    return ($s) ? $status[$s] : $status;
 }
 
 function getCopy($objeto) {
