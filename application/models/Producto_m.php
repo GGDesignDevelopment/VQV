@@ -38,6 +38,7 @@ class Producto_M extends MY_Model {
         $producto->prodpresentacion = 0;
         $producto->prodprecio = 0;
         $producto->prodgranel = '';
+        $producto->prodextranjero = '';
         return $producto;
     }
 

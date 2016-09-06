@@ -36,6 +36,10 @@
         <div class="form-group">
             <label class="control-label col-md-2">¿Granel?</label>
             <div class="col-md-10"><?php echo form_checkbox('prodgranel', '1', ($producto->prodgranel == '1')); ?></div>		
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-2">¿Extranjero?</label>
+            <div class="col-md-10"><?php echo form_checkbox('prodextranjero', '1', ($producto->prodextranjero == '1')); ?></div>		
         </div>        
         <div class="form-group">
             <label class="control-label col-md-2">Imagen</label>
