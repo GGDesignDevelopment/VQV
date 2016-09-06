@@ -104,12 +104,15 @@ class Cart extends Frontend_Controller {
     function confirm() {
         $cart = $this->cart_m->get(['email' => $this->email], false);
         $items = $this->cartitem_m->getItems($this->email);
+        $fp = $this->input->post('formapago');
+        
         if (count($items)) {
             $data['email'] = $cart->email;
             $data['address'] = $cart->address;
             $data['createDate'] = date('y-m-d H:i:s');
 //        $data['shippingDate'] = '';
             $data['status'] = 'P';
+            $data['payment'] = $fp;
             $id = $this->sale_m->save($data, NULL);
             unset($data);
 
@@ -120,6 +123,23 @@ class Cart extends Frontend_Controller {
                 $data['productprice'] = $item->prodprecio;
                 $this->saleitem_m->save($data, NULL);
             }
+            
+            $to = $this->email;
+            $from = "info@vqv.com.uy";
+            $headers = "De: " . $from . "\r\n";
+            $headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
+            $subject = "Compra exitosa, #" . $id;
+            $body = "<html><body>";
+            $body .= "<h1>Gracias por preferirnos</h1>
+                     <p>En breve nos comunicaremos con usted para coordinar la entrega.</p>
+                     <h4>Atte. El equipo de VQV</h4>";
+            $body .= "</body></html>";
+
+            try {
+                mail($to, $subject, $body, $headers, "-f " . $from) ;    
+            } finally  {
+
+            }            
             $this->cancel();
         }
     }

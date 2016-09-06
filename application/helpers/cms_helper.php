@@ -21,6 +21,11 @@ function get_status($s = null) {
     return ($s) ? $status[$s] : $status;
 }
 
+function get_fp($fp = null) {
+    $forma = array(1=>'Contra Entrega', 2=>'Giro');
+    return ($fp) ? $forma[$fp] : $forma;
+}
+
 function getCopy($objeto) {
     if ($objeto == NULL) {
         return null;

@@ -3,7 +3,7 @@
     <label class="control-label col-md-2">Categoria</label>
     <input class="col-md-10 form-control" type="text" onkeyup="showResults(this.value)">
 </div>-->
-<?php echo anchor('admin/reciclaje/edit','<i class="glyphicon glyphicon-plus"></i> Agregar Familia');?>
+<?php echo anchor('admin/reciclaje/edit','<i class="glyphicon glyphicon-plus"></i> Agregar Técnica');?>
 <table class="table table-striped">
     <thead>
         <tr>

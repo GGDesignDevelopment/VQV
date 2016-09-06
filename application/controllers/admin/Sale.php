@@ -16,10 +16,12 @@ class Sale extends Admin_Controller {
 
     function edit($id = NULL) {
         if ($id) {
-        $this->data['scripts'][] = '<script type="text/javascript" src="' . site_url('js/admin/sale.js') . '"></script>';            $this->data['sale'] = $this->sale_m->get(['id' => $id], TRUE);
+            $this->data['scripts'][] = '<script type="text/javascript" src="' . site_url('js/admin/sale.js') . '"></script>';            
+            $this->data['sale'] = $this->sale_m->get(['id' => $id], TRUE);
             count($this->data['sale']) || $this->data['errores'][] = 'Venta no encontrada';
 //            $where = ['id' => $id];   
             $this->data['estados'] = get_status();
+            $this->data['productos'] = $this->saleitem_m->get(['id' => $id]);
             $this->data['subview'] = 'admin/sale/edit';
             $this->load->view('admin/_layout_main', $this->data);
         } else {
