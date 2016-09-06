@@ -2,7 +2,7 @@
 		<header>
 			<div class="titulo">
 				<h1>Tienda OnLine</h1>
-				<h2>Verde que te Quiero Verde</h2>
+				<h2>Verde que te<br> Quiero Verde</h2>
 			</div>
 			<nav>
 				<a href="#">&#xe0aa;</a>
@@ -19,9 +19,9 @@
 						<?php endif; ?> 
 				</nav>
 				<div class="productos">
-						<div id="col1" class="column"></div>
+						<!-- <div id="col1" class="column"></div>
 						<div id="col2" class="column"></div>   
-						<div id="col3" class="column"></div>           
+						<div id="col3" class="column"></div>  -->          
 				</div>
 		</div>
 </div>
@@ -56,55 +56,51 @@
 		<form method="POST" action="cart/confirm">
 			<input id="dir" type="text" name="address" value="{{address}}" placeholder="Direccion">
 			{{#items}}
-			<fieldset>
-				<legend><a href="#" id="{{prodid}}" class="remove">&#xe019;</a></legend>
+			<div>
 				<p>{{prodnombre}}</p>
-				<div>
-						<input type="number" class="quantity" name="cantidad" data-id="{{prodid}}" placeholder="{{quantity}}">
-						<span>${{amount}}</span>
-				</div>
-			</fieldset>
+				<input id="{{prodid}}" type="number" name="cantidad" placeholder="{{quantity}}{{produnidad}}">
+				<span>${{amount}}</span>
+				<a href="cart/removeItem/{{prodid}}" class="remove" id="{{prodid}}">&#xe019;</a>
+			</div>
 			{{/items}}
 			<input type="submit" id="confirmar" name="confirmar" value="Confirmar Compra">
 		</form>
 		<a href="#" id="logout">Cerrar sesion</a>
 	</script>
 	<script id="carritoItem" type="text/template">
-		<fieldset>
-			<legend><a href="cart/removeItem/{{prodid}}" class="remove">&#xe019;</a></legend>
+		<div>
 			<p>{{prodnombre}}</p>
-			<div>
-				<input type="number" name="cantidad" placeholder="{{quantity}}">
-				<span>${{amount}}</span>
-			</div>
-		</fieldset>
+			<input id="{{prodid}}" type="number" name="cantidad" placeholder="{{quantity}}">
+			<span>{{produnidad}} ${{amount}}</span>
+			<a href="cart/removeItem/{{prodid}}" class="remove">&#xe019;</a>
+		</div>
 	</script>	
 </div>
 <script type="text/template" id="prodTemplate">
 	<div class="prod">
-		<img src="img/{{prodimagen}}" title="{{prodnombre}}">
-		<a href="#" class="expandir" data-producto="{{prodid}}">{{prodnombre}}<span>&#x33;</span></a>
-		<form id="{{prodid}}" method="POST" class="oculto addItem">
-			<div>
-				{{#granel}}
-					<select name="envase">
-						<option selected disabled>Tipo de envase</option>
-						<option value="1">Bolsa de papel</option>
-						<option value="2">Envase de vidrio nuevo</option>
-						<option value="3">Intercambio envase</option>
-					</select>
-				{{/granel}}
-				<input type="number" name="quantity" placeholder="cantidad">
-				<span>{{produnidad}}</span>
-			</div>
+		<div id="top" style="background-image: linear-gradient(rgba(126,126,126,.15),rgba(126,126,126,.15)),url(img/{{prodimagen}})">
+			<a href="#" class="expandir" data-producto="{{prodid}}">{{prodnombre}}</a>
 			<p>{{proddes}}</p>
+		</div>
+		
+		<form id="{{prodid}}" method="POST" class="oculto addItem">
+			<input type="number" class="cant" name="quantity" placeholder="{{prodpresentacion}}" value="{{prodpresentacion}}" step="{{prodpresentacion}}" min="{{prodpresentacion}}" data-presentacion="{{prodpresentacion}}" data-precio="{{prodprecio}}" data-id="{{prodid}}">
+			<span>{{produnidad}}</span>
+			{{#prodgranel}}
+				<select name="envase">
+					<option selected disabled>Tipo de envase</option>
+					<option value="1">Bolsa de papel</option>
+					<option value="2">Envase de vidrio nuevo</option>
+					<option value="3">Intercambio envase</option>
+				</select>
+			{{/prodgranel}}
 			<input type="hidden" name="productid" value="{{prodid}}" >
-			<input type="submit" value="Agregar al" data-icon="&#xe015;">
+			<input class="{{prodid}}" type="submit" value="$u. {{prodprecio}} - Agregar al carrito" >
 		</form>
 	</div>
 </script>
 <script type="text/template" id="prodTemplateMovil">
-	<div class="prod">
+	<div class="prod" data-id="{{prodid}}">
 		<div id="leftCon">
 			<img src="img/{{prodimagen}}" title="{{prodnombre}}">
 		</div>
@@ -112,17 +108,17 @@
 			<form id="{{prodid}}" method="POST" class="addItem">
 				<h2>{{prodnombre}}</h2>
 				<div>
-					<input type="number" name="quantity" placeholder="Cantidad.">
+					<input type="number" class="cant" name="quantity" placeholder="{{prodpresentacion}}" value="{{prodpresentacion}}" step="{{prodpresentacion}}" min="{{prodpresentacion}}" data-presentacion="{{prodpresentacion}}" data-precio="{{prodprecio}}" data-id="{{prodid}}">
 					<p>/ {{produnidad}}</p>
 				</div>
-				{{#granel}}
-					<select name="envase">
+				{{#prodgranel}}
+					<select name="envase" >
 						<option selected disabled>Tipo de envase</option>
 						<option value="1">Bolsa de papel</option>
 						<option value="2">Envase de vidrio nuevo</option>
 						<option value="3">Intercambio envase</option>
 					</select>
-				{{/granel}}
+				{{/prodgranel}}
 				<input type="hidden" name="productid" value="{{prodid}}" >
 				<div class="button">
 					<input type="submit" value="Agregar al" data-icon="&#xe015;">
@@ -130,7 +126,7 @@
 				</div>
 			</form>
 		</div>
-		<span>
+		<span class="{{prodid}}">
 			<h3>Descripcion</h3>
 			<p>{{proddes}}</p>
 		</span>
