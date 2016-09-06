@@ -16,7 +16,7 @@ class Cartitem_M extends MY_Model {
 //    }
 
     function getItems($email) {
-        $this->db->select('prodid, prodnombre, quantity, produnidad, (quantity * prodprecio / prodpresentacion) as amount, prodprecio');
+        $this->db->select('prodid, prodnombre, quantity, envase, produnidad, (quantity * prodprecio / prodpresentacion) as amount, prodprecio');
         $this->db->join('producto', 'prodid=productid', 'left');
         return parent::get(array('email' => $email), FALSE);
     }

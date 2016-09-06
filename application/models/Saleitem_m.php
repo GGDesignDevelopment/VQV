@@ -10,7 +10,7 @@ class Saleitem_M extends MY_Model {
     }
     
     function get ($where = NULL, $single = FALSE) {
-        $this->db->select('saleitem.*,producto.*,(quantity * productprice) as subtotal');
+        $this->db->select('saleitem.*,producto.*,(quantity * productprice / prodpresentacion) as subtotal');
         $this->db->join('producto', 'productid=prodid', 'left');
         return parent::get($where, false);        
     }

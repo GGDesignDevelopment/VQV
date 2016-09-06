@@ -106,12 +106,13 @@ class Cart extends Frontend_Controller {
     // Confirma el carrito del usuario logeado, esto genera la compra, con los items 
     // del carrito y los elimina del mismo
     function confirm() {
-        $cart = $this->cart_m->get(['email' => $this->email], false);
+        $cart = $this->cart_m->get(['cart.email' => $this->email], true);
+        var_dump($cart);
         $items = $this->cartitem_m->getItems($this->email);
         $fp = $this->input->post('formapago');
         
         if (count($items)) {
-            $data['email'] = $cart->email;
+            $data['email'] = $this->email;
             $data['address'] = $cart->address;
             $data['createDate'] = date('y-m-d H:i:s');
 //        $data['shippingDate'] = '';

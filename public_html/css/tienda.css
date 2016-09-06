@@ -274,6 +274,15 @@ form.oculto {
 	font-size: 11px;
 	font-family: 'roboto_slablight';
 }
+#carrito .succesMsg {
+	color: green;
+	border: 1px solid green;
+	padding: 10px;
+	order: 0;
+	height: auto;
+	font-size: 11px;
+	font-family: 'roboto_slablight';
+}
 #carrito a {
 	font-family: 'governorregular';
 	font-size: 22px;
