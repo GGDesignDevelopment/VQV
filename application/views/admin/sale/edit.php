@@ -31,10 +31,11 @@
             <div class="col-md-4"><?php echo form_dropdown('status', $estados, $sale->status, 'class="form-control"'); ?></div>		
         </div>	
         <h3>Detalle</h3>
-        <table class="table table-striped">
+        <table class="table table-striped table-bordered">
             <thead>
                 <tr>
                     <th colspan="2">Producto</th>
+                    <th>Envase</th>
                     <th>Cantidad</th>
                     <th>Precio</th>
                     <th>Subtotal</th>                    
@@ -46,6 +47,7 @@
                         <tr>
                             <td><?php echo $producto->productid; ?></td>
                             <td><?php echo $producto->prodnombre; ?></td>	 
+                            <td><?php echo ($producto->envase ? get_envases($producto->envase) : '- SIN ENVASE -'); ?></td>	 
                             <td><?php echo $producto->quantity; ?></td>
                             <td><?php echo $producto->productprice; ?></td>   
                             <td><?php echo $producto->subtotal; 

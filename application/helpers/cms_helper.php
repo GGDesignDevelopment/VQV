@@ -16,6 +16,16 @@ function get_unidades($u = null) {
         return $unidades;
     }
 }
+
+function get_envases($e = null) {
+    $envase = array(1 => 'Bolsa de Papel', 2 => 'Envase de Vidrio Nuevo', 3 => 'Intercambio Envase');
+    if ($e) {
+        return $envase[$e];
+    } else {
+        return $envase;
+    }
+}
+
 function get_status($s = null) {
     $status = array('P'=>'Pendiente', 'C'=>'Coodinado', 'E'=>'Entregado');
     return ($s) ? $status[$s] : $status;

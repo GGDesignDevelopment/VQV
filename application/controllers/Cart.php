@@ -59,6 +59,8 @@ class Cart extends Frontend_Controller {
     function addItem() {
         $productid = $this->input->post('productid');
         $quantity = $this->input->post('quantity');
+        $envase = $this->input->post('envase');
+        
         $item = $this->cartitem_m->get(array(
             'email' => $this->email,
             'productid' => $productid,
@@ -66,12 +68,14 @@ class Cart extends Frontend_Controller {
 
         if ($item) {
             $where = ['email' => $this->email, 'productid' => $productid];
-            $data['quantity'] = $item->quantity + $quantity;
+            $data['quantity'] = $item->quantity + $quantity;     
+            $data['envase'] = $envase;
         } else {
             $where = NULL;
             $data['email'] = $this->email;
             $data['productid'] = $productid;
             $data['quantity'] = $quantity;
+            $data['envase'] = $envase;
         }
 
         $this->cartitem_m->save($data, $where);
@@ -121,6 +125,7 @@ class Cart extends Frontend_Controller {
                 $data['productid'] = $item->prodid;
                 $data['quantity'] = $item->quantity;
                 $data['productprice'] = $item->prodprecio;
+                $data['envase'] = $item->envase;
                 $this->saleitem_m->save($data, NULL);
             }
             
