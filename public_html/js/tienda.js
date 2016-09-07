@@ -107,7 +107,6 @@ var usuario = (function(){
 				$carrito.append(succesMsg);
 			}
 		})
-		e.preventDefault();
 	}
 	function showCart() {
 		var estado = $carrito.css('display');
@@ -172,10 +171,6 @@ var productos = function() {
 		$('#form '+id+'input[type=number]').val('');
 	};
 
-	function _renderItem(obj) {
-
-	}
-
 	function _addItem(e) {
 		var logged = usuario.islogged();
 		if ( logged == true ) {
@@ -208,6 +203,21 @@ var productos = function() {
 					switch(obj.produnidad) {
 						case 'm': 
 							obj.produnidad = 'ml.';
+							break;
+						case 'l':
+							obj.produnidad = 'lt.';
+							break;
+						case 'g': 
+							obj.produnidad = 'gr.';
+							break;
+						case 'k':
+							obj.produnidad = 'kg.';
+							break;
+						case 'u':
+							obj.produnidad = 'uni.';
+							break;
+						default: 
+							obj.produnidad = 'uni.';
 							break;
 					}
 					if($(window).width() <= 768) {

@@ -2,7 +2,7 @@
 	<!-- <section id="responsive">
 		<nav>
 			<a class="mobile" href="#alimentacion">alimentacion</a>
-			<!-- <a href="#reciclaje">reciclaje</a> -->
+			<a href="#reciclaje">reciclaje</a>
 			<a class="mobile faq" href="#faq">preguntas frecuentes</a>
 			<a class="mobile" href="#footer">quienes somos</a>
 			<a class="mobile" href="#" >tienda on line</a>
@@ -12,7 +12,7 @@
 			<h2>Verde que te quiero verde</h2>
 			<a href="#">&#x61;</a>
 		</div>
-	</section> -->
+	</section>  -->
 	<section id="main">
 		<header>
 			<div class="logo">

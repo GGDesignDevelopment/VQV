@@ -63,6 +63,11 @@
 				<a href="cart/removeItem/{{prodid}}" class="remove" id="{{prodid}}">&#xe019;</a>
 			</div>
 			{{/items}}
+			<select>
+				<option selected disabled>Elegir tipo de pago.</option>
+				<option value="1">Deposito en cuenta BROU</option>
+				<option value="2">Pago contrarembolso</option>
+			</select>
 			<input type="submit" id="confirmar" name="confirmar" value="Confirmar Compra">
 		</form>
 		<a href="#" id="logout">Cerrar sesion</a>

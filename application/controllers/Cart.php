@@ -107,7 +107,6 @@ class Cart extends Frontend_Controller {
     // del carrito y los elimina del mismo
     function confirm() {
         $cart = $this->cart_m->get(['cart.email' => $this->email], true);
-        var_dump($cart);
         $items = $this->cartitem_m->getItems($this->email);
         $fp = $this->input->post('formapago');
         

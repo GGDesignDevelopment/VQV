@@ -395,6 +395,16 @@ form.oculto {
 	height: auto;
 	border: 0;
 }
+#carrito form select {
+	-webkit-appearance: button;
+	background: none;
+	border: 1px solid #97be49;
+	border-radius: 5px;
+	padding: 5px;
+	font-size: 12px;
+	font-family: 'roboto_slablight';
+	color: #97be49;
+}
 #carrito form input[type=submit] {
 	background: #97be49;
 	color: #fff;
