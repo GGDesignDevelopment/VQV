@@ -46,8 +46,8 @@ class Home extends Frontend_Controller {
             $this->contacto_m->save($data, NULL);
 
             $to = $data['email'];
-            $from = "info@vqv.com.uy";
-            $headers = "De: " . $from . "\r\n";
+            $from = "info@vqv.hol.es";
+            $headers = "From: " . $from . "\r\n";
             $headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
             $subject = "Suscripción exitosa";
             $body = "<html><body>";
@@ -57,7 +57,7 @@ class Home extends Frontend_Controller {
             $body .= "</body></html>";
 
             try {
-                mail($to, $subject, $body, $headers, "-f " . $from) ;    
+                mail($to, $subject, $body, $headers, "-f " . $from) ;                    
             } finally  {
 
             }

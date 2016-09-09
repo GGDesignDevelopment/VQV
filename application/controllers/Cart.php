@@ -130,8 +130,8 @@ class Cart extends Frontend_Controller {
             }
             
             $to = $this->email;
-            $from = "info@vqv.com.uy";
-            $headers = "De: " . $from . "\r\n";
+            $from = "info@vqv.hol.es";
+            $headers = "From: " . $from . "\r\n";
             $headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
             $subject = "Compra exitosa, #" . $id;
             $body = "<html><body>";

@@ -24,7 +24,7 @@ class Carga extends Admin_Controller {
 
         include 'excel_reader.php';     // include the class
         $excel = new PhpExcelReader;
-        $excel->read('temp\cargainicial.xls');
+        $excel->read('temp/cargainicial.xls');
         $nr_sheets = count($excel->sheets);       // gets the number of worksheets
 
         for ($i = 0; $i < $nr_sheets; $i++) {

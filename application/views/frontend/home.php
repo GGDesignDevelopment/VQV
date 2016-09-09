@@ -23,7 +23,7 @@
 				<!-- <a href="#reciclaje">reciclaje</a> -->
 				<a class="mobile faq" href="#faq">preguntas frecuentes</a>
 				<a class="mobile" href="#footer">quienes somos</a>
-				<a class="mobile" href="#" >tienda on line</a>
+				<a class="mobile" href="<?php echo site_url('Tienda')?>" >tienda on line</a>
 				<a class="mobile" href="#footer">contacto</a>
 			</nav>	
 			<div class="pull">
@@ -36,7 +36,7 @@
 		<h2><?php echo $home->txtWelcome; ?></h2>
 
 		<div class="botones">
-			<a href="#">Tienda Virtual</a>
+			<a href="<?php echo site_url('Tienda')?>">Tienda Virtual</a>
 			<a href="#footer">Conocenos</a>
 		</div>
 
@@ -79,13 +79,13 @@
 		<header>
 			<div>
 				<h2>Tecnicas de Reciclaje</h2>
-				<h3><?php echo $home->subReciclaje; ?></h3>
+				<h3><?php// echo $home->subReciclaje; ?></h3>
 			</div>
 			<nav>
 				<a href="#main">inicio</a>
 				<a href="#alimentacion">alimentacion</a>
 				<a href="#footer">quienes Somos</a>
-				<a href="<?php echo site_url('Tienda')?>" target="blank">tienda on line</a>
+				<a href="<?php //echo site_url('Tienda')?>" target="blank">tienda on line</a>
 				<a href="#footer">contacto</a>
 			</nav>            
 		</header>
@@ -95,15 +95,15 @@
 				<p id="textoTecnica"><span>&#x7b;</span></p>
 			</div>
 			<ul id="hexGrid">
-				<?php foreach ($reciclaje as $recitem) : ?>
+				<?php //foreach ($reciclaje as $recitem) : ?>
 					<li class="hex">
-						<a class="hexIn" href="#reciclaje" data-tecnica="<?php echo $recitem->id; ?>">
-							<img src="<?php echo site_url($dir . $recitem->imagen); ?>" alt="" />
-							<h1><?php echo $recitem->titulo; ?></h1>
-							<p><?php echo $recitem->texto; ?></p>
+						<a class="hexIn" href="#reciclaje" data-tecnica="<?php// echo $recitem->id; ?>">
+							<img src="<?php //echo site_url($dir . $recitem->imagen); ?>" alt="" />
+							<h1><?php //echo $recitem->titulo; ?></h1>
+							<p><?php //echo $recitem->texto; ?></p>
 						</a>
 					</li>                    
-				<?php endforeach; ?>
+				<?php //endforeach; ?>
 			</ul>
 		</div>
 	</section> -->
@@ -111,7 +111,7 @@
 		<div class="column">
 			<h2>Como funciona</h2>
 			<ol>
-				<li>Entra a <a href="#">VQV - Tienda</a> y registrate</li>
+				<li>Entra a <a href="<?php echo site_url('Tienda')?>">VQV - Tienda</a> y registrate</li>
 				<li>Selecciona de nuestro catalogo el producto que desees</li>
 				<li>Elegi la cantidad a comprar</li>
 				<li>Selecciona el envase en el que ira presentado</li>
