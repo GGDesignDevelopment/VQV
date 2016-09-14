@@ -154,6 +154,7 @@ body {
 }
 .contenedor .contenido .productos .prod #top a {
 	font-size: 12px; 
+	line-height: 12px;
 	color: #fff;
 	background: rgb(159,195,87);
 	padding: 11px 21px;
@@ -327,6 +328,7 @@ form.oculto {
 	color: #97be49;
 	font-size: 13px;
 	font-family: 'roboto_slablight';
+	min-height: 30px;
 }
 #carrito #registrarse input::-webkit-input-placeholder, #carrito #ingresar input::-webkit-input-placeholder {
 	color: #97be49;
@@ -335,6 +337,7 @@ form.oculto {
 	background: #97be49;
 	color: #fff;
 	border-radius: 30px;
+	cursor: pointer;
 }
 #carrito #registrarse h2, #carrito #ingresar h2 {
 	order: 0;
@@ -414,6 +417,7 @@ form.oculto {
 	border: 0;
 	padding: 5px 0;
 	font-size: 13px;
+	cursor: pointer;
 }
 #carrito a.boton {
 	width: 100%;
@@ -430,7 +434,7 @@ form.oculto {
 	text-align: center;
 }
 
-@media screen and (max-width: 760px) {
+@media screen and (max-width: 770px) {
 	.contenedor {
 		width: 100vw;
 		padding: 20px;

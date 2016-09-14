@@ -50,7 +50,7 @@
 	<section id="alimentacion">
 
 		<header>
-			<h2>Consejos Para tu alimentacion Diaria</h2>
+			<h2>Consejos para tu alimentacion diaria</h2>
 			<h3><?php echo $home->subAlimentacion; ?></h3>
 		</header>
 

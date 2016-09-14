@@ -5,8 +5,8 @@
 				<h2>Verde que te<br> Quiero Verde</h2>
 			</div>
 			<nav>
-				<a href="#">&#xe0aa;</a>
-				<a href="#">&#xe0b1;</a>
+				<a href="<?php echo $home->linkFacebook; ?>" target="blank">&#xe0aa;</a>
+				<a href="<?php echo $home->linkInstagram; ?>" target="blank">&#xe0b1;</a>
 				<a href="#" class="boton" id="login"></a>
 			</nav>
 		</header>
@@ -19,9 +19,7 @@
 						<?php endif; ?> 
 				</nav>
 				<div class="productos">
-						<!-- <div id="col1" class="column"></div>
-						<div id="col2" class="column"></div>   
-						<div id="col3" class="column"></div>  -->          
+						         
 				</div>
 		</div>
 </div>
@@ -29,7 +27,6 @@
 <div id="carrito">
 	<script id="loginForm" type="text/template">
 		<a href="index.html">vqv</a>
-		<a id="ocultar" href="#">Ocultar carrito.</a>
 		<form id="ingresar" method="POST" action="#" name="iniciar">
 			<h2>Iniciar sesion</h2>
 			<input type="email" name="email" placeholder="email" required>
@@ -63,8 +60,8 @@
 				<a href="cart/removeItem/{{prodid}}" class="remove" id="{{prodid}}">&#xe019;</a>
 			</div>
 			{{/items}}
-			<select>
-				<option selected disabled>Elegir tipo de pago.</option>
+			<select aria-required="required" required>
+				<option value="">Elegir tipo de pago.</option>
 				<option value="1">Deposito en cuenta BROU</option>
 				<option value="2">Pago contrarembolso</option>
 			</select>
@@ -82,9 +79,9 @@
 	</script>	
 </div>
 <script type="text/template" id="prodTemplate">
-	<div class="prod">
+	<div class="prod" data-producto="{{prodid}}">
 		<div id="top" style="background-image: linear-gradient(rgba(126,126,126,.15),rgba(126,126,126,.15)),url(img/{{prodimagen}})">
-			<a href="#" class="expandir" data-producto="{{prodid}}">{{prodnombre}}</a>
+			<a href="#" class="expandir">{{prodnombre}}</a>
 			<p>{{proddes}}</p>
 		</div>
 		

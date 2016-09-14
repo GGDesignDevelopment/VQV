@@ -75,6 +75,12 @@ $(function () {
 		}
 	})
 	
+	var $faq = $('#faq');
+	$faq.on('click', 'dt', function(){
+		$(this).next().slideToggle();
+	});
+
+
 	$(".hexIn").click(function () {
 		var xmlhttp = new XMLHttpRequest();
 		xmlhttp.onreadystatechange = function () {

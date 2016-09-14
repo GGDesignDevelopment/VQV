@@ -158,7 +158,7 @@ var productos = function() {
 	$productos.on('submit', '.addItem', _addItem);
 	$productos.on('change', '.cant', _calcPrice);
 	$botonera.on('click', '.filter', _render);
-	$producto.on('click', '.expandir', _expandirItem);
+	$producto.on('click', '.prod', _expandirItem);
 	$carrito.on('change', '#dir', _modifyAddress);
 	$carrito.on('change', '.quantity', _modifyItem);
 	$carrito.on('click', '.remove', _deleteItem);
@@ -234,12 +234,10 @@ var productos = function() {
 	function _expandirItem(e) {
 
 		e.preventDefault()
-		var $padre = $(this).parent();
+		var $padre = $(this).parent('.prod');
 		var id = $(this).attr('data-producto');
-
-
 		$('#'+id).toggleClass("oculto");
-		$(this).parent().toggleClass("active");
+		$(this).find('div').toggleClass("active");
 	}
 
 	function _expandirItemMovil() {
