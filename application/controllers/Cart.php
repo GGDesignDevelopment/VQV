@@ -151,7 +151,11 @@ class Cart extends Frontend_Controller {
 
             }            
             $this->cancel();
+            $return = array('msg' => true);
+        } else {
+            $return = array('msg' => false);
         }
+        echo json_encode($return);
     }
 
 }
