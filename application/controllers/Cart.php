@@ -22,7 +22,12 @@ class Cart extends Frontend_Controller {
         } else {
             $data['password'] = $this->user_m->hash($data['password']);
             $this->user_m->save($data, NULL);
-
+            
+            $cart['email'] = $data['email'];
+            $cart['address'] = $data['address'];
+            
+            $this->cart_m->save($cart,NULL);
+                   
             $return = array('msg' => true);
         }
         echo json_encode($return);
