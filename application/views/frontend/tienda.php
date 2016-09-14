@@ -50,7 +50,7 @@
 		<a href="index.html">vqv</a>
 		<a id="ocultar" href="#">Ocultar carrito.</a>
 		<h2>{{name}}</h2>
-		<form method="POST" action="cart/confirm">
+		<form method="POST" id="confirmar" action="">
 			<input id="dir" type="text" name="address" value="{{address}}" placeholder="Direccion">
 			{{#items}}
 			<div>
@@ -65,7 +65,7 @@
 				<option value="1">Deposito en cuenta BROU</option>
 				<option value="2">Pago contrarembolso</option>
 			</select>
-			<input type="submit" id="confirmar" name="confirmar" value="Confirmar Compra">
+			<input type="submit" name="confirmar" value="Confirmar Compra">
 		</form>
 		<a href="#" id="logout">Cerrar sesion</a>
 	</script>
@@ -79,8 +79,8 @@
 	</script>	
 </div>
 <script type="text/template" id="prodTemplate">
-	<div class="prod" data-producto="{{prodid}}">
-		<div id="top" style="background-image: linear-gradient(rgba(126,126,126,.15),rgba(126,126,126,.15)),url(img/{{prodimagen}})">
+	<div class="prod" >
+		<div class="top" data-producto="{{prodid}}" style="background-image: linear-gradient(rgba(126,126,126,.15),rgba(126,126,126,.15)),url(img/{{prodimagen}})">
 			<a href="#" class="expandir">{{prodnombre}}</a>
 			<p>{{proddes}}</p>
 		</div>

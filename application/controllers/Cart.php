@@ -65,7 +65,8 @@ class Cart extends Frontend_Controller {
         $productid = $this->input->post('productid');
         $quantity = $this->input->post('quantity');
         $envase = $this->input->post('envase');
-        
+        $return = true;
+
         $item = $this->cartitem_m->get(array(
             'email' => $this->email,
             'productid' => $productid,
@@ -84,6 +85,7 @@ class Cart extends Frontend_Controller {
         }
 
         $this->cartitem_m->save($data, $where);
+        echo json_encode($return);
     }
 
     // se modifica el item del carrito del usuario logeado

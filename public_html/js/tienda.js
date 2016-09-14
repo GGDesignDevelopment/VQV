@@ -11,8 +11,8 @@ var usuario = (function(){
 	var loginValue = $carrito.find('#loginForm').html();
 	var carritoTemplate = $carrito.find('#carritoTemplate').html();
 	// Mensajes
-	var succesMsg = '<span clas="succesMsg">Su compra ha sido realizada con exito. Le hemos enviado un mensaje a su correo electronico con los detalles de la misma. </span>'
-
+	var succesMsg = '<span classs="succesMsg">Su compra ha sido realizada con exito. Le hemos enviado un mensaje a su correo electronico con los detalles de la misma. </span>'
+	var errorMsg = '<span class="errorMsg">Debe tener items seleccionados para realizar su compra</span>'
 
 	// Bind Events
 	$carrito.on('submit', '#ingresar', _login);
@@ -98,13 +98,19 @@ var usuario = (function(){
 	}
 
 	function _confirmar(e) {
+		alert("olsadosaodas");
 		e.preventDefault()
 		$.ajax({
 			type: 'POST',
 			url: 'cart/confirm',
-			success: function() {
-				render();
-				$carrito.append(succesMsg);
+			dataType: 'json',
+			success: function(json) {
+				if ( json.msg ) {
+					render();
+					$carrito.append(succesMsg);
+				} else {
+					$carrito.append(errorMsg);
+				}
 			}
 		})
 	}
@@ -153,12 +159,13 @@ var productos = function() {
 	var itemTemplate = $('#carritoItem').html();
 	var errorLogMsg = '<span class="errorMsg">Debes iniciar sesion o registrarte para poder realizar tu compra exitosamente. </span>'
 
+	var errorCountLog = false;
 	// Bind Events 
 	$productos.on('click', '#leftCon', _expandirItemMovil);
 	$productos.on('submit', '.addItem', _addItem);
 	$productos.on('change', '.cant', _calcPrice);
 	$botonera.on('click', '.filter', _render);
-	$producto.on('click', '.prod', _expandirItem);
+	$producto.on('click', '.top', _expandirItem);
 	$carrito.on('change', '#dir', _modifyAddress);
 	$carrito.on('change', '.quantity', _modifyItem);
 	$carrito.on('click', '.remove', _deleteItem);
@@ -173,21 +180,36 @@ var productos = function() {
 
 	function _addItem(e) {
 		var logged = usuario.islogged();
+		var estado = usuario.carrito.css('display');
 		if ( logged == true ) {
+			e.preventDefault();
 			$.ajax({
 				type: 'POST',
 				url: 'cart/addItem',
 				data: $(this).serialize(),
 				dataType: 'json',
 				success: function(){
-					usuario.render();
+					alert('ejecuta');
+					usuario.render;
 					_clearVal($(this).attr('id'));
 				},
+				error: function() {
+					alert('error');
+				}
 			});
 		} else {
 			e.preventDefault();
-			$carrito.append(errorLogMsg);
-			usuario.showCart();
+			if ( errorCountLog ) {
+				if ( estado == 'none') {
+					usuario.showCart();
+				}
+			} else {
+				$carrito.append(errorLogMsg);
+				errorCountLog = true;
+				if ( estado == 'none') {
+					usuario.showCart();
+				}
+			}
 		}
 	}
 
@@ -232,12 +254,11 @@ var productos = function() {
 	}
 	
 	function _expandirItem(e) {
-
 		e.preventDefault()
 		var $padre = $(this).parent('.prod');
 		var id = $(this).attr('data-producto');
 		$('#'+id).toggleClass("oculto");
-		$(this).find('div').toggleClass("active");
+		$(this).toggleClass("active");
 	}
 
 	function _expandirItemMovil() {
@@ -254,6 +275,10 @@ var productos = function() {
 			dataType: 'json',
 			success: function(){
 				// Funcion tooltip
+				alert('hola');
+			},
+			error: function() {
+				alert('chau');
 			}
 		})
 	}
