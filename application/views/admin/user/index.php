@@ -5,7 +5,7 @@
 <div class="table-responsive">
     <table class="table table-striped">
         <thead>
-            <tr>
+<!--            <tr>
                 <th>Nombre</th>
                 <th>Email</th>
                 <th>Tipo</th>
@@ -13,17 +13,17 @@
                 <th>Dirección</th>
                 <th></th>
                 <th></th>
-            </tr>
+            </tr>-->
             <tr>
-                <th><input id="name" class="form-control" type="text" onkeyup="showResults()"></th>
-                <th><input id="email" class="form-control" type="text" onkeyup="showResults()"></th>
+                <th><input id="name" class="form-control" type="text" onkeyup="showResults()" placeholder="Nombre"></th>
+                <th><input id="email" class="form-control" type="text" onkeyup="showResults()" placeholder="Email"></th>
                 <th>
-                    <select id="type" class="form-control" type="text" onchange="showResults()" >
+                    <select id="type" class="form-control" type="text" onchange="showResults()">                        
                         <option value="A">Admin</option>
                         <option value="C">Comun</option>
                     </select></th>
-                <th><input id="phone" class="form-control" type="text" onkeyup="showResults()"></th>   
-                <th></th>
+                <th><input id="phone" class="form-control" type="text" onkeyup="showResults()" placeholder="Telefono"></th>   
+                <th>Dirección</th>
                 <th></th>
                 <th></th>
             </tr>

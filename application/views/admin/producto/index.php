@@ -5,7 +5,7 @@
 <div class="table-responsive">
     <table class="table table-striped">
         <thead>
-            <tr>
+<!--            <tr>
                 <th>Código</th>
                 <th>Nombre</th>
                 <th>Descripción</th>
@@ -15,15 +15,15 @@
                 <th>Precio</th>
                 <th></th>
                 <th></th>
-            </tr>
+            </tr>-->
             <tr>
                 <th></th>
-                <th><input id="filtroNombre" class="form-control" type="text" onkeyup="showResults()"></th>
-                <th><input id="filtroDescripcion" class="form-control" type="text" onkeyup="showResults()"></th>
-                <th><input id="filtroFamilia" class="form-control" type="text" onkeyup="showResults()"></th>
-                <th></th>
-                <th></th>
-                <th></th>
+                <th><input id="filtroNombre" class="form-control" type="text" onkeyup="showResults()" placeholder="Nombre"></th>
+                <th><input id="filtroDescripcion" class="form-control" type="text" onkeyup="showResults()" placeholder="Descripción"></th>
+                <th><input id="filtroFamilia" class="form-control" type="text" onkeyup="showResults()" placeholder="Familia"></th>
+                <th>Presentación</th>
+                <th>Unidad</th>
+                <th>Precio</th>
                 <th></th>
                 <th></th>
             </tr>
@@ -37,7 +37,7 @@
                         <td><?php echo $producto->familia; ?></td>
                         <td><?php echo $producto->prodpresentacion; ?></td>   
                         <td><?php echo get_unidades($producto->produnidad); ?></td>                                    
-                        <td><?php echo $producto->prodprecio; ?></td>                    
+                        <td><?php echo '$' . $producto->prodprecio; ?></td>                    
                         <td><?php echo btn_edit('admin/producto/edit/' . $producto->prodid); ?></td>
                         <td><?php echo btn_delete('admin/producto/delete/' . $producto->prodid); ?></td>
                     </tr>			

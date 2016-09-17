@@ -5,15 +5,15 @@
 <div class="table-responsive">
     <table class="table table-striped">
         <thead>
-            <tr>
+<!--            <tr>
                 <th>Código</th>
                 <th>Descripción</th>
                 <th></th>
                 <th></th> 
-            </tr>  
+            </tr>  -->
             <tr>
-                <th></th>
-                <th><input class="form-control" type="text" onkeyup="showResults(this.value)"></th>
+                <th>Código</th>
+                <th><input class="form-control" type="text" onkeyup="showResults(this.value)" placeholder="Descripción"></th>
                 <th></th>
                 <th></th>
             </tr>

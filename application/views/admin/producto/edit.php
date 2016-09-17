@@ -18,7 +18,7 @@
             <label>Descripcion</label>
             <?php echo form_input('proddes', $producto->proddes, 'class="form-control"'); ?>		
         </div>
-        
+
         <label>Imagen</label>
         <input id="file" type="file" name="file" class="file" data-preview-file-type="any" data-upload-url="#">		        
     </div>
@@ -37,7 +37,10 @@
         </div>        
         <div class="form-group">
             <label>Precio</label>
-            <?php echo form_input('prodprecio', $producto->prodprecio, 'class="form-control"'); ?>		
+            <div class="input-group">
+                <span class="input-group-addon">$</span>
+                <?php echo form_input('prodprecio', $producto->prodprecio, 'class="form-control"'); ?>		
+            </div>
         </div>
         <div class="form-group">
             <label>¿Granel?</label>

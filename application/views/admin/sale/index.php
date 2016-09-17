@@ -4,7 +4,7 @@
 <div class="table-responsive">
     <table class="table table-striped">
         <thead>
-            <tr>
+<!--            <tr>
                 <th>Código</th>
                 <th>Email</th>
                 <th>Dirección</th>
@@ -12,11 +12,11 @@
                 <th>Estado</th>            
                 <th></th>
                 <th></th> 
-            </tr>  
+            </tr>  -->
             <tr>
-                <th></th>
-                <th><input id="email" class="form-control" type="text" onkeyup="showResults()"></th>
-                <th></th>
+                <th>Código</th>
+                <th><input id="email" class="form-control" type="text" onkeyup="showResults()" placeholder="Email"></th>
+                <th>Dirección</th>
                 <th><div class='input-group date' id='dtp'>
                         <input id="fecha" type='text' class="form-control" value=""/>
                         <span class="input-group-addon">
