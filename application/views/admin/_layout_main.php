@@ -1,5 +1,5 @@
 <?php $this->load->view('admin/components/page_head');?>
- <body>
+<body>
     <nav class="navbar navbar-default navbar-static-top">
       <div class="container">
         <div class="navbar-header">

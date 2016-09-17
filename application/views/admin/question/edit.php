@@ -1,27 +1,25 @@
-<div class="modal-header">
-    <h4 class="modal-title"><?php echo empty($question->catid) ? 'Nueva Pregunta' : 'Editar Pregunta'; ?></h4>
-</div>
-<div class="col-md-12">
-    <div class="modal-body">
+<div class="row">
+    <div class="page-header col-xs-12 col-sm-offset-2 col-sm-8">
+        <h4><?php echo empty($question->id) ? 'Nueva Pregunta' : 'Editar Pregunta'; ?></h4>
+    </div>
+    <div class="col-xs-12 col-sm-offset-3 col-sm-6">
         <?php echo validation_errors(); ?>
-        <?php echo form_open_multipart('', 'class="form-horizontal" role="form"'); ?>
+        <?php echo form_open_multipart('', 'role="form"'); ?>
         <div class="form-group">
-            <label class="control-label col-md-2">Código</label>
-            <label class="control-label col-md-10"><?php echo $question->id; ?></label>	
+            <label>Código</label>
+            <p class="form-control-static"><?php echo $question->id; ?></p>	
         </div>
         <div class="form-group">
-            <label class="control-label col-md-2">Pregunta</label>
-            <div class="col-md-10"><?php echo form_input('question', $question->question, 'class="form-control"'); ?></div>		
+            <label>Pregunta</label>
+            <?php echo form_input('question', $question->question, 'class="form-control"'); ?>
         </div>
         <div class="form-group">
-            <label class="control-label col-md-2">Respuesta</label>
-            <div class="col-md-10"><?php echo form_input('answer', $question->answer, 'class="form-control"'); ?></div>		
+            <label>Respuesta</label>
+            <?php echo form_textarea('answer', $question->answer, 'class="form-control"'); ?>
         </div>
 
         <div class="form-group pull-right">
-            <div class="col-sm-offset-2 col-sm-10">
-                <?php echo form_submit('submit', 'Confirmar', 'class="btn btn-primary"'); ?>
-            </div>
+            <?php echo form_submit('submit', 'Confirmar', 'class="btn btn-primary"'); ?>
         </div>	
         <?php echo form_close(); ?>
     </div>
