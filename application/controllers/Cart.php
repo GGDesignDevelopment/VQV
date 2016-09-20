@@ -9,6 +9,7 @@ class Cart extends Frontend_Controller {
         $this->load->model('cartitem_m');
         $this->load->model('sale_m');
         $this->load->model('saleitem_m');
+        $this->load->model('producto_m');
         $this->load->library('session');
         $this->email = $this->session->userdata('email');
     }
@@ -66,6 +67,12 @@ class Cart extends Frontend_Controller {
         $quantity = $this->input->post('quantity');
         $envase = $this->input->post('envase');
         $return = true;
+
+        $producto = $this->producto_m->get(['prodid'=>$productid], TRUE);
+
+        if (!$producto->prodgranel == "1") {
+            $quantity *= $producto->prodpresentacion;
+        }
 
         $item = $this->cartitem_m->get(array(
             'email' => $this->email,

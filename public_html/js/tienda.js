@@ -21,6 +21,7 @@ var usuario = (function(){
 	$carrito.on('submit', '#confirmar', _confirmar);
 	$boton.on('click', showCart);
 	$carrito.on('click', '#ocultar', _hideCart);
+	$carrito.on('change', '.valorCompra', _updatePrice);
 
 
 	function render() {
@@ -32,6 +33,35 @@ var usuario = (function(){
 				dataType: 'json',
 				success: function(json){
 					$.each(json.items, function(i, obj) {
+						switch(obj.produnidad) {
+						case 'm': 
+							obj.produnidad = 'ml.';
+							break;
+						case 'l':
+							obj.produnidad = 'lt.';
+							break;
+						case 'g': 
+							obj.produnidad = 'gr.';
+							break;
+						case 'k':
+							obj.produnidad = 'kg.';
+							break;
+						case 'u':
+							obj.produnidad = 'uni.';
+							break;
+						default: 
+							obj.produnidad = 'uni.';
+							break;
+						}
+						if ( obj.prodgranel == 1 ) {
+							obj.cuenta = obj.prodprecio / obj.prodpresentacion;
+							obj.proddisplay = '';
+						} else {
+							obj.quantity /= obj.prodpresentacion;
+							obj.proddisplay = 'x '+obj.prodpresentacion;
+							obj.cuenta = obj.prodprecio;
+							obj.prodpresentacion = 1;
+						}
 						obj.amount = Math.round(obj.amount * 100) / 100;
 					})
 					$carrito.html(Mustache.render(carritoTemplate, json));
@@ -138,6 +168,13 @@ var usuario = (function(){
 		$contenedor.css('display', 'flex');
 		$contenedor.animate({width: '100%'});
 	}
+	function _updatePrice() {
+		var precio = $(this).attr('data-precio');
+		var cantidad = $(this).val();
+		var id = $(this).attr('id');
+		var sub = precio * cantidad;
+		$('.'+id).html('$u.'+sub);
+	}
 
 	return {
 		islogged: _isLogged,
@@ -189,12 +226,10 @@ var productos = function() {
 				data: $(this).serialize(),
 				dataType: 'json',
 				success: function(){
-					alert('ejecuta');
 					usuario.render;
 					_clearVal($(this).attr('id'));
 				},
 				error: function() {
-					alert('error');
 				}
 			});
 		} else {
@@ -242,6 +277,14 @@ var productos = function() {
 							obj.produnidad = 'uni.';
 							break;
 					}
+					if ( obj.prodgranel == 1 ) {
+						obj.cuenta = obj.prodprecio / obj.prodpresentacion;
+						obj.proddisplay = '';
+					} else {
+						obj.proddisplay = 'x '+obj.prodpresentacion;
+						obj.cuenta = obj.prodprecio;
+						obj.prodpresentacion = 1;
+					}
 					if($(window).width() <= 768) {
 						$productos.append(Mustache.render(prodTemplateMovil, obj));
 					} else {
@@ -263,7 +306,7 @@ var productos = function() {
 
 	function _expandirItemMovil() {
 		var id = $(this).attr('data-id');
-		var $span = $(this).find('.'+id);
+		var $span = $productos.find('span.'+id);
 		$span.slideToggle();
 	}
 
@@ -307,11 +350,10 @@ var productos = function() {
 	}
 
 	function _calcPrice() {
-		var presentacion = $(this).attr('data-presentacion');
 		var precio = $(this).attr('data-precio');
 		var cantidad = $(this).val();
 		var id = $(this).attr('data-id');
-		var sub = ( cantidad / presentacion ) * precio;
+		var sub = precio * cantidad;
 		var cadena = '$u. ' + sub + '- Agregar al carrito';
 		$('.'+id).val(cadena); 
 		// alert(cadena);

@@ -55,8 +55,9 @@
 			{{#items}}
 			<div>
 				<p>{{prodnombre}}</p>
-				<input id="{{prodid}}" type="number" name="cantidad" placeholder="{{quantity}}{{produnidad}}">
-				<span>${{amount}}</span>
+				<input id="{{prodid}}" class="valorCompra" type="number" value="{{quantity}}" data-precio="{{cuenta}}" min="1" name="cantidad" placeholder="{{quantity}}">
+				<span>{{proddisplay}}{{produnidad}}</span>
+				<span class="{{prodid}}">${{amount}}</span>
 				<a href="cart/removeItem/{{prodid}}" class="remove" id="{{prodid}}">&#xe019;</a>
 			</div>
 			{{/items}}
@@ -82,12 +83,15 @@
 	<div class="prod" >
 		<div class="top" data-producto="{{prodid}}" style="background-image: linear-gradient(rgba(126,126,126,.15),rgba(126,126,126,.15)),url(img/{{prodimagen}})">
 			<a href="#" class="expandir">{{prodnombre}}</a>
+			{{#prodgranel}}
+				<span>Producto a granel</span>
+			{{/prodgranel}}
 			<p>{{proddes}}</p>
 		</div>
 		
 		<form id="{{prodid}}" method="POST" class="oculto addItem">
-			<input type="number" class="cant" name="quantity" placeholder="{{prodpresentacion}}" value="{{prodpresentacion}}" step="{{prodpresentacion}}" min="{{prodpresentacion}}" data-presentacion="{{prodpresentacion}}" data-precio="{{prodprecio}}" data-id="{{prodid}}">
-			<span>{{produnidad}}</span>
+			<input type="number" class="cant" name="quantity" value="{{prodpresentacion}}" placeholder="{{prodpresentacion}}" step="1" min="1" data-precio="{{cuenta}}" data-id="{{prodid}}">
+			<span>{{proddisplay}} {{produnidad}}</span>
 			{{#prodgranel}}
 				<select name="envase">
 					<option selected disabled>Tipo de envase</option>
@@ -103,15 +107,15 @@
 </script>
 <script type="text/template" id="prodTemplateMovil">
 	<div class="prod" data-id="{{prodid}}">
-		<div id="leftCon">
+		<div id="leftCon" data-id="{{prodid}}">
 			<img src="img/{{prodimagen}}" title="{{prodnombre}}">
 		</div>
 		<div id="rightCon">
 			<form id="{{prodid}}" method="POST" class="addItem">
 				<h2>{{prodnombre}}</h2>
 				<div>
-					<input type="number" class="cant" name="quantity" placeholder="{{prodpresentacion}}" value="{{prodpresentacion}}" step="{{prodpresentacion}}" min="{{prodpresentacion}}" data-presentacion="{{prodpresentacion}}" data-precio="{{prodprecio}}" data-id="{{prodid}}">
-					<p>/ {{produnidad}}</p>
+					<input type="number" class="cant" name="quantity" value="{{prodpresentacion}}" placeholder="{{prodpresentacion}}" step="1" min="1" data-precio="{{cuenta}}" data-id="{{prodid}}">
+					<p> {{proddisplay}} {{produnidad}}</p>
 				</div>
 				{{#prodgranel}}
 					<select name="envase" >
@@ -123,8 +127,7 @@
 				{{/prodgranel}}
 				<input type="hidden" name="productid" value="{{prodid}}" >
 				<div class="button">
-					<input type="submit" value="Agregar al" data-icon="&#xe015;">
-					<span>&#xe015;</span>
+					<input type="submit" value="Agregar al carrito">
 				</div>
 			</form>
 		</div>

@@ -126,6 +126,7 @@ body {
 	flex-flow: column nowrap;
 	margin: 0;
 	padding: 0;
+	cursor: pointer;
 }
 .contenedor .contenido .productos .top {
 	width: 100%;
@@ -153,12 +154,13 @@ body {
 	transition: opacity 0.5s ease, box-shadow 0.5s ease;
 }
 .contenedor .contenido .productos .prod .top a {
+	max-width: 80%;
 	font-size: 12px; 
 	line-height: 12px;
 	color: #fff;
 	background: rgb(159,195,87);
 	padding: 11px 21px;
-	font-family: 'governorregular';
+	font-family: 'roboto_slabregular';
 	border-radius: 4px;
 	box-shadow: 0 0 15px 0 #323f17;
 	opacity: 0.2;
@@ -216,7 +218,7 @@ form.oculto {
 	text-align: right;
 }
 .contenedor .contenido .productos .prod form.addItem span {
-	width: 15%;
+	
 	text-align: left;
 	font-size: 12px;
 	line-height: 20px;
@@ -258,6 +260,8 @@ form.oculto {
 
 #carrito {
 	width: 20%;
+	min-height: 100vh;
+	overflow-y: visible;
 	display: none;
 	flex-flow: column nowrap;
 	justify-content: flex-start;
@@ -371,6 +375,7 @@ form.oculto {
 	align-content: flex-end;
 }
 #carrito form div a {
+	display: block;
 	font-family: 'ElegantIcons';
 	color: #97be49;
 	font-size: 12px;
@@ -378,18 +383,21 @@ form.oculto {
 	width: 10%;
 }
 #carrito form div p {
+	display: block;
 	font-size: 12px;
 	margin: 0;
 	width: 50%;
 }
 #carrito form div input {
+	display: block;
 	background: none;
 	width: 20%;
 	border: 0;
 	margin: 0;
 }
 #carrito form div span {
-	display: flex;
+	box-shadow: none;
+	display: block;
 	width: 20%;
 	color: #97be49;
 	background: none;
@@ -509,7 +517,7 @@ form.oculto {
 		flex-flow: row wrap;
 	}
 	#leftCon{
-		height: 110px;
+		height: 150px;
 		width: 40%;
 		margin: 0;
 		padding: 0;
@@ -520,43 +528,67 @@ form.oculto {
 		overflow: hidden;
 	}
 
-	#rightCon {
-		display: flex;
-		width: 60%;
-		height: 110px;
-		padding: 0 18px;
-		margin: 0;
-		box-sizing: border-box;
-	}
 	#leftCon img {
 		width: 180px;		
 		height: auto;
 	}
+
+	#rightCon {
+		display: flex;
+		width: 60%;
+		height: 150px;
+		padding: 0 18px;
+		margin: 0;
+		box-sizing: border-box;
+	}
 	#rightCon form {
-		height: 110px;
+		height: 150px;
 		background: none;
 		padding: 0;
 		display: flex;
 		flex-flow: column nowrap;
-		justify-content: space-around;
+		justify-content: space-between;
 		align-items: center;
-		align-content: space-around;
+		align-content: space-between;
 	}
 	#rightCon form h2 {
 		width: 100%;
 		color: #97be49;
-		font-size: .7em;
+		font-size: 12px;
 		font-family: 'roboto_slablight';
-		letter-spacing: .1em;
 		text-align: left;
 	}
 	#rightCon form div {
 		width: 100%;
 		display: flex;
 		flex-flow: row nowrap;
+		align-items: center;
+		align-content: center;
 		box-sizing: border-box;
 		border-bottom: 1px dotted #666;
 		box-shadow: 0;
+		height: 30px ;
+	}
+	#rightCon form div input {
+		color: #97be49;
+		width: 50%;
+		font-size: 12px;
+		padding: 0;
+		margin: 0;
+		border: 0;
+		min-height: 20px;
+	}
+	#rightCon form div input::-webkit-input-placeholder{
+		color: #97be49;
+		text-align: right;
+	}
+	#rightCon form div p {
+		width: 50%;
+		min-height: 20px;
+		text-align: left;
+		font-size: .7em;
+		color: #97be49;
+		padding-left: 3px;
 	}
 	#rightCon form select {
 		-webkit-appearance: button;
@@ -569,56 +601,34 @@ form.oculto {
 		border-radius: 0;
 		width: 100%;
 		height: auto;
-	}
-	#rightCon form div input {
-		color: #97be49;
-		width: 80%;
-		font-size: .7em;
-		padding: 0 2px 0 0;
+		height: 30px ;
 		margin: 0;
-	}
-	#rightCon form div input::-webkit-input-placeholder{
-		color: #97be49;
-		text-align: right;
-	}
-	#rightCon form div p {
-		width: 20%;
-		text-align: left;
-		font-size: .7em;
-		color: #97be49;
 	}
 	#rightCon form .button  {
 		width: 100%;
-		max-height: 35px;
-		background: #97be49;
-		padding: 4px 7px;
 		margin: 0;
 		border: 0;
 		box-sizing: border-box;
-		display: flex;
-		flex-flow: row nowrap;
-		justify-content: space-around;
-
 	}
 	#rightCon form .button input[type=submit] {
-		width: auto;
-		background: none;
+		width: 100%;
+		padding: 4px 7px;
+		background: #97be49;
 		border: 0;
-		text-align: center;
+		margin: 0;
 		color: white;
-		padding: 0;
 		font-family: 'roboto_slablight';
 		font-size:  12px;
-		line-height: 14px;
-		margin: 0;
+		height: 30px;
+		text-align: center;
 	}
 	#rightCon form .button span {
 		font-family: 'ElegantIcons';
-		font-size: 14px;
-		line-height: 14px;
+		font-size: 12px;
 		margin: 0;
 		padding: 0;
 		width: auto;
+		color: black;
 	}
 	.contenedor .contenido .productos .prod {
 		width: 100%;
@@ -646,7 +656,7 @@ form.oculto {
 	}
 	#carrito {
 		width: 100%;
-		height: 100vh;
+		min-height: 100vh;
 		box-shadow: none;
 		display: none;
 		flex-flow: column nowrap;
@@ -690,8 +700,9 @@ form.oculto {
 	#carrito form div a {
 		font-family: 'ElegantIcons';
 		color: #97be49;
+		width: 5%;
 		font-size: 12px;
-		margin: 0;
+		margin-left: auto;
 	}
 	#carrito form div p {
 		font-size: 12px;
