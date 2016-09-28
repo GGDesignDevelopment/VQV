@@ -144,11 +144,19 @@ body {
 	transition: opacity 0.5s ease, box-shadow 0.5s ease;
 	margin-bottom: 100px;
 }
-.contenedor .contenido .productos .top span {
+/*.contenedor .contenido .productos .top span {
 	font-family: 'roboto_slablight';
 	font-size: 14px;
-	color: #97be49;
+	color: white;
+	padding: 5px;
+	background: #97be49;
+	opacity: 0.2;
+	transition: opacity 0.5s ease, box-shadow 0.5s ease;
 }
+.contenedor .contenido .productos .top:hover span {
+	opacity: 1;
+	transition: opacity 0.5s ease, box-shadow 0.5s ease;
+}*/
 .top.active {
 	margin-bottom: 0 !important;
 }

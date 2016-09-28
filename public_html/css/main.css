@@ -340,6 +340,7 @@ section {
 #faq dl dt {
 	text-decoration: underline;
 	font-family: 'roboto_slabregular';
+	cursor: pointer;
 }
 #faq dl dd {
 	display: none;
