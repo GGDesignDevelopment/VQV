@@ -36,15 +36,15 @@ body {
 	font-family: 'governorregular';
 	color: #97be49;
 }
-.contenedor header div.titulo h2 {
+.contenedor header div.titulo a {
 	font-size: 14px;
-	letter-spacing: 1.4px;
+	letter-spacing: 1.2px;
 	font-family: 'roboto_slablight';
 	color: #8db340;
-	line-height: 32px;
+	line-height: 28px;
 	border-left: 2px solid #a8c866;
-	margin-left: 8px;
-	padding-left: 8px;
+	margin-left: 18px;
+	padding-left: 18px;
 }
 .contenedor header nav {
 	display: flex;
@@ -57,29 +57,25 @@ body {
 	font-family: 'ElegantIcons';
 	font-size: 25px;
 	line-height: 22px;
-	color: #9fc357;
+	color: #8dbe49;
 	margin-left: 2%; 
-	box-shadow: 0px 0px 4px 1px #c0d891;
-	border-radius: 30px;
+	border-radius: 40px;
 }
 .contenedor header nav a:hover {
-	color: #97be49;
-	box-shadow: 0px 0px 4px 1px #white;
+	box-shadow: 1px 2px 0px 0px #82a53b;
 }
 .contenedor header nav a.boton {
 	font-family: 'governorregular';
 	color: white;
 	font-size: 13px;
-	background: #9fc357;
+	background: #8dbe49;
 	padding: 11px 26px;
 	text-align: center;
 	margin-left: 4%;
-	box-shadow: 0px 0px 4px 1px #eaf2da;
 	letter-spacing: 1.8px;
 }
 .contenedor header nav a.boton:hover {
-	box-shadow: 1px 1px 5px 0px #b8d383;
-	background: #97be49;
+	box-shadow: 0px 3px 0px 0px #82a53b;
 }
 .contenedor header nav a.boton span {
 	font-family: 'ElegantIcons';
@@ -101,15 +97,17 @@ body {
 	line-height: 11px;
 	letter-spacing: 0;
 	font-family: 'governorregular';
-	background: #a8c866;
+	background: #8dbe49;
 	color: #f2f7e8;
 	padding: 8px 15px;
 	margin: 0 12px 9px 0;
 	border-radius: 30px;
 }
+.contenedor .contenido #filtro a.selected {
+	box-shadow: 0px 3px 0 0 #82a53b;
+}
 .contenedor .contenido #filtro a:hover {
-	background: #97be49;
-	box-shadow: 0px 0px 3px 1px #8dbe49;
+	box-shadow: 0px 3px 0 0 #82a53b;
 }
 /*-------------------------------------------------------------------------------------*/
 .contenedor .contenido .productos {
@@ -145,6 +143,11 @@ body {
 	margin: 0;
 	transition: opacity 0.5s ease, box-shadow 0.5s ease;
 	margin-bottom: 100px;
+}
+.contenedor .contenido .productos .top span {
+	font-family: 'roboto_slablight';
+	font-size: 14px;
+	color: #97be49;
 }
 .top.active {
 	margin-bottom: 0 !important;
@@ -294,7 +297,7 @@ form.oculto {
 	height: auto;
 	margin: 15px 0;
 	color: #97be49;
-	order: 0;
+	order: 1;
 }
 #carrito h2 {
 	font-size: 13px;
@@ -313,7 +316,7 @@ form.oculto {
 	width: 100%;
 	text-decoration: underline;
 	text-align: right;
-	order: 10;
+	order: 0;
 }
 #carrito span {
 	width: 80%;
@@ -351,16 +354,49 @@ form.oculto {
 	width: 100%;
 	display: flex;
 	flex-flow: column nowrap;
-	padding: 10px;
+	padding: 5px 10px 10px 10px;
 	order: 3;
 }
 #carrito form #dir {
-	margin: 10px 0;
+	margin: 5px 0;
 	color: #97be49;
 	background: none;
-	border: 0;
-	border-bottom: 1px dotted #97be49;
+	border: none;
+	display: flex;
+	flex-flow: column nowrap;
+	align-content: center;
+	align-items: center;
+	margin-bottom: 10px;
+}
+#carrito form #dir p {
 	font-size: 12px;
+	font-family: 'roboto_slablight';
+	color: #97be49;
+	text-decoration: underline;
+	margin-bottom: 10px;
+}
+#carrito form #dir div {
+	width: 100%;
+	display: flex;
+	flex-flow: row nowrap;
+	justify-content: space-between;
+	border: none;
+}
+#carrito form #dir div span {
+	font-family: 'ElegantIcons';
+	font-size: 13px;
+	color: #84be49;
+	margin: 0;
+	padding: 0;
+}
+#carrito form #dir div input {
+	font-size: 12px;
+	line-height: 13px;
+	font-family: 'roboto_slablight';
+	color: #84be49;
+	border: none;
+	border-bottom: 1px dotted #999;
+	width: 100%;
 }
 #carrito form div {
 	width: 100%;

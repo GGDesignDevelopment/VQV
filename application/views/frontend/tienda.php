@@ -2,7 +2,7 @@
 		<header>
 			<div class="titulo">
 				<h1>Tienda OnLine</h1>
-				<h2>Verde que te<br> Quiero Verde</h2>
+				<a href="#">Verde que te<br> Quiero Verde</a>
 			</div>
 			<nav>
 				<a href="<?php echo $home->linkFacebook; ?>" target="blank">&#xe0aa;</a>
@@ -23,7 +23,7 @@
 				</div>
 		</div>
 </div>
-		<!-- Revisar pa' dinamico  -->
+
 <div id="carrito">
 	<script id="loginForm" type="text/template">
 		<a href="index.html">vqv</a>
@@ -51,7 +51,13 @@
 		<a id="ocultar" href="#">Ocultar carrito.</a>
 		<h2>{{name}}</h2>
 		<form method="POST" id="confirmar" action="">
-			<input id="dir" type="text" name="address" value="{{address}}" placeholder="Direccion">
+			<div id="dir">
+				<p>Direccion de envio:</p>
+				<div>
+					<span>&#xe074;</span>
+					<input  type="text" name="address" value="{{address}}" placeholder="Direccion">
+				</div>
+			</div>
 			{{#items}}
 			<div>
 				<p>{{prodnombre}}</p>

@@ -219,19 +219,23 @@ var productos = function() {
 		var logged = usuario.islogged();
 		var estado = usuario.carrito.css('display');
 		if ( logged == true ) {
-			e.preventDefault();
 			$.ajax({
 				type: 'POST',
 				url: 'cart/addItem',
 				data: $(this).serialize(),
 				dataType: 'json',
 				success: function(){
-					usuario.render;
 					_clearVal($(this).attr('id'));
+					usuario.render();
 				},
 				error: function() {
+					alert('error');
 				}
 			});
+			if (estado=='none') {
+				usuario.showCart();
+			}
+			e.preventDefault();
 		} else {
 			e.preventDefault();
 			if ( errorCountLog ) {
@@ -251,6 +255,8 @@ var productos = function() {
 	function _render() {
 		$productos.empty();
 		var categoria = $(this).attr('data-categoria');
+		$(this).parent().find('.selected').toggleClass('selected');
+		$(this).toggleClass('selected');
 		$.ajax({
 			type: 'GET',
 			url: 'tienda/getProducts?catid='+categoria,
