@@ -128,7 +128,6 @@ var usuario = (function(){
 	}
 
 	function _confirmar(e) {
-		alert("olsadosaodas");
 		e.preventDefault()
 		$.ajax({
 			type: 'POST',
