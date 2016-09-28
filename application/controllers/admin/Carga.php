@@ -41,9 +41,11 @@ class Carga extends Admin_Controller {
                 $producto['proddes'] = utf8_encode($sheet['cells'][$x][2]);
                 $producto['catid'] = $IdCategoria;
                 $producto['produnidad'] = strtolower($sheet['cells'][$x][3]);
-                $producto['prodgranel'] = ($sheet['cells'][$x][3] == 'U' ? '' :'1' );
                 $producto['prodpresentacion'] = $sheet['cells'][$x][4];
                 $producto['prodprecio'] = $sheet['cells'][$x][5];
+                $producto['prodimagen'] = utf8_encode($sheet['cells'][$x][6]);
+                $producto['prodgranel'] = $sheet['cells'][$x][7];                
+                
                 $IdProducto = $this->producto_m->save($producto, null);
 
                 $x++;
