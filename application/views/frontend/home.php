@@ -8,6 +8,7 @@
 			<a class="mobile" href="#" >tienda on line</a>
 			<a class="mobile" href="#footer">contacto</a>
 		</nav>	
+		
 		<div>
 			<h2>Verde que te quiero verde</h2>
 			<a href="#">&#x61;</a>

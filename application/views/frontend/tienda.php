@@ -2,7 +2,7 @@
 		<header>
 			<div class="titulo">
 				<h1>Tienda OnLine</h1>
-				<a href="#">Verde que te<br> Quiero Verde</a>
+				<a href="<?php echo site_url() ?>">Verde que te<br> Quiero Verde</a>
 			</div>
 			<nav>
 				<a href="<?php echo $home->linkFacebook; ?>" target="blank">&#xe0aa;</a>
