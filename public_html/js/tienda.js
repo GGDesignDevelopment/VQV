@@ -256,7 +256,8 @@ var productos = function() {
 		var granel = $(this).attr('data-tab');
 		switch (granel) {
 				case '0':
-						$botonera.empty();
+						$botonera.find('.granel').removeClass('active');
+						$botonera.find('.naturales').removeClass('active');
 						_render(0,0,1);
 						break;
 				case '1':
