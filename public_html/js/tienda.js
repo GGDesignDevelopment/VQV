@@ -210,7 +210,7 @@ var productos = function() {
 
 
 
-	_render(0,0,0);
+	_render(0,0,1);
 
 	function _clearVal(id) {
 		$('#form '+id+'input[type=number]').val('');
