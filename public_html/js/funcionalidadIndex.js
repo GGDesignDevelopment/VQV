@@ -93,48 +93,61 @@ $(function () {
 	});
 });
 
+$alimentacion = $('#alimentacion');
+$frame = $alimentacion.find('#frame');
+$slidee = $alimentacion.find('.slidee');
+var sly = new Sly($frame,{
+	horizontal: 1,
+	itemNav: 'centered',
+	activateMiddle: 1,
+	smart: 1,
+	activateOn: 'click',
+	mouseDragging: 1,
+	touchDragging: 1,
+	releaseSwing: 1,
 
+}).init();
 
-$(function(){
-  $('.carousel').slick({
-	centerMode: true,
-	canterPadding: 10,
-	dots: true,
-	infinite: true,
-	slidesToShow: 3,
-	slidesToScroll: 3,
-	responsive: [
-	{
-		breakpoint: 1030,
-		settings: {
-			slidesToShow: 2,
-			slidesToScroll: 2
-		}
-	},
-	{
-		breakpoint: 769,
-		settings: {
-			slidesToShow: 1,
-			slidesToScroll: 1,
-		}
-	}, 
-	{
-		breakpoint: 500,
-		settings: {
-			slidesToScroll: 1,
-			slidesToShow: 1,
-			dots: false,
-			arrows: false
-		}
-	},
-	{
-		breakpoint: 740,
-		settings: {
-			slidesToScroll: 2,
-			slidesToShow: 2,
-			dots: false
-		}
-	}
-	]
-  });
-});
+// $(function(){
+//   $('.carousel').slick({
+// 	centerMode: true,
+// 	canterPadding: 10,
+// 	dots: true,
+// 	infinite: true,
+// 	slidesToShow: 3,
+// 	slidesToScroll: 3,
+// 	responsive: [
+// 	{
+// 		breakpoint: 1030,
+// 		settings: {
+// 			slidesToShow: 2,
+// 			slidesToScroll: 2
+// 		}
+// 	},
+// 	{
+// 		breakpoint: 769,
+// 		settings: {
+// 			slidesToShow: 1,
+// 			slidesToScroll: 1,
+// 		}
+// 	}, 
+// 	{
+// 		breakpoint: 500,
+// 		settings: {
+// 			slidesToScroll: 1,
+// 			slidesToShow: 1,
+// 			dots: false,
+// 			arrows: false
+// 		}
+// 	},
+// 	{
+// 		breakpoint: 740,
+// 		settings: {
+// 			slidesToScroll: 2,
+// 			slidesToShow: 2,
+// 			dots: false
+// 		}
+// 	}
+// 	]
+//   });
+// });
