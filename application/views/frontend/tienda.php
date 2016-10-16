@@ -11,16 +11,30 @@
 			</nav>
 		</header>
 		<div class="contenido">
-				<nav id="filtro">
-						<a class="filter" href="#" data-categoria="0">Todas las categorias</a>
-						<?php if (count($categorias)): foreach ($categorias as $categoria): ?>
-												<a class="filter" href="#" data-categoria="<?php echo $categoria->catid; ?>"><?php echo $categoria->catdescripcion; ?></a>
-								 <?php endforeach; ?>
-						<?php endif; ?> 
-				</nav>
-				<div class="productos">
-						         
-				</div>
+			<nav id="tabs">
+				<a class="tab" href="#" data-tab="0">Productos destacados</a>
+				<a class="tab" href="#" data-tab="1">Productos a granel</a>
+				<a class="tab" href="#" data-tab="2">Productos naturales</a>
+			</nav>
+			<nav id="filtro">
+				<span class="granel">
+					<a class="filter" href="#" data-granel="1" data-categoria="0">Todas las categorias</a>
+					<?php if (count($categorias)): foreach ($categorias as $categoria): ?>
+						<a class="filter" href="#" data-granel="1" data-categoria="<?php echo $categoria->catid; ?>"><?php echo $categoria->catdescripcion; ?></a>
+					 <?php endforeach; ?>
+					<?php endif; ?>
+				</span>
+				<span class="naturales">
+					<a class="filter" href="#" data-granel="0" data-categoria="0">Todas las categorias</a>
+					<?php if (count($categorias)): foreach ($categorias as $categoria): ?>
+						<a class="filter" href="#" data-granel="0" data-categoria="<?php echo $categoria->catid; ?>"><?php echo $categoria->catdescripcion; ?></a>
+					 <?php endforeach; ?>
+					<?php endif; ?>
+				</span>
+			</nav>
+			<div class="productos">
+					         
+			</div>
 		</div>
 </div>
 
