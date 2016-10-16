@@ -189,6 +189,7 @@ var productos = function() {
 	var $productos = $('.productos');
 	var $carrito = usuario.carrito;
 	var $botonera = $('#filtro'); 
+	var $tabs = $('#tabs');
 	var $producto = $('.productos');
 	var prodTemplate = $('#prodTemplate').html();
 	var prodTemplateMovil = $('#prodTemplateMovil').html();
@@ -201,6 +202,7 @@ var productos = function() {
 	$productos.on('submit', '.addItem', _addItem);
 	$productos.on('change', '.cant', _calcPrice);
 	$botonera.on('click', '.filter', _render);
+	$tabs.on('click', '.tab', _renderTabs);
 	$producto.on('click', '.top', _expandirItem);
 	$carrito.on('change', '#dir', _modifyAddress);
 	$carrito.on('change', '.quantity', _modifyItem);
@@ -208,7 +210,7 @@ var productos = function() {
 
 
 
-	_render(0);
+	_render(0,0,0);
 
 	function _clearVal(id) {
 		$('#form '+id+'input[type=number]').val('');
@@ -250,15 +252,81 @@ var productos = function() {
 			}
 		}
 	}
-
-	function _render() {
+	function _renderTabs() {
+		var granel = $(this).attr('data-tab');
+		switch (granel) {
+				case '0':
+						$botonera.empty();
+						_render(0,0,1);
+						break;
+				case '1':
+						$botonera.find('.granel').toggleClass('active');
+						$botonera.find('.naturales').removeClass('active');
+						_render(1,0);
+						break;
+				case '2':
+						$botonera.find('.naturales').toggleClass('active');
+						$botonera.find('.granel').removeClass('active');
+						_render(0,0);
+						break;
+		}
+	}
+		
+	function _render(a,b,c) {
 		$productos.empty();
-		var categoria = $(this).attr('data-categoria');
+		var categoria = ((b) ? b : $(this).attr('data-categoria'));
+		
+		var granel = ((a) ? a : $(this).attr('data-granel'));
 		$(this).parent().find('.selected').toggleClass('selected');
 		$(this).toggleClass('selected');
-		$.ajax({
+		if ( c == 1 ) {
+				$.ajax({
 			type: 'GET',
-			url: 'tienda/getProducts?catid='+categoria,
+			url: 'tienda/getProducts?catid='+categoria+'&inicio=1',
+			dataType: 'json',
+			success: function(json) {
+				$.each(json, function(indice, obj) {
+					switch(obj.produnidad) {
+						case 'm': 
+							obj.produnidad = 'ml.';
+							break;
+						case 'l':
+							obj.produnidad = 'lt.';
+							break;
+						case 'g': 
+							obj.produnidad = 'gr.';
+							break;
+						case 'k':
+							obj.produnidad = 'kg.';
+							break;
+						case 'u':
+							obj.produnidad = 'uni.';
+							break;
+						default: 
+							obj.produnidad = 'uni.';
+							break;
+					}
+					if ( obj.prodgranel == 1 ) {
+						obj.cuenta = obj.prodprecio / obj.prodpresentacion;
+						obj.proddisplay = '';
+					} else {
+						obj.proddisplay = 'x '+obj.prodpresentacion;
+						obj.cuenta = obj.prodprecio;
+						obj.prodpresentacion = 1;
+					}
+					if($(window).width() <= 768) {
+						$productos.append(Mustache.render(prodTemplateMovil, obj));
+					} else {
+						$productos.append(Mustache.render(prodTemplate, obj));
+					}
+				});
+
+			}
+		}) 
+		} else {
+				$.ajax({
+			type: 'GET',
+			url: 'tienda/getProducts?catid='+categoria+'&granel='+granel,
 			dataType: 'json',
 			success: function(json) {
 				$.each(json, function(indice, obj) {
@@ -299,6 +367,8 @@ var productos = function() {
 
 			}
 		})  
+		}
+		
 	}
 	
 	function _expandirItem(e) {
