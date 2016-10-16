@@ -274,9 +274,10 @@ var productos = function() {
 		
 	function _render(a,b,c) {
 		$productos.empty();
-		var categoria = ((b) ? b : $(this).attr('data-categoria'));
-		
-		var granel = ((a) ? a : $(this).attr('data-granel'));
+			
+		var categoria = ((b != null) ? b : $(this).attr('data-categoria'));
+		var granel = ((a != null) ? a : $(this).attr('data-granel'));
+			
 		$(this).parent().find('.selected').toggleClass('selected');
 		$(this).toggleClass('selected');
 		if ( c == 1 ) {
