@@ -1,13 +1,13 @@
 var usuario = (function(){
 
-	// Cache DOM 
+	// Cache DOM
 	var $boton = $('#login');
 	var $carrito = $('#carrito');
 	var $contenedor = $('.contenedor');
 	// Contenido html boton principal
 	var islog = 'Mi Carrito <span>&#xe015;</span>';
 	var notlog = 'Iniciar / Registrarse';
-	// Templates MUSTACHE para render 
+	// Templates MUSTACHE para render
 	var loginValue = $carrito.find('#loginForm').html();
 	var carritoTemplate = $carrito.find('#carritoTemplate').html();
 	// Mensajes
@@ -34,13 +34,13 @@ var usuario = (function(){
 				success: function(json){
 					$.each(json.items, function(i, obj) {
 						switch(obj.produnidad) {
-						case 'm': 
+						case 'm':
 							obj.produnidad = 'ml.';
 							break;
 						case 'l':
 							obj.produnidad = 'lt.';
 							break;
-						case 'g': 
+						case 'g':
 							obj.produnidad = 'gr.';
 							break;
 						case 'k':
@@ -49,7 +49,7 @@ var usuario = (function(){
 						case 'u':
 							obj.produnidad = 'uni.';
 							break;
-						default: 
+						default:
 							obj.produnidad = 'uni.';
 							break;
 						}
@@ -102,7 +102,7 @@ var usuario = (function(){
 			},
 		});
 	};
-	
+
 
 	function _register(e) {
 		$.ajax({
@@ -188,7 +188,7 @@ var productos = function() {
 	// Cache DOM
 	var $productos = $('.productos');
 	var $carrito = usuario.carrito;
-	var $botonera = $('#filtro'); 
+	var $botonera = $('#filtro');
 	var $tabs = $('#tabs');
 	var $producto = $('.productos');
 	var prodTemplate = $('#prodTemplate').html();
@@ -197,7 +197,7 @@ var productos = function() {
 	var errorLogMsg = '<span class="errorMsg">Debes iniciar sesion o registrarte para poder realizar tu compra exitosamente. </span>'
 
 	var errorCountLog = false;
-	// Bind Events 
+	// Bind Events
 	$productos.on('click', '#leftCon', _expandirItemMovil);
 	$productos.on('submit', '.addItem', _addItem);
 	$productos.on('change', '.cant', _calcPrice);
@@ -263,22 +263,23 @@ var productos = function() {
 				case '1':
 						$botonera.find('.granel').toggleClass('active');
 						$botonera.find('.naturales').removeClass('active');
-						_render(1,0);
+						_render(1,0,0);
 						break;
 				case '2':
 						$botonera.find('.naturales').toggleClass('active');
 						$botonera.find('.granel').removeClass('active');
-						_render(0,0);
+						_render(0,0,0);
 						break;
 		}
 	}
-		
+
 	function _render(a,b,c) {
 		$productos.empty();
-			
+
 		var categoria = ((b != null) ? b : $(this).attr('data-categoria'));
-		var granel = ((a != null) ? a : $(this).attr('data-granel'));
-			
+		var granel = $(this).attr('data-granel');
+
+
 		$(this).parent().find('.selected').toggleClass('selected');
 		$(this).toggleClass('selected');
 		if ( c == 1 ) {
@@ -289,13 +290,13 @@ var productos = function() {
 			success: function(json) {
 				$.each(json, function(indice, obj) {
 					switch(obj.produnidad) {
-						case 'm': 
+						case 'm':
 							obj.produnidad = 'ml.';
 							break;
 						case 'l':
 							obj.produnidad = 'lt.';
 							break;
-						case 'g': 
+						case 'g':
 							obj.produnidad = 'gr.';
 							break;
 						case 'k':
@@ -304,7 +305,7 @@ var productos = function() {
 						case 'u':
 							obj.produnidad = 'uni.';
 							break;
-						default: 
+						default:
 							obj.produnidad = 'uni.';
 							break;
 					}
@@ -324,22 +325,24 @@ var productos = function() {
 				});
 
 			}
-		}) 
+		})
 		} else {
+			var direccion = 'tienda/getProducts?catid='+categoria.toString()+'&granel='+granel.toString();
+
 				$.ajax({
 			type: 'GET',
-			url: 'tienda/getProducts?catid='+categoria+'&granel='+granel,
+			url: direccion,
 			dataType: 'json',
 			success: function(json) {
 				$.each(json, function(indice, obj) {
 					switch(obj.produnidad) {
-						case 'm': 
+						case 'm':
 							obj.produnidad = 'ml.';
 							break;
 						case 'l':
 							obj.produnidad = 'lt.';
 							break;
-						case 'g': 
+						case 'g':
 							obj.produnidad = 'gr.';
 							break;
 						case 'k':
@@ -348,7 +351,7 @@ var productos = function() {
 						case 'u':
 							obj.produnidad = 'uni.';
 							break;
-						default: 
+						default:
 							obj.produnidad = 'uni.';
 							break;
 					}
@@ -368,11 +371,11 @@ var productos = function() {
 				});
 
 			}
-		})  
+		})
 		}
-		
+
 	}
-	
+
 	function _expandirItem(e) {
 		e.preventDefault()
 		var $padre = $(this).parent('.prod');
@@ -432,7 +435,7 @@ var productos = function() {
 		var id = $(this).attr('data-id');
 		var sub = precio * cantidad;
 		var cadena = '$u. ' + sub + '- Agregar al carrito';
-		$('.'+id).val(cadena); 
+		$('.'+id).val(cadena);
 		// alert(cadena);
 	}
 
