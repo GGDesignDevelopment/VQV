@@ -39,7 +39,7 @@ class Tienda extends Frontend_Controller {
     }
 
     function getProducts() {
-        header('Access-Control-Allow-Origin: *'); 
+        header('Access-Control-Allow-Origin: *');
         $catid = $this->input->get('catid');
         $prodinicio = $this->input->get('inicio');
         if ($this->input->get('granel') == 1) {
@@ -47,7 +47,6 @@ class Tienda extends Frontend_Controller {
         }  else {
           $prodgranel = "";
         }
-
         if ($prodinicio && $prodinicio == 1) {
           $products = $this->producto_m->get(['prodinicio' => $prodinicio]);
         } elseif ($catid == NULL || $catid == 0) {

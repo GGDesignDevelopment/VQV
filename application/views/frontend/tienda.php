@@ -12,28 +12,29 @@
 		</header>
 		<div class="contenido">
 			<nav id="tabs">
-				<a class="tab" href="#" data-tab="0">Productos destacados</a>
-				<a class="tab" href="#" data-tab="1">Productos a granel</a>
-				<a class="tab" href="#" data-tab="2">Productos naturales</a>
+				<!-- [inicio, categoria, granel, tabValue] -->
+				<a class="tab" href="#" data-filter='["1","0","0","1"]'>Productos destacados</a>
+				<a class="tab" href="#" data-filter='["0","0","1","1"]'>Productos a granel</a>
+				<a class="tab" href="#" data-filter='["0","0","0","1"]'>Productos naturales</a>
 			</nav>
 			<nav id="filtro">
 				<span class="granel">
-					<a class="filter" href="#" data-granel="1" data-categoria="0">Todas las categorias</a>
+					<a class="filter" href="#" data-filter='["0","0","1"]'>Todas las categorias</a>
 					<?php if (count($categorias)): foreach ($categorias as $categoria): ?>
-						<a class="filter" href="#" data-granel="1" data-categoria="<?php echo $categoria->catid; ?>"><?php echo $categoria->catdescripcion; ?></a>
+						<a class="filter" href="#" data-filter='["0","<?php echo $categoria->catid; ?>","1"]'><?php echo $categoria->catdescripcion; ?></a>
 					 <?php endforeach; ?>
 					<?php endif; ?>
 				</span>
 				<span class="naturales">
-					<a class="filter" href="#" data-granel="0" data-categoria="0">Todas las categorias</a>
+					<a class="filter" href="#" data-filter='["0","0","0"]'>Todas las categorias</a>
 					<?php if (count($categorias)): foreach ($categorias as $categoria): ?>
-						<a class="filter" href="#" data-granel="0" data-categoria="<?php echo $categoria->catid; ?>"><?php echo $categoria->catdescripcion; ?></a>
+						<a class="filter" href="#" data-filter='["0","<?php echo $categoria->catid; ?>","0"]'><?php echo $categoria->catdescripcion; ?></a>
 					 <?php endforeach; ?>
 					<?php endif; ?>
 				</span>
 			</nav>
 			<div class="productos">
-					         
+
 			</div>
 		</div>
 </div>
@@ -97,7 +98,7 @@
 			<span>{{produnidad}} ${{amount}}</span>
 			<a href="cart/removeItem/{{prodid}}" class="remove">&#xe019;</a>
 		</div>
-	</script>	
+	</script>
 </div>
 <script type="text/template" id="prodTemplate">
 	<div class="prod" >
@@ -108,7 +109,7 @@
 			{{/prodgranel}} -->
 			<p>{{proddes}}</p>
 		</div>
-		
+
 		<form id="{{prodid}}" method="POST" class="oculto addItem">
 			<input type="number" class="cant" name="quantity" value="{{prodpresentacion}}" placeholder="{{prodpresentacion}}" step="1" min="1" data-precio="{{cuenta}}" data-id="{{prodid}}">
 			<span>{{proddisplay}} {{produnidad}}</span>
