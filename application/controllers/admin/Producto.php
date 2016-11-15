@@ -18,11 +18,7 @@ class Producto extends Admin_Controller {
         $this->data['scripts'][] = '<script type="text/javascript" src="' . site_url('js/admin/producto.js') . '"></script>';
 
         if ($id) {
-            // limpio cualquier envase en session
-            $this->session->unset_userdata('envases');
-            $envases = $this->productoenvase_m->get(['prodid'=>$id]);
-            $this->session->set_userdata(['envases' . $id =>$envases]);
-            $this->data['envases'] = $envases;
+            $this->data['envases'] = $this->productoenvase_m->get(['prodid'=>$id]);
             $this->data['producto'] = $this->producto_m->get(['prodid' => $id],TRUE);
             count($this->data['producto']) || $this->data['errores'][] = 'Producto no encontrada';
             if ($this->data['producto']->prodimagen <> '') {
@@ -46,6 +42,7 @@ class Producto extends Admin_Controller {
         } else {
             $this->data['producto'] = $this->producto_m->new_producto();
             $this->data['envases'] = null;
+            $where = null;
         }
 
         $this->data['categorias'] = $this->categoria_m->get_dropdown();
@@ -67,28 +64,26 @@ class Producto extends Admin_Controller {
                     $data['prodimagen'] = $name;
                 }
             }
+            $nuevoid = $this->producto_m->save($data, $where);
+            $envases = $this->input->post('envases');
 
-            $envases = $this->session->userdata('envases' . $id);
+            if ($id) {
+              $nuevoid = $id;
+            }
 
             if ($envases && count($envases)) {
-              $this->productoenvase_m->delete(['prodid'=>$id]);
-              $nuevoid = $this->producto_m->save($data, $where);
+              $this->productoenvase_m->delete(['prodid'=>$nuevoid]);
 
               unset($data);
               foreach ($envases as $envase) {
                 $data['prodid'] = $nuevoid;
-                $data['envaseid'] = $envase->envaseid;
+                $data['envaseid'] = $envase;
                 $this->productoenvase_m->save($data, null);
               }
             }
 
-            //redirect('admin/producto');
+            redirect('admin/producto');
         }
-
-        // $this->session->unset_userdata('envases');
-        // $envases = $this->productoenvase_m->get(['prodid'=>$id]);
-        // $this->session->set_userdata(['envases' . $id =>$envases]);
-        // $this->data['envases'] = $envases;
 
         $this->data['subview'] = 'admin/producto/edit';
         $this->load->view('admin/_layout_main', $this->data);

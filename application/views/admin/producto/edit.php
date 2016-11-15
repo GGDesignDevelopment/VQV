@@ -3,7 +3,7 @@
         <h4><?php echo empty($producto->prodid) ? 'Nuevo Producto' : 'Editar Producto'; ?></h4>
     </div>
     <?php echo validation_errors(); ?>
-    <?php echo form_open_multipart('', 'role="form"'); ?>
+    <?php echo form_open_multipart('', 'role="form" id="formEnvases"'); ?>
 
     <div class="col-xs-12 col-sm-6">
         <div class="form-group">
@@ -57,19 +57,16 @@
         <table class="table table-striped table-bordered">
             <thead>
                 <tr>
-                    <th>Envase</th>
+                    <th colspan="2">Envase</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody id="listaEnvases">
                 <?php if (count($envases)): foreach ($envases as $envase): ?>
-                        <tr>
+                        <tr data-id="<?php echo $envase->envaseid ?>">
                             <td><?php echo $envase->envasenombre; ?></td>
+                            <td><a href="#" class="glyphicon glyphicon-trash"></a></td>
                         </tr>
                     <?php endforeach; ?>
-                <?php else: ?>
-                    <tr>
-                        <td>No hay envases definidos</td>
-                    </tr>
                 <?php endif; ?>
             </tbody>
         </table>
@@ -81,6 +78,8 @@
           </button> -->
           <?php echo form_submit('submit', 'Confirmar', 'class="btn btn-primary"'); ?>
         </div>
+    </div>
+    <div id="hiddens">
     </div>
     <?php echo form_close(); ?>
 </div>

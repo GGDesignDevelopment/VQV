@@ -15,23 +15,37 @@ var levantarDatos = function(){
   var $container = $('#envases');
   var $dropdown = $container.find('select');
   var $boton = $container.find('.add');
+  var $envases = $('#listaEnvases');
+  var $form = $('#formEnvases');
+  var $hidden = $('#hiddens');
+  var $borrar = $envases.find('.glyphicon');
+
 
   $boton.on('click', agregarEnvase);
+  $form.on('submit', levantarEnvases);
+  $borrar.on('click', borrarEnvase);
+
+  function borrarEnvase() {
+      $(this).parents('tr').remove();
+  }
 
   function agregarEnvase() {
-
-    var id = $container.data('id');
     var envaseid = $dropdown.val();
-    var envaseDesc = $dropdown.find(':selected').text();
-    $.ajax({
-      type: 'POST',
-      url: 'http://localhost/admin/producto/add_envase/'+id+'/'+envaseid+'/'+envaseDesc,
-      success: function(){
-        alert('exito');
-      },
-      error: function(){
-        alert('error');
-      }
+        envaseDesc = $dropdown.find(':selected').text();
+    if ($envases.find('[data-id="'+envaseid+'"]').length === 0) {
+        $envases.append('<tr data-id="'+envaseid+'">><td>'+envaseDesc+'</td><td><a href="#" class="glyphicon glyphicon-trash"></a></td></tr>');
+    }
+
+  }
+
+  function levantarEnvases() {
+    var $element = $envases.find('tr');
+        comboEnvases = [];
+    $element.each(function(i) {
+      $hidden.append('<input type="hidden" name="envases[]" value="'+$(this).attr('data-id')+'">');
     })
   }
+
+
+
 }();
