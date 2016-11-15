@@ -64,9 +64,9 @@ class Tienda extends Frontend_Controller {
     function search() {
         header('Access-Control-Allow-Origin: *');
         $filter = $this->input->get('filter');
-        $where = '(prodnombre like "%' . $filter . '%" or proddes like "%' . $filter . '%")';        
+        $where = '(prodnombre like "%' . $filter . '%" or proddes like "%' . $filter . '%")';
         $products = $this->producto_m->get($where);
-        var_dump($this->db->last_query());
+        
         foreach ($products as $product) {
           $product->envases = $this->productoenvase_m->get(['prodid'=>$product->prodid]);
         }
