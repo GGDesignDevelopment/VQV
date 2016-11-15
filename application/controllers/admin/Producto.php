@@ -14,7 +14,15 @@ class Producto extends Admin_Controller {
     }
 
     function edit($id = NULL) {
+        $this->data['combo_envases'] = $this->envase_m->get_dropdown();
+        $this->data['scripts'][] = '<script type="text/javascript" src="' . site_url('js/admin/producto.js') . '"></script>';
+
         if ($id) {
+            // limpio cualquier envase en session
+            $this->session->unset_userdata('envases');
+            $envases = $this->productoenvase_m->get(['prodid'=>$id]);
+            $this->session->set_userdata(['envases' . $id =>$envases]);
+            $this->data['envases'] = $envases;
             $this->data['producto'] = $this->producto_m->get(['prodid' => $id],TRUE);
             count($this->data['producto']) || $this->data['errores'][] = 'Producto no encontrada';
             if ($this->data['producto']->prodimagen <> '') {
@@ -33,10 +41,11 @@ class Producto extends Admin_Controller {
 
                 $this->data['scripts'][] = $script;
             }
+
             $where = ['prodid' => $id];
         } else {
             $this->data['producto'] = $this->producto_m->new_producto();
-            $where = null;
+            $this->data['envases'] = null;
         }
 
         $this->data['categorias'] = $this->categoria_m->get_dropdown();
@@ -59,10 +68,28 @@ class Producto extends Admin_Controller {
                 }
             }
 
-            $this->producto_m->save($data, $where);
-            
-            redirect('admin/producto');
+            $envases = $this->session->userdata('envases' . $id);
+
+            if ($envases && count($envases)) {
+              $this->productoenvase_m->delete(['prodid'=>$id]);
+              $nuevoid = $this->producto_m->save($data, $where);
+
+              unset($data);
+              foreach ($envases as $envase) {
+                $data['prodid'] = $nuevoid;
+                $data['envaseid'] = $envase->envaseid;
+                $this->productoenvase_m->save($data, null);
+              }
+            }
+
+            //redirect('admin/producto');
         }
+
+        // $this->session->unset_userdata('envases');
+        // $envases = $this->productoenvase_m->get(['prodid'=>$id]);
+        // $this->session->set_userdata(['envases' . $id =>$envases]);
+        // $this->data['envases'] = $envases;
+
         $this->data['subview'] = 'admin/producto/edit';
         $this->load->view('admin/_layout_main', $this->data);
     }
@@ -84,6 +111,15 @@ class Producto extends Admin_Controller {
             $this->producto_m->save($data, ['prodid'=>$id]);
             echo 0;
         }
+    }
+
+    function add_envase($prodid, $envaseid, $envasedes) {
+      $envases = $this->session->userdata('envases' . $prodid);
+      $envase = $this->productoenvase_m->new_prodenvase();
+      $envase->envaseid = $envaseid;
+      $envase->envasenombre = $envasedes;
+      $envases[] = $envase;
+      $this->session->set_userdata(['envases' . $prodid =>$envases]);
     }
 
     function search() {
@@ -135,5 +171,5 @@ class Producto extends Admin_Controller {
 //
 //        $this->data['subview'] = 'admin/categoria/index';
 //        $this->load->view('admin/_layout_modal', $this->data);
-//    }    
+//    }
 }

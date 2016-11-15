@@ -6,6 +6,7 @@ class Tienda extends Frontend_Controller {
         parent::__construct();
         $this->load->model('categoria_m');
         $this->load->model('producto_m');
+        $this->load->model('productoenvase_m');
     }
 
     function index2() {
@@ -53,6 +54,9 @@ class Tienda extends Frontend_Controller {
             $products = $this->producto_m->get(['prodgranel' => $prodgranel], FALSE);
         } else {
             $products = $this->producto_m->get(['catid' => $catid, 'prodgranel' => $prodgranel], FALSE);
+        }
+        foreach ($products as $product) {
+          $product->envases = $this->productoenvase_m->get(['prodid'=>$product->prodid]);
         }
         echo json_encode($products);
     }

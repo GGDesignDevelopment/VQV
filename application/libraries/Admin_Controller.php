@@ -12,6 +12,8 @@ class Admin_Controller extends MY_Controller {
         $this->load->model('alimentacion_m');
         $this->load->model('sale_m');
         $this->load->model('saleitem_m');
+        $this->load->model('productoenvase_m');
+        $this->load->model('envase_m');
         $this->load->library('encryption');
         $this->load->library('session');
         $excepcion_uri = array('admin/user/login', 'admin/user/logout');

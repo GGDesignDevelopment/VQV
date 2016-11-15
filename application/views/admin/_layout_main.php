@@ -16,6 +16,7 @@
             <!--<li class="active"><?php // echo anchor('admin/dashboard','Dashboard');?></li>-->
             <li><?php echo anchor('admin/user','Usuarios');?></li>
             <li><?php echo anchor('admin/home/edit','Inicio');?></li>
+            <li><?php echo anchor('admin/envase','Envases');?></li>
             <li><?php echo anchor('admin/categoria','Familias');?></li>
             <li><?php echo anchor('admin/producto','Productos');?></li>
             <li><?php echo anchor('admin/reciclaje','Técnicas Reciclaje');?></li>
@@ -26,11 +27,11 @@
           <ul class="nav navbar-nav navbar-right">
             <li><?php echo mailto($this->session->userdata('email'),'<i class="glyphicon glyphicon-user"></i> ' . $this->session->userdata('name')); ?></li>
             <li><?php echo anchor('admin/user/logout','<i class="glyphicon glyphicon-off"></i> Logout'); ?></li>
-          </ul>          
-        </div>        
+          </ul>
+        </div>
       </div>
     </nav>
-    
+
     <div class="container">
         <?php $this->load->view($subview)?>
     </div>

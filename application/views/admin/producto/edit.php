@@ -8,7 +8,7 @@
     <div class="col-xs-12 col-sm-6">
         <div class="form-group">
             <label>Código</label>
-            <p class="form-control-static"><?php echo $producto->prodid; ?></p>	
+            <p class="form-control-static"><?php echo $producto->prodid; ?></p>
         </div>
         <div class="form-group">
             <label>Nombre</label>
@@ -16,44 +16,70 @@
         </div>
         <div class="form-group">
             <label>Descripcion</label>
-            <?php echo form_input('proddes', $producto->proddes, 'class="form-control"'); ?>		
+            <?php echo form_input('proddes', $producto->proddes, 'class="form-control"'); ?>
         </div>
-
-        <label>Imagen</label>
-        <input id="file" type="file" name="file" class="file" data-preview-file-type="any" data-upload-url="#">		        
-    </div>
-    <div class="col-xs-12 col-sm-6">
         <div class="form-group">
             <label>Familia</label>
             <?php echo form_dropdown('catid', $categorias, $producto->catid, 'class="form-control"'); ?>
-        </div>        
+        </div>
+
+        <label>Imagen</label>
+        <input id="file" type="file" name="file" class="file" data-preview-file-type="any" data-upload-url="#">
+    </div>
+    <div class="col-xs-12 col-sm-6">
         <div class="form-group">
             <label>Presentación</label>
             <?php echo form_input('prodpresentacion', $producto->prodpresentacion, 'class="form-control"'); ?>
         </div>
         <div class="form-group">
             <label>Unidad</label>
-            <?php echo form_dropdown('produnidad', $unidades, $producto->produnidad, 'class="form-control"'); ?>		
-        </div>        
+            <?php echo form_dropdown('produnidad', $unidades, $producto->produnidad, 'class="form-control"'); ?>
+        </div>
         <div class="form-group">
             <label>Precio</label>
             <div class="input-group">
                 <span class="input-group-addon">$</span>
-                <?php echo form_input('prodprecio', $producto->prodprecio, 'class="form-control"'); ?>		
+                <?php echo form_input('prodprecio', $producto->prodprecio, 'class="form-control"'); ?>
             </div>
         </div>
         <div class="form-group">
             <label>¿Granel?</label>
-            <?php echo form_checkbox('prodgranel', '1', ($producto->prodgranel == '1')); ?>		
+            <?php echo form_checkbox('prodgranel', '1', ($producto->prodgranel == '1')); ?>
         </div>
         <div class="form-group">
-            <label>¿Extranjero?</label>
-            <?php echo form_checkbox('prodextranjero', '1', ($producto->prodextranjero == '1')); ?>		
-        </div>      
+            <div id="envases" data-id="<?php echo $producto->prodid ?>"class="input-group">
+              <?php echo form_dropdown('combo_envases', $combo_envases, 0,'class="form-control"'); ?>
+              <span class="input-group-btn">
+                <a class="btn btn-primary add">+</a>
+              </span>
+            </div>
+        </div>
+        <table class="table table-striped table-bordered">
+            <thead>
+                <tr>
+                    <th>Envase</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php if (count($envases)): foreach ($envases as $envase): ?>
+                        <tr>
+                            <td><?php echo $envase->envasenombre; ?></td>
+                        </tr>
+                    <?php endforeach; ?>
+                <?php else: ?>
+                    <tr>
+                        <td>No hay envases definidos</td>
+                    </tr>
+                <?php endif; ?>
+            </tbody>
+        </table>
     </div>
     <div class="col-xs-12">
         <div class="form-group pull-right">
-            <?php echo form_submit('submit', 'Confirmar', 'class="btn btn-primary"'); ?>
+          <!-- <button type="button" class="btn btn-primary">
+            <span class="glyphicon glyphicon-floppy-disk"></span> Guardar
+          </button> -->
+          <?php echo form_submit('submit', 'Confirmar', 'class="btn btn-primary"'); ?>
         </div>
     </div>
     <?php echo form_close(); ?>
