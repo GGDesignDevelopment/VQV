@@ -16,6 +16,10 @@
 				<a class="tab" href="#" data-filter='["1","0","0","1"]'>Productos destacados</a>
 				<a class="tab" href="#" data-filter='["0","0","1","1"]'>Productos a granel</a>
 				<a class="tab" href="#" data-filter='["0","0","0","1"]'>Productos naturales</a>
+				<div class="search">
+					<input id="searchItem" type="text" placeholder="Buscar producto.">
+					<a class="search" href="#">&#x55;</a>
+				</div>
 			</nav>
 			<nav id="filtro">
 				<span class="granel">
@@ -116,9 +120,9 @@
 			{{#prodgranel}}
 				<select name="envase">
 					<option selected disabled>Tipo de envase</option>
-					<option value="1">Bolsa de papel</option>
-					<option value="2">Envase de vidrio nuevo</option>
-					<option value="3">Intercambio envase</option>
+					{{#envases}}
+					<option value="{{envaseid}}">{{envasenombre}} - ${{envasecosto}}</option>
+					{{/envases}}
 				</select>
 			{{/prodgranel}}
 			<input type="hidden" name="productid" value="{{prodid}}" >

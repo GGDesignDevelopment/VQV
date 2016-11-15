@@ -190,6 +190,8 @@ var productos = function() {
 	var $carrito = usuario.carrito;
 	var $botonera = $('#filtro');
 	var $tabs = $('#tabs');
+	var $search = $tabs.find('#searchItem');
+	var $searchBox = $tabs.find('div.search');
 	var $producto = $('.productos');
 	var prodTemplate = $('#prodTemplate').html();
 	var prodTemplateMovil = $('#prodTemplateMovil').html();
@@ -203,6 +205,7 @@ var productos = function() {
 	$productos.on('change', '.cant', _calcPrice);
 	$botonera.on('click', '.filter', _getData);
 	$tabs.on('click', '.tab', _getData);
+	$searchBox.on('click', '.search', _searchItem);
 	$producto.on('click', '.top', _expandirItem);
 	$carrito.on('change', '#dir', _modifyAddress);
 	$carrito.on('change', '.quantity', _modifyItem);
@@ -372,6 +375,20 @@ var productos = function() {
 		})
 	}
 
+	function _searchItem() {
+		alert('searching');
+		var query = $search.val();
+		$.ajax({
+			type: 'GET',
+			url: 'tienda/search?filter='+query,
+			dataType: 'json',
+			success: function(json) {
+				_render(json);
+			},
+					 
+		})
+	}
+	
 	function _calcPrice() {
 		var precio = $(this).attr('data-precio');
 		var cantidad = $(this).val();
