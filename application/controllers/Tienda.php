@@ -60,4 +60,17 @@ class Tienda extends Frontend_Controller {
         }
         echo json_encode($products);
     }
+
+    function search() {
+        header('Access-Control-Allow-Origin: *');
+        $filter = $this->input->get('filter');
+
+        $where = ['prodnombre like' => '%' . $filter . '%'];
+        $products = $this->producto_m->get($where);
+
+        foreach ($products as $product) {
+          $product->envases = $this->productoenvase_m->get(['prodid'=>$product->prodid]);
+        }
+        echo json_encode($products);
+    }
 }
