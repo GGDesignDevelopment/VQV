@@ -39,7 +39,7 @@ class Envase_M extends MY_Model {
         $envase->envaseid = 0;
         $envase->envasenombre = '';
         $envase->envasecosto = 0;
-
+        $envase->presentacion = 0;
         return $envase;
     }
 
