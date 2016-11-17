@@ -1,46 +1,46 @@
 <div class="contenedor">
-		<header>
-			<div class="titulo">
-				<h1>Tienda OnLine</h1>
-				<a href="<?php echo site_url() ?>">Verde que te<br> Quiero Verde</a>
+	<header>
+		<div class="titulo">
+			<h1>Tienda OnLine</h1>
+			<a href="<?php echo site_url() ?>">Verde que te<br> Quiero Verde</a>
+		</div>
+		<nav>
+			<a href="<?php echo $home->linkFacebook; ?>" target="blank">&#xe0aa;</a>
+			<a href="<?php echo $home->linkInstagram; ?>" target="blank">&#xe0b1;</a>
+			<a href="#" class="boton" id="login"></a>
+		</nav>
+	</header>
+	<div class="contenido">
+		<nav id="tabs">
+			<!-- [inicio, categoria, granel, tabValue] -->
+			<a class="tab" href="#" data-filter='["1","0","0","1"]'>Productos destacados</a>
+			<a class="tab" href="#" data-filter='["0","0","1","1"]'>Productos a granel</a>
+			<a class="tab" href="#" data-filter='["0","0","0","1"]'>Productos naturales</a>
+			<div class="search">
+				<input id="searchItem" type="text" placeholder="Buscar producto.">
+				<a class="search" href="#">&#x55;</a>
 			</div>
-			<nav>
-				<a href="<?php echo $home->linkFacebook; ?>" target="blank">&#xe0aa;</a>
-				<a href="<?php echo $home->linkInstagram; ?>" target="blank">&#xe0b1;</a>
-				<a href="#" class="boton" id="login"></a>
-			</nav>
-		</header>
-		<div class="contenido">
-			<nav id="tabs">
-				<!-- [inicio, categoria, granel, tabValue] -->
-				<a class="tab" href="#" data-filter='["1","0","0","1"]'>Productos destacados</a>
-				<a class="tab" href="#" data-filter='["0","0","1","1"]'>Productos a granel</a>
-				<a class="tab" href="#" data-filter='["0","0","0","1"]'>Productos naturales</a>
-				<div class="search">
-					<input id="searchItem" type="text" placeholder="Buscar producto.">
-					<a class="search" href="#">&#x55;</a>
-				</div>
-			</nav>
-			<nav id="filtro">
-				<span class="granel">
+		</nav>
+		<nav id="filtro">
+			<span class="granel">
 					<a class="filter" href="#" data-filter='["0","0","1"]'>Todas las categorias</a>
 					<?php if (count($categorias)): foreach ($categorias as $categoria): ?>
 						<a class="filter" href="#" data-filter='["0","<?php echo $categoria->catid; ?>","1"]'><?php echo $categoria->catdescripcion; ?></a>
 					 <?php endforeach; ?>
 					<?php endif; ?>
 				</span>
-				<span class="naturales">
+			<span class="naturales">
 					<a class="filter" href="#" data-filter='["0","0","0"]'>Todas las categorias</a>
 					<?php if (count($categorias)): foreach ($categorias as $categoria): ?>
 						<a class="filter" href="#" data-filter='["0","<?php echo $categoria->catid; ?>","0"]'><?php echo $categoria->catdescripcion; ?></a>
 					 <?php endforeach; ?>
 					<?php endif; ?>
 				</span>
-			</nav>
-			<div class="productos">
+		</nav>
+		<div class="productos">
 
-			</div>
 		</div>
+	</div>
 </div>
 
 <div id="carrito">
@@ -49,7 +49,7 @@
 		<form id="ingresar" method="POST" action="#" name="iniciar">
 			<h2>Iniciar sesion</h2>
 			<input type="email" name="email" placeholder="email" required>
-			<input type="password" name="password" placeholder="contrase&ntilde;a"required>
+			<input type="password" name="password" placeholder="contrase&ntilde;a" required>
 			<input type="submit" value="Ingresar">
 		</form>
 		<span></span>
@@ -74,7 +74,7 @@
 				<p>Direccion de envio:</p>
 				<div>
 					<span>&#xe074;</span>
-					<input  type="text" name="address" value="{{address}}" placeholder="Direccion">
+					<input type="text" name="address" value="{{address}}" placeholder="Direccion">
 				</div>
 			</div>
 			{{#items}}
@@ -105,28 +105,23 @@
 	</script>
 </div>
 <script type="text/template" id="prodTemplate">
-	<div class="prod" >
-		<div class="top" data-producto="{{prodid}}" style="background-image: linear-gradient(rgba(126,126,126,.15),rgba(126,126,126,.15)),url(img/{{prodimagen}})">
-			<a href="#" class="expandir">{{prodnombre}}{{#prodgranel}} (producto a granel){{/prodgranel}}</a>
-			<!-- {{#prodgranel}}
-				<span>Producto a granel</span>
-			{{/prodgranel}} -->
-			<p>{{proddes}}</p>
+	<div class="prod">
+		<a href="#" class="expandir">{{prodnombre}}{{#prodgranel}} (producto a granel){{/prodgranel}}</a>
+		<div class="top" data-producto="{{prodid}}" style="background-image: linear-gradient(rgba(126,126,126,.15),rgba(126,126,126,.15)),url(img/{{prodimagen}})">	
 		</div>
+		<p>{{proddes}}</p>
 
 		<form id="{{prodid}}" method="POST" class="oculto addItem">
 			<input type="number" class="cant" name="quantity" value="{{prodpresentacion}}" placeholder="{{prodpresentacion}}" step="1" min="1" data-precio="{{cuenta}}" data-id="{{prodid}}">
-			<span>{{proddisplay}} {{produnidad}}</span>
-			{{#prodgranel}}
-				<select name="envase">
+			<span>{{proddisplay}} {{produnidad}}</span> {{#prodgranel}}
+			<select name="envase">
 					<option selected disabled>Tipo de envase</option>
 					{{#envases}}
 					<option value="{{envaseid}}">{{envasenombre}} - ${{envasecosto}}</option>
 					{{/envases}}
-				</select>
-			{{/prodgranel}}
-			<input type="hidden" name="productid" value="{{prodid}}" >
-			<input class="{{prodid}}" type="submit" value="$u. {{prodprecio}} - Agregar al carrito" >
+				</select> {{/prodgranel}}
+			<input type="hidden" name="productid" value="{{prodid}}">
+			<input class="{{prodid}}" type="submit" value="$u. {{prodprecio}} - Agregar al carrito">
 		</form>
 	</div>
 </script>
@@ -143,14 +138,13 @@
 					<p> {{proddisplay}} {{produnidad}}</p>
 				</div>
 				{{#prodgranel}}
-					<select name="envase" >
+				<select name="envase">
 						<option selected disabled>Tipo de envase</option>
 						<option value="1">Bolsa de papel</option>
 						<option value="2">Envase de vidrio nuevo</option>
 						<option value="3">Intercambio envase</option>
-					</select>
-				{{/prodgranel}}
-				<input type="hidden" name="productid" value="{{prodid}}" >
+					</select> {{/prodgranel}}
+				<input type="hidden" name="productid" value="{{prodid}}">
 				<div class="button">
 					<input type="submit" value="Agregar al carrito">
 				</div>
