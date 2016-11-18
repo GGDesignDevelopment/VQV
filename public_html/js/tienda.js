@@ -13,7 +13,9 @@ var usuario = (function () {
 	// Mensajes
 	var succesMsg = '<span classs="succesMsg">Su compra ha sido realizada con exito. Le hemos enviado un mensaje a su correo electronico con los detalles de la misma. </span>'
 	var errorMsg = '<span class="errorMsg">Debe tener items seleccionados para realizar su compra</span>'
+		
 
+	
 	// Bind Events
 	$carrito.on('submit', '#ingresar', _login);
 	$carrito.on('submit', '#registrarse', _register);
@@ -210,6 +212,18 @@ var productos = function () {
 	var errorLogMsg = '<span class="errorMsg">Debes iniciar sesion o registrarte para poder realizar tu compra exitosamente. </span>'
 
 	var errorCountLog = false;
+	
+	
+	var y = $(window).scrollTop();
+	var document = $(document).height();
+	var window = $(window).height();
+	var pagina = 0;
+	var nroProductos = 15;
+	var inicio = 1;
+	var categoria = 0;
+	var granel = 0;
+	var cargaInicial = (inicio,categoria,granel,pagina,nroProductos);
+
 	// Bind Events
 	$productos.on('click', '#leftCon', _expandirItemMovil);
 	$productos.on('submit', '.addItem', _addItem);
@@ -218,12 +232,12 @@ var productos = function () {
 	$tabs.on('click', '.tab', _getData);
 	$searchBox.on('click', '.search', _searchItem);
 	$searchBox.on('keyup', '#searchItem', _searchItem);
-	$producto.on('click', '.top', _expandirItem);
+	$producto.on('click', '.prod', _expandirItem);
 	$carrito.on('change', '#dir', _modifyAddress);
 	$carrito.on('change', '.quantity', _modifyItem);
 	$carrito.on('click', '.remove', _deleteItem);
 
-	// _render(0,0,1);
+	_getProducts(cargaInicial);
 
 	function _clearVal(id) {
 		$('#form ' + id + 'input[type=number]').val('');
@@ -266,8 +280,10 @@ var productos = function () {
 		}
 	}
 
-	function _getData() {
+	function _getData(pagina) {
 		var filter = $(this).data('filter');
+		filter.push(pagina);
+		filter.push(nroProductos);
 		var active = false;
 		$activeTab = $(this);
 		inicio = filter[0];
@@ -281,11 +297,10 @@ var productos = function () {
 				$activeTab.addClass('active');
 				active = true;
 			}
-			
 			_renderTabs(tab, active);
 		} else {
 			if (!$activeTab.hasClass('active')) {
-				$botonera.find('.active').removeClass('active');
+				$botonera.find('a.active').removeClass('active');
 				$activeTab.addClass('active');
 			}
 		}
@@ -293,7 +308,7 @@ var productos = function () {
 	}
 
 	function _getProducts(array) {
-		var request = 'tienda/getProducts?catid=' + array[1] + '&inicio=' + array[0] + '&granel=' + array[2];
+		var request = 'tienda/getProducts?catid=' + array[1] + '&inicio=' + array[0] + '&granel=' + array[2]+'&pagina=' + array[3]+'&cnt='+array[4];
 		$.ajax({
 			type: 'GET',
 			url: request,
@@ -352,11 +367,11 @@ var productos = function () {
 	}
 
 	function _expandirItem(e) {
-		e.preventDefault()
+		//e.preventDefault();
 		var $padre = $(this).parent('.prod');
 		var id = $(this).attr('data-producto');
+		alert(id);
 		$('#' + id).toggleClass("oculto");
-		$(this).toggleClass("active");
 	}
 
 	function _expandirItemMovil() {
@@ -425,6 +440,16 @@ var productos = function () {
 		var cadena = '$u. ' + sub + '- Agregar al carrito';
 		$('.' + id).val(cadena);
 		// alert(cadena);
+	}
+	
+	function _lazyLoad() {
+		if ( y > document - window ){
+			cargaInicial = (inicio,categoria,granel,pagina,nroProductos);
+			pagina = pagina + 1;
+			_getProducts(cargaInicial);
+		} else {
+			pagina = 0;
+		}
 	}
 
 }();

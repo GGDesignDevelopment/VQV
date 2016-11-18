@@ -1,160 +1,196 @@
-@import url("http://fonts.googleapis.com/css?family=Hammersmith+One");
+$family: unquote("Hammersmith+One");
+@import url("http://fonts.googleapis.com/css?family=#{$family}");
+
+$roboto :  'Helvetica', sans-serif;
+$governor : 'governorregular';
+$fuenteIconos : 'ElegantIcons';
+
+$colorPrincipal : #8dbe49;
+$secundario: #1E211A;
+$claro : #fff;
+$fuenteChica: 14px;
+
 * {
   box-sizing: border-box;
-  font-family: "Helvetica", sans-serif;
+  font-family: $roboto;
   padding: 0;
   margin: 0;
-  outline: none; }
+  outline: none;
+}
 
 body {
   display: flex;
   flex-flow: row nowrap;
-  background: #fff; }
+  background: $claro;
+}
 
 .contenedor {
   display: flex;
   flex-flow: column wrap;
   width: 100%;
-  padding: 25px; }
-  .contenedor header {
+  padding: 25px;
+  header {
     display: flex;
     height: 100px;
     flex-flow: row nowrap;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 1px dashed #dcdcdb; }
-    .contenedor header div.titulo {
+    border-bottom: 1px dashed #dcdcdb;
+    div.titulo {
       display: flex;
       flex-flow: row nowrap;
       align-items: center;
-      align-content: center; }
-      .contenedor header div.titulo h1 {
+      align-content: center;
+      h1 {
         font-size: 32px;
         line-height: 32px;
         font-family: 'governorregular';
-        color: #8dbe49; }
-      .contenedor header div.titulo a {
+        color: $colorPrincipal;
+      }
+      a {
         font-size: 14px;
         letter-spacing: 1.2px;
         font-family: 'roboto_slablight';
         color: #8db340;
         line-height: 28px;
-        border-left: 2px solid #8dbe49;
+        border-left: 2px solid $colorPrincipal;
         margin-left: 18px;
-        padding-left: 18px; }
-    .contenedor header nav {
+        padding-left: 18px;
+      }
+    }
+    nav {
       display: flex;
       flex-flow: row nowrap;
       justify-content: flex-end;
       align-items: center;
-      width: 50%; }
-      .contenedor header nav a {
+      width: 50%;
+      a {
         font-family: 'ElegantIcons';
         font-size: 25px;
         line-height: 22px;
-        color: #8dbe49;
+        color: $colorPrincipal;
         margin-left: 2%;
-        border-radius: 40px; }
-        .contenedor header nav a:hover {
-          box-shadow: 1px 2px 0px 0px #abdc67; }
-        .contenedor header nav a.boton {
-          font-family: "Helvetica", sans-serif;
+        border-radius: 40px;
+        &:hover {
+          box-shadow: 1px 2px 0px 0px $colorPrincipal +30;
+        }
+        &.boton {
+          font-family: $roboto;
           color: white;
-          font-size: 14px;
-          background: #8dbe49;
+          font-size: $fuenteChica;
+          background: $colorPrincipal;
           padding: 11px 26px;
           text-align: center;
           margin-left: 4%;
-          letter-spacing: 1.8px; }
-          .contenedor header nav a.boton:hover {
-            box-shadow: 0px 3px 0px 0px #abdc67; }
-          .contenedor header nav a.boton span {
-            font-family: 'ElegantIcons'; }
-  .contenedor .contenido {
+          letter-spacing: 1.8px;
+          &:hover {
+            box-shadow: 0px 3px 0px 0px $colorPrincipal +30;
+          }
+          span {
+            font-family: 'ElegantIcons';
+          }
+        }
+      }
+    }
+  }
+  .contenido {
     width: 100%;
     display: flex;
     flex-flow: column nowrap;
-    align-items: center; }
-    .contenedor .contenido #tabs {
+    align-items: center;
+    #tabs {
       width: 100%;
       margin: 15px 0;
       display: flex;
-      flex-flow: row nowrap; }
-      .contenedor .contenido #tabs .search {
+      flex-flow: row nowrap;
+      .search {
         width: 100%;
         display: flex;
         flex-flow: row nowrap;
         align-items: center;
         justify-content: center;
         padding-bottom: 5px;
-        border-bottom: 4px solid #abdc67; }
-        .contenedor .contenido #tabs .search:hover {
-          border-color: #abdc67; }
-        .contenedor .contenido #tabs .search a {
-          font-family: "ElegantIcons" !important;
+        border-bottom: 4px solid $colorPrincipal +30;
+				&:hover {
+					border-color: $colorPrincipal +30;
+				}
+        a {
+          font-family: $fuenteIconos !important;
           width: 10% !important;
           height: 100%;
           vertical-align: center;
-          background: #8dbe49;
-          font-size: 14px;
+          background: $colorPrincipal;
+          font-size: $fuenteChica;
           color: #f2f7e8;
           border: none !important;
           padding: 7px  !important;
-          border-radius: 0 3px 3px 0; }
-        .contenedor .contenido #tabs .search input {
+          border-radius: 0 3px 3px 0;
+        }
+        input {
           width: 80%;
-          font-family: "Helvetica", sans-serif;
-          font-size: 14px;
-          color: #8dbe49;
+          font-family: $roboto;
+          font-size: $fuenteChica;
+          color: $colorPrincipal;
           padding: 3px;
-          border: 1px solid #83b43f;
+          border: 1px solid $colorPrincipal - 10;
           border-radius: 3px 0 0 3px;
-          background: none; }
-      .contenedor .contenido #tabs a {
-        font-family: "Helvetica", sans-serif;
-        font-size: 14px;
+          background: none;
+        }
+      }
+      a {
+        font-family: $roboto;
+        font-size: $fuenteChica;
         text-align: center;
         padding-bottom: 5px;
-        color: #97c853;
+        color: $colorPrincipal +10;
         width: 100%;
-        border-bottom: 4px solid #abdc67; }
-        .contenedor .contenido #tabs a:hover {
-          border-color: #8dbe49; }
-      .contenedor .contenido #tabs .active {
-        border-color: #8dbe49;
-        color: #8dbe49; }
-    .contenedor .contenido #filtro {
+        border-bottom: 4px solid $colorPrincipal + 30;
+        &:hover {
+          border-color: $colorPrincipal;
+        }
+      }
+      .active {
+        border-color: $colorPrincipal;
+        color: $colorPrincipal;
+      }
+    }
+    #filtro {
+      .active {
+        display: flex;
+      }
       width: 100%;
       display: flex;
-      flex-flow: row wrap; }
-      .contenedor .contenido #filtro .active {
-        display: flex; }
-      .contenedor .contenido #filtro span {
+      flex-flow: row wrap;
+      span {
         display: none;
         flex-flow: row wrap;
-        width: 100%; }
-      .contenedor .contenido #filtro a {
+        width: 100%;
+      }
+      a {
         font-size: 11px;
         line-height: 11px;
         letter-spacing: 0;
         font-family: 'governorregular';
-        background: #8dbe49;
-        color: #fff;
+        background: $colorPrincipal;
+        color: $claro;
         padding: 8px 15px;
         margin: 0 12px 9px 0;
-        border-radius: 30px; }
-        .contenedor .contenido #filtro a.active, .contenedor .contenido #filtro a:hover {
-          background: #9ccd58;
-          box-shadow: 0px 3px 0 0 #abdc67; }
-    .contenedor .contenido .productos {
+        border-radius: 30px;
+        &.active, &:hover {
+					background: $colorPrincipal +15;
+          box-shadow: 0px 3px 0 0 $colorPrincipal +30;
+        }
+      }
+    }
+    .productos {
       width: 100%;
       height: 100%;
       display: flex;
       flex-flow: row wrap;
       justify-content: space-around;
       align-items: flex-start;
-      margin-top: 30px; }
-      .contenedor .contenido .productos .prod {
+      margin-top: 30px;
+      .prod {
         width: 400px;
         display: flex;
         flex-flow: column nowrap;
@@ -162,21 +198,22 @@ body {
         margin: 0 0 25px;
         padding: 0;
         padding: 0px;
-        border-radius: 1px;
-        cursor: pointer; }
-        .contenedor .contenido .productos .prod a {
+				border-radius: 1px;
+				cursor: pointer;
+        a {
           width: 100%;
-          font-size: 14px;
-          letter-spacing: 1px;
-          background: #abdc67;
-          border-bottom: 2px solid #fff;
-          color: #fff;
+          font-size: $fuenteChica;
+					letter-spacing: 1px;
+					background: $colorPrincipal+30;
+					border-bottom: 2px solid $claro;
+          color: $claro;
           padding: 12px 22px;
-          font-family: "Helvetica", sans-serif;
+          font-family: $roboto;
           border-radius: 1px 1px 0 0;
           margin: 0;
-          letter-spacing: 1.2px; }
-        .contenedor .contenido .productos .prod .imagen {
+					letter-spacing: 1.2px;
+        }
+        .imagen {
           width: 100%;
           height: 220px;
           background-position: center;
@@ -184,28 +221,38 @@ body {
           /*-webkit-background-size: cover;
           -moz-background-size: cover;
           -o-background-size: cover;*/
-          background-size: cover; }
-        .contenedor .contenido .productos .prod p {
+          background-size: cover;
+        }
+        p {
           width: 100%;
           font-size: 12px;
           letter-spacing: 1px;
           padding: 7px 0;
           text-align: center;
-          color: #8fc04b; }
-        .contenedor .contenido .productos .prod .top:hover p {
+					color: $colorPrincipal +2;
+        }
+        .top:hover p {
           opacity: 1;
-          transition: opacity 0.5s ease, box-shadow 0.5s ease; }
+          transition: opacity 0.5s ease, box-shadow 0.5s ease;
+        }
+      }
+    }
+  }
+}
 
 /*----------------------------------------------------------------------------------*/
+
 /*-------------------------------------------------------------------------------------*/
+
 form.oculto {
   display: none !important;
-  opacity: 0;
-  transition: opacity .5s; }
+	opacity: 0;
+	transition: opacity .5s;
+}
 
 .contenedor .contenido .productos .prod form.addItem {
-  opacity: 1;
-  transition: opacity .5s;
+	opacity: 1;
+	transition: opacity .5s;
   height: 80px;
   display: flex;
   flex-flow: row wrap;
@@ -213,8 +260,8 @@ form.oculto {
   align-content: center;
   align-items: center;
   color: white;
-  margin-bottom: 20px; }
-  .contenedor .contenido .productos .prod form.addItem input {
+  margin-bottom: 20px;
+  input {
     border: 0;
     height: 20px;
     width: 40%;
@@ -226,19 +273,22 @@ form.oculto {
     text-align: right;
     font-size: 12px;
     line-height: 20px;
-    border-radius: 2px; }
-    .contenedor .contenido .productos .prod form.addItem input::-webkit-input-placeholder {
+    border-radius: 2px;
+    &::-webkit-input-placeholder {
       color: #97be49;
-      text-align: right; }
-  .contenedor .contenido .productos .prod form.addItem span {
+      text-align: right;
+    }
+  }
+  span {
     text-align: left;
     font-size: 12px;
     line-height: 20px;
     height: 20px;
     margin: 10px 0;
     color: #97be49;
-    font-family: 'roboto_slablight'; }
-  .contenedor .contenido .productos .prod form.addItem select {
+    font-family: 'roboto_slablight';
+  }
+  select {
     width: 45%;
     height: 20px;
     margin: 10px 0;
@@ -248,8 +298,9 @@ form.oculto {
     padding-left: 5px;
     background: none;
     font-family: 'roboto_slablight';
-    border-radius: 9px; }
-  .contenedor .contenido .productos .prod form.addItem input[type=submit] {
+    border-radius: 9px;
+  }
+  input[type=submit] {
     width: 100%;
     height: 30px;
     margin: 5px 0;
@@ -260,9 +311,12 @@ form.oculto {
     color: white;
     font-size: 14px;
     line-height: 14px;
-    text-align: center; }
-    .contenedor .contenido .productos .prod form.addItem input[type=submit]:hover {
-      background: #97be49; }
+    text-align: center;
+    &:hover {
+      background: #97be49;
+    }
+  }
+}
 
 #carrito {
   width: 20%;
@@ -274,38 +328,43 @@ form.oculto {
   align-items: center;
   padding: 5px;
   background: #fafcf6;
-  color: #97be49; }
-  #carrito .errorMsg {
+  color: #97be49;
+  .errorMsg {
     color: red;
     border: 1px solid red;
     padding: 10px;
     order: 0;
     height: auto;
     font-size: 11px;
-    font-family: 'roboto_slablight'; }
-  #carrito .succesMsg {
+    font-family: 'roboto_slablight';
+  }
+  .succesMsg {
     color: green;
     border: 1px solid green;
     padding: 10px;
     order: 0;
     height: auto;
     font-size: 11px;
-    font-family: 'roboto_slablight'; }
-  #carrito a {
+    font-family: 'roboto_slablight';
+  }
+  a {
     font-family: 'governorregular';
     font-size: 22px;
     height: auto;
     margin: 15px 0;
     color: #97be49;
-    order: 1; }
-  #carrito h2 {
+    order: 1;
+  }
+  h2 {
     font-size: 13px;
     font-family: 'roboto_slablight';
-    order: 1; }
-  #carrito #ocultar {
+    order: 1;
+  }
+  #ocultar {
     display: none;
-    order: 15; }
-  #carrito a#logout {
+    order: 15;
+  }
+  a#logout {
     font-family: 'roboto_slablight';
     font-size: 12px;
     color: #97be49;
@@ -313,13 +372,15 @@ form.oculto {
     width: 100%;
     text-decoration: underline;
     text-align: right;
-    order: 0; }
-  #carrito span {
+    order: 0;
+  }
+  span {
     width: 80%;
     height: 1px;
     background: #ddd;
-    box-shadow: 1px 0 0 #ccc; }
-  #carrito #registrarse input, #carrito #ingresar input {
+    box-shadow: 1px 0 0 #ccc;
+  }
+  #registrarse input, #ingresar input {
     padding: 5px;
     background: #fff;
     border-radius: 1px;
@@ -329,23 +390,27 @@ form.oculto {
     color: #97be49;
     font-size: 13px;
     font-family: 'roboto_slablight';
-    min-height: 30px; }
-  #carrito #registrarse input::-webkit-input-placeholder, #carrito #ingresar input::-webkit-input-placeholder {
-    color: #97be49; }
-  #carrito #registrarse input[type=submit], #carrito #ingresar input[type=submit] {
+    min-height: 30px;
+  }
+  #registrarse input::-webkit-input-placeholder, #ingresar input::-webkit-input-placeholder {
+    color: #97be49;
+  }
+  #registrarse input[type=submit], #ingresar input[type=submit] {
     background: #97be49;
     color: #fff;
     border-radius: 30px;
-    cursor: pointer; }
-  #carrito #registrarse h2, #carrito #ingresar h2 {
-    order: 0; }
-  #carrito form {
+    cursor: pointer;
+  }
+  #registrarse h2, #ingresar h2 {
+    order: 0;
+  }
+  form {
     width: 100%;
     display: flex;
     flex-flow: column nowrap;
     padding: 5px 10px 10px 10px;
-    order: 3; }
-    #carrito form #dir {
+    order: 3;
+    #dir {
       margin: 5px 0;
       color: #97be49;
       background: none;
@@ -354,34 +419,39 @@ form.oculto {
       flex-flow: column nowrap;
       align-content: center;
       align-items: center;
-      margin-bottom: 10px; }
-      #carrito form #dir p {
+      margin-bottom: 10px;
+      p {
         font-size: 12px;
         font-family: 'roboto_slablight';
         color: #97be49;
         text-decoration: underline;
-        margin-bottom: 10px; }
-      #carrito form #dir div {
+        margin-bottom: 10px;
+      }
+      div {
         width: 100%;
         display: flex;
         flex-flow: row nowrap;
         justify-content: space-between;
-        border: none; }
-        #carrito form #dir div span {
+        border: none;
+        span {
           font-family: 'ElegantIcons';
           font-size: 13px;
           color: #84be49;
           margin: 0;
-          padding: 0; }
-        #carrito form #dir div input {
+          padding: 0;
+        }
+        input {
           font-size: 12px;
           line-height: 13px;
           font-family: 'roboto_slablight';
           color: #84be49;
           border: none;
           border-bottom: 1px dotted #999;
-          width: 100%; }
-    #carrito form div {
+          width: 100%;
+        }
+      }
+    }
+    div {
       width: 100%;
       border: 0;
       border-bottom: 1px dotted #999;
@@ -391,26 +461,29 @@ form.oculto {
       box-sizing: border-box;
       justify-content: flex-end;
       align-items: flex-end;
-      align-content: flex-end; }
-      #carrito form div a {
+      align-content: flex-end;
+      a {
         display: block;
         font-family: 'ElegantIcons';
         color: #97be49;
         font-size: 12px;
         margin: 0;
-        width: 10%; }
-      #carrito form div p {
+        width: 10%;
+      }
+      p {
         display: block;
         font-size: 12px;
         margin: 0;
-        width: 50%; }
-      #carrito form div input {
+        width: 50%;
+      }
+      input {
         display: block;
         background: none;
         width: 20%;
         border: 0;
-        margin: 0; }
-      #carrito form div span {
+        margin: 0;
+      }
+      span {
         box-shadow: none;
         display: block;
         width: 20%;
@@ -419,8 +492,10 @@ form.oculto {
         text-shadow: none;
         font-size: 12px;
         height: auto;
-        border: 0; }
-    #carrito form select {
+        border: 0;
+      }
+    }
+    select {
       -webkit-appearance: button;
       background: none;
       border: 1px solid #97be49;
@@ -428,8 +503,9 @@ form.oculto {
       padding: 5px;
       font-size: 12px;
       font-family: 'roboto_slablight';
-      color: #97be49; }
-    #carrito form input[type=submit] {
+      color: #97be49;
+    }
+    input[type=submit] {
       background: #97be49;
       color: #fff;
       width: 100%;
@@ -438,8 +514,10 @@ form.oculto {
       border: 0;
       padding: 5px 0;
       font-size: 13px;
-      cursor: pointer; }
-  #carrito a.boton {
+      cursor: pointer;
+    }
+  }
+  a.boton {
     width: 100%;
     display: block;
     font-size: 1em;
@@ -451,44 +529,51 @@ form.oculto {
     align-self: flex-end;
     margin-top: 30px;
     text-shadow: 0 0 0 #fff;
-    text-align: center; }
+    text-align: center;
+  }
+}
 
 /*----------------------------------*/
+
 /*---------------------------------------*/
+
 @media screen and (max-width: 770px) {
   .contenedor {
     width: 100vw;
-    padding: 20px; }
-    .contenedor header {
+    padding: 20px;
+    header {
       height: auto;
       flex-flow: column nowrap;
       justify-content: center;
       align-content: center;
       align-items: center;
-      margin-bottom: 20px; }
-      .contenedor header div.titulo {
+      margin-bottom: 20px;
+      div.titulo {
         width: 100%;
         align-content: center;
         align-items: center;
         justify-content: space-around;
-        margin-bottom: 20px; }
-        .contenedor header div.titulo h1 {
+        margin-bottom: 20px;
+        h1 {
           font-size: 18px;
           letter-spacing: 0px;
           margin: 0;
-          margin-right: 4px; }
-        .contenedor header div.titulo h2 {
+          margin-right: 4px;
+        }
+        h2 {
           margin: 0;
           font-size: 12px;
           letter-spacing: .05em;
-          margin-left: 4px; }
-      .contenedor header nav {
+          margin-left: 4px;
+        }
+      }
+      nav {
         width: 100%;
         flex-flow: row nowrap;
-        justify-content: flex-start; }
-        .contenedor header nav a {
-          display: none; }
-          .contenedor header nav a.boton {
+        justify-content: flex-start;
+        a {
+          display: none;
+          &.boton {
             display: block;
             width: auto;
             font-size: 12px;
@@ -496,27 +581,38 @@ form.oculto {
             padding: 12px 12px;
             margin: 0;
             width: 100%;
-            line-height: 16px; }
-    .contenedor .contenido #filtro {
-      margin: 0;
-      margin-bottom: 20px; }
-      .contenedor .contenido #filtro a {
-        font-size: 12px;
-        color: #97be49;
-        background: none;
-        padding: 0;
-        margin-bottom: 5px;
-        margin-right: 5px;
-        border-bottom: 1px dotted #97be49; }
-        .contenedor .contenido #filtro a:after {
-          content: '  /'; }
-    .contenedor .contenido .productos {
-      flex-flow: column nowrap; }
-      .contenedor .contenido .productos .prod {
-        width: 100%;
-        display: flex;
-        flex-flow: row wrap; }
-
+            line-height: 16px;
+          }
+        }
+      }
+    }
+    .contenido {
+      #filtro {
+        margin: 0;
+        margin-bottom: 20px;
+        a {
+          font-size: 12px;
+          color: #97be49;
+          background: none;
+          padding: 0;
+          margin-bottom: 5px;
+          margin-right: 5px;
+          border-bottom: 1px dotted #97be49;
+          &:after {
+            content: '  /';
+          }
+        }
+      }
+      .productos {
+        flex-flow: column nowrap;
+        .prod {
+          width: 100%;
+          display: flex;
+          flex-flow: row wrap;
+        }
+      }
+    }
+  }
   #leftCon {
     height: 150px;
     width: 40%;
@@ -526,19 +622,20 @@ form.oculto {
     flex-flow: column nowrap;
     align-items: center;
     align-content: center;
-    overflow: hidden; }
-    #leftCon img {
+    overflow: hidden;
+    img {
       width: 180px;
-      height: auto; }
-
+      height: auto;
+    }
+  }
   #rightCon {
     display: flex;
     width: 60%;
     height: 150px;
     padding: 0 18px;
     margin: 0;
-    box-sizing: border-box; }
-    #rightCon form {
+    box-sizing: border-box;
+    form {
       height: 150px;
       background: none;
       padding: 0;
@@ -546,14 +643,15 @@ form.oculto {
       flex-flow: column nowrap;
       justify-content: space-between;
       align-items: center;
-      align-content: space-between; }
-      #rightCon form h2 {
+      align-content: space-between;
+      h2 {
         width: 100%;
         color: #97be49;
         font-size: 12px;
         font-family: 'roboto_slablight';
-        text-align: left; }
-      #rightCon form div {
+        text-align: left;
+      }
+      div {
         width: 100%;
         display: flex;
         flex-flow: row nowrap;
@@ -562,26 +660,30 @@ form.oculto {
         box-sizing: border-box;
         border-bottom: 1px dotted #666;
         box-shadow: 0;
-        height: 30px; }
-        #rightCon form div input {
+        height: 30px;
+        input {
           color: #97be49;
           width: 50%;
           font-size: 12px;
           padding: 0;
           margin: 0;
           border: 0;
-          min-height: 20px; }
-          #rightCon form div input::-webkit-input-placeholder {
+          min-height: 20px;
+          &::-webkit-input-placeholder {
             color: #97be49;
-            text-align: right; }
-        #rightCon form div p {
+            text-align: right;
+          }
+        }
+        p {
           width: 50%;
           min-height: 20px;
           text-align: left;
           font-size: .7em;
           color: #97be49;
-          padding-left: 3px; }
-      #rightCon form select {
+          padding-left: 3px;
+        }
+      }
+      select {
         -webkit-appearance: button;
         font-size: 11px;
         border: 1px solid #97be49;
@@ -593,13 +695,14 @@ form.oculto {
         width: 100%;
         height: auto;
         height: 30px;
-        margin: 0; }
-      #rightCon form .button {
+        margin: 0;
+      }
+      .button {
         width: 100%;
         margin: 0;
         border: 0;
-        box-sizing: border-box; }
-        #rightCon form .button input[type=submit] {
+        box-sizing: border-box;
+        input[type=submit] {
           width: 100%;
           padding: 4px 7px;
           background: #97be49;
@@ -609,46 +712,56 @@ form.oculto {
           font-family: 'roboto_slablight';
           font-size: 12px;
           height: 30px;
-          text-align: center; }
-        #rightCon form .button span {
+          text-align: center;
+        }
+        span {
           font-family: 'ElegantIcons';
           font-size: 12px;
           margin: 0;
           padding: 0;
           width: auto;
-          color: black; }
-
-  .contenedor .contenido .productos .prod {
-    width: 100%;
-    margin-bottom: 20px; }
-    .contenedor .contenido .productos .prod span {
-      display: none;
+          color: black;
+        }
+      }
+    }
+  }
+  .contenedor .contenido .productos {
+    .prod {
       width: 100%;
-      padding: 10px 0;
-      border-bottom: 2px solid #97be49; }
-      .contenedor .contenido .productos .prod span h3 {
-        font-family: 'governorregular';
-        font-size: 12px;
-        color: #97be49;
-        margin-bottom: 8px;
-        letter-spacing: .2em; }
-  .contenedor .contenido .productos span p {
-    font-family: 'roboto_slablight';
-    font-size: 12px;
-    color: #97be49;
-    letter-spacing: .05em;
-    margin-left: 5px; }
-
+      margin-bottom: 20px;
+      span {
+        display: none;
+        width: 100%;
+        padding: 10px 0;
+        border-bottom: 2px solid #97be49;
+        h3 {
+          font-family: 'governorregular';
+          font-size: 12px;
+          color: #97be49;
+          margin-bottom: 8px;
+          letter-spacing: .2em;
+        }
+      }
+    }
+    span p {
+      font-family: 'roboto_slablight';
+      font-size: 12px;
+      color: #97be49;
+      letter-spacing: .05em;
+      margin-left: 5px;
+    }
+  }
   #carrito {
     width: 100%;
     min-height: 100vh;
     box-shadow: none;
     display: none;
     flex-flow: column nowrap;
-    align-items: center; }
-    #carrito h2 {
-      margin: 15px 0; }
-    #carrito #ocultar {
+    align-items: center;
+    h2 {
+      margin: 15px 0;
+    }
+    #ocultar {
       display: block;
       font-family: 'roboto_slablight';
       font-size: 11px;
@@ -656,16 +769,18 @@ form.oculto {
       text-decoration: underline;
       padding: 0;
       margin: 0;
-      text-align: center; }
-    #carrito form {
+      text-align: center;
+    }
+    form {
       width: 100%;
       display: flex;
-      padding: 10px; }
-      #carrito form #dir {
+      padding: 10px;
+      #dir {
         background: none;
         border: 0;
-        border-bottom: 1px dotted #97be49; }
-      #carrito form div {
+        border-bottom: 1px dotted #97be49;
+      }
+      div {
         width: 100%;
         border: 0;
         border-bottom: 1px dotted #999;
@@ -675,29 +790,35 @@ form.oculto {
         box-sizing: border-box;
         justify-content: flex-end;
         align-items: flex-end;
-        align-content: flex-end; }
-        #carrito form div a {
+        align-content: flex-end;
+        a {
           font-family: 'ElegantIcons';
           color: #97be49;
           width: 5%;
           font-size: 12px;
-          margin-left: auto; }
-        #carrito form div p {
+          margin-left: auto;
+        }
+        p {
           font-size: 12px;
           margin: 0;
           width: 50%;
-          margin-right: auto; }
-        #carrito form div input {
+          margin-right: auto;
+        }
+        input {
           background: none;
           width: 20%;
           border: 0;
-          margin: 0; }
-        #carrito form div span {
+          margin: 0;
+        }
+        span {
           color: #97be49;
           background: none;
           text-shadow: none;
           font-size: 12px;
           height: auto;
-          width: auto; } }
-
-/*# sourceMappingURL=tienda.css.map */
+          width: auto;
+        }
+      }
+    }
+  }
+}

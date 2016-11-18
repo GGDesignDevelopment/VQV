@@ -105,9 +105,9 @@
 	</script>
 </div>
 <script type="text/template" id="prodTemplate">
-	<div class="prod">
+	<div class="prod" data-producto="{{prodid}}">
 		<a href="#" class="expandir">{{prodnombre}}{{#prodgranel}} (producto a granel){{/prodgranel}}</a>
-		<div class="top" data-producto="{{prodid}}" style="background-image: linear-gradient(rgba(126,126,126,.15),rgba(126,126,126,.15)),url(img/{{prodimagen}})">	
+		<div class="imagen"  style="background-image: linear-gradient(rgba(126,126,126,.15),rgba(126,126,126,.15)),url(img/{{prodimagen}})">	
 		</div>
 		<p>{{proddes}}</p>
 
