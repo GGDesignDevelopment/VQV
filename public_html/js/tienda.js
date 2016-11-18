@@ -24,7 +24,7 @@ var usuario = (function () {
 	$boton.on('click', showCart);
 	$carrito.on('click', '#ocultar', _hideCart);
 	$carrito.on('change', '.valorCompra', _updatePrice);
-
+	
 
 	function render() {
 		if (_isLogged() == true) {
@@ -217,12 +217,13 @@ var productos = function () {
 	var y = $(window).scrollTop();
 	var document = $(document).height();
 	var window = $(window).height();
-	var pagina = 0;
+	var pagina = 1;
 	var nroProductos = 15;
 	var inicio = 1;
 	var categoria = 0;
 	var granel = 0;
-	var cargaInicial = (inicio,categoria,granel,pagina,nroProductos);
+	var cargaInicial = [inicio,categoria,granel,pagina,nroProductos];
+
 
 	// Bind Events
 	$productos.on('click', '#leftCon', _expandirItemMovil);
@@ -236,6 +237,7 @@ var productos = function () {
 	$carrito.on('change', '#dir', _modifyAddress);
 	$carrito.on('change', '.quantity', _modifyItem);
 	$carrito.on('click', '.remove', _deleteItem);
+	$(window).bind('mousewheel DOMMouseScroll', _lazyLoad);
 
 	_getProducts(cargaInicial);
 
@@ -283,7 +285,7 @@ var productos = function () {
 	function _getData(pagina) {
 		var filter = $(this).data('filter');
 		filter.push(pagina);
-		filter.push(nroProductos);
+		filter[4] = nroProductos;
 		var active = false;
 		$activeTab = $(this);
 		inicio = filter[0];
@@ -308,7 +310,8 @@ var productos = function () {
 	}
 
 	function _getProducts(array) {
-		var request = 'tienda/getProducts?catid=' + array[1] + '&inicio=' + array[0] + '&granel=' + array[2]+'&pagina=' + array[3]+'&cnt='+array[4];
+		var request = 'tienda/getProducts?catid=' + array[1] + '&inicio=' + array[0] + '&granel=' + array[2]+'&pag=' + array[3]+'&cnt='+array[4];
+		alert(array);
 		$.ajax({
 			type: 'GET',
 			url: request,
@@ -358,7 +361,7 @@ var productos = function () {
 				obj.cuenta = obj.prodprecio;
 				obj.prodpresentacion = 1;
 			}
-			if ($(window).width() <= 768) {
+			if ($(document).width() <= 768) {
 				$productos.append(Mustache.render(prodTemplateMovil, obj));
 			} else {
 				$productos.append(Mustache.render(prodTemplate, obj));
@@ -442,8 +445,15 @@ var productos = function () {
 		// alert(cadena);
 	}
 	
-	function _lazyLoad() {
-		if ( y > document - window ){
+	function _lazyLoad(event) {
+		if (event.originalEvent.wheelDelta > 0 || event.originalEvent.detail < 0) {
+       alert('sisisisisi');
+    }
+    else {
+       alert('sisisisisi');
+    }
+			
+		if ( $(window).scrollTop() >= $(document).height() - $(window).height() ){
 			cargaInicial = (inicio,categoria,granel,pagina,nroProductos);
 			pagina = pagina + 1;
 			_getProducts(cargaInicial);
