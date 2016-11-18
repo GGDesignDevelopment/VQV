@@ -43,6 +43,11 @@ class Tienda extends Frontend_Controller {
         header('Access-Control-Allow-Origin: *');
         $catid = $this->input->get('catid');
         $prodinicio = $this->input->get('inicio');
+        $pagina = $this->input->get('pag');
+        $cnt = $this->input->get('cnt');
+
+        $this->db->limit($cnt,($pagina - 1) * $cnt);
+
         if ($this->input->get('granel') == 1) {
           $prodgranel = 1;
         }  else {
@@ -66,7 +71,7 @@ class Tienda extends Frontend_Controller {
         $filter = $this->input->get('filter');
         $where = '(prodnombre like "%' . $filter . '%" or proddes like "%' . $filter . '%")';
         $products = $this->producto_m->get($where);
-        
+
         foreach ($products as $product) {
           $product->envases = $this->productoenvase_m->get(['prodid'=>$product->prodid]);
         }
