@@ -27,4 +27,3 @@ user_guide_src/cilexer/pycilexer.egg-info/*
 *.sublime-project
 public_html/js/sly.js
 application/config/config.php
-application/config/config.php
