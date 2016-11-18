@@ -50,7 +50,7 @@ class Producto extends Admin_Controller {
         $rules = $this->producto_m->rules;
         $this->form_validation->set_rules($rules);
         if ($this->form_validation->run() == TRUE) {
-            $data = $this->producto_m->array_from_post(array('prodnombre', 'proddes', 'catid', 'prodpresentacion', 'produnidad', 'prodprecio','prodgranel','prodextranjero'));
+            $data = $this->producto_m->array_from_post(array('prodnombre', 'proddes', 'catid', 'prodpresentacion', 'produnidad', 'prodprecio','prodgranel','prodinicio','prodextranjero'));
 
             if (!empty($_FILES['file']) && $_FILES['file']['name'] <> '') {
                 if ($this->data['producto']->prodimagen <> '') {

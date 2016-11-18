@@ -42,9 +42,13 @@
                 <?php echo form_input('prodprecio', $producto->prodprecio, 'class="form-control"'); ?>
             </div>
         </div>
-        <div class="form-group">
+        <div class="form-group col-xs-12 col-sm-6">
             <label>¿Granel?</label>
             <?php echo form_checkbox('prodgranel', '1', ($producto->prodgranel == '1')); ?>
+        </div>
+        <div class="form-group col-xs-12 col-sm-6">
+            <label>¿Destacado?</label>
+            <?php echo form_checkbox('prodinicio', '1', ($producto->prodinicio == '1')); ?>
         </div>
         <div class="form-group">
             <div id="envases" data-id="<?php echo $producto->prodid ?>"class="input-group">
