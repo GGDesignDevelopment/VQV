@@ -85,6 +85,7 @@ body {
 	width: 100%;
 	display: flex;
 	flex-flow: column nowrap;
+	align-items: center;
 }
 .contenedor .contenido #tabs {
 	width: 100%;
@@ -93,6 +94,7 @@ body {
 	flex-flow: row nowrap;
 }
 .contenedor .contenido #tabs .search {
+	width: 100%;
 	display: flex;
 	flex-flow: row nowrap;
 	align-items: center;
@@ -102,6 +104,7 @@ body {
 }
 .contenedor .contenido #tabs .search a {
 	font-family: 'ElegantIcons' !important;
+	width: 10% !important;
 	height: 100%;
 	vertical-align: center;
 	background: #8dbe49;
@@ -112,6 +115,7 @@ body {
 	border-radius: 0 3px 3px 0
 }
 .contenedor .contenido #tabs .search input {
+	width: 80%;
 	font-family: 'roboto_slabregular';
 	font-size: 13px;
 	color: #8dbe49;
@@ -131,6 +135,10 @@ body {
 }
 .contenedor .contenido #tabs a:hover {
 	border-color: #84be49;
+}
+.contenedor .contenido #tabs .active {
+	border-color: #7ab340;
+	color: #7ab340;
 }
 .contenedor .contenido #filtro .active {
 	display: flex;
@@ -156,7 +164,7 @@ body {
 	margin: 0 12px 9px 0;
 	border-radius: 30px;
 }
-.contenedor .contenido #filtro a.selected {
+.contenedor .contenido #filtro a.active {
 	box-shadow: 0px 3px 0 0 #82a53b;
 }
 .contenedor .contenido #filtro a:hover {
@@ -164,7 +172,7 @@ body {
 }
 /*-------------------------------------------------------------------------------------*/
 .contenedor .contenido .productos {
-	width: 100%;
+	width: 96%;
 	height: 100%;
 	display: flex;
 	flex-flow: row wrap;
@@ -173,14 +181,27 @@ body {
 	margin-top: 30px;
 }
 .contenedor .contenido .productos .prod {
-	width: 30%;
+	width: 380px;
 	display: flex;
 	flex-flow: column nowrap;
-	margin: 0;
+	margin: 0 10px;
 	padding: 0;
-	cursor: pointer;
+	background: #8dbe49;
+	padding: 5px ;
+	box-shadow: 0px 0px 10px 0px rgba(15,15,15,.3);
 }
-.contenedor .contenido .productos .top {
+.contenedor .contenido .productos .prod  a {
+	width: 100%;
+	font-size: 12px; 
+	line-height: 12px;
+	color: #fff;
+	background: #8dbe49;
+	padding: 11px 3px;
+	font-family: 'roboto_slabregular';
+	border-radius: 1px 1px 0 0;
+	margin: 0;
+}
+.contenedor .contenido .productos .prod .top {
 	width: 100%;
 	height: 200px;
 	background-position: center;
@@ -189,54 +210,8 @@ body {
 	-moz-background-size: cover;
 	-o-background-size: cover;*/
 	background-size: cover;
-	display: flex;
-	flex-flow: column nowrap;
-	justify-content: space-around;
-	align-items: center;
-	align-content: center;
-	margin: 0;
-	transition: opacity 0.5s ease, box-shadow 0.5s ease;
-	margin-bottom: 100px;
 }
-/*.contenedor .contenido .productos .top span {
-	font-family: 'roboto_slablight';
-	font-size: 14px;
-	color: white;
-	padding: 5px;
-	background: #97be49;
-	opacity: 0.2;
-	transition: opacity 0.5s ease, box-shadow 0.5s ease;
-}
-.contenedor .contenido .productos .top:hover span {
-	opacity: 1;
-	transition: opacity 0.5s ease, box-shadow 0.5s ease;
-}*/
-.top.active {
-	margin-bottom: 0 !important;
-}
-.contenedor .contenido .productos .top:hover {
-	box-shadow: 0px 0px 50px 0px rgba(15,15,15,.5) inset;
-	transition: opacity 0.5s ease, box-shadow 0.5s ease;
-}
-.contenedor .contenido .productos .prod .top a {
-	max-width: 80%;
-	font-size: 12px; 
-	line-height: 12px;
-	color: #fff;
-	background: rgb(159,195,87);
-	padding: 11px 21px;
-	font-family: 'roboto_slabregular';
-	border-radius: 4px;
-	box-shadow: 0 0 15px 0 #323f17;
-	opacity: 0.2;
-	transition: opacity 0.5s ease, box-shadow 0.5s ease;
-	margin: 0;
-}
-.contenedor .contenido .productos .prod .top:hover a {
-	opacity: 1;
-	transition: opacity 0.5s ease, box-shadow 0.5s ease;
-}
-.contenedor .contenido .productos .prod .top p {
+.contenedor .contenido .productos .prod p {
 	width: 100%;
 	color: #878f79;
 	font-size: 12px;
@@ -244,8 +219,6 @@ body {
 	padding: 7px 0;
 	text-align: center;
 	background: #fff;
-	opacity: 0.2;
-	transition: opacity 0.5s ease, box-shadow 0.5s ease;
 }
 .contenedor .contenido .productos .prod .top:hover p {
 	opacity: 1;
