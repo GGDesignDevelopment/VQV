@@ -213,10 +213,13 @@ var productos = function () {
 
 	var errorCountLog = false;
 	
-	
-	var y = $(window).scrollTop();
-	var document = $(document).height();
-	var window = $(window).height();
+	var public = {
+		pagina: 1,
+		cortar: true,
+		modificarPagina: function(p) {
+			this.pagina = p;
+		}
+	}
 	var pagina = 1;
 	var nroProductos = 15;
 	var inicio = 1;
@@ -237,7 +240,7 @@ var productos = function () {
 	$carrito.on('change', '#dir', _modifyAddress);
 	$carrito.on('change', '.quantity', _modifyItem);
 	$carrito.on('click', '.remove', _deleteItem);
-	$(window).bind('mousewheel DOMMouseScroll', _lazyLoad);
+	$(window).on('mousewheel DOMMouseScroll', _lazyLoad);
 
 	_getProducts(cargaInicial);
 
@@ -284,10 +287,12 @@ var productos = function () {
 
 	function _getData(pagina) {
 		var filter = $(this).data('filter');
+	
 		filter.push(pagina);
 		filter[4] = nroProductos;
 		var active = false;
 		$activeTab = $(this);
+		public.pagina = 1;
 		inicio = filter[0];
 		categoria = filter[1];
 		granel = filter[2];
@@ -309,15 +314,14 @@ var productos = function () {
 		_getProducts(filter);
 	}
 
-	function _getProducts(array) {
+	function _getProducts(array, scroll=false) {
 		var request = 'tienda/getProducts?catid=' + array[1] + '&inicio=' + array[0] + '&granel=' + array[2]+'&pag=' + array[3]+'&cnt='+array[4];
-		alert(array);
 		$.ajax({
 			type: 'GET',
 			url: request,
 			dataType: 'json',
 			success: function (json) {
-				_render(json)
+				_render(json,scroll)
 			}
 		});
 	}
@@ -342,10 +346,11 @@ var productos = function () {
 				break;
 		}
 	}
-
-	function _render(json) {
-
-		$productos.empty();
+	
+	function _render(json,scroll) {
+		if (!scroll) {	
+			$productos.empty();
+		}
 		var unidades = [m => 'ml.',
 					l => 'lt.',
 					g => 'gr.',
@@ -370,11 +375,10 @@ var productos = function () {
 	}
 
 	function _expandirItem(e) {
-		//e.preventDefault();
 		var $padre = $(this).parent('.prod');
 		var id = $(this).attr('data-producto');
-		alert(id);
 		$('#' + id).toggleClass("oculto");
+		e.preventDefault();
 	}
 
 	function _expandirItemMovil() {
@@ -422,7 +426,6 @@ var productos = function () {
 	}
 
 	function _searchItem() {
-		alert('searching');
 		var query = $search.val();
 		$.ajax({
 			type: 'GET',
@@ -446,20 +449,12 @@ var productos = function () {
 	}
 	
 	function _lazyLoad(event) {
-		if (event.originalEvent.wheelDelta > 0 || event.originalEvent.detail < 0) {
-       alert('sisisisisi');
-    }
-    else {
-       alert('sisisisisi');
-    }
-			
-		if ( $(window).scrollTop() >= $(document).height() - $(window).height() ){
-			cargaInicial = (inicio,categoria,granel,pagina,nroProductos);
-			pagina = pagina + 1;
-			_getProducts(cargaInicial);
-		} else {
-			pagina = 0;
+		if ($(window).scrollTop() >= $(document).height() - $(window).height()){
+			public.modificarPagina(public.pagina + 1);
+			cargaInicial = [inicio,categoria,granel,public.pagina,nroProductos];
+			_getProducts(cargaInicial, true);
 		}
 	}
+	return public;
 
 }();
