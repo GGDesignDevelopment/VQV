@@ -13,9 +13,8 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <!--<li class="active"><?php // echo anchor('admin/dashboard','Dashboard');?></li>-->
-            <li><?php echo anchor('admin/user','Usuarios');?></li>
             <li><?php echo anchor('admin/home/edit','Inicio');?></li>
+            <li><?php echo anchor('admin/user','Usuarios');?></li>
             <li><?php echo anchor('admin/envase','Envases');?></li>
             <li><?php echo anchor('admin/categoria','Familias');?></li>
             <li><?php echo anchor('admin/producto','Productos');?></li>
