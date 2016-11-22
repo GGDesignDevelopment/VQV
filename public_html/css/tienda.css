@@ -1,711 +1,274 @@
-@import url("http://fonts.googleapis.com/css?family=Hammersmith+One");
-* {
-  box-sizing: border-box;
-  font-family: "Hammersmith One", sans-serif;
-  padding: 0;
-  margin: 0;
-  outline: none; }
-
-body {
-  display: flex;
-  flex-flow: row nowrap;
-  background: #fff; }
-
-.contenedor {
-  display: flex;
-  flex-flow: column wrap;
+@import url("http://fonts.googleapis.com/css?family=Francois+One");
+@import url("http://fonts.googleapis.com/css?family=Didact+Gothic");
+header {
   width: 100%;
-  padding: 25px; }
-  .contenedor header {
-    display: flex;
-    height: 100px;
-    flex-flow: row nowrap;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 1px dashed #dcdcdb; }
-    .contenedor header div.titulo {
-      display: flex;
-      flex-flow: row nowrap;
-      align-items: center;
-      align-content: center; }
-      .contenedor header div.titulo h1 {
-        font-size: 32px;
-        line-height: 32px;
-        font-family: 'governorregular';
-        color: #8dbe49; }
-      .contenedor header div.titulo a {
-        font-size: 14px;
-        letter-spacing: 1.2px;
-        font-family: 'roboto_slablight';
-        color: #8db340;
-        line-height: 28px;
-        border-left: 2px solid #8dbe49;
-        margin-left: 18px;
-        padding-left: 18px; }
-    .contenedor header nav {
-      display: flex;
-      flex-flow: row nowrap;
-      justify-content: flex-end;
-      align-items: center;
-      width: 50%; }
-      .contenedor header nav a {
-        font-family: 'ElegantIcons';
-        font-size: 25px;
-        line-height: 22px;
-        color: #8dbe49;
-        margin-left: 2%;
-        border-radius: 40px; }
-        .contenedor header nav a:hover {
-          box-shadow: 1px 2px 0px 0px #abdc67; }
-        .contenedor header nav a.boton {
-          font-family: "Hammersmith One", sans-serif;
-          color: white;
-          font-size: 14px;
-          background: #8dbe49;
-          padding: 11px 26px;
-          text-align: center;
-          margin-left: 4%;
-          letter-spacing: 1.8px; }
-          .contenedor header nav a.boton:hover {
-            box-shadow: 0px 3px 0px 0px #abdc67; }
-          .contenedor header nav a.boton span {
-            font-family: 'ElegantIcons'; }
-  .contenedor .contenido {
-    width: 100%;
-    display: flex;
-    flex-flow: column nowrap;
-    align-items: center; }
-    .contenedor .contenido #tabs {
-      width: 100%;
-      height: 50px;
-      margin: 15px 0;
-      display: flex;
-      flex-flow: row nowrap;
-      align-content: center;
-      align-items: center;
-      justify-content: space-around; }
-      .contenedor .contenido #tabs .search {
-        border-bottom: 4px solid #abdc67;
-        width: 100%;
-        height: 100%;
-        display: flex;
-        flex-flow: row nowrap;
-        align-items: center;
-        justify-content: center;
-        padding-bottom: 5px; }
-        .contenedor .contenido #tabs .search:hover {
-          border-color: #8dbe49; }
-        .contenedor .contenido #tabs .search a {
-          font-family: "ElegantIcons" !important;
-          width: 10% !important;
-          height: 100%;
-          vertical-align: center;
-          background: #8dbe49;
-          font-size: 14px;
-          color: #f2f7e8;
-          border: none !important;
-          padding: 3px  !important;
-          border-radius: 0 3px 3px 0; }
-        .contenedor .contenido #tabs .search input {
-          width: 80%;
-          font-family: "Hammersmith One", sans-serif;
-          font-size: 14px;
-          color: #8dbe49;
-          padding: 5px;
-          border: 1px solid #83b43f;
-          border-radius: 3px 0 0 3px;
-          background: none; }
-      .contenedor .contenido #tabs a {
-        height: 100%;
-        font-family: "Hammersmith One", sans-serif;
-        font-size: 14px;
-        text-align: center;
-        padding-bottom: 5px;
-        color: #97c853;
-        width: 100%;
-        border-bottom: 4px solid #abdc67; }
-        .contenedor .contenido #tabs a:hover {
-          border-color: #8dbe49; }
-      .contenedor .contenido #tabs .active {
-        border-color: #8dbe49;
-        color: #8dbe49; }
-    .contenedor .contenido #filtro {
-      width: 100%;
-      display: flex;
-      flex-flow: row wrap; }
-      .contenedor .contenido #filtro .active {
-        display: flex; }
-      .contenedor .contenido #filtro span {
-        display: none;
-        flex-flow: row wrap;
-        width: 100%; }
-      .contenedor .contenido #filtro a {
-        font-variant: small-caps;
-        font-family: "Hammersmith One", sans-serif;
-        font-weight: 500;
-        font-size: 12px;
-        background: #fff;
-        color: #8dbe49;
-        padding: 11px 19px;
-        margin: 0 12px 9px 0;
-        border: 1px solid #8dbe49;
-        border-radius: 1px; }
-        .contenedor .contenido #filtro a.active, .contenedor .contenido #filtro a:hover {
-          margin-bottom: 7px;
-          background: white;
-          border-bottom: 3px solid #8dbe49; }
-    .contenedor .contenido .productos {
-      width: 100%;
-      height: 100%;
-      display: flex;
-      flex-flow: row wrap;
-      justify-content: space-around;
-      align-items: flex-start;
-      margin-top: 30px; }
-      .contenedor .contenido .productos .prod {
-        width: 400px;
-        display: flex;
-        flex-flow: column nowrap;
-        align-items: center;
-        margin: 0 0 25px;
-        padding: 0;
-        padding: 0px;
-        border-radius: 1px;
-        cursor: pointer; }
-        .contenedor .contenido .productos .prod a {
-          width: 100%;
-          font-size: 14px;
-          letter-spacing: 1px;
-          background: #abdc67;
-          border-bottom: 2px solid #fff;
-          color: #fff;
-          padding: 12px 22px;
-          font-family: "Hammersmith One", sans-serif;
-          border-radius: 1px 1px 0 0;
-          margin: 0;
-          letter-spacing: 1.2px; }
-        .contenedor .contenido .productos .prod .imagen {
-          width: 100%;
-          height: 220px;
-          background-position: center;
-          background-repeat: no-repeat;
-          /*-webkit-background-size: cover;
-          -moz-background-size: cover;
-          -o-background-size: cover;*/
-          background-size: cover; }
-        .contenedor .contenido .productos .prod p {
-          width: 100%;
-          font-size: 12px;
-          letter-spacing: 1px;
-          padding: 7px 0;
-          text-align: center;
-          color: #8fc04b; }
-        .contenedor .contenido .productos .prod .top:hover p {
-          opacity: 1;
-          transition: opacity 0.5s ease, box-shadow 0.5s ease; }
-
-/*----------------------------------------------------------------------------------*/
-/*-------------------------------------------------------------------------------------*/
-form.oculto {
-  display: none !important;
-  opacity: 0;
-  transition: opacity .5s; }
-
-.contenedor .contenido .productos .prod form.addItem {
-  opacity: 1;
-  transition: opacity .5s;
-  height: 80px;
   display: flex;
   flex-flow: row wrap;
-  justify-content: center;
-  align-content: center;
   align-items: center;
-  color: white;
-  margin-bottom: 20px; }
-  .contenedor .contenido .productos .prod form.addItem input {
-    border: 0;
-    height: 20px;
-    width: 40%;
-    margin: 10px 0;
-    padding: 0;
-    background: none;
-    border-bottom: 1px dotted #97be49;
-    color: #97be49;
-    text-align: right;
-    font-size: 12px;
-    line-height: 20px;
-    border-radius: 2px; }
-    .contenedor .contenido .productos .prod form.addItem input::-webkit-input-placeholder {
-      color: #97be49;
-      text-align: right; }
-  .contenedor .contenido .productos .prod form.addItem span {
-    text-align: left;
-    font-size: 12px;
-    line-height: 20px;
-    height: 20px;
-    margin: 10px 0;
-    color: #97be49;
-    font-family: 'roboto_slablight'; }
-  .contenedor .contenido .productos .prod form.addItem select {
-    width: 45%;
-    height: 20px;
-    margin: 10px 0;
-    font-size: 12px;
-    color: #97be49;
-    border: 0;
-    padding-left: 5px;
-    background: none;
-    font-family: 'roboto_slablight';
-    border-radius: 9px; }
-  .contenedor .contenido .productos .prod form.addItem input[type=submit] {
-    width: 100%;
-    height: 30px;
-    margin: 5px 0;
-    border: 0;
-    border-radius: 30px;
-    background: #A1CB4E;
-    padding: 0;
-    color: white;
-    font-size: 14px;
-    line-height: 14px;
-    text-align: center; }
-    .contenedor .contenido .productos .prod form.addItem input[type=submit]:hover {
-      background: #97be49; }
-
-#carrito {
-  width: 20%;
-  min-height: 100vh;
-  overflow-y: visible;
-  display: none;
-  flex-flow: column nowrap;
-  justify-content: flex-start;
-  align-items: center;
-  padding: 5px;
-  background: #fafcf6;
-  color: #97be49; }
-  #carrito .errorMsg {
-    color: red;
-    border: 1px solid red;
-    padding: 10px;
-    order: 0;
-    height: auto;
-    font-size: 11px;
-    font-family: 'roboto_slablight'; }
-  #carrito .succesMsg {
-    color: green;
-    border: 1px solid green;
-    padding: 10px;
-    order: 0;
-    height: auto;
-    font-size: 11px;
-    font-family: 'roboto_slablight'; }
-  #carrito a {
-    font-family: 'governorregular';
-    font-size: 22px;
-    height: auto;
-    margin: 15px 0;
-    color: #97be49;
-    order: 1; }
-  #carrito h2 {
-    font-size: 13px;
-    font-family: 'roboto_slablight';
-    order: 1; }
-  #carrito #ocultar {
-    display: none;
-    order: 15; }
-  #carrito a#logout {
-    font-family: 'roboto_slablight';
-    font-size: 12px;
-    color: #97be49;
-    text-shadow: 0 0 0 #fff;
-    width: 100%;
-    text-decoration: underline;
-    text-align: right;
-    order: 0; }
-  #carrito span {
-    width: 80%;
-    height: 1px;
-    background: #ddd;
-    box-shadow: 1px 0 0 #ccc; }
-  #carrito #registrarse input, #carrito #ingresar input {
-    padding: 5px;
-    background: #fff;
-    border-radius: 1px;
-    border: 0;
-    margin: 5px 0;
-    border: 1px solid #b0cd74;
-    color: #97be49;
-    font-size: 13px;
-    font-family: 'roboto_slablight';
-    min-height: 30px; }
-  #carrito #registrarse input::-webkit-input-placeholder, #carrito #ingresar input::-webkit-input-placeholder {
-    color: #97be49; }
-  #carrito #registrarse input[type=submit], #carrito #ingresar input[type=submit] {
-    background: #97be49;
-    color: #fff;
-    border-radius: 30px;
-    cursor: pointer; }
-  #carrito #registrarse h2, #carrito #ingresar h2 {
-    order: 0; }
-  #carrito form {
-    width: 100%;
+  justify-content: space-around;
+  height: 40vh;
+  background: url(../img/bg_tienda.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover; }
+  header .logo {
     display: flex;
     flex-flow: column nowrap;
-    padding: 5px 10px 10px 10px;
-    order: 3; }
-    #carrito form #dir {
-      margin: 5px 0;
-      color: #97be49;
-      background: none;
-      border: none;
-      display: flex;
-      flex-flow: column nowrap;
-      align-content: center;
-      align-items: center;
-      margin-bottom: 10px; }
-      #carrito form #dir p {
-        font-size: 12px;
-        font-family: 'roboto_slablight';
-        color: #97be49;
-        text-decoration: underline;
-        margin-bottom: 10px; }
-      #carrito form #dir div {
-        width: 100%;
-        display: flex;
-        flex-flow: row nowrap;
-        justify-content: space-between;
-        border: none; }
-        #carrito form #dir div span {
-          font-family: 'ElegantIcons';
-          font-size: 13px;
-          color: #84be49;
-          margin: 0;
-          padding: 0; }
-        #carrito form #dir div input {
-          font-size: 12px;
-          line-height: 13px;
-          font-family: 'roboto_slablight';
-          color: #84be49;
-          border: none;
-          border-bottom: 1px dotted #999;
-          width: 100%; }
-    #carrito form div {
-      width: 100%;
+    align-items: flex-start;
+    justify-content: center;
+    width: 50%;
+    height: 30vh;
+    padding-left: 20px; }
+    header .logo h1 {
+      font-family: "governorregular";
+      font-size: 32px;
+      color: #8dbe49; }
+    header .logo a {
+      font-family: "Didact Gothic", sans-serif;
+      color: white;
+      font-size: 18px;
+      margin-left: 10px; }
+  header nav {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 20px;
+    width: 50%;
+    height: 30vh; }
+    header nav .icono {
+      font-family: 'ElegantIcons';
+      font-size: 26px;
+      color: #8dbe49;
+      border-radius: 20px;
+      box-shadow: 0px 0px 0px 3px rgba(30, 30, 30, 0.3);
+      transition: box-shadow 0.7s ease;
+      margin-right: 15px; }
+      header nav .icono:hover {
+        box-shadow: 0px 0px 0px 3px rgba(30, 30, 30, 0.6);
+        transition: box-shadow 0.7s ease; }
+    header nav .boton {
+      font-family: "governorregular";
+      font-size: 13px;
+      color: white;
+      padding: 12px 33px;
+      letter-spacing: 1px;
+      background: #8dbe49;
+      box-shadow: 0px 0px 0px 3px rgba(30, 30, 30, 0.3);
+      transition: padding 0.2s ease-in, box-shadow 0.7s ease-in; }
+      header nav .boton:hover {
+        box-shadow: 0px 0px 0px 3px rgba(30, 30, 30, 0.6);
+        transition: padding 0.2s ease-in-in, box-shadow 0.7s ease-in;
+        padding: 16px 38px; }
+      header nav .boton span {
+        font-family: "Didact Gothic", sans-serif;
+        font-size: 13px; }
+    header nav input {
+      outline: none;
       border: 0;
-      border-bottom: 1px dotted #999;
-      margin-bottom: 10px;
+      padding: 6px 16px;
+      font-family: "Didact Gothic", sans-serif;
+      color: #8dbe49;
+      transition: padding 0.3s ease-in; }
+      header nav input:hover {
+        transition: padding 0.3s ease-in;
+        border: 1px solid #8dbe49; }
+      header nav input:focus {
+        padding: 9px 19px; }
+      header nav input[type=submit] {
+        background: #8dbe49;
+        color: white; }
+  header #tabs {
+    display: none;
+    width: 100%;
+    height: 10vh;
+    align-self: flex-end;
+    padding: 0 !important;
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: flex-end;
+    justify-content: space-around; }
+    header #tabs a {
+      width: 25%;
+      font-size: 16px;
+      text-align: center;
+      border-bottom: 5px solid #b1d383;
+      font-family: "Didact Gothic", sans-serif;
+      padding-bottom: 10px;
+      color: white;
+      transition: border 0.3s ease-in; }
+      header #tabs a:hover {
+        transition: border 0.3s ease-in;
+        border-color: #8dbe49; }
+      header #tabs a.active {
+        border-color: #8dbe49;
+        color: #8dbe49; }
+    header #tabs .search {
+      width: 25%;
       display: flex;
       flex-flow: row nowrap;
-      box-sizing: border-box;
-      justify-content: flex-end;
-      align-items: flex-end;
-      align-content: flex-end; }
-      #carrito form div a {
-        display: block;
-        font-family: 'ElegantIcons';
-        color: #97be49;
-        font-size: 12px;
-        margin: 0;
-        width: 10%; }
-      #carrito form div p {
-        display: block;
-        font-size: 12px;
-        margin: 0;
-        width: 50%; }
-      #carrito form div input {
-        display: block;
-        background: none;
-        width: 20%;
-        border: 0;
-        margin: 0; }
-      #carrito form div span {
-        box-shadow: none;
-        display: block;
-        width: 20%;
-        color: #97be49;
-        background: none;
-        text-shadow: none;
-        font-size: 12px;
-        height: auto;
-        border: 0; }
-    #carrito form select {
-      -webkit-appearance: button;
-      background: none;
-      border: 1px solid #97be49;
-      border-radius: 5px;
-      padding: 5px;
-      font-size: 12px;
-      font-family: 'roboto_slablight';
-      color: #97be49; }
-    #carrito form input[type=submit] {
-      background: #97be49;
-      color: #fff;
-      width: 100%;
-      border-radius: 30px;
-      margin: 10px 0;
-      border: 0;
-      padding: 5px 0;
-      font-size: 13px;
-      cursor: pointer; }
-  #carrito a.boton {
-    width: 100%;
-    display: block;
-    font-size: 1em;
-    font-weight: 100;
-    color: #97be49;
-    padding: 16px 0;
-    background: none;
-    border: 2px solid #97be49;
-    align-self: flex-end;
-    margin-top: 30px;
-    text-shadow: 0 0 0 #fff;
-    text-align: center; }
-
-/*----------------------------------*/
-/*---------------------------------------*/
-@media screen and (max-width: 770px) {
-  .contenedor {
-    width: 100vw;
-    padding: 20px; }
-    .contenedor header {
-      height: auto;
-      flex-flow: column nowrap;
+      align-items: center;
       justify-content: center;
-      align-content: center;
-      align-items: center;
-      margin-bottom: 20px; }
-      .contenedor header div.titulo {
-        width: 100%;
-        align-content: center;
-        align-items: center;
-        justify-content: space-around;
-        margin-bottom: 20px; }
-        .contenedor header div.titulo h1 {
-          font-size: 18px;
-          letter-spacing: 0px;
-          margin: 0;
-          margin-right: 4px; }
-        .contenedor header div.titulo h2 {
-          margin: 0;
-          font-size: 12px;
-          letter-spacing: .05em;
-          margin-left: 4px; }
-      .contenedor header nav {
-        width: 100%;
-        flex-flow: row nowrap;
-        justify-content: flex-start; }
-        .contenedor header nav a {
-          display: none; }
-          .contenedor header nav a.boton {
-            display: block;
-            width: auto;
-            font-size: 12px;
-            letter-spacing: .1em;
-            padding: 12px 12px;
-            margin: 0;
-            width: 100%;
-            line-height: 16px; }
-    .contenedor .contenido #filtro {
-      margin: 0;
-      margin-bottom: 20px; }
-      .contenedor .contenido #filtro a {
-        font-size: 12px;
-        color: #97be49;
-        background: none;
-        padding: 0;
-        margin-bottom: 5px;
-        margin-right: 5px;
-        border-bottom: 1px dotted #97be49; }
-        .contenedor .contenido #filtro a:after {
-          content: '  /'; }
-    .contenedor .contenido .productos {
-      flex-flow: column nowrap; }
-      .contenedor .contenido .productos .prod {
-        width: 100%;
-        display: flex;
-        flex-flow: row wrap; }
+      padding-bottom: 10px;
+      border-bottom: 5px solid #b1d383;
+      transition: border 0.3s ease-in; }
+      header #tabs .search:hover {
+        transition: border 0.3s ease-in;
+        border-color: #8dbe49; }
+      header #tabs .search:focus a {
+        padding: 8px 6px; }
+      header #tabs .search input {
+        width: 60%;
+        font-family: "Didact Gothic", sans-serif;
+        font-size: 13px;
+        color: #8dbe49;
+        padding: 5px 12px;
+        border: none;
+        transition: padding .3s ease-in; }
+        header #tabs .search input:focus {
+          padding: 9px 16px;
+          transition: padding .3s ease-in;
+          outline: none; }
+      header #tabs .search a {
+        width: 10%;
+        font-family: "ElegantIcons";
+        color: white;
+        background: #8dbe49;
+        padding: 6px;
+        font-size: 14px;
+        border: none; }
 
-  #leftCon {
-    height: 150px;
-    width: 40%;
+#container {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: flex-start;
+  justify-content: flex-start; }
+  #container #filtro {
+    width: 20%;
     margin: 0;
-    padding: 0;
-    display: flex;
-    flex-flow: column nowrap;
-    align-items: center;
-    align-content: center;
-    overflow: hidden; }
-    #leftCon img {
-      width: 180px;
-      height: auto; }
-
-  #rightCon {
-    display: flex;
-    width: 60%;
-    height: 150px;
-    padding: 0 18px;
-    margin: 0;
-    box-sizing: border-box; }
-    #rightCon form {
-      height: 150px;
-      background: none;
-      padding: 0;
-      display: flex;
-      flex-flow: column nowrap;
-      justify-content: space-between;
-      align-items: center;
-      align-content: space-between; }
-      #rightCon form h2 {
-        width: 100%;
-        color: #97be49;
-        font-size: 12px;
-        font-family: 'roboto_slablight';
-        text-align: left; }
-      #rightCon form div {
-        width: 100%;
+    padding: 10px; }
+    #container #filtro.hide {
+      display: none !important; }
+    #container #filtro span {
+      margin-top: 10px;
+      display: none; }
+      #container #filtro span.active {
         display: flex;
-        flex-flow: row nowrap;
-        align-items: center;
-        align-content: center;
-        box-sizing: border-box;
-        border-bottom: 1px dotted #666;
-        box-shadow: 0;
-        height: 30px; }
-        #rightCon form div input {
-          color: #97be49;
-          width: 50%;
-          font-size: 12px;
-          padding: 0;
-          margin: 0;
-          border: 0;
-          min-height: 20px; }
-          #rightCon form div input::-webkit-input-placeholder {
-            color: #97be49;
-            text-align: right; }
-        #rightCon form div p {
-          width: 50%;
-          min-height: 20px;
-          text-align: left;
-          font-size: .7em;
-          color: #97be49;
-          padding-left: 3px; }
-      #rightCon form select {
-        -webkit-appearance: button;
-        font-size: 11px;
-        border: 1px solid #97be49;
-        outline: 0px;
-        color: #97be49;
-        padding: 4px;
-        font-family: 'roboto_slablight';
-        border-radius: 0;
-        width: 100%;
-        height: auto;
-        height: 30px;
-        margin: 0; }
-      #rightCon form .button {
-        width: 100%;
-        margin: 0;
-        border: 0;
-        box-sizing: border-box; }
-        #rightCon form .button input[type=submit] {
-          width: 100%;
-          padding: 4px 7px;
-          background: #97be49;
-          border: 0;
-          margin: 0;
+        flex-flow: column nowrap;
+        align-items: inherit;
+        justify-content: inherit; }
+      #container #filtro span a {
+        font-family: "Didact Gothic", sans-serif;
+        font-size: 13px;
+        color: #8dbe49;
+        border-bottom: 1px solid #8dbe49;
+        padding: 10px 8px;
+        transition: background 0.2s ease, color 0.2s ease; }
+        #container #filtro span a:hover {
+          background: #8dbe49;
           color: white;
-          font-family: 'roboto_slablight';
-          font-size: 12px;
-          height: 30px;
-          text-align: center; }
-        #rightCon form .button span {
-          font-family: 'ElegantIcons';
-          font-size: 12px;
-          margin: 0;
-          padding: 0;
-          width: auto;
-          color: black; }
-
-  .contenedor .contenido .productos .prod {
-    width: 100%;
-    margin-bottom: 20px; }
-    .contenedor .contenido .productos .prod span {
-      display: none;
-      width: 100%;
-      padding: 10px 0;
-      border-bottom: 2px solid #97be49; }
-      .contenedor .contenido .productos .prod span h3 {
-        font-family: 'governorregular';
-        font-size: 12px;
-        color: #97be49;
-        margin-bottom: 8px;
-        letter-spacing: .2em; }
-  .contenedor .contenido .productos span p {
-    font-family: 'roboto_slablight';
-    font-size: 12px;
-    color: #97be49;
-    letter-spacing: .05em;
-    margin-left: 5px; }
-
-  #carrito {
-    width: 100%;
-    min-height: 100vh;
-    box-shadow: none;
-    display: none;
-    flex-flow: column nowrap;
-    align-items: center; }
-    #carrito h2 {
-      margin: 15px 0; }
-    #carrito #ocultar {
-      display: block;
-      font-family: 'roboto_slablight';
-      font-size: 11px;
-      color: #97be49;
-      text-decoration: underline;
-      padding: 0;
-      margin: 0;
-      text-align: center; }
-    #carrito form {
-      width: 100%;
+          transition: background 0.2s ease, color 0.2s ease; }
+          #container #filtro span a:hover span {
+            color: white; }
+        #container #filtro span a.active {
+          background: #8dbe49;
+          color: white; }
+          #container #filtro span a.active span {
+            color: white; }
+        #container #filtro span a span {
+          font-family: "ElegantIcons";
+          color: #8dbe49;
+          font-size: 13px;
+          display: inline; }
+  #container #productos {
+    margin-top: 10px;
+    width: 80%;
+    padding: 15px;
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    justify-content: space-between; }
+    #container #productos.full {
+      width: 100%; }
+    #container #productos .prod {
       display: flex;
-      padding: 10px; }
-      #carrito form #dir {
-        background: none;
-        border: 0;
-        border-bottom: 1px dotted #97be49; }
-      #carrito form div {
+      flex-flow: column wrap;
+      align-items: center;
+      justify-content: center;
+      border-bottom: 5px solid #8dbe49;
+      width: 30%;
+      margin-bottom: 10px;
+      padding: 5px;
+      box-shadow: 0px 0px 2px 0px rgba(15, 15, 15, 0.4); }
+      #container #productos .prod:hover {
+        transition: box-shadow 0.5s ease-in;
+        box-shadow: 0px 0px 3px 0px rgba(15, 15, 15, 0.5); }
+      #container #productos .prod a {
         width: 100%;
-        border: 0;
-        border-bottom: 1px dotted #999;
-        margin-bottom: 10px;
+        text-align: center;
+        letter-spacing: 1px;
+        word-break: break-all;
+        font-size: 14px;
+        font-family: "Francois One", sans-serif;
+        color: #8dbe49; }
+      #container #productos .prod .top {
+        overflow: hidden;
+        width: 100%;
+        height: 180px;
+        -webkit-background-size: cover !important;
+        -moz-background-size: cover !important;
+        -o-background-size: cover !important;
+        background-size: cover !important;
+        background-attachment: local !important;
+        background-repeat: no-repeat !important;
+        background-position: center center !important; }
+      #container #productos .prod p {
+        border-bottom: 0;
+        font-family: "Didact Gothic", sans-serif;
+        color: #b1d383;
+        font-size: 13px;
+        padding-left: 3px; }
+      #container #productos .prod form {
+        padding: 10px 15px;
         display: flex;
-        flex-flow: row nowrap;
-        box-sizing: border-box;
-        justify-content: flex-end;
-        align-items: flex-end;
-        align-content: flex-end; }
-        #carrito form div a {
-          font-family: 'ElegantIcons';
-          color: #97be49;
-          width: 5%;
-          font-size: 12px;
-          margin-left: auto; }
-        #carrito form div p {
-          font-size: 12px;
-          margin: 0;
-          width: 50%;
-          margin-right: auto; }
-        #carrito form div input {
-          background: none;
+        flex-flow: row wrap;
+        align-items: center;
+        justify-content: center; }
+        #container #productos .prod form .cant {
+          width: 30%;
+          padding: 7px;
+          font-family: "Didact Gothic", sans-serif;
+          color: #8dbe49;
+          border: 1px solid #8dbe49; }
+          #container #productos .prod form .cant:focus {
+            border-color: #b1d383;
+            outline: none; }
+        #container #productos .prod form span {
           width: 20%;
-          border: 0;
-          margin: 0; }
-        #carrito form div span {
-          color: #97be49;
-          background: none;
-          text-shadow: none;
-          font-size: 12px;
-          height: auto;
-          width: auto; } }
+          font-family: "Didact Gothic", sans-serif;
+          font-size: 13px;
+          color: white;
+          background: #8dbe49;
+          padding: 7px 3px; }
+        #container #productos .prod form select {
+          width: 40%;
+          margin-left: 15px;
+          padding: 6px 0;
+          font-family: "Didact Gothic", sans-serif;
+          color: #8dbe49;
+          border: 1px solid #8dbe49; }
+        #container #productos .prod form input[type=submit] {
+          width: 100%;
+          background: #8dbe49;
+          border: none;
+          margin-top: 10px;
+          color: white;
+          font-family: "Didact Gothic", sans-serif;
+          font-size: 14px;
+          padding: 12px 7px; }
+          #container #productos .prod form input[type=submit]:hover {
+            box-shadow: 0px 0px 1px 1px rgba(15, 15, 15, 0.5);
+            transition: box-shadow 0.5s ease-in; }
 
 /*# sourceMappingURL=tienda.css.map */

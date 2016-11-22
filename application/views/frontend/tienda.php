@@ -1,127 +1,72 @@
-<div class="contenedor">
-	<header>
-		<div class="titulo">
-			<h1>Tienda OnLine</h1>
-			<a href="<?php echo site_url() ?>">Verde que te<br> Quiero Verde</a>
-		</div>
-		<nav>
-			<a href="<?php echo $home->linkFacebook; ?>" target="blank">&#xe0aa;</a>
-			<a href="<?php echo $home->linkInstagram; ?>" target="blank">&#xe0b1;</a>
-			<a href="#" class="boton" id="login"></a>
-		</nav>
-	</header>
-	<div class="contenido">
-		<nav id="tabs">
-			<!-- [inicio, categoria, granel, tabValue] -->
-			<a class="tab" href="#" data-filter='["1","0","0","1"]'>Productos destacados</a>
-			<a class="tab" href="#" data-filter='["0","0","1","1"]'>Productos a granel</a>
-			<a class="tab" href="#" data-filter='["0","0","0","1"]'>Productos naturales</a>
-			<div class="search">
-				<input id="searchItem" type="text" placeholder="Buscar producto.">
-				<a class="search" href="#">&#x55;</a>
-			</div>
-		</nav>
-		<nav id="filtro">
-			<span class="granel">
-					<a class="filter" href="#" data-filter='["0","0","1"]'>Todas las categorias</a>
-					<?php if (count($categorias)): foreach ($categorias as $categoria): ?>
-						<a class="filter" href="#" data-filter='["0","<?php echo $categoria->catid; ?>","1"]'><?php echo $categoria->catdescripcion; ?></a>
-					 <?php endforeach; ?>
-					<?php endif; ?>
-				</span>
-			<span class="naturales">
-					<a class="filter" href="#" data-filter='["0","0","0"]'>Todas las categorias</a>
-					<?php if (count($categorias)): foreach ($categorias as $categoria): ?>
-						<a class="filter" href="#" data-filter='["0","<?php echo $categoria->catid; ?>","0"]'><?php echo $categoria->catdescripcion; ?></a>
-					 <?php endforeach; ?>
-					<?php endif; ?>
-				</span>
-		</nav>
-		<div class="productos">
-
-		</div>
+<header>
+	<div class="logo">
+		<h1>Tienda Online </h1>
+		<a href="<?php echo site_url() ?>">Verde que te quiero verde</a>
 	</div>
-</div>
-
-<div id="carrito">
-	<script id="loginForm" type="text/template">
-		<a href="index.html">vqv</a>
-		<form id="ingresar" method="POST" action="#" name="iniciar">
-			<h2>Iniciar sesion</h2>
-			<input type="email" name="email" placeholder="email" required>
-			<input type="password" name="password" placeholder="contrase&ntilde;a" required>
-			<input type="submit" value="Ingresar">
-		</form>
-		<span></span>
-		<form id="registrarse" method="POST" action="cart/register" name="registrarse">
-			<h2>Registrarse</h2>
-			<input type="email" name="email" placeholder="email" required>
-			<input type="password" name="password" placeholder="contrase&ntilde;a" required>
-			<input type="password" name="password2" placeholder="confirmar contrase&ntilde;a" required>
-			<input type="text" name="name" placeholder="Nombre y Apellido" required>
-			<input type="text" name="phone" placeholder="Telefono">
-			<input type="text" name="address" placeholder="Direccion">
-			<input type="submit" value="Registrarse">
-		</form>
-		<a id="ocultar" href="#">Ocultar carrito.</a>
-	</script>
-	<script id="carritoTemplate" type="text/template">
-		<a href="index.html">vqv</a>
-		<a id="ocultar" href="#">Ocultar carrito.</a>
-		<h2>{{name}}</h2>
-		<form method="POST" id="confirmar" action="">
-			<div id="dir">
-				<p>Direccion de envio:</p>
-				<div>
-					<span>&#xe074;</span>
-					<input type="text" name="address" value="{{address}}" placeholder="Direccion">
-				</div>
-			</div>
-			{{#items}}
-			<div>
-				<p>{{prodnombre}}</p>
-				<input id="{{prodid}}" class="valorCompra" type="number" value="{{quantity}}" data-precio="{{cuenta}}" min="1" name="cantidad" placeholder="{{quantity}}">
-				<span>{{proddisplay}}{{produnidad}}</span>
-				<span class="{{prodid}}">${{amount}}</span>
-				<a href="cart/removeItem/{{prodid}}" class="remove" id="{{prodid}}">&#xe019;</a>
-			</div>
-			{{/items}}
-			<select aria-required="required" required>
-				<option value="">Elegir tipo de pago.</option>
-				<option value="1">Deposito en cuenta BROU</option>
-				<option value="2">Pago contrarembolso</option>
-			</select>
-			<input type="submit" name="confirmar" value="Confirmar Compra">
-		</form>
-		<a href="#" id="logout">Cerrar sesion</a>
-	</script>
-	<script id="carritoItem" type="text/template">
-		<div>
-			<p>{{prodnombre}}</p>
-			<input id="{{prodid}}" type="number" name="cantidad" placeholder="{{quantity}}">
-			<span>{{produnidad}} ${{amount}}</span>
-			<a href="cart/removeItem/{{prodid}}" class="remove">&#xe019;</a>
+	<nav>
+		<a class="icono" href="<?php echo $home->linkFacebook; ?>" target="blank">&#xe0aa;</a>
+		<a class="icono" href="<?php echo $home->linkInstagram; ?>" target="blank">&#xe0b1;</a>
+		<a href="<?php echo site_url('tienda/carrito') ?>" class="boton" id="boton">Mi carrito</a>
+	</nav>
+	<nav id="tabs">
+		<!-- [inicio, categoria, granel, tabValue] -->
+		<a class="tab" href="#" data-filter='["1","0","0","1"]'>Productos destacados</a>
+		<a class="tab" href="#" data-filter='["0","0","1","1"]'>Productos a granel</a>
+		<a class="tab" href="#" data-filter='["0","0","0","1"]'>Productos naturales</a>
+		<div class="search">
+			<input id="searchItem" type="text" placeholder="Buscar producto.">
+			<a class="search" href="#">&#x55;</a>
 		</div>
-	</script>
+	</nav>
+</header>
+<div id="container">	
+	<section id="filtro" class="hide">
+		<span class="granel">
+			<a class="filter" href="#" data-filter='["0","0","1"]'>Todas las categorias <span>&#x5b;</span></a>
+			<?php if (count($categorias)): foreach ($categorias as $categoria): ?>
+				<a class="filter" href="#" data-filter='["0","<?php echo $categoria->catid; ?>","1"]'><?php echo $categoria->catdescripcion; ?> <span>&#x5b;</span></a>
+			 <?php endforeach; ?>
+			<?php endif; ?>
+		</span>
+		<span class="naturales">
+			<a class="filter" href="#" data-filter='["0","0","0"]'>Todas las categorias <span>&#x5b;</span></a>
+			<?php if (count($categorias)): foreach ($categorias as $categoria): ?>
+				<a class="filter" href="#" data-filter='["0","<?php echo $categoria->catid; ?>","0"]'><?php echo $categoria->catdescripcion; ?> <span>&#x5b;</span></a>
+			 <?php endforeach; ?>
+			<?php endif; ?>
+		</span>
+	</section>
+	<section id="productos">
+		
+	</section>
 </div>
+<script type="text/template" id="loginTemplate">
+<form id="login">
+	<input type="text" name="email" value="Email" required>
+	<input type="password" name="Password" value="Contraseña" required>
+	<input type="submit" value="Ingresar / Registrarse" >
+</form>
+</script>
 <script type="text/template" id="prodTemplate">
-	<div class="prod" data-producto="{{prodid}}">
+	<div class="prod" >
 		<a href="#" class="expandir">{{prodnombre}}{{#prodgranel}} (producto a granel){{/prodgranel}}</a>
-		<div class="imagen"  style="background-image: linear-gradient(rgba(126,126,126,.15),rgba(126,126,126,.15)),url(img/{{prodimagen}})">	
+		<div class="top" data-producto="{{prodid}}" style="background: url(<?php echo site_url('img')?>/{{prodimagen}})">
 		</div>
 		<p>{{proddes}}</p>
 
-		<form id="{{prodid}}" method="POST" class="oculto addItem">
+		<form id="{{prodid}}" method="POST" class="addItem">
 			<input type="number" class="cant" name="quantity" value="{{prodpresentacion}}" placeholder="{{prodpresentacion}}" step="1" min="1" data-precio="{{cuenta}}" data-id="{{prodid}}">
-			<span>{{proddisplay}} {{produnidad}}</span> {{#prodgranel}}
-			<select name="envase">
+			<span>{{proddisplay}} {{produnidad}}</span>
+			{{#prodgranel}}
+				<select name="envase">
 					<option selected disabled>Tipo de envase</option>
 					{{#envases}}
 					<option value="{{envaseid}}">{{envasenombre}} - ${{envasecosto}}</option>
 					{{/envases}}
-				</select> {{/prodgranel}}
-			<input type="hidden" name="productid" value="{{prodid}}">
-			<input class="{{prodid}}" type="submit" value="$u. {{prodprecio}} - Agregar al carrito">
+				</select>
+			{{/prodgranel}}
+			<input type="hidden" name="productid" value="{{prodid}}" >
+			<input class="{{prodid}}" type="submit" value="$u. {{prodprecio}} - Agregar al carrito" >
 		</form>
 	</div>
 </script>
@@ -138,13 +83,14 @@
 					<p> {{proddisplay}} {{produnidad}}</p>
 				</div>
 				{{#prodgranel}}
-				<select name="envase">
+					<select name="envase" >
 						<option selected disabled>Tipo de envase</option>
 						<option value="1">Bolsa de papel</option>
 						<option value="2">Envase de vidrio nuevo</option>
 						<option value="3">Intercambio envase</option>
-					</select> {{/prodgranel}}
-				<input type="hidden" name="productid" value="{{prodid}}">
+					</select>
+				{{/prodgranel}}
+				<input type="hidden" name="productid" value="{{prodid}}" >
 				<div class="button">
 					<input type="submit" value="Agregar al carrito">
 				</div>

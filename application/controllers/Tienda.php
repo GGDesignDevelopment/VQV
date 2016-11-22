@@ -38,6 +38,21 @@ class Tienda extends Frontend_Controller {
         $this->data['dir'] = $this->imageDir;
         $this->load->view('frontend/_layout_main', $this->data);
     }
+		
+		function carrito() {
+        $this->data['title'] = 'VQV - Mi Carrito';
+        $this->data['styles'][] = '<link rel="stylesheet" type="text/css" href="' . site_url('css/reset.css') . '">';
+        $this->data['styles'][] = '<link rel="stylesheet" type="text/css" href="' . site_url('css/fonts.css') . '">';
+        $this->data['styles'][] = '<link rel="stylesheet" type="text/css" href="' . site_url('css/icons.css') . '">';
+        $this->data['styles'][] = '<link rel="stylesheet" type="text/css" href="' . site_url('css/carrito.css') . '">';
+        $this->data['scripts'][] = '<script src="https://code.jquery.com/jquery-2.2.4.min.js"   integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="   crossorigin="anonymous"></script>';
+        $this->data['scripts'][] = '<script type="text/javascript" src="' . site_url('js/mustache.js') . '"></script>';
+        $this->data['scripts'][] = '<script type="text/javascript" src="' . site_url('js/carrito.js') . '"></script>';
+
+        $this->data['subview'] = 'frontend/carrito';
+        $this->data['dir'] = $this->imageDir;
+        $this->load->view('frontend/_layout_main', $this->data);
+    }
 
     function getProducts() {
         header('Access-Control-Allow-Origin: *');
@@ -69,11 +84,6 @@ class Tienda extends Frontend_Controller {
     function search() {
         header('Access-Control-Allow-Origin: *');
         $filter = $this->input->get('filter');
-				$pagina = $this->input->get('pag');
-        $cnt = $this->input->get('cnt');
-
-        $this->db->limit($cnt,($pagina - 1) * $cnt);
-
         $where = '(prodnombre like "%' . $filter . '%" or proddes like "%' . $filter . '%")';
         $products = $this->producto_m->get($where);
 

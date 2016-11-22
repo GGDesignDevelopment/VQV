@@ -28,7 +28,7 @@ class Cart extends Frontend_Controller {
             $cart['address'] = $data['address'];
             
             $this->cart_m->save($cart,NULL);
-                   
+            $this->user_m->login();       
             $return = array('msg' => true);
         }
         echo json_encode($return);
