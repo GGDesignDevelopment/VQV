@@ -1,6 +1,7 @@
 var carrito = (function() {
 	//DOM CACHE 
 	var $container = $('#container');
+	var $header = $container.find('header');
 	var $middle = $container.find('#middle');
 	var $footer = $container.find('footer');
 	var tableOfProducts = $middle.html();
@@ -47,7 +48,6 @@ var carrito = (function() {
 			data: $(this).serialize(),
 			dataType: 'json',
 			success: function (data) {
-				alert('registro');
 				_render(data);
 			}
 		});
@@ -107,11 +107,22 @@ var carrito = (function() {
 	function _calcPrice(json) {
 		var total = 0;
 		$.each(json.items, function (i, obj) {
-			obj.amount = Math.round(obj.amount * 100) / 100;
+			obj.amount = Math.floor(Math.round(obj.amount * 100) / 100);
 			total += obj.amount;
 		});
 		$footer.find('#totalPrice').html('Total: $ '+total);
 		$footer.find('input[name=address]').val(json.address);
 	}
 
+	//Ajustes pa responsive 
+	function _responsive() {
+		if ($(window).width() <= 600) {
+			$navBar=$container.find('nav');
+			$.each($navBar, function(i,obj){
+				icono = $(this[i]).find('span').html();
+				$(this).find('a').html('<span>'+icono+'</span>');
+			})	
+		}
+	}
+	_responsive();
 })();

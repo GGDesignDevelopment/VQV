@@ -207,4 +207,54 @@ body {
           transition: box-shadow 0.8s ease;
           box-shadow: 0 0 2px 0 rgba(30, 30, 30, 0.5); }
 
+@media screen and (min-width: 320px) and (max-width: 480px) {
+  body {
+    background: none;
+    height: auto;
+    overflow: scroll; }
+
+  #container {
+    width: 100%;
+    height: 100%; }
+    #container header {
+      height: auto;
+      display: flex;
+      flex-flow: column nowrap;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0; }
+      #container header h1 {
+        padding: 10px 5px 0px 5px;
+        font-size: 18px; }
+      #container header h2 {
+        padding: 5px; }
+      #container header nav {
+        background: white;
+        width: 100%;
+        height: auto;
+        align-self: flex-end;
+        padding: 0;
+        display: flex;
+        flex-flow: row wrap;
+        align-items: center;
+        justify-content: space-around;
+        border-top: 1px solid rgba(0, 0, 0, 0.3); }
+        #container header nav a {
+          color: #8dbe49;
+          padding: 5px 12px;
+          font-size: 12px;
+          text-decoration: underline; }
+          #container header nav a span {
+            text-decoration: none;
+            padding-left: 3px;
+            font-size: 12px;
+            color: #8dbe49;
+            visibility: visible; }
+    #container #middle {
+      height: auto;
+      width: 100%; }
+    #container footer {
+      height: 20vh;
+      width: 100%; } }
+
 /*# sourceMappingURL=carrito.css.map */

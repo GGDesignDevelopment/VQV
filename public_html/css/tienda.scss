@@ -52,6 +52,7 @@ header {
 		padding-right: 20px;
 		width: 50%;
 		height: 30vh;
+		&:focus { outline: none	};
 		.icono {
 			font-family: 'ElegantIcons';
 			font-size: 26px;
@@ -74,7 +75,7 @@ header {
 			background: $colorPrincipal;
 			box-shadow: 0px 0px 0px 3px rgba(30,30,30,.3);
 			transition: padding 0.2s ease-in, box-shadow 0.7s ease-in;
-			&:hover {
+			&:hover, &:focus {
 				box-shadow: 0px 0px 0px 3px rgba(30,30,30,.6); 
 				transition: padding 0.2s ease-in-in, box-shadow 0.7s ease-in;
 				padding: 16px 38px;
@@ -305,6 +306,138 @@ header {
 					&:hover {
 						box-shadow: 0px 0px 1px 1px rgba(15,15,15,.5);
 						transition: box-shadow 0.5s ease-in;
+					}
+				}
+			}
+		}
+	}
+}
+
+//////
+@media screen and (min-width: 320px) and (max-width: 480px) {
+	header {
+		//@include flexbox(column, wrap, center, inherit);
+		width: 100%;
+		height: 30vh;
+		.logo {
+			width: auto;
+			height: 10vh;
+			padding-left: 10px;
+			h1 {font-size: 16px}
+			a {font-size: 12px}
+		}
+		nav {
+			justify-content: center;
+			width: auto;
+			padding-right: 10px;
+			height: 10vh;
+			.icono { display: none; }
+			.boton {
+				font-size: 12px;
+				letter-spacing: 0;
+				padding:11px 22px; 
+				width: 100%;
+				&:focus,&:hover {padding: 11px 22px}
+			}
+		}
+		#tabs {
+			@include flexbox(row, wrap, center, space-around);
+			width: 100%;
+			height: 20vh;
+			align-self: flex-end;
+			.tab {
+				order: 1;
+				width: 30%;
+				padding: 10px 0; 
+				font-size: 14px;
+				&:focus {
+					background: $colorPrincipal;
+					color: white;
+					border-bottom: 0;
+				}
+			}
+			.search {
+				order: 0;
+				width: 80%;
+				border: 0;
+				padding: 0;
+				input {
+				}
+			}
+		}
+	}
+	//END HEADER
+	#container {
+		@include flexbox(column, nowrap, center, flex-start);
+		padding: 15px;
+		#filtro {
+			width: 100%;
+			padding: 0;
+			span {
+				margin: 0;
+				padding: 0;
+				&.active {@include flexbox(row, wrap, flex-start, flex-start)}
+				a {
+					padding: 2px 5px 2px 0;
+					font-size: 11px;
+					color: $colorPrincipal;
+					background: white;
+					border-bottom: 1px dotted $colorPrincipal;
+					span { font-size: 11px }
+					&.active {
+						background: none;
+						color: $colorPrincipal;
+						span { color: $colorPrincipal}
+					}
+				}
+			}
+		}
+		#productos {
+			@include flexbox(column, nowrap, center, inherit);
+			width: 100%;
+			padding: 0;
+			.prod {
+				width: 100%;
+				padding: 10px;
+				box-shadow: 0 0 2px 0 rgba(black,0.3);
+				img {
+					max-width: 100%;
+					height: auto;
+					margin-bottom: 10px;
+				}
+				form {
+					padding: 0;
+					width: 100%;
+					@include flexbox(column, nowrap, center, inherit);
+					h2 {
+						width: 100%;
+						font-family: $fuentePrincipal;
+						color: $colorPrincipal;
+						font-size: 16px;
+						letter-spacing: .5px;
+					}
+					span {
+						width: 100%;
+						@include flexbox(row, wrap, center, inherit);
+						background: none;
+						input { width: 30%;}
+						p {
+							width: 20%;
+							font-family: $fuenteSecundaria;
+							color: $colorPrincipal;
+							font-size: 15px;
+							margin: 0;
+						}
+						input[type=submit] {
+							width: 100%;
+							background: $colorPrincipal;
+							border: none;
+							margin-top: 10px;
+							color: white;
+							font-family: $fuenteSecundaria;
+							font-size: 14px;
+							padding: 12px 7px;
+						}
 					}
 				}
 			}

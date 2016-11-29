@@ -4,10 +4,10 @@
 		<h1>Carrito de compras</h1>
 		<h2>Verde que te Quiero Verde</h2>
 		<nav>
-			<a href="<?php echo site_url() ?>"><span>&#xe009;</span>  Volver al inicio.</a>
-			<a href="<?php echo site_url('Tienda') ?>"><span>&#xe015;</span> Volver a la tienda</a>
-			<a href="<?php echo $home->linkFacebook ?>"><span>&#xe093;</span> /VqVerdeUruguay</a>
-			<a href="<?php echo $home->linkInstagram; ?>"><span>&#xe09a;</span> /vqvuruguay</a>
+			<a href="<?php echo site_url() ?>" data-text="Volver al inicio."><span>&#xe009;</span>  Volver al inicio.</a>
+			<a href="<?php echo site_url('Tienda') ?>" data-text="Volver a la tienda."><span>&#xe015;</span> Volver a la tienda</a>
+			<a href="<?php echo $home->linkFacebook ?>" data-text="/VqVerdeUruguay"><span>&#xe093;</span> /VqVerdeUruguay</a>
+			<a href="<?php echo $home->linkInstagram; ?>" data-text="/vqvuruguay"><span>&#xe09a;</span> /vqvuruguay</a>
 		</nav>
 	</header>
 	<div id="middle">

@@ -8,7 +8,7 @@
 		<a class="icono" href="<?php echo $home->linkInstagram; ?>" target="blank">&#xe0b1;</a>
 		<a href="<?php echo site_url('tienda/carrito') ?>" class="boton" id="boton">Mi carrito</a>
 	</nav>
-	<nav id="tabs">
+	<nav id="tabs" tabindex="0">
 		<!-- [inicio, categoria, granel, tabValue] -->
 		<a class="tab" href="#" data-filter='["1","0","0","1"]'>Productos destacados</a>
 		<a class="tab" href="#" data-filter='["0","0","1","1"]'>Productos a granel</a>
@@ -43,7 +43,7 @@
 <script type="text/template" id="loginTemplate">
 <form id="login">
 	<input type="text" name="email" value="Email" required>
-	<input type="password" name="Password" value="Contraseña" required>
+	<input type="password" name="password" value="Contraseña" required>
 	<input type="submit" value="Ingresar / Registrarse" >
 </form>
 </script>
@@ -72,33 +72,26 @@
 </script>
 <script type="text/template" id="prodTemplateMovil">
 	<div class="prod" data-id="{{prodid}}">
-		<div id="leftCon" data-id="{{prodid}}">
-			<img src="img/{{prodimagen}}" title="{{prodnombre}}">
-		</div>
-		<div id="rightCon">
-			<form id="{{prodid}}" method="POST" class="addItem">
-				<h2>{{prodnombre}}</h2>
-				<div>
-					<input type="number" class="cant" name="quantity" value="{{prodpresentacion}}" placeholder="{{prodpresentacion}}" step="1" min="1" data-precio="{{cuenta}}" data-id="{{prodid}}">
-					<p> {{proddisplay}} {{produnidad}}</p>
-				</div>
-				{{#prodgranel}}
-					<select name="envase" >
-						<option selected disabled>Tipo de envase</option>
-						<option value="1">Bolsa de papel</option>
-						<option value="2">Envase de vidrio nuevo</option>
-						<option value="3">Intercambio envase</option>
-					</select>
-				{{/prodgranel}}
-				<input type="hidden" name="productid" value="{{prodid}}" >
-				<div class="button">
-					<input type="submit" value="Agregar al carrito">
-				</div>
-			</form>
-		</div>
-		<span class="{{prodid}}">
-			<h3>Descripcion</h3>
+		<img src="img/{{prodimagen}}" title="{{prodnombre}}">
+		<form id="{{prodid}}" method="POST" class="addItem">
+			<h2>{{prodnombre}}</h2>
 			<p>{{proddes}}</p>
-		</span>
+			<span>
+				<input type="number" class="cant" name="quantity" value="{{prodpresentacion}}" placeholder="{{prodpresentacion}}" step="1" min="1" data-precio="{{cuenta}}" data-id="{{prodid}}">
+				<p> {{proddisplay}} {{produnidad}}</p>
+			{{#prodgranel}}
+				<select name="envase" >
+					<option selected disabled>Tipo de envase</option>
+					{{#envases}}
+					<option value="{{envaseid}}">{{envasenombre}} - ${{envasecosto}}</option>
+					{{/envases}}
+				</select>
+			{{/prodgranel}}
+			</span>
+			<input type="hidden" name="productid" value="{{prodid}}" >
+			<input type="submit" class="{{prodid}}" value="$u. {{prodprecio}} -Agregar al carrito">
+
+		</form>
+
 	</div>
 </script>
