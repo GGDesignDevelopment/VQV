@@ -18,12 +18,12 @@ user_guide_src/cilexer/pycilexer.egg-info/*
 #-------------------------
 /nbproject/
 .idea/*
-/public_html/img/
+#/public_html/img/
 ## Sublime Text cache files
 *.tmlanguage.cache
 *.tmPreferences.cache
 *.stTheme.cache
 *.sublime-workspace
 *.sublime-project
-public_html/js/sly.js
-application/config/config.php
+#public_html/js/sly.js
+#application/config/config.php
