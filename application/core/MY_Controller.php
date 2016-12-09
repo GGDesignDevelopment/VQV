@@ -1,10 +1,10 @@
 <?php
 
 class MY_Controller extends CI_Controller {
-	
+
     public $data = array();
-    public $imageDir = 'img/';
-    
+    public $imageDir = 'img/dynamic_img/';
+
     function __construct() {
         parent::__construct();
         $this->load->helper('form');
@@ -19,6 +19,6 @@ class MY_Controller extends CI_Controller {
         $this->data['scripts'] = array();
         $this->data['styles'] = array();
         $this->data['title'] = '';
-        $this->data['home']  = $this->home_m->get(['id'=>1], TRUE); 
+        $this->data['home']  = $this->home_m->get(['id'=>1], TRUE);
     }
 }
