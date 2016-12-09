@@ -113,6 +113,10 @@ var carrito = (function() {
 		$footer.find('#totalPrice').html('Total: $ '+total);
 		$footer.find('input[name=address]').val(json.address);
 	}
+	
+	function checkout() {
+		
+	}
 
 	//Ajustes pa responsive 
 	function _responsive() {

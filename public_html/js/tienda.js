@@ -3,6 +3,7 @@ categoriaGlobal = 0;
 inicioGlobal = 1;
 granelGlobal = 0;
 nroProductosGlobal = 15;
+scrollControl = false;
 var usuario = (function () {
 	//Cache DOM
 	var $login = $('#boton');
@@ -79,7 +80,7 @@ var productos = (function() {
 	// Bind Events
 	$productos.on('click', '#leftCon', _expandirItemMovil);
 	$productos.on('submit', '.addItem', _addItem);
-	$productos.on('change', '.cant', _calcPrice);
+	$productos.on('keyup change', '.cant', _calcPrice);
 	$botonera.on('click', '.filter', _getData);
 	$tabs.on('click', '.tab', _getData);
 	$searchBox.on('click', '.search', _searchItem);
@@ -191,6 +192,7 @@ var productos = (function() {
 				$productos.append(Mustache.render(prodTemplate, obj));
 			}
 		});
+		scrollControl = false;
 	}
 	
 	function _nroItemsCarrito() {
@@ -206,6 +208,7 @@ var productos = (function() {
 	}
 	
 	function _addItem(e) {
+		var $cont = $(this).parent('.prod');
 		if ( usuario.isLogged() ) {
 			$.ajax({
 				type: 'POST',
@@ -214,10 +217,22 @@ var productos = (function() {
 				dataType: 'json',
 				success: function () {
 					_nroItemsCarrito();
+					$cont.addClass('box-shadow-animate');
+					$cont.on('cssanimationend', function() {
+						$cont.removeClass('box-shadow-animate')
+					});
+					$cont.append('<span>Agregado exitosamente</span>');
 				}
 			});
+		} else {
+			$cont.append('<span class="msg">Debes iniciar sesion para agregar productos al carrito</span>');
+			$cont.addClass('box-shadow-animate-error');
+					$cont.on('cssanimationend', function() {
+						$cont.removeClass('box-shadow-animate-error');
+					});
 		}
 		e.preventDefault();
+		
 	}
 	
 	function _expandirItemMovil() {
@@ -249,13 +264,12 @@ var productos = (function() {
 	}
 	
 	function _lazyLoad(event) {		
-		if ( $(window).scrollTop() >= $(document).height() - $(window).height() ){
+		if ( !scrollControl && ($(window).scrollTop() + 50 >= $(document).height() - $(window).height()) ){
+			scrollControl = true;
 			paginaGlobal = paginaGlobal + 1;
 			arrayValores = [inicioGlobal,categoriaGlobal,granelGlobal,paginaGlobal,nroProductosGlobal];
 			_getProducts(arrayValores);
-		} else {
-			pagina = 1;
-		}
+		} 
 	}
 	
 })();

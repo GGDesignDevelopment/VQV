@@ -1,4 +1,85 @@
-// Scripts de la
+var interfaz = (function() {
+	//DOM CACHE
+	var $mainMenu = $('#mainMenu');
+	var $logo = $mainMenu.find('#logo');
+	var $main = $('#main');
+	var $alimentacion = $('#alimentacion');
+	var $frame = $alimentacion.find('#frame');
+	var $imgContainer = $frame.find('#imgContainer');
+	var $navBar = $frame.find('#navBar');
+	var $about = $('#about');
+	var $faq = $('#faq');
+	var $faqNav = $faq.find('nav');
+	var $preguntas = $faq.find('#preguntas');
+	var $footer = $('footer');
+	
+	//VARIABLES EXTRA
+	var cantImagenes = imagenes.length;
+	var pages = Math.ceil(cantImagenes / 3);
+	var currentPage = 1;
+	var templatePreguntas = $('#templateQuestions').html();
+	
+	$faqNav.on('click', 'a', _faqRender);
+	$(window).bind('mousewheel DOMMouseScroll scroll', _navMenuController);
+	
+	_render();
+	
+	function _render() {
+		for (var i=1; i <= pages; i++) {
+			$navBar.append('<a href="#" data-page="'+i+'">&#x5b;</a>');
+		}
+		for (var j=0; j < 3; j++) {
+			$imgContainer.prepend('<img src="'+imagenes[j]+'">')
+		}
+		$.ajax({
+		type: 'GET',
+		url: 'home/getQuestions',
+		dataType: 'json',
+		success: function(json) {
+				$.each(json, function(indice, obj) {
+					$preguntas.append(Mustache.render(templatePreguntas, obj));
+				});
+			}
+		})
+	}
+	
+	function _navMenuController() {
+		if ( $(this).scrollTop() > 1 ) {
+			$mainMenu.addClass('scrolled');
+			if ($(this).scrollTop() <= $alimentacion.offset().top -100 ) {
+				$mainMenu.find('h2').html('Verde que te Quiero Verde');
+			} else if ($(this).scrollTop() >= $alimentacion.offset().top -100 ) {
+				$mainMenu.find('h2').html('Consejos para tu alimentacion diaria.');
+			}
+		} else {
+			$mainMenu.removeClass('scrolled');
+		}
+	}
+	
+	function _faqRender(e) {
+		e.preventDefault();
+		$(this).parent().find('.active').removeClass('active');
+		$(this).addClass('active');
+		var posicion = $(this).data('posicion');
+		$faq.find('div.active').removeClass('active');
+		$faq.find('[data-posicion="'+posicion+'"]').addClass('active');
+	}
+	
+	
+})();
+
+
+
+
+
+
+
+
+
+
+
+
+/*
 $(function () {
 	$('a[href*="#"]:not([href="#"])').click(function () {
 		if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
@@ -14,140 +95,4 @@ $(function () {
 		;
 	});
 
-});
-
-$(function () {
-
-	var $menu = $('#main header nav');
-	var $click = $('.mobile');
-	$click.on('click', function(e){
-		if($(window).width() <= 768){
-			e.preventDefault();
-			$menu.slideToggle();
-			$menu.css('display', 'flex');
-		}
-	});
-	$('.pull').click(function(e){
-		e.preventDefault();
-		$menu.slideToggle();
-		$menu.css('display', 'flex');
-	})
-	
-	$('#formContacto').submit(function () {
-		$('#overlay').show();
-		$.ajax({
-			type: 'POST',
-			url: $(this).attr('action'),
-			data: $(this).serialize(),
-			dataType: 'json',
-			success: function (json) {
-				$('#overlay h2').append(json.msg);
-				$('#overlay select').append(json.options);
-				$('#formContacto').get(0).setAttribute('action', 'home/guardar');
-			}
-		});
-		return false;
-	});
-
-	var templatePreguntas = $('#preguntasTemplate').html();
-	var $preguntas = $('#preguntas');
-	var $link = $('#getQuestions');
-
-	$.ajax({
-		type: 'GET',
-		url: 'home/getQuestions',
-		dataType: 'json',
-		success: function(json) {
-			$.each(json, function(indice, obj) {
-				$preguntas.append(Mustache.render(templatePreguntas, obj));
-			});
-		}
-	})
-
-	$link.on('click', function(){
-		var $faq = $('#faq');
-		var estado = $faq.css('display');
-		if ( estado == 'none') {
-			$faq.slideToggle();
-			$faq.css('display', 'flex');
-		} else {
-			$faq.slideToggle();
-		}
-	})
-	
-	var $faq = $('#faq');
-	$faq.on('click', 'dt', function(){
-		$(this).next().slideToggle();
-	});
-
-
-	$(".hexIn").click(function () {
-		var xmlhttp = new XMLHttpRequest();
-		xmlhttp.onreadystatechange = function () {
-			if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-				document.getElementById("textoTecnica").innerHTML = xmlhttp.responseText;
-			}
-		};
-		xmlhttp.open("GET", "home/texto_tecnica?id=" + $(this).data("tecnica"), true);
-		xmlhttp.send();
-	});
-});
-
-$alimentacion = $('#alimentacion');
-$frame = $alimentacion.find('#frame');
-$slidee = $alimentacion.find('.slidee');
-var sly = new Sly($frame,{
-	horizontal: 1,
-	itemNav: 'centered',
-	activateMiddle: 1,
-	smart: 1,
-	activateOn: 'click',
-	mouseDragging: 1,
-	touchDragging: 1,
-	releaseSwing: 1,
-
-}).init();
-
-// $(function(){
-//   $('.carousel').slick({
-// 	centerMode: true,
-// 	canterPadding: 10,
-// 	dots: true,
-// 	infinite: true,
-// 	slidesToShow: 3,
-// 	slidesToScroll: 3,
-// 	responsive: [
-// 	{
-// 		breakpoint: 1030,
-// 		settings: {
-// 			slidesToShow: 2,
-// 			slidesToScroll: 2
-// 		}
-// 	},
-// 	{
-// 		breakpoint: 769,
-// 		settings: {
-// 			slidesToShow: 1,
-// 			slidesToScroll: 1,
-// 		}
-// 	}, 
-// 	{
-// 		breakpoint: 500,
-// 		settings: {
-// 			slidesToScroll: 1,
-// 			slidesToShow: 1,
-// 			dots: false,
-// 			arrows: false
-// 		}
-// 	},
-// 	{
-// 		breakpoint: 740,
-// 		settings: {
-// 			slidesToScroll: 2,
-// 			slidesToShow: 2,
-// 			dots: false
-// 		}
-// 	}
-// 	]
-//   });
-// });
+});*/

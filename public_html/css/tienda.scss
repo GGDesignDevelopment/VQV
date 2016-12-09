@@ -236,6 +236,34 @@ header {
 				transition: box-shadow 0.5s ease-in;
 				box-shadow: 0px 0px 3px 0px rgba(15,15,15,.5);
 			}
+			@keyframes box-shadow-animate {
+				0% {
+					box-shadow: 0px 0px 5px 2px $colorPrincipal;
+				}
+				100% {
+					box-shadow: 0 0 5px 2px rgba($colorPrincipal, 0);
+				}
+			}
+			&.box-shadow-animate {
+				animation-name: box-shadow-animate;
+				animation-duration: 1.5s;
+				animation-iteration-count: 1;
+				animation-timing-function: linear;
+			}
+			@keyframes box-shadow-animate-error {
+				0% {
+					box-shadow: 0px 0px 5px 2px red;
+				}
+				100% {
+					box-shadow: 0 0 5px 2px rgba(red, 0);
+				}
+			}
+			&.box-shadow-animate-error {
+				animation-name: box-shadow-animate-error;
+				animation-duration: 1.5s;
+				animation-iteration-count: 1;
+				animation-timing-function: linear;
+			}
 			a {
 				width: 100%;
 				text-align: center;
@@ -303,11 +331,21 @@ header {
 					font-family: $fuenteSecundaria;
 					font-size: 14px;
 					padding: 12px 7px;
+					outline: none;
 					&:hover {
 						box-shadow: 0px 0px 1px 1px rgba(15,15,15,.5);
 						transition: box-shadow 0.5s ease-in;
 					}
+					&:focus {
+						outline: none;
+					}
 				}
+			}
+			span.msg {
+				font-family: $fuentePrincipal;
+				color: $colorPrincipal;
+				font-size: 14px;
+				text-align: center;
 			}
 		}
 	}

@@ -55,7 +55,7 @@
 		<p>{{proddes}}</p>
 
 		<form id="{{prodid}}" method="POST" class="addItem">
-			<input type="number" class="cant" name="quantity" value="{{prodpresentacion}}" placeholder="{{prodpresentacion}}" step="1" min="1" data-precio="{{cuenta}}" data-id="{{prodid}}">
+			<input type="number" class="cant" name="quantity" value="{{prodpresentacion}}" placeholder="{{prodpresentacion}}" step="{{prodpresentacion}}" min="{{prodpresentacion}}" data-precio="{{cuenta}}" data-id="{{prodid}}">
 			<span>{{proddisplay}} {{produnidad}}</span>
 			{{#prodgranel}}
 				<select name="envase">

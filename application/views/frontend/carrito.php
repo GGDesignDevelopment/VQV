@@ -94,6 +94,13 @@
 <script type="text/template" id="registerTemplate">
 <form id="register">
 	<section>
+		<h2>Bienvenidos a la comunidad Verde </h2>
+		<p>Creemos en que los cambios de hábitos son posibles, sólo basta con proponérselo. 
+No existen las excusas de que no tenes tiempo y no sabes qué cocinar… VQV te lleva el pedido  a la puerta de tu casa y además te da tips de cómo usar los productos.
+</p>
+
+	</section>
+	<section>
 		<div>
 			<label for="name"><span>&#xe08a;</span> Nombre y apellido</label>
 			<input type="text" name="name" required>
@@ -118,13 +125,9 @@
 			<label for="password"><span>&#xe06e;</span> Repite contraseña</label>
 			<input type="password" name="password2" required>
 		</div>
-	</section>
-	<section>
-		<h2>Bienvenidos a la comunidad Verde </h2>
-		<p>Creemos en que los cambios de hábitos son posibles, sólo basta con proponérselo. 
-No existen las excusas de que no tenes tiempo y no sabes qué cocinar… VQV te lleva el pedido  a la puerta de tu casa y además te da tips de cómo usar los productos.
-</p>
-<input type="submit" value="Registrate" >
+		<div>
+			<input type="submit" value="Registrate" >
+		</div>
 	</section>
 </form>
 </script>
