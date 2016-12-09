@@ -25,5 +25,5 @@ user_guide_src/cilexer/pycilexer.egg-info/*
 *.stTheme.cache
 *.sublime-workspace
 *.sublime-project
-public_html/js/sly.js
-application/config/config.php
+#public_html/js/sly.js
+#application/config/config.php
