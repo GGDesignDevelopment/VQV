@@ -14,21 +14,21 @@ class Cart extends Frontend_Controller {
         $this->email = $this->session->userdata('email');
     }
     function register() {
-        $data = $this->user_m->array_from_post(array('email', 'name', 'password', 'phone', 'address'));       
+        $data = $this->user_m->array_from_post(array('email', 'name', 'password', 'phone', 'address'));
         $data['type'] = 'C';
-        
+
         $user = $this->user_m->get(['email'=>$data['email']]);
         if ($user) {
-            $return = array('msg' => false);            
+            $return = array('msg' => false);
         } else {
             $data['password'] = $this->user_m->hash($data['password']);
             $this->user_m->save($data, NULL);
-            
+
             $cart['email'] = $data['email'];
             $cart['address'] = $data['address'];
-            
+
             $this->cart_m->save($cart,NULL);
-            $this->user_m->login();       
+            $this->user_m->login();
             $return = array('msg' => true);
         }
         echo json_encode($return);
@@ -81,7 +81,7 @@ class Cart extends Frontend_Controller {
 
         if ($item) {
             $where = ['email' => $this->email, 'productid' => $productid];
-            $data['quantity'] = $item->quantity + $quantity;     
+            $data['quantity'] = $item->quantity + $quantity;
             $data['envase'] = $envase;
         } else {
             $where = NULL;
@@ -117,13 +117,13 @@ class Cart extends Frontend_Controller {
         $this->cartitem_m->delete(['email' => $this->email]);
     }
 
-    // Confirma el carrito del usuario logeado, esto genera la compra, con los items 
+    // Confirma el carrito del usuario logeado, esto genera la compra, con los items
     // del carrito y los elimina del mismo
     function confirm() {
         $cart = $this->cart_m->get(['cart.email' => $this->email], true);
         $items = $this->cartitem_m->getItems($this->email);
         $fp = $this->input->post('formapago');
-        
+
         if (count($items)) {
             $data['email'] = $this->email;
             $data['address'] = $cart->address;
@@ -142,9 +142,9 @@ class Cart extends Frontend_Controller {
                 $data['envase'] = $item->envase;
                 $this->saleitem_m->save($data, NULL);
             }
-            
+
             $to = $this->email;
-            $from = "info@vqv.hol.es";
+            $from = $this->data['home']->mailEnvio;
             $headers = "From: " . $from . "\r\n";
             $headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
             $subject = "Compra exitosa, #" . $id;
@@ -155,10 +155,18 @@ class Cart extends Frontend_Controller {
             $body .= "</body></html>";
 
             try {
-                mail($to, $subject, $body, $headers, "-f " . $from) ;    
+                mail($to, $subject, $body, $headers, "-f " . $from) ;
+                $to = $this->data['home']->mailVenta;
+                $body = "<html><body>";
+                $body .= "<h1>Fecha: ". date('y-m-d H:i:s') . "</h1>
+                         <p>Usuario: " . $this->email . "</p>
+                         <p>Direccion: " . $cart->address . "</p>
+                         <p>Forma de Pago: " . $fp . "</p>";
+                $body .= "</body></html>";
+                mail($to, $subject, $body, $headers, "-f " . $from) ;
             } finally  {
 
-            }            
+            }
             $this->cancel();
             $return = array('msg' => true);
         } else {

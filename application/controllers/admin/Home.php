@@ -30,7 +30,7 @@ class Home extends Admin_Controller {
         $this->data['scripts'][] = $script;
         $this->form_validation->set_rules($rules);
         if ($this->form_validation->run() == TRUE) {
-            $data = $this->home_m->array_from_post(array('linkFacebook', 'linkInstagram', 'txtWelcome', 'subAlimentacion', 'subReciclaje', 'subAbout', 'txtAbout'));
+            $data = $this->home_m->array_from_post(array('linkFacebook', 'linkInstagram', 'txtWelcome', 'subAlimentacion', 'subReciclaje', 'subAbout', 'txtAbout','mailEnvio','mailVenta'));
             $this->home_m->save($data,['id'=>1]);
 
             if (!empty($_FILES['files'])) {
@@ -54,7 +54,7 @@ class Home extends Admin_Controller {
                 }
 
                 if ($success === true) {
-                    // Guardar en BD 
+                    // Guardar en BD
                     foreach ($paths as $file) {
                         $fileName = explode('/', $file);
                         $imageData = array();
