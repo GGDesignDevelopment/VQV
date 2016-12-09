@@ -1,0 +1,354 @@
+//Importacion de fuentes
+$family: unquote("Francois+One");
+@import url("http://fonts.googleapis.com/css?family=#{$family}");
+$family2: unquote("Didact+Gothic");
+@import url("http://fonts.googleapis.com/css?family=#{$family2}");
+
+$fuenteLogo : 'governorregular';
+$fuentePrincipal : 'Francois One', sans-serif;
+$fuenteSecundaria : 'Didact Gothic', sans-serif;
+$fuenteIconos : 'ElegantIcons';
+
+$colorPrincipal : #8dbe49;
+$sombra : #6e9636;
+$luz : #b1d383;
+
+
+@mixin flexbox($row, $wrap, $align, $justify) {
+	display: flex;
+	flex-flow: $row $wrap;
+	align-items: $align;
+	justify-content: $justify;
+}
+header#mainMenu {
+	width: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	@include flexbox(row, nowrap, center, space-between);
+	background: none;
+	padding: 10px;
+	a img {
+		width: 120px;
+		height: 120px;
+	}
+	h2 {
+		display: none;
+	}
+	nav {
+		@include flexbox(row,nowrap,center,space-around);
+		a {
+			padding: 9px 29px;
+			font-family: $fuenteSecundaria;
+			color: white;
+			background: $colorPrincipal;
+			font-size: 14px;
+			margin: 0 10px;
+			box-shadow: 0 0 5px 1px rgba($sombra,0.3);
+			transition: box-shadow 0.8s ease-in;
+			&:hover {
+				transition: box-shadow 0.8s ease-in;
+				box-shadow: 0 0 3px 1px rgba($sombra,1);
+			}
+		}
+	}
+}
+header#mainMenu.scrolled {
+	position: fixed;
+	height: 10vh;
+	padding: 0;
+	background: $colorPrincipal;
+	transition: all 0.3s linear;
+	#logo {
+		display: none;
+	}
+	h2 {
+		display: block;
+		font-family: $fuenteLogo;
+		color: white;
+		font-size: 18px;
+		margin-left: 20px;
+		letter-spacing: .5px;
+	}
+	nav a {
+		background: white;
+		color: $colorPrincipal;
+		box-shadow: 0 0 2px 0 darken($colorPrincipal, 5%);
+		transition: box-shadow 0.5s linear;
+		&:hover {
+			box-shadow: 0 0 2px 0 darken($colorPrincipal, 20%);
+			transition: box-shadow 0.5s linear;
+		}
+	}
+}
+section {
+	height: 100vh;
+	@include flexbox(column,nowrap,center,space-around);
+}
+#main {
+	background: url(../img/bg1.jpg) no-repeat center center local; 
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	justify-content: center;
+	h1 {
+		margin-top: 100px;
+		font-family: $fuenteLogo;
+		color: $colorPrincipal;
+		font-size: 48px;
+		letter-spacing: 1px;
+		text-shadow: 0px 0px 1px 0px rgba(black, 0.5);
+	}
+	h2 {
+		font-family: $fuenteSecundaria;
+		font-size: 18px;
+		text-align: center;
+		color: white;
+		margin: 20px 0;
+		width: 70%;
+		font-weight: 400;
+	}
+	.botones {
+		width: 30%;
+		@include flexbox(row, nowrap, center, space-between);
+		margin-bottom: 10px;
+		a {
+			display: block;
+			padding: 18px 42px;
+			font-family: $fuenteLogo;
+			color: white;
+			font-size: 14px;
+			letter-spacing: -0.2px;
+			background: $colorPrincipal;
+			transition: background 0.4s linear, box-shadow 0.4s linear;
+			&:hover {
+				transition: background 0.4s linear, box-shadow 0.4s linear;
+				box-shadow: 0 0 3px 1px rgba($sombra,1);
+				background: saturate($colorPrincipal, 5%);
+			}
+		}
+	}
+	.social {
+		a {
+			font-family: $fuenteIconos;
+			color: white;
+			margin: 0 5px;
+			span {
+				font-family: $fuenteSecundaria;
+			}
+		}
+	}
+}
+#alimentacion {
+	justify-content: flex-end;
+	header {
+		width: 100%;
+		height: 10vh;
+		@include flexbox(column, nowrap, center, center);
+		h3 {
+			font-family: $fuenteSecundaria;
+			color: $colorPrincipal;
+			font-size: 20px;
+			font-weight: 400;
+		}
+	}
+	#frame {
+		width: 100%;
+		height: 70vh;
+		@include flexbox(column, wrap, center, space-around);
+		#imgContainer {
+			width: 100%;
+			height: 60vh;
+			@include flexbox(row, wrap, center, center);
+			img {
+				height: 55vh;
+				width: auto;
+				box-shadow: 0 0 3px 1px rgba($colorPrincipal, 0.8);
+				cursor: pointer;
+				margin: 0 10px;
+				margin-top: 5vh;
+				&:hover {
+					box-shadow: 0 0 3px 1px $colorPrincipal;
+				}
+			}
+		}
+		#navBar {
+			width: 100%;
+			height: 10vh;
+			border-bottom: 10px solid $colorPrincipal;
+			@include flexbox(row, nowrap, center, center);
+			a {
+				font-family: $fuenteIconos;
+				font-size: 18px;
+				color: $colorPrincipal;
+				padding: 5px 12px;
+				margin: 0 5px;
+				transition: all 0.4s ease;
+				&:hover {
+					color: saturate($colorPrincipal, 20%);
+					transition: all 0.4s ease;	
+				}
+			}
+		}
+	}
+}
+#about {
+	&:before {
+		content: "";
+		width: 100%;
+		height: 100%;
+		position: absolute;
+		top: 199vh;
+		left: 0;
+		z-index: -999;
+
+		display: block;
+		background: url(../img/bg_tienda.jpg) no-repeat center center local; 
+		-webkit-background-size: cover;
+		-moz-background-size: cover;
+		-o-background-size: cover;
+		background-size: cover;
+
+		-webkit-filter: blur(3px);
+		-moz-filter: blur(3px);
+		-o-filter: blur(3px);
+		-ms-filter: blur(3px);
+		filter: blur(3px);
+	}
+	height: 100vh;
+	justify-content: center;
+	border-bottom: 15px solid $colorPrincipal;
+	h3 {
+		font-family: $fuentePrincipal;
+		font-size: 62px;
+		letter-spacing: 0.2px;
+		color: $colorPrincipal;
+		margin-bottom: 20px;
+	}
+	p {
+		font-family: $fuenteSecundaria;
+		font-size: 20px;
+		color: white;
+		letter-spacing: .3px;
+		width: 70%;
+		text-align: center;
+		text-shadow: 0 0 1px rgba(black, 0.3);
+	}
+}
+#faq {
+	@include flexbox(column, nowrap, center, flex-end);
+	padding: 5vh;
+	nav {
+		width: 40%;
+		@include flexbox(row, nowrap, center, space-around);
+		margin: 1vh 0;
+		a {
+			background: $colorPrincipal;
+			color: white;
+			font-family: $fuentePrincipal;
+			padding: 12px 20px;
+			width: 45%;
+			text-align: center;
+			display: block;
+			letter-spacing: .5px;
+			box-shadow: 0 0 3px 1px rgba(black, 0.2);
+			transition: all 0.3s linear;
+			opacity: 0.8;
+			&:hover {
+				transition: all 0.3s linear;
+				box-shadow: 0 0 5px 2px rgba(black, 0.4);
+			}
+			&.active {
+				transition: all 0.3s linear;
+				opacity: 1;
+				box-shadow: 0 0 5px 2px rgba(black, 0.4);
+			}
+		}
+	}
+	
+	&:before {
+		content: "";
+		width: 100%;
+		height: 100%;
+		position: absolute;
+		top: 299vh;
+		left: 0;
+		z-index: -999;
+
+		display: block;
+		background: url(../img/bg_faq.jpg) no-repeat center center local; 
+		-webkit-background-size: cover;
+		-moz-background-size: cover;
+		-o-background-size: cover;
+		background-size: cover;
+
+
+	}
+	div {
+		@include flexbox(column, nowrap, center, center);
+		width: 70%;
+		opacity: 0;
+		visibility: hidden;
+		height: 0px;
+		padding: 20px;
+		background: rgba($colorPrincipal, 0.7);
+		box-shadow: 0 0 3px 1px rgba(black, 0.2);
+		transition: all 0.8s ease-in;
+  	transition-property: opacity, height;
+		order: 20;
+		&.active { 
+			visibility: visible;
+			opacity: 1;
+			height: 60vh;
+			transition: all 0.5s ease-in;
+  		transition-property: opacity, height;
+			order: 10;
+		}
+		ul {
+			list-style-type: none;
+			text-align: center;
+			li {
+				font-family: $fuenteSecundaria;
+				color: white;
+				font-size: 20px;
+				margin: 2px 0;
+				letter-spacing: .5px;
+				a {
+					font-family: $fuenteLogo;
+					color: white;
+					font-size: 18px;	
+					text-decoration: underline;
+				}
+			}
+			ul li {	font-size: 16px;}
+		}
+		a {
+			font-family: $fuentePrincipal; 
+		}
+	}
+}
+footer {
+	@include flexbox(row, nowrap, center, space-around);
+	background: darken($colorPrincipal, 10%);
+	#info {
+		@include flexbox(column, nowrap, flex-start, center);
+		padding: 15px;
+		border-right: 1px solid darken($colorPrincipal, 8%);
+		box-shadow: 1px 0 0 0  darken($colorPrincipal, 12%);
+		p {
+			font-family: $fuenteSecundaria;
+			color: white;
+			font-size: 16px;
+			font-weight: 400;
+		}
+	}
+}
+
+
+
+
+
+
+
+

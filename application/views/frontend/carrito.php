@@ -4,10 +4,10 @@
 		<h1>Carrito de compras</h1>
 		<h2>Verde que te Quiero Verde</h2>
 		<nav>
-			<a href="<?php echo site_url() ?>"><span>&#xe009;</span>  Volver al inicio.</a>
-			<a href="<?php echo site_url('Tienda') ?>"><span>&#xe015;</span> Volver a la tienda</a>
-			<a href="<?php echo $home->linkFacebook ?>"><span>&#xe093;</span> /VqVerdeUruguay</a>
-			<a href="<?php echo $home->linkInstagram; ?>"><span>&#xe09a;</span> /vqvuruguay</a>
+			<a href="<?php echo site_url() ?>" data-text="Volver al inicio."><span>&#xe009;</span>  Volver al inicio.</a>
+			<a href="<?php echo site_url('Tienda') ?>" data-text="Volver a la tienda."><span>&#xe015;</span> Volver a la tienda</a>
+			<a href="<?php echo $home->linkFacebook ?>" data-text="/VqVerdeUruguay"><span>&#xe093;</span> /VqVerdeUruguay</a>
+			<a href="<?php echo $home->linkInstagram; ?>" data-text="/vqvuruguay"><span>&#xe09a;</span> /vqvuruguay</a>
 		</nav>
 	</header>
 	<div id="middle">
@@ -94,6 +94,13 @@
 <script type="text/template" id="registerTemplate">
 <form id="register">
 	<section>
+		<h2>Bienvenidos a la comunidad Verde </h2>
+		<p>Creemos en que los cambios de hábitos son posibles, sólo basta con proponérselo. 
+No existen las excusas de que no tenes tiempo y no sabes qué cocinar… VQV te lleva el pedido  a la puerta de tu casa y además te da tips de cómo usar los productos.
+</p>
+
+	</section>
+	<section>
 		<div>
 			<label for="name"><span>&#xe08a;</span> Nombre y apellido</label>
 			<input type="text" name="name" required>
@@ -118,13 +125,9 @@
 			<label for="password"><span>&#xe06e;</span> Repite contraseña</label>
 			<input type="password" name="password2" required>
 		</div>
-	</section>
-	<section>
-		<h2>Bienvenidos a la comunidad Verde </h2>
-		<p>Creemos en que los cambios de hábitos son posibles, sólo basta con proponérselo. 
-No existen las excusas de que no tenes tiempo y no sabes qué cocinar… VQV te lleva el pedido  a la puerta de tu casa y además te da tips de cómo usar los productos.
-</p>
-<input type="submit" value="Registrate" >
+		<div>
+			<input type="submit" value="Registrate" >
+		</div>
 	</section>
 </form>
 </script>

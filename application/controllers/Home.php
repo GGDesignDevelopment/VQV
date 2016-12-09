@@ -12,14 +12,8 @@ class Home extends Frontend_Controller {
         $this->data['styles'][] = '<link rel="stylesheet" type="text/css" href="' . site_url('css/fonts.css') . '">';
         $this->data['styles'][] = '<link rel="stylesheet" type="text/css" href="' . site_url('css/icons.css') . '">';
         $this->data['styles'][] = '<link rel="stylesheet" type="text/css" href="' . site_url('css/main.css') . '">';
-        $this->data['styles'][] = '<link rel="stylesheet" type="text/css" href="' . site_url('css/hex.css') . '">';
-        $this->data['styles'][] = '<link rel="stylesheet" type="text/css" href="' . site_url('css/slick.css') . '">';
-        $this->data['styles'][] = '<link rel="stylesheet" type="text/css" href="' . site_url('css/slick-theme.css') . '">';
-        $this->data['scripts'][] = '<script type="text/javascript" src="' . site_url('js/prefix.js') . '"></script>';
         $this->data['scripts'][] = '<script src="https://code.jquery.com/jquery-2.2.4.min.js"   integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="   crossorigin="anonymous"></script>';
-        $this->data['scripts'][] = '<script type="text/javascript" src="' . site_url('js/slick.min.js') . '"></script>';
         $this->data['scripts'][] = '<script type="text/javascript" src="' . site_url('js/mustache.js') . '"></script>';
-        $this->data['scripts'][] = '<script type="text/javascript" src="' . site_url('js/sly.js') . '"></script>';
         $this->data['scripts'][] = '<script type="text/javascript" src="' . site_url('js/funcionalidadIndex.js') . '"></script>';
 
         $this->data['alimentacion'] = $this->alimentacion_m->get();
