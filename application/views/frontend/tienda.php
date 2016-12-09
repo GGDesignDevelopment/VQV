@@ -50,7 +50,7 @@
 <script type="text/template" id="prodTemplate">
 	<div class="prod" >
 		<a href="#" class="expandir">{{prodnombre}}{{#prodgranel}} (producto a granel){{/prodgranel}}</a>
-		<div class="top" data-producto="{{prodid}}" style="background: url(<?php echo site_url('img')?>/{{prodimagen}})">
+		<div class="top" data-producto="{{prodid}}" style="background: url(<?php echo site_url('img/dynamic_img')?>/{{prodimagen}})">
 		</div>
 		<p>{{proddes}}</p>
 
