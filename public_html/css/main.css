@@ -39,7 +39,8 @@ header#mainMenu.scrolled {
   height: 10vh;
   padding: 0;
   background: #8dbe49;
-  transition: all 0.3s linear; }
+  transition: all 0.3s linear;
+  z-index: 99999; }
   header#mainMenu.scrolled #logo {
     display: none; }
   header#mainMenu.scrolled h2 {
@@ -307,12 +308,51 @@ footer {
     align-items: flex-start;
     justify-content: center;
     padding: 15px;
-    border-right: 1px solid #78a43a;
-    box-shadow: 1px 0 0 0 #6d9535; }
+    margin: 5px 0;
+    border-right: 2px solid #6d9535; }
     footer #info p {
       font-family: "Didact Gothic", sans-serif;
       color: white;
       font-size: 16px;
       font-weight: 400; }
+  footer #social {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: flex-end;
+    justify-content: space-around;
+    padding: 15px;
+    margin: 5px 0; }
+    footer #social a {
+      font-family: "ElegantIcons";
+      color: #6d9535;
+      background: #8dbe49;
+      font-size: 16px;
+      width: 100%;
+      padding: 5px 10px;
+      margin: 3px 0; }
+      footer #social a span {
+        font-family: "Didact Gothic", sans-serif;
+        font-size: 14px;
+        color: #6d9535; }
+  footer form {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: space-around;
+    padding: 15px;
+    margin: 5px 0; }
+    footer form label {
+      font-family: "Francois One", sans-serif;
+      color: white;
+      margin-right: 5px; }
+    footer form input {
+      background: #8dbe49;
+      padding: 7px 13px;
+      font-family: "Didact Gothic", sans-serif;
+      color: white;
+      border: 0;
+      margin: 0 3px; }
+      footer form input::-webkit-input-placeholder, footer form input:-moz-placeholder, footer form input::-moz-placeholder, footer form input:-ms-input-placeholder {
+        color: white; }
 
 /*# sourceMappingURL=main.css.map */

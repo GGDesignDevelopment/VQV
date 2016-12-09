@@ -77,13 +77,13 @@
 		<p>info@vqv.com.uy</p>
 	</div>
 	<div id="social">
-		<a href="<?php echo $home->linkFacebook; ?>" target="blank">&#xe0aa;</a>
-		<a href="<?php echo $home->linkInstagram; ?>" target="blank">&#xe0b1;</a>
+		<a href="<?php echo $home->linkFacebook; ?>" target="blank">&#xe093; <span> /VqVerdeUruguay</span></a>
+		<a href="<?php echo $home->linkInstagram; ?>" target="blank">&#xe09a; <span> /vqvuruguay</span></a>
 	</div>
 	<form id="formContacto" method="post" action="home/suscribir">
 			<label>Recibi noticias por email</label>
-			<input type="text" name="nombre" placeholder="Nombre" required>
-			<input type="email" name="email" placeholder="Email" required>
+			<input type="text" name="nombre" value="Nombre" placeholder="Nombre" required>
+			<input type="email" name="email" value="Email" placeholder="Email" required>
 			<input type="submit" value="Suscribirse" id="button">
 	</form>
 </footer>

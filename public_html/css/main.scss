@@ -59,6 +59,7 @@ header#mainMenu.scrolled {
 	padding: 0;
 	background: $colorPrincipal;
 	transition: all 0.3s linear;
+	z-index: 99999;
 	#logo {
 		display: none;
 	}
@@ -334,13 +335,51 @@ footer {
 	#info {
 		@include flexbox(column, nowrap, flex-start, center);
 		padding: 15px;
-		border-right: 1px solid darken($colorPrincipal, 8%);
-		box-shadow: 1px 0 0 0  darken($colorPrincipal, 12%);
+		margin: 5px 0;
+		border-right: 2px solid darken($colorPrincipal, 12%);
 		p {
 			font-family: $fuenteSecundaria;
 			color: white;
 			font-size: 16px;
 			font-weight: 400;
+		}
+	}
+	#social {
+		@include flexbox(column, nowrap, flex-end, space-around);
+		padding: 15px;
+		margin: 5px 0;
+		a {
+			font-family: $fuenteIconos;
+			color: darken($colorPrincipal, 12%);
+			background: $colorPrincipal;
+			font-size: 16px;
+			width: 100%;
+			padding: 5px 10px;
+			margin: 3px 0;
+			span {
+				font-family: $fuenteSecundaria;
+				font-size: 14px;
+				color: darken($colorPrincipal, 12%); 	
+			}
+		}
+	}
+	form {
+		@include flexbox(row, nowrap, center, space-around);
+		padding: 15px;
+		margin: 5px 0;
+		label {
+			font-family: $fuentePrincipal;
+			color: white;
+			margin-right: 5px;
+		}
+		input {
+			background: $colorPrincipal;
+			padding: 7px 13px;
+			font-family: $fuenteSecundaria;
+			color: white;
+			border: 0;
+			margin: 0 3px;
+			&::-webkit-input-placeholder, &:-moz-placeholder, &::-moz-placeholder, &:-ms-input-placeholder { color: white }
 		}
 	}
 }
