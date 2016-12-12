@@ -72,7 +72,7 @@
 </script>
 <script type="text/template" id="prodTemplateMovil">
 	<div class="prod" data-id="{{prodid}}">
-		<img src="img/{{prodimagen}}" title="{{prodnombre}}">
+		<img src="img/dynamic_img/{{prodimagen}}" title="{{prodnombre}}">
 		<form id="{{prodid}}" method="POST" class="addItem">
 			<h2>{{prodnombre}}</h2>
 			<p>{{proddes}}</p>

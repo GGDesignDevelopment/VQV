@@ -131,25 +131,24 @@ section {
       font-weight: 400; }
   #alimentacion #frame {
     width: 100%;
-    height: 70vh;
+    height: 80vh;
+    background: red;
     display: flex;
     flex-flow: column wrap;
     align-items: center;
     justify-content: space-around; }
     #alimentacion #frame #imgContainer {
       width: 100%;
-      height: 60vh;
+      height: 70vh;
       display: flex;
       flex-flow: row wrap;
       align-items: center;
       justify-content: center; }
       #alimentacion #frame #imgContainer img {
-        height: 55vh;
+        height: 20vh;
         width: auto;
         box-shadow: 0 0 3px 1px rgba(141, 190, 73, 0.8);
-        cursor: pointer;
-        margin: 0 10px;
-        margin-top: 5vh; }
+        cursor: pointer; }
         #alimentacion #frame #imgContainer img:hover {
           box-shadow: 0 0 3px 1px #8dbe49; }
     #alimentacion #frame #navBar {
@@ -161,15 +160,13 @@ section {
       align-items: center;
       justify-content: center; }
       #alimentacion #frame #navBar a {
-        font-family: "ElegantIcons";
-        font-size: 18px;
-        color: #8dbe49;
-        padding: 5px 12px;
+        display: block;
+        background: #8dbe49;
+        height: 3vh;
+        width: 3vh;
+        border-radius: 50%;
         margin: 0 5px;
         transition: all 0.4s ease; }
-        #alimentacion #frame #navBar a:hover {
-          color: #91d730;
-          transition: all 0.4s ease; }
 
 #about {
   height: 100vh;
@@ -293,8 +290,28 @@ section {
           text-decoration: underline; }
       #faq div ul ul li {
         font-size: 16px; }
-    #faq div a {
-      font-family: "Francois One", sans-serif; }
+    #faq div .question {
+      display: flex;
+      flex-flow: row nowrap;
+      align-items: center;
+      justify-content: space-between;
+      width: 70%;
+      padding: 6px;
+      text-align: center;
+      margin: 3px 0;
+      background: white;
+      font-family: "Francois One", sans-serif;
+      color: #8dbe49;
+      font-size: 18px;
+      letter-spacing: 0.1px; }
+      #faq div .question span {
+        font-family: "ElegantIcons"; }
+    #faq div p {
+      font-family: "Didact Gothic", sans-serif;
+      font-size: 16px;
+      color: white;
+      display: none;
+      width: 70%; }
 
 footer {
   display: flex;

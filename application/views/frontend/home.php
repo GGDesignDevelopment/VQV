@@ -89,7 +89,7 @@
 </footer>
 
 <script type="text/template" id="templateQuestions">
-	<a href="#" data-id="{{id}}">{{question}}</a>
+	<a class="question" href="#" data-id="{{id}}"><span>&#x4c;</span>{{question}}</a>
 	<p data-id="{{id}}">{{answer}}</p>
 </script>
 <script type="text/javascript">

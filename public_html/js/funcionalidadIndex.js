@@ -20,15 +20,16 @@ var interfaz = (function() {
 	var templatePreguntas = $('#templateQuestions').html();
 	
 	$faqNav.on('click', 'a', _faqRender);
+	$preguntas.on('click', 'a', _linkToggle);
 	$(window).bind('mousewheel DOMMouseScroll scroll', _navMenuController);
 	
 	_render();
 	
 	function _render() {
 		for (var i=1; i <= pages; i++) {
-			$navBar.append('<a href="#" data-page="'+i+'">&#x5b;</a>');
+			$navBar.append('<a href="#" data-page="'+i+'"> </a>');
 		}
-		for (var j=0; j < 3; j++) {
+		for (var j=0; j < cantImagenes; j++) {
 			$imgContainer.prepend('<img src="'+imagenes[j]+'">')
 		}
 		$.ajax({
@@ -65,6 +66,18 @@ var interfaz = (function() {
 		$faq.find('[data-posicion="'+posicion+'"]').addClass('active');
 	}
 	
+	function _linkToggle(e) {
+		e.preventDefault();
+		var id = $(this).data('id');
+		if ( $(this).next().hasClass('active') ) {
+			$preguntas.find('p.active').slideUp().removeClass('active');
+		} else {
+			$preguntas.find('p.active').slideUp().removeClass('active');
+			$preguntas.find('p[data-id="'+id+'"]').addClass('active');
+			$preguntas.find('p[data-id="'+id+'"]').slideDown();
+		}
+		
+	}
 	
 })();
 
