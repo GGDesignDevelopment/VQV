@@ -58,7 +58,7 @@ class Home extends Admin_Controller {
                     foreach ($paths as $file) {
                         $fileName = explode('/', $file);
                         $imageData = array();
-                        $imageData['imagen'] = $fileName[1];
+                        $imageData['imagen'] = end($fileName);
                         $this->alimentacion_m->save($imageData);
                     }
                 } else {

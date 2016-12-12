@@ -19,7 +19,7 @@ class Envase_M extends MY_Model {
 
     function get_dropdown() {
         $envases = parent::get();
-
+        $array = null;
         if (count($envases)) {
             foreach ($envases as $envase) {
                 $array[$envase->envaseid] = $envase->envasenombre;
