@@ -7,7 +7,7 @@
   RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
 </IfModule>
 
-<FilesMatch "\.(ttf|otf|eot)$">
+<FilesMatch "\.(ttf|otf|eot|woff|woff2|css)$">
 	<IfModule mod_headers.c>
 	Header set Access-Control-Allow-Origin "*"
 	</IfModule>
