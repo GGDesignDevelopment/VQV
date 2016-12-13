@@ -13,14 +13,14 @@ var interfaz = (function() {
 	var $preguntas = $faq.find('#preguntas');
 	var $footer = $('footer');
 	var $lightBox = $('#lightBox');
-	
+
 	//VARIABLES EXTRA
 	var cantImagenes = imagenes.length;
 	var pages = Math.ceil(cantImagenes / 3);
 	console.log(pages);
 	var currentPage = 1;
 	var templatePreguntas = $('#templateQuestions').html();
-	
+
 	$faqNav.on('click', 'a', _faqRender);
 	$preguntas.on('click', 'a', _linkToggle);
 	$imgContainer.on('click', 'img', _imgLightbox);
@@ -28,9 +28,9 @@ var interfaz = (function() {
 	$lightBox.on('click', _closeLightBox);
 	$(document).on('keyup', _closeLightBox);
 	$(window).bind('mousewheel DOMMouseScroll scroll', _navMenuController);
-	
+
 	_render();
-	
+
 	function _render() {
 		for (var i=1; i <= pages; i++) {
 			$navBar.append('<a href="#" data-page="'+i+'"> </a>');
@@ -40,7 +40,7 @@ var interfaz = (function() {
 		}
 		$.ajax({
 		type: 'GET',
-		url: 'home/getQuestions',
+		url: baseURL + 'home/getQuestions',
 		dataType: 'json',
 		success: function(json) {
 				$.each(json, function(indice, obj) {
@@ -49,7 +49,7 @@ var interfaz = (function() {
 			}
 		})
 	}
-	
+
 	function _navMenuController() {
 		if ( $(this).scrollTop() > 1 ) {
 			$mainMenu.addClass('scrolled');
@@ -62,7 +62,7 @@ var interfaz = (function() {
 			$mainMenu.removeClass('scrolled');
 		}
 	}
-	
+
 	function _faqRender(e) {
 		e.preventDefault();
 		$(this).parent().find('.active').removeClass('active');
@@ -71,7 +71,7 @@ var interfaz = (function() {
 		$faq.find('div.active').removeClass('active');
 		$faq.find('[data-posicion="'+posicion+'"]').addClass('active');
 	}
-	
+
 	function _linkToggle(e) {
 		e.preventDefault();
 		var id = $(this).data('id');
@@ -82,9 +82,9 @@ var interfaz = (function() {
 			$preguntas.find('p[data-id="'+id+'"]').addClass('active');
 			$preguntas.find('p[data-id="'+id+'"]').slideDown();
 		}
-		
+
 	}
-	
+
 	function _carrouselSlider(e) {
 		e.preventDefault();
 		currentPage = $(this).data('page');
@@ -93,15 +93,15 @@ var interfaz = (function() {
 		$(this).parent().find('.active').removeClass('.active');
 		$(this).addClass('active');
 		$imgContainer.animate({
-			marginLeft: -marginLeft+"vw",	
-		}, 2000);	
+			marginLeft: -marginLeft+"vw",
+		}, 2000);
 	}
-	
+
 	function _imgLightbox() {
 		$(this).clone().appendTo($lightBox);
 		$lightBox.addClass('visible');
 	}
-	
+
 	function _closeLightBox(e) {
 		$lightBox.removeClass('visible');
 		$lightBox.empty();
@@ -110,7 +110,7 @@ var interfaz = (function() {
 			$lightBox.empty();
 		}
 	}
-	
+
 })();
 
 

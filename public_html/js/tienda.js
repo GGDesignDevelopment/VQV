@@ -11,18 +11,18 @@ var usuario = (function () {
 			$loginForm = $('#login');
 			loginHelper = $('#loginTemplate').html();
 			botonCarrito = $loginContainer.html();
-	
+
 	//Bind Events
 	$login.on('click', _render);
 	$loginContainer.on('submit', '#login', _register);
-	
+
 	//Funcion para checkear si el usuario esta loggeado
 	function _isLogged() {
 		var control = null;
 		$.ajax({
 			async: false,
 			type: 'GET',
-			url: 'http://vqv/cart/islogged',
+			url: baseURL + 'cart/islogged',
 			dataType: 'json',
 			success: function (json) {
 				control = json.msg;
@@ -30,35 +30,35 @@ var usuario = (function () {
 		});
 		return control;
 	};
-	
+
 	function _render(e) {
 		if ( !_isLogged() ) {
 			$loginContainer.html(loginHelper);
 			e.preventDefault();
-		} 
+		}
 	}
-	
+
 	function _register(e) {
 		e.preventDefault();
 		$.ajax({
 			type: 'POST',
-			url: 'http://vqv/cart/login',
+			url: baseURL + 'cart/login',
 			data: $(this).serialize(),
 			dataType: 'json',
 			success: function (json) {
 				if (json.msg) {
 					$loginContainer.html(botonCarrito);
 				} else {
-					$(location).attr('href', 'http://vqv/tienda/carrito?login=true');
+					$(location).attr('href', baseURL + 'tienda/carrito?login=true');
 				}
 			},
 		});
 	}
-	
+
 	return {
 		isLogged: _isLogged
 	};
-	
+
 })();
 
 var productos = (function() {
@@ -74,7 +74,7 @@ var productos = (function() {
 	var iconoMarcado = '&#x5c;';
 	var iconoDesmarcado = '&#x5b;';
 	//Variables para primera carga
-	
+
 	arrayInicio = [1, 0, 0, 1, 15];
 
 	// Bind Events
@@ -86,9 +86,9 @@ var productos = (function() {
 	$searchBox.on('click', '.search', _searchItem);
 	$searchBox.on('keyup', '#searchItem', _searchItem);
 	$(window).bind('mousewheel DOMMouseScroll', _lazyLoad);
-	
+
 	_getProducts(arrayInicio);
-	
+
 	//Levanta los datos para filtrar los productos
 	function _getData(e) {
 		var filter = $(this).data('filter');
@@ -103,19 +103,21 @@ var productos = (function() {
 				paginaGlobal = 1;
 		var	tab = (inicio == 1 ? 0 : (granel == 1 ? 1 : 2));
 				filter[4] = 15;
-		
+
 		if (filter[5]) {
-			
+
 			if (!$activeTab.hasClass('active')) {
+				$botonera.find('a.active span').html(iconoDesmarcado);
+				$botonera.find('a.active').removeClass('active');
 				$tabs.find('.active').removeClass('active');
 				$activeTab.addClass('active');
 				active = true;
 				console.log('filter 3 + not active');
 			}
-			
+
 			_renderTabs(tab, active);
 		} else {
-			
+
 			if (!$activeTab.hasClass('active')) {
 				$botonera.find('a.active span').html(iconoDesmarcado);
 				$botonera.find('a.active').removeClass('active');
@@ -123,14 +125,14 @@ var productos = (function() {
 				$activeTab.find('span').html(iconoMarcado);
 				console.log('else... ')
 			}
-			
+
 		}
 		filter[3] = paginaGlobal;
 		//arrayInicio[inicio, categoria, granel, pagina, 15];
 		_getProducts(filter);
 		e.preventDefault();
 	}
-	
+
 	//Hace el llamado AJAX para conseguir productos
 	function _getProducts(array) {
 		var request = 'tienda/getProducts?catid=' + array[1] + '&inicio=' + array[0] + '&granel=' + array[2]+'&pag=' + array[3]+'&cnt='+array[4];
@@ -143,7 +145,7 @@ var productos = (function() {
 			}
 		});
 	}
-	
+
 	//Cambia estado css de las pestañas
 	function _renderTabs(tab, active) {
 
@@ -159,7 +161,7 @@ var productos = (function() {
 					$productos.removeClass('full');
 					$botonera.removeClass('hide');
 					$botonera.find('.granel').toggleClass('active');
-					$botonera.find('.naturales').removeClass('active');	
+					$botonera.find('.naturales').removeClass('active');
 				}
 				break;
 			case 2:
@@ -172,11 +174,11 @@ var productos = (function() {
 				break;
 		}
 	}
-	
+
 	//Renderiza los productos
 	function _render(json, pagina) {
 		if ( pagina <= 1 ) {
-			$productos.empty();	
+			$productos.empty();
 		}
 		if ( json.length == 0 ) {
 			$productos.append('<h2>Lo sentimos, no hay productos disponibles en esta categoria..</h2>')
@@ -204,11 +206,11 @@ var productos = (function() {
 		});
 		scrollControl = false;
 	}
-	
+
 	function _nroItemsCarrito() {
 		$.ajax({
 			type: 'GET',
-			url: 'http://vqv/cart/get',
+			url: baseURL + 'cart/get',
 			dataType: 'json',
 			success: function (json) {
 				var ln = json.items.length;
@@ -216,7 +218,7 @@ var productos = (function() {
 			}
 		})
 	}
-	
+
 	function _addItem(e) {
 		var $cont = $(this).parent('.prod');
 		$cont.find('span.msg').remove();
@@ -244,15 +246,15 @@ var productos = (function() {
 					});
 		}
 		e.preventDefault();
-		
+
 	}
-	
+
 	function _expandirItemMovil() {
 		var id = $(this).attr('data-id');
 		var $span = $productos.find('span.' + id);
 		$span.slideToggle();
 	}
-	
+
 	function _searchItem() {
 		var query = $search.val();
 		$.ajax({
@@ -274,14 +276,14 @@ var productos = (function() {
 		var cadena = '$u. ' + sub2 + '- Agregar al carrito';
 		$('.'+id).val(cadena);
 	}
-	
-	function _lazyLoad(event) {		
+
+	function _lazyLoad(event) {
 		if ( !scrollControl && ($(window).scrollTop() + 50 >= $(document).height() - $(window).height()) ){
 			scrollControl = true;
 			paginaGlobal = paginaGlobal + 1;
 			arrayValores = [inicioGlobal,categoriaGlobal,granelGlobal,paginaGlobal,nroProductosGlobal];
 			_getProducts(arrayValores);
-		} 
+		}
 	}
-	
+
 })();

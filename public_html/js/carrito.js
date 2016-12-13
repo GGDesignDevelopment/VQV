@@ -1,5 +1,5 @@
 var carrito = (function() {
-	//DOM CACHE 
+	//DOM CACHE
 	var $container = $('#container');
 	var $header = $container.find('header');
 	var $middle = $container.find('#middle');
@@ -12,7 +12,7 @@ var carrito = (function() {
 	
 	console.log(msgConfirmacion);
 	console.log(msgError);
-	
+
 	//BindEvents
 	$middle.on('submit', '#register', _register);
 	$middle.on('click', '.remove', _remove);
@@ -20,15 +20,15 @@ var carrito = (function() {
 	$footer.on('click', 'a', _checkout);
 	
 	_render();
-	
-	
+
+
 	//Chequea si el usuario esta loggeado
 	function _isLogged() {
 		var control = null;
 		$.ajax({
 			async: false,
 			type: 'GET',
-			url: 'http://vqv/cart/islogged',
+			url: baseURL + 'cart/islogged',
 			dataType: 'json',
 			success: function (json) {
 				control = json.msg;
@@ -36,7 +36,7 @@ var carrito = (function() {
 		});
 		return control;
 	};
-	
+
 	//Decide si renderizar el registro o el carrito dependiendo del estado del usuario
 	function _render() {
 		var footHtml = $footer.html();
@@ -51,12 +51,12 @@ var carrito = (function() {
 			_getProducts();
 		}
 	}
-	
+
 	//Maneja el registro del usuario, redirige al carro de compras.
 	function _register(e) {
 		$.ajax({
 			type: 'POST',
-			url: 'http://vqv/cart/register',
+			url: baseURL + 'cart/register',
 			data: $(this).serialize(),
 			dataType: 'json',
 			success: function (data) {
@@ -65,12 +65,12 @@ var carrito = (function() {
 		});
 		e.preventDefault();
 	};
-	
+
 	//OBtiene los productos del carrito
 	function _getProducts() {
 		$.ajax({
 			type: 'GET',
-			url: 'http://vqv/cart/get',
+			url: baseURL + 'cart/get',
 			dataType: 'json',
 			success: function (json) {
 				_renderItems(json);
@@ -78,7 +78,7 @@ var carrito = (function() {
 			}
 		})
 	}
-	
+
 	//renderiza Items del carrito
 	function _renderItems(json) {
 		var unidades = {m : 'ml.',
@@ -101,20 +101,20 @@ var carrito = (function() {
 		})
 		$middle.html(Mustache.render(productTemplate, json));
 	}
-	
+
 	//remueve Items del carrito
 	function _remove(e) {
 		var id = $(this).data('id');
 				$row = $('#'+id);
 		$.ajax({
 			type: 'POST',
-			url: 'http://vqv/cart/removeItem/'+id,
+			url: baseURL + 'cart/removeItem/'+id,
 			success: function() {
 				$row.remove();
 			}
 		})
 	}
-	
+
 	//Calcula el precio total de la compra
 	function _calcPrice(json) {
 		var total = 0;
@@ -129,7 +129,7 @@ var carrito = (function() {
 	function _checkout() {
 		$.ajax({
 			type: 'POST',
-			url: 'http://vqv/cart/confirm',
+			url: baseURL+'cart/confirm',
 			data: $(this).serialize(),
 			dataType: 'json',
 			success: function(data) {
@@ -147,29 +147,31 @@ var carrito = (function() {
 		})
 	}
 
-	//Ajustes pa responsive 
+
+
+	//Ajustes pa responsive
 	function _responsive() {
 		if ($(window).width() <= 600) {
 			$navBar=$container.find('nav');
 			$.each($navBar, function(i,obj){
 				icono = $(this[i]).find('span').html();
 				$(this).find('a').html('<span>'+icono+'</span>');
-			})	
+			})
 		}
 	}
-	
+
 	function _logout(e) {
 		e.preventDefault();
 		console.log('entro');
 		$.ajax({
 			type: 'POST',
-			url: 'http://vqv/cart/logout',
+			url: baseURL + 'cart/logout',
 			success: function() {
 				_render();
 				console.log('ajax');
 			}
 		})
-		
+
 	}
 	_responsive();
 })();

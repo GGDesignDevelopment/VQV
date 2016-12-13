@@ -1,5 +1,5 @@
 <div id="container">
-	
+
 	<header>
 		<h1>Carrito de compras</h1>
 		<h2>Verde que te Quiero Verde</h2>
@@ -23,34 +23,6 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr>
-					<td><a herf="#">&#xe07d;</a></td>
-					<td>Aceite de Oliva</td>
-					<td> 300ml.</td>
-					<td>Botella de Vidrio $300</td>
-					<td>$900</td>
-				</tr>
-				<tr>
-					<td><a herf="#">&#xe07d;</a></td>
-					<td>Aceite de Oliva</td>
-					<td> 300ml.</td>
-					<td>Botella de Vidrio $300</td>
-					<td>$900</td>
-				</tr>
-				<tr>
-					<td><a herf="#">&#xe07d;</a></td>
-					<td>Aceite de Oliva</td>
-					<td> 300ml.</td>
-					<td>Botella de Vidrio $300</td>
-					<td>$900</td>
-				</tr>
-				<tr>
-					<td><a herf="#">&#xe07d;</a></td>
-					<td>Aceite de Oliva</td>
-					<td> 300ml.</td>
-					<td>Botella de Vidrio $300</td>
-					<td>$900</td>
-				</tr>
 			</tbody>
 		</table>
 	</div>
@@ -96,7 +68,7 @@
 <form id="register">
 	<section>
 		<h2>Bienvenidos a la comunidad Verde </h2>
-		<p>Creemos en que los cambios de hábitos son posibles, sólo basta con proponérselo. 
+		<p>Creemos en que los cambios de hábitos son posibles, sólo basta con proponérselo.
 No existen las excusas de que no tenes tiempo y no sabes qué cocinar… VQV te lleva el pedido  a la puerta de tu casa y además te da tips de cómo usar los productos.
 </p>
 
@@ -108,7 +80,7 @@ No existen las excusas de que no tenes tiempo y no sabes qué cocinar… VQV te 
 		</div>
 		<div>
 			<label for="email"><span>&#xe084;</span> Email</label>
-			<input type="email" name="email" required>	
+			<input type="email" name="email" required>
 		</div>
 		<div>
 			<label for="phone"><span>&#xe090;</span> Telefono</label>

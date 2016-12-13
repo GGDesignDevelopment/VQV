@@ -24,6 +24,7 @@ class Tienda extends Frontend_Controller {
         $this->data['styles'][] = '<link rel="stylesheet" type="text/css" href="' . site_url('css/icons.css') . '">';
         $this->data['styles'][] = '<link rel="stylesheet" type="text/css" href="' . site_url('css/tienda.css') . '">';
         $this->data['scripts'][] = '<script src="https://code.jquery.com/jquery-2.2.4.min.js"   integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="   crossorigin="anonymous"></script>';
+        $this->data['scripts'][] = '<script type="text/javascript" src="' . site_url('js/global.js') . '"></script>';
         $this->data['scripts'][] = '<script type="text/javascript" src="' . site_url('js/mustache.js') . '"></script>';
         $this->data['scripts'][] = '<script type="text/javascript" src="' . site_url('js/tienda.js') . '"></script>';
 
@@ -38,7 +39,7 @@ class Tienda extends Frontend_Controller {
         $this->data['dir'] = $this->imageDir;
         $this->load->view('frontend/_layout_main', $this->data);
     }
-		
+
 		function carrito() {
         $this->data['title'] = 'VQV - Mi Carrito';
         $this->data['styles'][] = '<link rel="stylesheet" type="text/css" href="' . site_url('css/reset.css') . '">';
@@ -46,6 +47,7 @@ class Tienda extends Frontend_Controller {
         $this->data['styles'][] = '<link rel="stylesheet" type="text/css" href="' . site_url('css/icons.css') . '">';
         $this->data['styles'][] = '<link rel="stylesheet" type="text/css" href="' . site_url('css/carrito.css') . '">';
         $this->data['scripts'][] = '<script src="https://code.jquery.com/jquery-2.2.4.min.js"   integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="   crossorigin="anonymous"></script>';
+        $this->data['scripts'][] = '<script type="text/javascript" src="' . site_url('js/global.js') . '"></script>';
         $this->data['scripts'][] = '<script type="text/javascript" src="' . site_url('js/mustache.js') . '"></script>';
         $this->data['scripts'][] = '<script type="text/javascript" src="' . site_url('js/carrito.js') . '"></script>';
 
