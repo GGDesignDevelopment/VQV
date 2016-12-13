@@ -137,11 +137,14 @@ body {
 					text-decoration: underline;
 					font-size: 22px;
 					align-self: flex-start;
+					margin-left: 0;
 				}
 				p {
 					font-family: $fuenteSecundaria;
 					font-size: 16px;
 					color: #111;
+					width: 60%;
+					margin-left: 60px;
 				}
 				
 			}

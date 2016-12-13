@@ -119,11 +119,14 @@ body {
           color: #8dbe49;
           text-decoration: underline;
           font-size: 22px;
-          align-self: flex-start; }
+          align-self: flex-start;
+          margin-left: 0; }
         #container #middle form section p {
           font-family: "Didact Gothic", sans-serif;
           font-size: 16px;
-          color: #111; }
+          color: #111;
+          width: 60%;
+          margin-left: 60px; }
     #container #middle h3 {
       font-family: "Francois One", sans-serif;
       color: #8dbe49;
