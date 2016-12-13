@@ -132,3 +132,12 @@ No existen las excusas de que no tenes tiempo y no sabes qué cocinar… VQV te 
 	</section>
 </form>
 </script>
+<script type="text/template" id="msgConfirmacion">
+<h3>Su compra ha sido realizada con exito.</h3>
+<h4>En unos minutos nos pondremos en contacto con usted para coordinar la entrega de su pedido!</h4>
+<h5>Gracias por elegirnos!</h5>
+</script>
+<script type="text/template" id="msgError">
+<h3>Lo sentimos, parece que hubo un error al procesar su compra. </h3>
+<h4>Por favor intentelo mas tarde</h4>
+</script>

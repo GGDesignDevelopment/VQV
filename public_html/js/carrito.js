@@ -7,11 +7,17 @@ var carrito = (function() {
 	var tableOfProducts = $middle.html();
 	var registerTemplate = $('#registerTemplate').html();
 	var productTemplate = $('#prodTemplate').html();
+	var msgConfirmacion = $('#msgConfirmacion').html();
+	var msgError = $('#msgError').html();
+	
+	console.log(msgConfirmacion);
+	console.log(msgError);
 	
 	//BindEvents
 	$middle.on('submit', '#register', _register);
 	$middle.on('click', '.remove', _remove);
 	$header.on('click', '#logout', _logout);
+	$footer.on('click', 'a', _checkout);
 	
 	_render();
 	
@@ -33,10 +39,15 @@ var carrito = (function() {
 	
 	//Decide si renderizar el registro o el carrito dependiendo del estado del usuario
 	function _render() {
+		var footHtml = $footer.html();
 		if ( !_isLogged() ) {
 			$middle.html(registerTemplate);
+			$footer.empty();
+			$header.find('a#logout').hide();
 		} else {
 			$middle.html(tableOfProducts);
+			$footer.html(footHtml);
+			$header.find('a#logout').show();
 			_getProducts();
 		}
 	}
@@ -115,8 +126,25 @@ var carrito = (function() {
 		$footer.find('input[name=address]').val(json.address);
 	}
 	
-	function checkout() {
-		
+	function _checkout() {
+		$.ajax({
+			type: 'POST',
+			url: 'http://vqv/cart/confirm',
+			data: $(this).serialize(),
+			dataType: 'json',
+			success: function(data) {
+				$middle.empty();
+				console.log(data.msg);
+				if ( data.msg ) {
+					$middle.append(msgConfirmacion);
+				} else {
+					$middle.append(msgError);
+					setTimeout(function() {
+						$(location).attr('href', 'http://vqv/tienda/carrito');
+					}, 3000)
+				}
+			}
+		})
 	}
 
 	//Ajustes pa responsive 

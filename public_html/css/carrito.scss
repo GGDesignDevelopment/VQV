@@ -146,6 +146,17 @@ body {
 				
 			}
 		}
+		h3 {
+			font-family: $fuentePrincipal;
+			color: $colorPrincipal;
+			font-size: 28px;
+			line-height: 32px;
+		}
+		h4, h5 {
+			font-family: $fuenteSecundaria;
+			color: $colorPrincipal;
+			font-size: 22px;
+		}
 	}
 	#middle table {
 		height: 60vh;

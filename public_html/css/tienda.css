@@ -191,6 +191,10 @@ header {
     flex-flow: row wrap;
     align-items: center;
     justify-content: space-between; }
+    #container #productos h2 {
+      margin: 15px;
+      font-family: "Didact Gothic", sans-serif;
+      color: #8dbe49; }
     #container #productos.full {
       width: 100%; }
     #container #productos .prod {
@@ -233,7 +237,8 @@ header {
         word-break: break-all;
         font-size: 14px;
         font-family: "Francois One", sans-serif;
-        color: #8dbe49; }
+        color: #8dbe49;
+        word-break: keep-all; }
       #container #productos .prod .top {
         overflow: hidden;
         width: 100%;

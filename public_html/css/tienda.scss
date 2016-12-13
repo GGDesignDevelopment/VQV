@@ -222,6 +222,11 @@ header {
 		width: 80%;
 		padding: 15px;
 		@include flexbox(row, wrap, center, space-between);
+		h2 {
+			margin: 15px;
+			font-family: $fuenteSecundaria;
+			color: $colorPrincipal;
+		}
 		&.full {
 			width: 100%;
 		}
@@ -272,6 +277,7 @@ header {
 				font-size: 14px;
 				font-family: $fuentePrincipal;
 				color: $colorPrincipal;
+				word-break: keep-all;
 			}
 			.top {
 				overflow: hidden;

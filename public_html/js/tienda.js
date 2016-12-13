@@ -178,6 +178,9 @@ var productos = (function() {
 		if ( pagina <= 1 ) {
 			$productos.empty();	
 		}
+		if ( json.length == 0 ) {
+			$productos.append('<h2>Lo sentimos, no hay productos disponibles en esta categoria..</h2>')
+		}
 		var unidades = {m : 'ml.',
 					l : 'lt.',
 					g : 'gr.',
@@ -216,6 +219,7 @@ var productos = (function() {
 	
 	function _addItem(e) {
 		var $cont = $(this).parent('.prod');
+		$cont.find('span.msg').remove();
 		if ( usuario.isLogged() ) {
 			$.ajax({
 				type: 'POST',
@@ -228,7 +232,8 @@ var productos = (function() {
 					$cont.on('cssanimationend', function() {
 						$cont.removeClass('box-shadow-animate')
 					});
-					$cont.append('<span>Agregado exitosamente</span>');
+					$
+					$cont.append('<span class="msg">Agregado exitosamente</span>');
 				}
 			});
 		} else {

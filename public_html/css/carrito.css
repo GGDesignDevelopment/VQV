@@ -124,6 +124,15 @@ body {
           font-family: "Didact Gothic", sans-serif;
           font-size: 16px;
           color: #111; }
+    #container #middle h3 {
+      font-family: "Francois One", sans-serif;
+      color: #8dbe49;
+      font-size: 28px;
+      line-height: 32px; }
+    #container #middle h4, #container #middle h5 {
+      font-family: "Didact Gothic", sans-serif;
+      color: #8dbe49;
+      font-size: 22px; }
   #container #middle table {
     height: 60vh;
     width: 85.1vw;
