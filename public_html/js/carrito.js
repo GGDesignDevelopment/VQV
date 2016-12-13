@@ -9,7 +9,7 @@ var carrito = (function() {
 	var productTemplate = $('#prodTemplate').html();
 	var msgConfirmacion = $('#msgConfirmacion').html();
 	var msgError = $('#msgError').html();
-	
+
 	console.log(msgConfirmacion);
 	console.log(msgError);
 
@@ -18,7 +18,7 @@ var carrito = (function() {
 	$middle.on('click', '.remove', _remove);
 	$header.on('click', '#logout', _logout);
 	$footer.on('click', 'a', _checkout);
-	
+
 	_render();
 
 
@@ -125,7 +125,7 @@ var carrito = (function() {
 		$footer.find('#totalPrice').html('Total: $ '+total);
 		$footer.find('input[name=address]').val(json.address);
 	}
-	
+
 	function _checkout() {
 		$.ajax({
 			type: 'POST',
@@ -140,7 +140,7 @@ var carrito = (function() {
 				} else {
 					$middle.append(msgError);
 					setTimeout(function() {
-						$(location).attr('href', 'http://vqv/tienda/carrito');
+						$(location).attr('href', baseURL + 'tienda');
 					}, 3000)
 				}
 			}
@@ -167,8 +167,9 @@ var carrito = (function() {
 			type: 'POST',
 			url: baseURL + 'cart/logout',
 			success: function() {
-				_render();
-				console.log('ajax');
+				setTimeout(function() {
+					$(location).attr('href', baseURL + 'tienda');
+				}, 1000)
 			}
 		})
 
