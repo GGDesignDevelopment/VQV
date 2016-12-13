@@ -12,15 +12,21 @@ var interfaz = (function() {
 	var $faqNav = $faq.find('nav');
 	var $preguntas = $faq.find('#preguntas');
 	var $footer = $('footer');
+	var $lightBox = $('#lightBox');
 	
 	//VARIABLES EXTRA
 	var cantImagenes = imagenes.length;
 	var pages = Math.ceil(cantImagenes / 3);
+	console.log(pages);
 	var currentPage = 1;
 	var templatePreguntas = $('#templateQuestions').html();
 	
 	$faqNav.on('click', 'a', _faqRender);
 	$preguntas.on('click', 'a', _linkToggle);
+	$imgContainer.on('click', 'img', _imgLightbox);
+	$navBar.on('click', 'a', _carrouselSlider);
+	$lightBox.on('click', _closeLightBox);
+	$(document).on('keyup', _closeLightBox);
 	$(window).bind('mousewheel DOMMouseScroll scroll', _navMenuController);
 	
 	_render();
@@ -79,6 +85,32 @@ var interfaz = (function() {
 		
 	}
 	
+	function _carrouselSlider(e) {
+		e.preventDefault();
+		currentPage = $(this).data('page');
+		var marginLeft = ( currentPage == 1 ? 0 : ((currentPage - 1) * 100)-5);
+		console.log(marginLeft);
+		$(this).parent().find('.active').removeClass('.active');
+		$(this).addClass('active');
+		$imgContainer.animate({
+			marginLeft: -marginLeft+"vw",	
+		}, 2000);	
+	}
+	
+	function _imgLightbox() {
+		$(this).clone().appendTo($lightBox);
+		$lightBox.addClass('visible');
+	}
+	
+	function _closeLightBox(e) {
+		$lightBox.removeClass('visible');
+		$lightBox.empty();
+		if (e.keyCode == 27) {
+			$lightBox.removeClass('visible');
+			$lightBox.empty();
+		}
+	}
+	
 })();
 
 
@@ -92,7 +124,6 @@ var interfaz = (function() {
 
 
 
-/*
 $(function () {
 	$('a[href*="#"]:not([href="#"])').click(function () {
 		if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
@@ -108,4 +139,4 @@ $(function () {
 		;
 	});
 
-});*/
+});

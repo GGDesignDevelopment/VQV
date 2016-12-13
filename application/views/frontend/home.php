@@ -70,7 +70,7 @@
 	</div>
 </section>
 <!-- ------------------------------------------------------------ -->
-<footer>
+<footer id="footer">
 	<div id="info">
 		<p>Télefono: (+598) 2204 7844</p>
 		<p>Montevideo, Uruguay</p>
@@ -88,6 +88,7 @@
 	</form>
 </footer>
 
+<div id="lightBox"></div>
 <script type="text/template" id="templateQuestions">
 	<a class="question" href="#" data-id="{{id}}"><span>&#x4c;</span>{{question}}</a>
 	<p data-id="{{id}}">{{answer}}</p>

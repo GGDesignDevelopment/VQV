@@ -8,6 +8,7 @@
 			<a href="<?php echo site_url('Tienda') ?>" data-text="Volver a la tienda."><span>&#xe015;</span> Volver a la tienda</a>
 			<a href="<?php echo $home->linkFacebook ?>" data-text="/VqVerdeUruguay"><span>&#xe093;</span> /VqVerdeUruguay</a>
 			<a href="<?php echo $home->linkInstagram; ?>" data-text="/vqvuruguay"><span>&#xe09a;</span> /vqvuruguay</a>
+			<a href="#" id="logout" data-text="Cerrar sesión"><span>&#x4d;</span> Cerrar sesión</a>
 		</nav>
 	</header>
 	<div id="middle">

@@ -9,10 +9,10 @@
 		<a href="<?php echo site_url('tienda/carrito') ?>" class="boton" id="boton">Mi carrito</a>
 	</nav>
 	<nav id="tabs" tabindex="0">
-		<!-- [inicio, categoria, granel, tabValue] -->
-		<a class="tab" href="#" data-filter='["1","0","0","1"]'>Productos destacados</a>
-		<a class="tab" href="#" data-filter='["0","0","1","1"]'>Productos a granel</a>
-		<a class="tab" href="#" data-filter='["0","0","0","1"]'>Productos naturales</a>
+		<!-- [inicio, categoria, granel, paginaGolbal, 15, tabValue] -->
+		<a class="tab" href="#" data-filter='["1","0","0","1","15","1"]'>Productos destacados</a>
+		<a class="tab" href="#" data-filter='["0","0","1","1","15","1"]'>Productos a granel</a>
+		<a class="tab" href="#" data-filter='["0","0","0","1","15","1"]'>Productos naturales</a>
 		<div class="search">
 			<input id="searchItem" type="text" placeholder="Buscar producto.">
 			<a class="search" href="#">&#x55;</a>

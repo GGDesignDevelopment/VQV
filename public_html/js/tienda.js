@@ -103,20 +103,27 @@ var productos = (function() {
 				paginaGlobal = 1;
 		var	tab = (inicio == 1 ? 0 : (granel == 1 ? 1 : 2));
 				filter[4] = 15;
-		if (filter[3]) {
+		
+		if (filter[5]) {
+			
 			if (!$activeTab.hasClass('active')) {
 				$tabs.find('.active').removeClass('active');
 				$activeTab.addClass('active');
 				active = true;
+				console.log('filter 3 + not active');
 			}
+			
 			_renderTabs(tab, active);
 		} else {
+			
 			if (!$activeTab.hasClass('active')) {
 				$botonera.find('a.active span').html(iconoDesmarcado);
 				$botonera.find('a.active').removeClass('active');
 				$activeTab.addClass('active');
 				$activeTab.find('span').html(iconoMarcado);
+				console.log('else... ')
 			}
+			
 		}
 		filter[3] = paginaGlobal;
 		//arrayInicio[inicio, categoria, granel, pagina, 15];

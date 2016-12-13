@@ -132,42 +132,67 @@ section {
   #alimentacion #frame {
     width: 100%;
     height: 80vh;
-    background: red;
+    padding: 0 5vh;
     display: flex;
     flex-flow: column wrap;
-    align-items: center;
-    justify-content: space-around; }
+    align-items: flex-start;
+    justify-content: space-around;
+    overflow: hidden; }
     #alimentacion #frame #imgContainer {
-      width: 100%;
+      width: 1000%;
       height: 70vh;
+      padding-top: 5vh;
+      padding-bottom: 4vh;
       display: flex;
       flex-flow: row wrap;
       align-items: center;
-      justify-content: center; }
+      justify-content: flex-start; }
       #alimentacion #frame #imgContainer img {
-        height: 20vh;
+        height: 60vh;
         width: auto;
-        box-shadow: 0 0 3px 1px rgba(141, 190, 73, 0.8);
-        cursor: pointer; }
-        #alimentacion #frame #imgContainer img:hover {
-          box-shadow: 0 0 3px 1px #8dbe49; }
+        cursor: pointer;
+        margin-right: 1vh;
+        border-bottom: 1vh solid #7f64a7; }
     #alimentacion #frame #navBar {
+      align-self: center;
       width: 100%;
       height: 10vh;
-      border-bottom: 10px solid #8dbe49;
+      border-bottom: 10px solid white;
       display: flex;
       flex-flow: row nowrap;
       align-items: center;
       justify-content: center; }
       #alimentacion #frame #navBar a {
         display: block;
+        position: relative;
         background: #8dbe49;
-        height: 3vh;
-        width: 3vh;
+        height: 2.5vh;
+        width: 2.5vh;
         border-radius: 50%;
-        margin: 0 5px;
-        transition: all 0.4s ease; }
+        margin: 0 10px; }
+        #alimentacion #frame #navBar a:after {
+          content: '';
+          display: block;
+          position: absolute;
+          width: 2.5vh;
+          height: 2.5vh;
+          border-radius: 50%;
+          top: -3px;
+          left: -3px;
+          border: 3px solid #7f64a7;
+          border-right-color: transparent;
+          border-left-color: transparent;
+          transform: rotate(30deg); }
+        #alimentacion #frame #navBar a:hover::after {
+          animation: spinny 1s linear; }
 
+@keyframes spinny {
+  0% {
+    transform: rotate(30deg) scale(1); }
+  50% {
+    transform: rotate(65deg) scale(1.3); }
+  100% {
+    transform: rotate(390deg) scale(1); } }
 #about {
   height: 100vh;
   justify-content: center;
@@ -177,7 +202,7 @@ section {
     width: 100%;
     height: 100%;
     position: absolute;
-    top: 199vh;
+    top: 200vh;
     left: 0;
     z-index: -999;
     display: block;
@@ -371,5 +396,25 @@ footer {
       margin: 0 3px; }
       footer form input::-webkit-input-placeholder, footer form input:-moz-placeholder, footer form input::-moz-placeholder, footer form input:-ms-input-placeholder {
         color: white; }
+
+#lightBox {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: center;
+  display: none !important;
+  z-index: 99999999; }
+  #lightBox img {
+    height: 80vh;
+    width: auto;
+    border: 10px solid #8dbe49; }
+  #lightBox.visible {
+    display: flex !important; }
 
 /*# sourceMappingURL=main.css.map */

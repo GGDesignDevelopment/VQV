@@ -11,6 +11,7 @@ var carrito = (function() {
 	//BindEvents
 	$middle.on('submit', '#register', _register);
 	$middle.on('click', '.remove', _remove);
+	$header.on('click', '#logout', _logout);
 	
 	_render();
 	
@@ -127,6 +128,20 @@ var carrito = (function() {
 				$(this).find('a').html('<span>'+icono+'</span>');
 			})	
 		}
+	}
+	
+	function _logout(e) {
+		e.preventDefault();
+		console.log('entro');
+		$.ajax({
+			type: 'POST',
+			url: 'http://vqv/cart/logout',
+			success: function() {
+				_render();
+				console.log('ajax');
+			}
+		})
+		
 	}
 	_responsive();
 })();
