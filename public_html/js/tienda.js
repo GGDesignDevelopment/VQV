@@ -22,7 +22,7 @@ var usuario = (function () {
 		$.ajax({
 			async: false,
 			type: 'GET',
-			url: 'http://vqv/cart/islogged',
+			url: baseURL + 'cart/islogged',
 			dataType: 'json',
 			success: function (json) {
 				control = json.msg;
@@ -42,14 +42,14 @@ var usuario = (function () {
 		e.preventDefault();
 		$.ajax({
 			type: 'POST',
-			url: 'http://vqv/cart/login',
+			url: baseURL + 'cart/login',
 			data: $(this).serialize(),
 			dataType: 'json',
 			success: function (json) {
 				if (json.msg) {
 					$loginContainer.html(botonCarrito);
 				} else {
-					$(location).attr('href', 'http://vqv/tienda/carrito?login=true');
+					$(location).attr('href', baseURL + 'tienda/carrito?login=true');
 				}
 			},
 		});
@@ -207,7 +207,7 @@ var productos = (function() {
 	function _nroItemsCarrito() {
 		$.ajax({
 			type: 'GET',
-			url: 'http://vqv/cart/get',
+			url: baseURL + 'cart/get',
 			dataType: 'json',
 			success: function (json) {
 				var ln = json.items.length;
