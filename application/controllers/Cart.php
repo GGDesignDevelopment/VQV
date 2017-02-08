@@ -36,10 +36,15 @@ class Cart extends Frontend_Controller {
     }
 
     function login() {
-        if ($this->user_m->login() == TRUE) {
-            $return = array('msg' => true);
+        $user = $this->user_m->get( ['email'=>$this->input->post('email')]);
+        if ($user) {
+          if ($this->user_m->login() == TRUE) {
+              $return = array('msg' => true, 'desc' => '');
+          } else {
+              $return = array('msg' => false, 'desc' => 'Contraseña Incorrecta');
+          }
         } else {
-            $return = array('msg' => false);
+          $return = array('msg' => false, 'desc' => 'No existe un usuario con este E-mail');
         }
         echo json_encode($return);
     }
