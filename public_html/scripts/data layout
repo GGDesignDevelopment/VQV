@@ -1,0 +1,72 @@
+views =
+	producto
+	carrito
+		user
+		productos
+	categorias
+
+dataStr = 
+	producto = {}
+	user = bool
+	cart = {}|
+	categorias [{}]
+
+
+__MODULOS__
+
+Productos = 
+	keys = {granel[], destacados[], naturales[]}
+	categorias = [id: keys[]]
+	productos = {id: productos}
+
+__Metodos
+	retrieve = traer todos los productos de la DB
+	sort = crear la estructura de productos
+	getBy() = recuperar productos segun('id','catId','supCat')
+	modify = modificar producto en cache
+	render
+
+__Events 
+	pageLoad = .retrieve & sort y render 
+	modificar valor = modify
+
+Usuarios = 
+	userModel = {
+		logged: bool,
+		data:  {
+			id: num,
+			name: str,
+			mail: str,
+			addr: str
+		}
+	}
+
+__Metodos
+	login: loggea el user return ( bool )
+	logout: desloggea el usuario
+	modify: modifica datos del user
+	register: crea un usuario nuevo
+	render
+
+__Events
+	login
+	register
+	modify
+	logout
+
+CART =
+	model = {
+		user: userModel,
+		productos: productsModel,
+		metodoPago: str,
+		shippingAdd: user.addr || inputAddr
+	}
+
+__Metodos
+	render
+	edit
+	remove
+	confirm
+	drop
+
+__Events 

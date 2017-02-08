@@ -19,6 +19,8 @@ user_guide_src/cilexer/pycilexer.egg-info/*
 /nbproject/
 .idea/*
 /public_html/img/dynamic_img
+/public_html/assets/dynamic_img
+/public_html/styles/.sass-cache
 ## Sublime Text cache files
 *.tmlanguage.cache
 *.tmPreferences.cache

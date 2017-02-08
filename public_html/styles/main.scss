@@ -1,0 +1,345 @@
+// Modules and Variables
+@import "partials/_base";
+
+// Partials
+@import "partials/_reset";
+@import "partials/_tipografias";
+@import "partials/_botones";
+@import "partials/_componentes";
+@import "partials/_formularios";
+@import "partials/_listas";
+
+//
+
+
+
+div.wrap {
+	width: 1200px;
+	height: 100vh;
+	margin: 0 auto;
+	text-align: center;
+	padding: 0 2rem;
+}
+
+header#mainMenu {
+	@extend %fixHeader;
+	@include flexbox(row, nowrap, center, space-between);
+	background: none;
+	padding: 0.7em;
+	a img {
+		width: 8em;
+		height: 8em;
+	}
+	h2 { display: none }
+	nav {
+		@include flexbox(row, nowrap, center, space-around);
+		a {
+			@include boton_nav(white, $color-main, auto, 0.8rem);
+			@extend %hover-shadow;
+			margin: 0 0.5em;
+		}
+	}
+	#burguer {
+	display: none;
+	}
+	&.scroll {
+		@extend %hover-shadow;
+		background: $color-main;
+		#logo { display: none	}
+		a img { display: none }
+		h2 { 
+			display: inline-block;
+			color: white;
+			font-size: 1.3rem;
+		}
+		nav a {
+			@include boton_nav($color-main, white, auto, .8rem)
+		}
+	}
+}
+
+#social {
+	position: fixed;
+	top: 40vh;
+	left: 0;
+	@include flexbox(column,nowrap,center,center);
+	a {
+		font-family: $font-icon;
+		padding: 0.5em;
+		color: white;
+		margin: 0.2em 0;
+		@extend %hover-shadow;
+		&:nth-child(1) {
+			background: #3B5998;
+		}
+		&:nth-child(2) {
+			background: #e95950;
+		}
+	}
+}
+
+section {
+	
+}
+
+section#main {
+	@extend %section_fullscreen;
+	border-bottom: 5px solid $color-main;
+	
+	background: url(../img/bg1.jpg) no-repeat center center local; 
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	justify-content: center;
+	.wrap {
+		@include flexbox(column, nowrap, center, center);
+	}
+	.wrap h1 {
+		font-family: $font-base;
+		margin-top: 10vh;
+	}
+	.wrap p {
+		padding: 0 2rem;
+		color: white;
+		margin: 1rem 0 1.5rem 0;
+	}
+	.wrap .botones {
+		padding: 0 2rem;
+		a {
+			@include boton_hueco($color-main, 16vw, 0.9rem);
+			margin: 0 0.5em;
+			display: inline-block;
+		}
+	}
+}
+
+section#alimentacion {
+	@extend %section_fullscreen;
+	border-bottom: 5px solid $color-main;
+	
+	display: none !important;	
+	@include flexbox(column, nowrap, center,center);
+	header h5 {
+		color: $color-main;
+		text-align: center;
+		padding: .5rem 3rem;
+	}
+	#frame {
+		height: 70vh;
+		width: 89vw;
+	 	overflow: hidden;
+		box-shadow: 0 0 5px 1px rgba(black, 0.3);
+	}
+	#frame #imgContainer {
+		position: relative;
+		z-index: 999;
+		width: 850vw;
+		height: 60vh;
+		margin-left: 0;
+	}
+	#frame #imgContainer img {
+		height: 60vh;
+		float: left;
+		cursor: pointer;
+	}
+	#frame #navBar {
+		border-top: .1em solid white;
+		width: 100%;
+		height: 10vh;
+		display: block;
+		padding: 2vh 1rem;
+		background: $color-main;
+		.wrap {
+			@include row();
+			height: 6vh;
+		}
+		.wrap .arrow {
+			@include column(1);
+			a {
+				@include boton_hueco(white, 1.4rem, 1.4rem, $color-main);
+				border-radius: 50%;
+				height: 1.4rem;
+				font-family: $font-icon;
+				padding: 0;
+			}
+		}
+		.wrap .pages {
+			@include column(10);
+		}
+	}
+}
+
+section#about {
+	z-index: 999;
+	.wrap { @include flexbox(column, nowrap, center, center) }
+	&:before {
+		content: "";
+		width: 102vw;
+		height: 102vh;
+		position: absolute;
+		top: 99vh;
+		left: -1vw;
+		z-index: -999;
+
+		display: block;
+		background: url(../assets/static_img/bg_tienda.jpg) no-repeat center center local; 
+		-webkit-background-size: cover;
+		-moz-background-size: cover;
+		-o-background-size: cover;
+		background-size: cover;
+
+		-webkit-filter: blur(3px);
+		-moz-filter: blur(3px);
+		-o-filter: blur(3px);
+		-ms-filter: blur(3px);
+		filter: blur(3px);
+	}
+	h1 {
+		font-family: $font-main;
+		margin: 10vh 0 1rem 0;
+	}
+	p {
+		color: white;
+		padding: 0 2rem;
+	}
+}
+
+section#faq {
+	min-height: 100vh;
+	padding: 0 2rem;
+	&:before {
+		content: "";
+		width: 100%;
+		height: 100%;
+		position: absolute;
+		top: 200vh;
+		left: 0;
+		z-index: -999;
+
+		display: block;
+		background: url(../img/bg_faq.jpg) no-repeat center center local; 
+		-webkit-background-size: cover;
+		-moz-background-size: cover;
+		-o-background-size: cover;
+		background-size: cover;
+	}
+	@include flexbox(column, nowrap, center, center);
+	nav {
+		order: 3;
+	}
+	nav a {
+		@include boton_nav(white, $color-main, 20vw, 0.9rem);
+		font-family: $font-main;
+		@extend %hover-shadow;
+		margin: 0 2rem;
+	}
+	div {
+		max-width: 80vw;
+		height: auto;
+		background: rgba($color-main,.8);
+		@extend %hover-shadow;
+		margin: 1rem;
+		padding: 1rem;
+		display: none;
+	}
+	div.active {
+		display: flex !important;
+		@include flexbox(column, nowrap, center, center);
+	}
+	div ul {
+		list-style-type: none;
+		font-family: $font-alt;
+		text-align: center;
+		li { 
+			color: white;
+			font-size: 1rem;
+			margin: 0.2em 0.6em;
+		}
+		li a {
+			font-family: $font-main;
+			color: white;
+			margin: 0 0.5rem;
+			&:hover {
+				text-decoration: underline;
+				text-decoration-style: dotted;
+			}
+		}
+		ul li {
+			font-size: 0.9rem !important;
+		}
+	}
+	div a {
+		font-size: 1.2rem;
+		color: white;
+		font-family: $font-main;
+		text-align: left;
+		span { font-family: $font-icon; color:white; }
+	}
+	div p {
+		display: none;
+		width: 60%;
+		padding: 0.5rem;
+		color: white;
+		text-align: center;
+	}
+	div p.active {
+		display: inline-block;
+	}
+}
+footer {
+	background: #000;
+	@include flexbox(row, nowrap, center, space-around);
+	@include linear-gradient(to top, $color-main, $color-light);
+	padding: 1rem;
+	h6 { 
+		font-size: 0.8rem;
+		font-family: $font-alt;
+		font-weight: 100;
+		letter-spacing: 1px;
+		line-height: 1.4rem;
+		text-align: right;
+		
+		color: #eee;
+		border-right: 1px dotted white;
+		margin-right: 1rem;
+		padding-right: 1rem;
+	}
+	
+	#form-wrap {
+		width: 70%;
+		form {
+			@include flexbox(row, nowrap, center, space-between);
+			padding: 1rem 1rem 1rem 0;
+			h5 {
+				font-size: 0.9rem;
+				font-weight: 100;
+				letter-spacing: 1px;
+				color: white;
+				margin-right: 1rem;
+			}
+			input {
+				@include text-input(#080808);
+				font-size: 0.7rem;
+				margin: 0 0.4em;
+			}
+			input[type=text], input[type=email] {
+				
+			}
+			input[type=submit] {
+				@include boton_hueco(white, auto, 0.7rem, $color-main)
+			}
+		}
+		h5.msg {
+			color: white !important;
+			@include boton_hueco(white, auto, 0.8rem, $color-main);
+		}
+		.error {
+			box-shadow: 0px 0px 1px orangered;
+		}
+
+	}
+}
+
+@import "pages/_mainTablet";
+@import "pages/_mainSmartphone";

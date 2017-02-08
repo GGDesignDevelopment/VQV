@@ -1,1 +1,1 @@
-var baseURL = 'http://www.vqv.com.uy/';
+var baseURL = 'http://vqv/';

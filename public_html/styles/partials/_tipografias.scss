@@ -1,0 +1,35 @@
+html, body { overflow-x: hidden; }
+html, :root { 
+	font-size: $font-base-size+px;
+	font-family: $font-alt;
+}
+
+h5, h6, h7, p, a { 
+	letter-spacing: (1/$font-base-size)+em;
+	line-height: (1+(8/$font-base-size))+em;
+}
+
+h1 { font-size: 3.5rem; }
+h2 { font-size: 3rem; }
+h3 { font-size: 2.5rem; }
+h4 { font-size: 2rem; }
+h5 { font-size: 1.5rem; }
+h6 { font-size: 1rem; }
+p, a { font-size: 1rem; }
+
+/* Extra Large Devices, Wide Screens */
+@media only screen and (max-width: 1800px) { html, :root { font-size: 16px; } }
+/* Large Devices, Wide Screens */
+@media only screen and (max-width: 1400px) { html, :root { font-size: 14px; } }
+/* Medium Devices, Desktops */
+@media only screen and (max-width: 1024px) { html, :root { font-size: 12px; } }
+/* Small Devices, Tablets */
+@media only screen and (max-width: 768px) { html, :root { font-size: 11px; } }
+/* Extra Small Devices, Phones */ 
+@media only screen and (max-width: 480px) { html, :root { font-size: 10px; } }
+/* Custom, iPhone Retina */ 
+@media only screen and (max-width: 320px) { 
+	html, :root { 
+		font-size: 9px; 
+	} 
+}

@@ -1,0 +1,35 @@
+// Declaracion Basica de flex
+@mixin flexbox ($row, $wrap, $align, $justify) {
+	display: flex;
+	flex-flow: $row $wrap;
+	align-items: $align;
+	justify-content: $justify;
+}
+
+//Posicionamiento header scrolleable
+%fixHeader {
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 999;
+	width: 100vw;
+	&.scroll {
+		position: fixed;
+	}
+}
+
+//ajustes basicos container lightbox
+@mixin lightBox($color: black, $opacidad: 0.7) {
+	position: absolute;
+	top:0;
+	left: 0;
+	width: 100vh;
+	height: 100vw;
+	
+	background: rgba($color, $opacidad);
+}
+
+%section_fullscreen {
+	width: 100vw;
+	height: 100vh;
+}

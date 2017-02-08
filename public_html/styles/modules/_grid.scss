@@ -1,0 +1,30 @@
+// Grid flexbox responsive. 
+
+$cantColumnas : 12;
+$gutter: 1rem;
+$gutter-half: $gutter * 0.5;
+$gutter-compensation: ($gutter * 0.5) - 1;
+
+@mixin row() {
+	box-sizing: border-box;
+	flex: 0 1 auto;
+	@include flexbox(row, wrap, null, space-around);
+	margin-right: $gutter-compensation;
+  margin-left: $gutter-compensation;
+}
+
+@mixin column($number, $offset:0) {
+	padding-right: $gutter-half; 
+	padding-left: $gutter-half;
+	box-sizing: border-box;
+	flex-grow: 0;
+	flex-shrink: 0;
+	flex-basis: 100% / $cantColumnas * $number;
+	max-width: 100% / $cantColumnas * $number;
+
+	@if $offset == 0 {
+		margin-left:0;
+	} @else {
+		margin-left: 100% / $cantColumnas * $offset;
+	}
+}

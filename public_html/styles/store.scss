@@ -1,0 +1,442 @@
+// Modules and Variables
+@import "partials/_base";
+
+// Partials
+@import "partials/_reset";
+@import "partials/_tipografias";
+@import "partials/_botones";
+@import "partials/_componentes";
+@import "partials/_formularios";
+@import "partials/_listas";
+
+header {
+	@include flexbox(column, nowrap, inherit, space-between);
+	width: 100%;
+	height: 40vh;
+	background: url(../assets/static_img/bg_tienda.jpg) no-repeat center center fixed;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover; 
+	.wrapper {
+		margin-top: 3vh;
+		@include flexbox(row, nowrap, center, space-between);	
+		width: 100%;
+		padding: 20px;
+		.logo {
+			width: 50%;
+			h1 {
+				font-family: $font-base;
+				color: $color-main;
+				font-size: 2.7rem;
+			}
+			a {
+				font-family: $font-alt;
+				color: white;
+				padding: 8px;
+				font-size: 1.3rem;
+			}
+		}
+		nav#main {
+			width: 40%;
+		}
+		nav#main #login {
+			div { 
+				@include flexbox(row, nowrap, center, space-between);
+				width: 100%;
+				&:last-child {
+					justify-content: flex-end;
+					a {
+						margin: .5rem;
+					}
+				}
+			}
+			div input {
+				@include text-input($color-main);
+			}
+			div button {
+				@include boton_hueco($color-main, auto, 1rem, white);
+				cursor: pointer;
+			}
+			div a {
+				font-family: $font-alt;
+				color: white;
+				font-size: 0.8rem;
+				text-decoration: underline;
+				display: inline;
+			}
+		}
+		nav#main .msgBox {
+			position: absolute;
+			top: 15vh;
+			right: 25vw;
+			display: block;
+			background: white;
+			font-size: 0.9rem;
+			color: $color-main;
+			height: 100px;
+			min-width: 200px;
+			padding: .5rem;
+			transition: opacity 1s ease-in;
+			opacity: 0;
+			&.show {
+				opacity: 1;
+				transition: opacity 1s ease-out;
+			}
+		}
+	}
+
+	#tabs {
+		@include flexbox(row, nowrap, flex-end, center);
+		a {
+			padding: 10px;
+			font-family: $font-main;
+			color: white;
+			border-bottom: 5px solid $color-main;
+			width: 25%;
+			text-align: center;
+			&:hover, .selected {
+				border-color: lighten($color-main, 15%);
+			} 
+		}
+		input {
+			width: 25%;
+			margin-bottom: 5px;
+			@include text-input($color-main);
+			box-shadow: 0 5px 0 $color-main;
+			&:hover, &:focus {
+				box-shadow: 0 5px 0 lighten($color-main, 15%);
+			}
+		}
+		button {
+			font-family: $font-icon;
+			font-size: 1rem;
+			background: lighten($color-main, 5%);
+			color: white;
+			padding: .65rem 1rem;
+			border-bottom: 5px solid $color-main;
+			&:hover {
+				border-color: lighten($color-main, 15%);
+			}
+		}
+	}
+
+}
+#container {
+	width: 100vw;
+	margin: 0 auto;
+	#categorias {
+		width: 20vw;
+		padding: 1rem;
+		@include flexbox(column, nowrap, flex-start, center);
+		float: left;
+	}
+	#categorias a {
+		width: 100%;
+		font-family: $font-alt;
+		color: $color-main;
+		padding: 0.5rem;
+		border-bottom: 1px solid $color-main;
+		transition: all 0.3s ease;
+		&:hover, &.active {
+			background: $color-main;
+			color: white;
+			transition: all 0.3s ease;
+			span { color: white }
+		}
+		span {
+			font-family: $font-icon;
+		}
+	}	
+}
+#productsContainer {
+	width: 80wv;
+	padding: 2rem;
+	@include flexbox(row, nowrap, center, space-between);
+	.prod {
+		width: 24vw;
+		padding: 1rem;
+		box-shadow: 0 0 8px rgba(black, 0.3);
+		h3 {
+			font-family: $font-main;
+			letter-spacing:1px;
+			font-size: 1.2rem;
+			text-align: center;
+		}
+		.imgContainer {
+			width: 100%;
+			height: 180px;
+			overflow: hidden;
+			img {
+				height: 180px;
+				width: auto;
+			}
+		}
+		p {
+			width: 100%;
+			font-size: 1.1rem;
+			text-align: center;
+			padding: 0.5rem 0;
+		}
+		form {
+			width: 100%;
+			@include flexbox(column, nowrap, center, center);
+			div {
+				@include flexbox(row, nowrap, center, center);
+				input {
+					@include number-input($color-main);
+				}
+				span {
+					font-size: 1.1rem;
+					font-family: $font-alt;
+				}
+			}
+			select {
+				@include select-box($color-main);
+			}
+			input[type=submit] {
+				@include boton_nav(white, $color-main, auto, 1.2rem);
+				margin-top: 1rem;
+			}
+		}
+	}
+}
+#slider {
+	width: 38vw;
+	min-height: 100vh;
+	position: absolute;
+	top: 0;
+	right: -1000px;
+	background: white;
+	z-index: 9999999;
+	transition: all .3s ease-in;
+	header {
+		@include flexbox(row, nowrap, center, space-between);
+		width: 100%;
+		height: 3rem;
+		background: $color-main;
+		h6 {
+			color: white;
+		}
+		button {
+			color: white;
+			display: block;
+			font-family: $font-icon;
+			width: auto; 
+			overflow: hidden;
+			padding: 0;
+			line-height: 1rem;
+			transition: all .1s ease-out;
+			&#user {
+				right: -0.5rem;
+				&:hover {
+					right: 4.0rem;
+				}
+			}
+			&#close {
+				right: -1rem;
+				&:hover {
+					right: 1rem;
+				}
+			}
+			&:after {
+				content: attr(data-text);
+				display: inline-block;
+				color: inherit;
+				width: auto;
+				font-family: $font-alt;
+				opacity: 0;
+				position: relative;
+				top: -2.5px;
+				white-space:nowrap;
+				padding: .2rem 0 0 0;
+				transition: opacity .1s ease-in, width .3s ease-out;
+				overflow: hidden;
+			}
+			&:hover {
+				&:after {
+					opacity: 1;
+					transition: opacity .1s ease-out, width .3s ease-in;
+				}
+			}
+		}
+	}
+	
+}
+#slider.show {
+	right: 0;
+	transition: all .3s ease-out;
+	box-shadow: -1000px 0 0 1000px rgba(black, 0.5);
+}
+#slider[data-role=register] {
+	background: $color-main;
+	min-height: 100vh;
+	@include flexbox(column, nowrap, center, flex-start);
+	header {
+		background: white;
+		padding: 0 .5rem;
+		h6 {
+			text-align: left;
+			padding: .5rem 1rem;
+			color: $color-main; 	
+		}
+		button {
+			color: $color-main;
+		}
+		margin-bottom: 2rem;
+	}
+	p {
+		text-align: left;
+		padding: 0 1rem;
+		color: white; 	
+		display: blocK;
+	}
+	form {
+		width: 100%;
+		margin: 2rem 0;
+	}
+	div {
+		width: 100%;
+		padding: .5rem 1rem;
+		@include flexbox(row, nowrap, center, flex-end);
+	}
+	label {
+		float: left;
+		@include data-label(white);
+		padding-right: 1rem;
+	}
+	input {
+		width: 50%;
+		@include text-input(white);
+		border: 1px solid white;
+		color: $color-main;
+		&:hover, &:focus {
+			border: 1px solid white;
+		}
+	}
+	input[data-action=register] {
+		@include boton_hueco(white, auto, 1rem, $color-main);
+		cursor: pointer;
+	}
+}
+#slider[data-role=cart] {
+	overflow: hidden;
+	padding: 0;
+	@include flexbox(column, nowrap, center, space-between);
+	min-height: 100vh;
+	header {
+		background: $color-main;
+		h6 {
+			color: white;
+			padding: 0 0 0 1rem;
+			margin: 0;
+			font-family: $font-alt;
+		}
+		button {
+			color: white;
+		}
+		a {
+			color: white;
+			font-size: .8rem;
+			text-decoration: underline;
+		}
+	}
+	#info {
+		width: 100%;
+		padding: 2rem;
+		@include flexbox(row, nowrap, center, space-around);
+		p {
+				color: $color-main;
+		}
+		section {
+			@include flexbox(row, nowrap, center, center);
+
+			label {
+				padding: 0;
+			}
+			input {
+				display: block;
+				border-bottom: 1px solid $color-main;
+				padding: 0.2rem;
+				min-width: 5rem;
+				margin: 0 2rem;
+				transition: border .3s ease-in;
+			}
+			button {
+				font-family: $font-icon;
+				color: $color-main;
+			}
+		}
+	}
+	#items {
+		@include flexbox(column, nowrap, center, center);
+		padding: 0 1rem 2rem 1rem;
+	}
+	section.item {
+		@include flexbox(row, wrap, center, space-between);
+		width: 100%;
+		border: 1px solid #eee;
+		border-top: 0px;
+		padding: 0;
+		margin: 0;
+		
+		div { 
+			border-right: 1px solid #eee;
+			padding: .5rem;
+			&:nth-child(2n-1) {
+				background: #fcfcfc;
+			}
+			&:nth-child(2n) {
+				background: #fbfbfb;
+			}
+			&:last-child {
+				border: 0;
+			}
+		}
+		button {
+			background: none;
+			font-family: $font-icon;
+			padding: 0 .5rem;
+			font-size: .8rem;
+		}
+	}
+	section.item:first-child {
+		border-top: 1px solid #eee;
+	}
+	section#totalPrice {
+		width: 100%;
+		text-align: right;
+		padding: 1rem;
+	}
+	#cartFoot {
+		background: $color-main;
+		width: 45vw;
+		padding: 2rem;
+		@include flexbox(column, nowrap, center, center);
+		box-shadow: 0 100px 0 100px $color-main;
+		select {
+			@include select-box($color-main);
+			width: 70%;
+		}
+		button {
+			margin: 1rem 0 .5rem 0;
+			@include boton_hueco(white, auto, 1rem, $color-main);
+			&:hover, &:focus {
+				span {
+					color: $color-main;
+				}	
+			}
+			
+			span {
+				font-family: $font-icon;
+				color: white;
+			}
+		} 
+		a {
+			display: block;
+			color:white;
+			text-decoration: underline;
+			font-size: 0.8rem;
+		}
+	}
+}

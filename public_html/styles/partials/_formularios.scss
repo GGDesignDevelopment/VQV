@@ -1,0 +1,55 @@
+%form-basis { 
+	font-size: 1rem;
+	outline: none;
+	border: 0;
+	font-family: $font-alt;
+	&:hover, &:focus {
+		outline: none;
+		border: 0;
+	}
+}
+@mixin select-box($color, $width: auto) {
+	width: $width;
+	@extend %form-basis;
+	border: 0.1em solid $color;
+	background: white;
+	padding: 0.5em 0.1em;
+	&:hover, &:focus {
+		border: 0.1em solid $color;
+	}
+}
+@mixin number-input($color, $width: auto) {
+	width: $width;
+	@extend %form-basis;
+	border: 0.1em solid $color;
+	padding: 0.5em;
+	&:hover, &:focus {
+		border: 0.1em solid $color;
+	}
+}
+@mixin submit-product($color, $width: auto) {
+	width: $width;
+	@extend %form-basis;
+	background: $color;
+	color: white;
+	padding: 0.8em 0.5em;
+	@extend %hover-shadow;
+}
+@mixin text-input($color, $background: white) {
+	@extend %form-basis;
+	color: $color;
+	background: $background;
+	padding: 0.5em 1.1em;
+}
+@mixin data-label($color) {
+	fotn-family: $font-alt;
+	color: $color;
+	line-height: 1rem;
+	padding: 0.1em;
+	span {
+		font-family: $font-icon;
+		font-size: 1rem;
+		color: $color;
+		line-height: 1rem;
+	}
+}

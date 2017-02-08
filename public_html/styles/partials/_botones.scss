@@ -1,0 +1,85 @@
+
+@mixin boton_nav($color, $background, $width:auto, $size: 1rem) {
+	display: inline-block;
+	
+	font-size: $size;
+	width: $width; 
+	text-align: center;
+	
+	color: $color;
+	background: $background;
+	
+	padding: 0.7em 3em;
+	box-shadow: 0px 0px 2px rgba(black, 0.1);
+	transition: all 0.1s ease-out;
+	&:hover, &:active {
+		color: $color;
+		box-shadow: 0px 0px 3px 1px rgba(black, 0.2);
+		transition: all 0.1s linear;
+	}
+}
+
+
+@mixin boton_hueco($color, $width: auto, $size: 1rem, $tc: white) {
+	font-size: $size;
+	width: $width;
+	
+	color: $color;
+	background: transparent;
+	
+	padding: 0.7em 3em;
+	border: 0.09em solid $color;
+	transition: all 0.2s ease-in-out;
+	&:hover {
+		color: $tc;
+		background: $color;
+		transition: all 0.2s ease-in-out;
+	}
+	@media only screen and (min-device-width: 320px) 
+  and (max-device-width: 480px) {
+		padding: 0.5em 2em; 	
+	}
+}
+
+@mixin boton_redondeado_press ($color,  $width:auto, $size: 1rem, $tc:white) {
+	font-size: $size;
+	width: $width;
+	
+	color: $tc;
+	background: lighten($color,5%);
+	
+	padding: 0.7em 3em;
+	border-radius: 0.2em;
+	box-shadow: 0 5px 0 0 darken($color,10%);
+	transition: all 0.01s linear;
+	&:hover {
+		color: $tc;
+		background: lighten($color,8%);
+		transition: all 0.01s linear;
+		transform: translate(0px, 1px);
+		-webkit-transform: translate(0px, 1px);
+		box-shadow: 0px 4px 0px 0px darken($color,10%);
+	}
+	&:active {
+		color: $tc;
+		transform: translate(0px, 5px);
+		-webkit-transform: translate(0px, 5px);
+		box-shadow: 0px 1px 0px 0px;
+	}
+}
+@mixin boton_movil($c, $s, $w:auto, $sc: white) {
+	width: $w;
+	padding: 0.2em 0;
+	text-align: center;
+	font-size: $s;
+	color: $c;
+	border: 0;
+	background: none;
+	border-bottom: 1px solid darken($sc, 10%);
+	margin-bottom: 3px;
+		box-shadow: none;
+	&:nth-last-child(1){
+		border: 0;
+	}
+	
+}

@@ -1,42 +1,62 @@
 <header id="mainMenu">
 	<a id="logo" href="<?php echo site_url() ?>"><img src="img/logo2.png" /></a>
 	<h2>Verde que te Quiero Verde</h2>
-	<nav>
+	<nav data-state="hidden">
 		<a href="#main">inicio</a>
-		<a href="#alimentacion">alimentacion</a>
+		<!--<a href="#alimentacion">alimentacion</a>-->
 		<a href="#about">sobre nosotras</a>
 		<a href="#faq">preguntas frecuentes</a>
 		<a href="#footer">contacto</a>
 	</nav>
+	<a href="#" id="burguer" ><span>&#x61;</span></a>
 </header>
+
+<div id="social">
+	<a href="<?php echo $home->linkFacebook; ?>" target="blank">&#xe093;</a>
+	<a href="<?php echo $home->linkInstagram; ?>" target="blank">&#xe09a;</a>
+</div>
+
 <section id="main">
-	<h1>Verde que te quiero verde</h1>
-	<h2><?php echo $home->txtWelcome; ?></h2>
+	<div class="wrap">
+		<h1>Verde que te quiero verde</h1>
+		<p>
+			<?php echo $home->txtWelcome; ?>
+		</p>
 
-	<div class="botones">
-		<a href="<?php echo site_url('Tienda')?>">Tienda Virtual</a>
-		<a href="#about">Conocenos</a>
+		<div class="botones">
+			<a href="<?php echo site_url('Tienda')?>">Tienda Virtual</a>
+			<a href="#about">Conocenos</a>
+		</div>
 	</div>
-
-	<div class="social">
-		<a href="<?php echo $home->linkFacebook; ?>" target="blank">&#xe093;<span> /VqVerdeUruguay</span></a>
-		<a href="<?php echo $home->linkInstagram; ?>" target="blank">&#xe09a;<span> /vqvuruguay</span></a>
-	</div>
-</section>
+</section> 
 
 <section id="alimentacion">
 	<header>
-		<h3><?php echo $home->subAlimentacion; ?></h3>
+		<h5>
+			<?php echo $home->subAlimentacion; ?>
+		</h5>
 	</header>
 	<div id="frame">
 		<div id="imgContainer"></div>
-		<div id="navBar"></div>
+		<div id="navBar">
+			<div class="wrap">
+				<div class="arrow l"><a href="#">&#x44;</a></div>
+				<div class="pages"></div>
+				<div class="arrow r"><a href="#">&#x45;</a></div>
+			</div>
+		</div>
 	</div>
 </section>
 <!-- ------------------------------------------------------------ -->
 <section id="about">
-	<h3><?php echo $home->subAbout; ?></h3>
-	<p><?php echo $home->txtAbout; ?></p>
+	<div class="wrap">
+		<h1>
+			<?php echo $home->subAbout; ?>
+		</h1>
+		<p>
+			<?php echo $home->txtAbout; ?>
+		</p>
+	</div>
 </section>
 <!-- ------------------------------------------------------------ -->
 <section id="faq">
@@ -44,7 +64,7 @@
 		<a href="#" data-posicion="0">Como Funciona.</a>
 		<a href="#" data-posicion="1">Preguntas Frecuentes.</a>
 	</nav>
-	<div data-posicion="0">
+	<div id="first" class="hidden">
 		<ul>
 			<li>1- Entra a <a href="http://vqv.com.uy/Tienda"> VQV - Tienda </a> y registrate</li>
 			<li>2- Selecciona de nuestro catalogo el producto que desees</li>
@@ -65,27 +85,22 @@
 			<li>8- En el correr de x horas te contactaremos para coordinar la entrega a tu domicilio.</li>
 		</ul>
 	</div>
-	<div data-posicion="1" id="preguntas">
-		
+	<div id="preguntas" class="hidden">
+
 	</div>
 </section>
 <!-- ------------------------------------------------------------ -->
 <footer id="footer">
-	<div id="info">
-		<p>Télefono: (+598) 2204 7844</p>
-		<p>Montevideo, Uruguay</p>
-		<p>info@vqv.com.uy</p>
+	<h6>© 2016 -2017 Verde que te Quiero Verde<br />Contacto: info@vqv.com.uy</h6>
+	<div id="form-wrap">
+		<form action="" method="POST" data-state="wait">
+			<h5>Recib&iacute; noticias por mail.</h5>
+			<input class="eval" type="text" name="firstName" value="Nombre" required>
+			<input class="eval" type="text" name="lastName" value="Apellido">
+			<input class="eval" type="email" name="email" value="Email" required>
+			<input type="submit" value="Suscribirse">
+		</form>
 	</div>
-	<div id="social">
-		<a href="<?php echo $home->linkFacebook; ?>" target="blank">&#xe093; <span> /VqVerdeUruguay</span></a>
-		<a href="<?php echo $home->linkInstagram; ?>" target="blank">&#xe09a; <span> /vqvuruguay</span></a>
-	</div>
-	<form id="formContacto" method="post" action="home/suscribir">
-			<label>Recibi noticias por email</label>
-			<input type="text" name="nombre" value="Nombre" placeholder="Nombre" required>
-			<input type="email" name="email" value="Email" placeholder="Email" required>
-			<input type="submit" value="Suscribirse" id="button">
-	</form>
 </footer>
 
 <div id="lightBox"></div>
@@ -93,9 +108,9 @@
 	<a class="question" href="#" data-id="{{id}}"><span>&#x4c;</span>{{question}}</a>
 	<p data-id="{{id}}">{{answer}}</p>
 </script>
-<script type="text/javascript">
-var imagenes = [];
-<?php foreach ($alimentacion as $item) : ?>
-	imagenes.push('<?php echo site_url($dir . $item->imagen) ?>');
-<?php endforeach; ?>
+<script type="text/template" id="form-sent">
+	<p class="msg succes">Gracias por suscribirse!</p>
+</script>
+<script type="text/template" id="form-error">
+	<h5 class="msg error">Parece que hubo un error. <br> Por favor intentelo nuevamente</h5>
 </script>
