@@ -14,3 +14,5 @@
   </form>
   <?php } ?>
 </div>
+<div class="msgBox hide">
+</div>
