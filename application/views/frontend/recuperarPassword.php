@@ -15,4 +15,6 @@
   <?php } ?>
 </div>
 <div class="msgBox hide">
+  <p>Estamos procesando su solicitud, en breve recibira un correo con un link para resetear su contraseña. Si no lo encuentra en su bandeja de entrada revise en correos no deseados. Por cualquier inconveniente contactenos a info@vqv.com.uy</p>
+  <p>Se ha modificado su contraseña correctamente</p>
 </div>
