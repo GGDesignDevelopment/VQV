@@ -11,6 +11,7 @@ class Cart extends Frontend_Controller {
         $this->load->model('saleitem_m');
         $this->load->model('producto_m');
         $this->load->library('session');
+        $this->load->library('encrypt');
         $this->email = $this->session->userdata('email');
     }
     function register() {
@@ -175,4 +176,64 @@ class Cart extends Frontend_Controller {
         echo json_encode($return);
     }
 
+    function linkPassword () {
+      //envia mail con link para recuperar password
+      $email = $this->input->post('email');
+
+      $usuario = $this->user_m->get(['email'=>$email], True);
+      if ($usuario) {
+        $fecha = date('YmdHi');
+        $parametros = $fecha . ';' . $email;
+        $link = site_url('cart/recuperarPassword') . '/' . 'R' . '/' . str_replace('/', '[]' , $this->encrypt->encode($parametros));
+        $to = $email;
+        $from = $this->data['home']->mailEnvio;
+        $headers = "From: " . $from . "\r\n";
+        $headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
+        $subject = "Recuperar Contraseña";
+        $body = "<html><body>";
+        $body .= "<h1>Recuperación de Contraseña</h1>
+                 <p>Para cambiar su contraseña haga click sobre el siguiente link:</p>
+                 <p><a href='" . $link . "'>Recuperar Contraseña</a></p>
+                 <h4>Atte. El equipo de VQV</h4>";
+        $body .= "</body></html>";
+        echo $body;
+        try {
+            // mail($to, $subject, $body, $headers, "-f " . $from) ;
+        } finally  {
+
+        }
+      } else {
+        echo "Email no registrado!";
+      }
+    }
+
+    function recuperarPassword ($action = 'M', $token = "") {
+      $this->data['error'] = '';
+      $this->data['email'] = '';
+
+      if ($action == 'R') {
+        $parametros = explode(';', $this->encrypt->decode(str_replace('[]','/',$token)));
+        $fecha = date('YmdHi');
+
+        if ($fecha - $parametros[0] > 2359) {
+          $this->data['error'] = 'Tiempo de cambio de contraseña excedido';
+        } else {
+          $this->data['email'] = $parametros[1];
+        }
+      } elseif ($action == 'C') {
+        $this->data['email'] = $this->email;
+      }
+      $this->data['action'] = $action;
+      $this->data['subview'] = 'frontend/recuperarPassword';
+      $this->load->view('frontend/_layout_main', $this->data);
+    }
+
+    function cambiarPassword ($email="") {
+      if ($email == '') {
+        echo "Error al grabar su contraseña";
+      } else {
+        $data['password'] = $this->user_m->hash($this->input->post('password'));
+        $this->user_m->save($data, ['email' => $email]);
+      }
+    }
 }
